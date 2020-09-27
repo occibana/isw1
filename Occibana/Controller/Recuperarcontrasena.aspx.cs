@@ -14,6 +14,11 @@ public partial class Vew_Recuperarcontrasena : System.Web.UI.Page
 
     protected void Button5_Click(object sender, EventArgs e)
     {
-        Response.Redirect("");
+        Response.Redirect("Perfil.aspx");
+    }
+
+    protected void Button4_Click(object sender, EventArgs e)
+    {
+
     }
 }

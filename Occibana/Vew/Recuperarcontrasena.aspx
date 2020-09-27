@@ -94,7 +94,7 @@
                                 <div class="auto-style19">
                                     <br />
                                     <br />
-                                    <asp:Button ID="Button4" runat="server" Text="ENVIAR" Width="140px" />
+                                    <asp:Button ID="Button4" runat="server" Text="ENVIAR" Width="140px" OnClick="Button4_Click" />
                                     <br />
                                     <br />
                                     <asp:Button ID="Button5" runat="server" Text="VOLVER AL PERFIL" Width="140px" OnClick="Button5_Click" />

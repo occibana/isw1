@@ -18,7 +18,6 @@
         .auto-style18 {
             width: 90%;
             height: 424px;
-            text-align: center;
             margin-left: auto;
             margin-right: auto;
             color: #ffffff;
@@ -80,7 +79,7 @@
                             </div>
                         </div>
                         <br />
-                        <asp:HyperLink ID="HyperLink2" runat="server">OLVIDÉ MI CONTRASEÑA</asp:HyperLink>
+                        <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Vew/Recuperarcontrasena.aspx">OLVIDE MI CONTRASEÑA</asp:HyperLink>
                        <br />
                         <br />
                         <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Vew/Registro.aspx">NO ESTOY REGISTRADO Y QUIERO REGISTRARME</asp:HyperLink>
