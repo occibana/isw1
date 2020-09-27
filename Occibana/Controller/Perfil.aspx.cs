@@ -59,13 +59,17 @@ public partial class Vew_Perfil : System.Web.UI.Page
                 direccion = "~/Vew/imgusuarios/" + ((Registro)Session["usuario"]).Usuario + FileUpload1.FileName;
                 FileUpload1.SaveAs(Server.MapPath(direccion));//mapea y guarda el archivo en la direccion
                 L_Pcargaimagen.Text = "*Imagen aceptada";
-                
+                //actualiza foto de perfil
+                Registro nuevodat = new Registro();
+                nuevodat.Id = ((Registro)Session["usuario"]).Id;
+                nuevodat.Fotoperfil = direccion;
+                new DAOLogin().actualizarfoto(nuevodat);
+                L_Pcargaimagen.Text = "*Imagen cargada con exito";                
             }
             else
             {
                 L_Pcargaimagen.Text = "*Imagen no esta en formato correcto o es muy pesada";
-            }
-            
+            }            
         }
         else
         {

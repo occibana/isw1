@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Web;
 
@@ -35,6 +36,13 @@ public class DAOLogin
         using (var db = new Mapeo())
         {
             Registro fotoanterior = db.usuario.Where(x => x.Id == fotoE.Id).First();
+            //eliminar anterior
+            if (File.Exists(fotoanterior.Fotoperfil))
+            {
+                Console.WriteLine("existe"+ fotoanterior.Fotoperfil);
+                //File.Delete(fotoanterior.Fotoperfil);
+            }
+            //
             fotoanterior.Fotoperfil = fotoE.Fotoperfil;
             var entry = db.Entry(fotoanterior);
             entry.State = EntityState.Modified;
