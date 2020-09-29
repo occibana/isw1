@@ -39,8 +39,7 @@ public class DAOLogin
             //eliminar anterior
             if (File.Exists(fotoanterior.Fotoperfil))
             {
-                Console.WriteLine("existe"+ fotoanterior.Fotoperfil);
-                //File.Delete(fotoanterior.Fotoperfil);
+                File.Delete(fotoanterior.Fotoperfil);
             }
             //
             fotoanterior.Fotoperfil = fotoE.Fotoperfil;
