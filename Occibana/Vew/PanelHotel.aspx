@@ -41,7 +41,7 @@
                         </tr>
                         <tr>
                             <td class="auto-style18">
-                                <asp:Image ID="Image2" runat="server" Height="177px" Width="279px" />
+                                <asp:Image ID="Image2" runat="server" Height="213px" Width="279px" ImageUrl="~/Vew/img/hotelvacio.png" />
                             </td>
                             <td>
                                 <table class="auto-style16">
