@@ -86,4 +86,9 @@ public partial class Vew_Perfil : System.Web.UI.Page
     {
         Response.Redirect("");
     }
+
+    protected void Button4_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("PanelHotel.aspx");
+    }
 }

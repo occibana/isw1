@@ -67,7 +67,7 @@
                                 <h1 class="auto-style25">BIENVENIDO USUARIO</h1>
                             </td>
                             <td class="auto-style18">
-                                <asp:Button ID="Button4" runat="server" Height="31px" Text="AGREGAR HOTEL" Width="136px" />
+                                <asp:Button ID="Button4" runat="server" Height="31px" Text="AGREGAR HOTEL" Width="136px" OnClick="Button4_Click" />
                             </td>
                         </tr>
                     </table>
