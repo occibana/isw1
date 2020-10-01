@@ -89,6 +89,6 @@ public partial class Vew_Perfil : System.Web.UI.Page
 
     protected void Button4_Click(object sender, EventArgs e)
     {
-        Response.Redirect("");
+        Response.Redirect("AgregarServicioHotel.aspx");
     }
 }
