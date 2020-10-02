@@ -212,7 +212,7 @@
                             <br />
                             LEMA<br />
                             <br />
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tincidunt congue ligula in rutrum. Morbi nec lacus condimentum, hendrerit mi eu, feugiat.</div>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tincidunt congue ligula in rutrum. Morbi nec lacus condimentum, hendrerit mi eu, feugia.</div>
                         <br />
                         <br />
                         <br />
