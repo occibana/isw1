@@ -27,5 +27,25 @@ public class DAOhotel
             db.SaveChanges();
         }
     }
+    
+    //lista de hoteles por usuario
+    public List<Hotel> hotelesregistrados()
+    {
+        using (var db = new Mapeo())
+        {
+            return (from h in db.hotel select new
+                    { h     
+                    }).ToList().Select(m => new Hotel
+                    {
+                        Nombre = m.h.Nombre,
+                        Precionoche = m.h.Precionoche,
+                        Imagen = m.h.Imagen,
+                        //Municipio = m.h.Municipio,
+                    }).ToList();
+        }
+        //return new Mapeo().hotel.ToList();
+    }
 
 }
+
+

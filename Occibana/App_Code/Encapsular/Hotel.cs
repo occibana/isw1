@@ -24,6 +24,7 @@ public class Hotel
     private string checkout;
     private string imagen;
     private string nombre;
+    private string usuarioencargado;
     private int idzona;
 
     [Key]
@@ -53,5 +54,6 @@ public class Hotel
     public string Nombre { get => nombre; set => nombre = value; }
     [Column("idzona")]
     public int Idzona { get => idzona; set => idzona = value; }
-    
+    [Column("usuarioencargado")]
+    public string Usuarioencargado { get => usuarioencargado; set => usuarioencargado = value; }
 }

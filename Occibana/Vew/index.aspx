@@ -93,10 +93,34 @@
         .auto-style35 {
             width: 100%;
         }
+        .auto-style35hoteles {
+            width: 80%;
+            margin-left:auto;
+            margin-right: auto;
+            margin-top: 15px;
+            background: #E60004;
+        }
+        
         .auto-style36 {
-            width: 781px;
-            margin-left: 94px;
-            background:  #0040BD;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+            background: #0040BD;
+        }
+        .auto-style38 {
+            width: 70%;
+            margin-left: auto;
+            margin-right: auto;
+            background: #ffffff;
+        }
+        .auto-style39 {
+            height: 42px;
+        }
+        .auto-style40 {
+            width: 50%;
+        }
+        .auto-style41 {
+            height: 80px;
         }
         </style>
 </asp:Content>
@@ -178,16 +202,41 @@
                 <h2>Hoteles a su gusto con Occibana</h2>
                 <br />
                 <div class="auto-style36">
-                    <asp:Repeater ID="Repeater1" runat="server">
-                    </asp:Repeater>
+                    <asp:DataList ID="DataList1" runat="server" DataSourceID="ODS_Hotelesindex" RepeatLayout="Flow">
+                        <ItemTemplate>
+                            <table class="auto-style35hoteles">
+                                <tr>
+                                    <td rowspan="2" class="auto-style40">
+                                        <asp:ImageButton ID="ImageButton1" runat="server" Height="230px" Width="100%" ImageUrl='<%# Eval("Imagen") %>' />
+                                    </td>
+                                    <td class="auto-style39">Nombre del hotel:<asp:Label ID="NombreLabel0" runat="server" Text='<%# Eval("Nombre") %>' />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="auto-style41">
+                                        <div class="auto-style38">
+                                            Precionoche:
+                                            <asp:Label ID="PrecionocheLabel" runat="server" Text='<%# Eval("Precionoche") %>' />
+                                            <br />
+                                            Municipio:
+                                            <br />
+                                            <asp:Label ID="MunicipioLabel" runat="server" Text='<%# Eval("Municipio") %>' />
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                            <br />
+                        </ItemTemplate>
+                    </asp:DataList>
+                    <asp:ObjectDataSource ID="ODS_Hotelesindex" runat="server" SelectMethod="hotelesregistrados" TypeName="DAOhotel"></asp:ObjectDataSource>
+                    <br />
                 </div>
             </td>
         </tr>
         <tr>
             <td class="auto-style16">
                 <br />
-                <h2>SOBRE NOSOTROS<br />
-                </h2>
+                <h2>SOBRE NOSOTROS           </h2>
                 <br />
                 <div class="auto-style18">
                     <br />

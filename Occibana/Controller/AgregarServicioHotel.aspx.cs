@@ -42,6 +42,7 @@ public partial class Vew_AgregarServicioHotel : System.Web.UI.Page
         serviciohotel.Checkout = TB_Checkout.Text;
         serviciohotel.Descripcion = TB_Descripcion.Text;
         serviciohotel.Condicion = TB_Condiciones.Text;
+        serviciohotel.Usuarioencargado = ((Registro)Session["usuario"]).Nombre;
 
 
         //verifica si hay archivos seleccionados
