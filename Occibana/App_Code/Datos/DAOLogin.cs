@@ -28,6 +28,7 @@ public class DAOLogin
     //verifica usuario no repetido
     public Registro verificaruser(Registro registroE)
     {
+
         return new Mapeo().usuario.Where(x => x.Usuario.ToUpper().Equals(registroE.Usuario.ToUpper()) || x.Correo.ToUpper().Equals(registroE.Correo.ToUpper())).FirstOrDefault();
     }
     //actualiza foto perfil

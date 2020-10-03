@@ -20,4 +20,7 @@ public class Mapeo : DbContext//Hereda de DbContext (contiene referencias a enti
     }
 
     public DbSet<Registro> usuario { get; set; }
+    public DbSet<Hotel> hotel { get; set; }
+    public DbSet<HotelMunicipio> hotelmunicipio { get; set; }
+    public DbSet<HotelZona> hotelzona { get; set; }
 }

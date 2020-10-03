@@ -175,7 +175,7 @@
         <tr>
             <td class="auto-style17">
                 <br />
-                <h2>Hotelels a su gusto con Occibana</h2>
+                <h2>Hoteles a su gusto con Occibana</h2>
                 <br />
                 <div class="auto-style36">
                     <asp:Repeater ID="Repeater1" runat="server">
