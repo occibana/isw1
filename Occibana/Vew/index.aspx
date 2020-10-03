@@ -98,9 +98,6 @@
             margin-left: 94px;
             background:  #0040BD;
         }
-        .auto-style37 {
-            text-decoration: underline;
-        }
         </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
@@ -178,7 +175,7 @@
         <tr>
             <td class="auto-style17">
                 <br />
-                <h2 class="auto-style37">Hoteles a su gusto con Occibana</h2>
+                <h2>Hoteles a su gusto con Occibana</h2>
                 <br />
                 <div class="auto-style36">
                     <asp:Repeater ID="Repeater1" runat="server">
