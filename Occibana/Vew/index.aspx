@@ -109,6 +109,7 @@
         }
         .auto-style38 {
             width: 70%;
+            height: 100px;
             margin-left: auto;
             margin-right: auto;
             background: #ffffff;
@@ -202,20 +203,20 @@
                 <h2>Hoteles a su gusto con Occibana</h2>
                 <br />
                 <div class="auto-style36">
-                    <asp:DataList ID="DataList1" runat="server" DataSourceID="ODS_Hotelesindex" RepeatLayout="Flow">
+                    <asp:DataList ID="DataList1" runat="server" DataSourceID="ODS_Hotelesindex" RepeatLayout="Flow" OnItemCommand="DataList1_ItemCommand" >
                         <ItemTemplate>
                             <table class="auto-style35hoteles">
                                 <tr>
                                     <td rowspan="2" class="auto-style40">
-                                        <asp:ImageButton ID="ImageButton1" runat="server" Height="230px" Width="100%" ImageUrl='<%# Eval("Imagen") %>' />
+                                        <asp:ImageButton ID="IB_Hotelindex" runat="server" Height="230px" Width="100%" ImageUrl='<%# Eval("Imagen") %>' CommandArgument='<%# Eval("Idhotel") %>' />
                                     </td>
-                                    <td class="auto-style39">Nombre del hotel:<asp:Label ID="NombreLabel0" runat="server" Text='<%# Eval("Nombre") %>' />
+                                    <td class="auto-style39">Nombre del hotel:<asp:Label ID="NombreLabel" runat="server" Text='<%# Eval("Nombre") %>' />
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="auto-style41">
                                         <div class="auto-style38">
-                                            Precionoche:
+                                            &nbsp;<br />Precionoche:
                                             <asp:Label ID="PrecionocheLabel" runat="server" Text='<%# Eval("Precionoche") %>' />
                                             <br />
                                             Municipio:

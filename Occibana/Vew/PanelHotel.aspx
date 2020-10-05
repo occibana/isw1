@@ -41,7 +41,7 @@
                         </tr>
                         <tr>
                             <td class="auto-style18">
-                                <asp:Image ID="Image2" runat="server" Height="213px" Width="279px" ImageUrl="~/Vew/img/hotelvacio.png" />
+                                <asp:Image ID="I_Panelimagenprincipal" runat="server" Height="213px" Width="279px" ImageUrl="~/Vew/img/hotelvacio.png" />
                             </td>
                             <td>
                                 <table class="auto-style16">
@@ -52,9 +52,9 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="auto-style19">DIRECCIÓN</td>
+                                        <td class="auto-style19">ZONA:</td>
                                         <td>
-                                <asp:Label ID="L_Panelhoteldireccion" runat="server"></asp:Label>
+                                <asp:Label ID="L_Panelhotelzona" runat="server"></asp:Label>
                                         </td>
                                     </tr>
                                     <tr>

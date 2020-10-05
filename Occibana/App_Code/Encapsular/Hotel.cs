@@ -14,6 +14,7 @@ public class Hotel
 {
     private int idhotel;
     private string municipio;
+    private int idmunicipio;
     private int numhabitacion;
     private int numpersona;
     private int numbano;
@@ -30,8 +31,8 @@ public class Hotel
     [Key]
     [Column("idhotel")]
     public int Idhotel { get => idhotel; set => idhotel = value; }
-    [Column("municipio")]
-    public string Municipio { get => municipio; set => municipio = value; }
+    [Column("idmunicipio")]
+    public int Idmunicipio { get => idmunicipio; set => idmunicipio = value; }
     [Column("numhabitacion")]
     public int Numhabitacion { get => numhabitacion; set => numhabitacion = value; }
     [Column("numpersona")]
@@ -56,4 +57,7 @@ public class Hotel
     public int Idzona { get => idzona; set => idzona = value; }
     [Column("usuarioencargado")]
     public string Usuarioencargado { get => usuarioencargado; set => usuarioencargado = value; }
+
+    [NotMapped]
+    public string Municipio { get => municipio; set => municipio = value; }
 }

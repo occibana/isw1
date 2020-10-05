@@ -33,8 +33,8 @@ public partial class Vew_AgregarServicioHotel : System.Web.UI.Page
 
         serviciohotel.Nombre = TB_NombreHotel.Text;
         serviciohotel.Precionoche = int.Parse(TB_PrecioNoche.Text);
-        serviciohotel.Municipio = DDL_Municipio.Text;
-        //serviciohotel.Idzona = int.Parse(DDL_Zona.Text);
+        serviciohotel.Idmunicipio = int.Parse(DDL_Municipio.Text);
+        serviciohotel.Idzona = int.Parse(DDL_Zona.Text);
         serviciohotel.Numhabitacion = int.Parse(TB_AnadirNumHabitacion.Text);
         serviciohotel.Numpersona = int.Parse(TB_AnadirNumPersonas.Text);
         serviciohotel.Numbano = int.Parse(TB_AnadirNumBanos.Text);
@@ -44,6 +44,7 @@ public partial class Vew_AgregarServicioHotel : System.Web.UI.Page
         serviciohotel.Condicion = TB_Condiciones.Text;
         serviciohotel.Usuarioencargado = ((Registro)Session["usuario"]).Nombre;
 
+        
 
         //verifica si hay archivos seleccionados
         if (FU_ImgPrincipal.HasFile)
@@ -75,7 +76,9 @@ public partial class Vew_AgregarServicioHotel : System.Web.UI.Page
 
 
         new DAOhotel().insertHotel(serviciohotel);
+       
         cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('El hotel ha sido cargado');</script>");
+        //Response.Redirect("Perfil.aspx");
         return;
 
     }

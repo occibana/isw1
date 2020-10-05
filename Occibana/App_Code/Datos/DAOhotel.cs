@@ -33,18 +33,25 @@ public class DAOhotel
     {
         using (var db = new Mapeo())
         {
-            return (from h in db.hotel select new
-                    { h     
+            return (from h in db.hotel join hm in db.hotelmunicipio on h.Idmunicipio equals hm.Idmunicipio select new
+                    { h,hm     
                     }).ToList().Select(m => new Hotel
                     {
-                        Nombre = m.h.Nombre,
+                        Idhotel = m.h.Idhotel,
+                        Nombre = m.h.Nombre.ToUpper(),
                         Precionoche = m.h.Precionoche,
                         Imagen = m.h.Imagen,
-                        //Municipio = m.h.Municipio,
+                        Municipio = m.hm.Nombre,
+                        
                     }).ToList();
         }
-        //return new Mapeo().hotel.ToList();
     }
+    //select info hotel panel hotel
+    public Hotel infohotel(Hotel hotelE)
+    {
+        return new Mapeo().hotel.Where(x => x.Idhotel.Equals(hotelE.Idhotel)).FirstOrDefault();
+    }
+
 
 }
 
