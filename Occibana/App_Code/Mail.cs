@@ -16,7 +16,7 @@ public class Mail
         MailMessage mail = new MailMessage();
         SmtpClient SmtpSever = new SmtpClient("smtp.gmail.com");
 
-        mail.From = new MailAddress("prueba1@hola.com", "Registro exitoso");//correo que envia, diplay name 
+        mail.From = new MailAddress("occibana@gmail.com", "Registro exitoso");//correo que envia, diplay name 
         SmtpSever.Host = "smtp.gmail.com";//servidor gmail
         mail.Subject = "Registro exitoso";//asunto
         mail.Body = "Su registro ha sido exitoso, porfavor recuerde que:\nUsuario: " + MailE.Usuario +
@@ -24,6 +24,7 @@ public class Mail
         mail.To.Add(MailE.Correo);//destino del correo
         mail.IsBodyHtml = true;
         mail.Priority = MailPriority.Normal;
+
         //Configuracion del SMTP
         SmtpSever.Port = 587;
         SmtpSever.Credentials = new System.Net.NetworkCredential("occibana@gmail.com", "occibana123");//correo origen, contra*

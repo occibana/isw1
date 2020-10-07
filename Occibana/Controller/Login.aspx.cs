@@ -33,4 +33,9 @@ public partial class Vew_Login : System.Web.UI.Page
             Response.Redirect("Perfil.aspx");
         }        
     }
+
+    protected void LB_OlvidemicontrasenaLogin_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Recuperarcontrasena.aspx");
+    }
 }

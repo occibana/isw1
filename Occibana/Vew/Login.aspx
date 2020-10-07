@@ -79,7 +79,7 @@
                             </div>
                         </div>
                         <br />
-                        <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Vew/Recuperarcontrasena.aspx">OLVIDE MI CONTRASEÑA</asp:HyperLink>
+                        <asp:LinkButton ID="LB_OlvidemicontrasenaLogin" runat="server" OnClick="LB_OlvidemicontrasenaLogin_Click">OLVIDE MI CONTRASEÑA</asp:LinkButton>
                        <br />
                         <br />
                         <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Vew/Registro.aspx">NO ESTOY REGISTRADO Y QUIERO REGISTRARME</asp:HyperLink>

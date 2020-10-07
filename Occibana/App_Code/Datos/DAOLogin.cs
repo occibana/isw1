@@ -66,6 +66,12 @@ public class DAOLogin
         }
     }
 
+    //verificacion usuario para token_segiruridad
+    public Registro verificarusuarioparatoken(Registro usuarioE)
+    {
+        return new Mapeo().usuario.Where(x => x.Usuario.ToUpper().Equals(usuarioE.Usuario.ToUpper()) && x.Correo.Equals(usuarioE.Correo)).FirstOrDefault();
+    }
+
 
 
 

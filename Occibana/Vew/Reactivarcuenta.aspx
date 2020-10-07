@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Vew/MasterPage.master" AutoEventWireup="true" CodeFile="~/Controller/Recuperarcontrasena.aspx.cs" Inherits="Vew_Recuperarcontrasena" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Vew/MasterPage.master" AutoEventWireup="true" CodeFile="~/Controller/Reactivarcuenta.aspx.cs" Inherits="Vew_Reactivarcuenta" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <style type="text/css">
@@ -43,7 +43,7 @@
                                     <tr>
                                         <td class="auto-style19">
                                             <br />
-                                            INGRESE SU CORREO ELECRÓNICO<br />
+                                            INGRESE SU NUEVA CONTRASEÑA<br />
                                             <br />
                                             <asp:TextBox ID="TB_CorreoRecuperarcontrasena" runat="server"></asp:TextBox>
                                             <br />
@@ -53,7 +53,7 @@
                                     <tr>
                                         <td class="auto-style19">
                                             <br />
-                                            INGRESE SU USUARIO<br />
+                                            CONFIRME LA CONTRASEÑA<br />
                                             <br />
                                             <asp:TextBox ID="TB_UsuarioRecuperarcontrasena" runat="server"></asp:TextBox>
                                             <br />
@@ -71,9 +71,6 @@
                                     <asp:Label ID="L_Error_noregistro" runat="server"></asp:Label>
                                     <br />
                                     <asp:Button ID="Button4" runat="server" Text="ENVIAR" Width="140px" OnClick="Button4_Click" />
-                                    <br />
-                                    <br />
-                                    <asp:Button ID="Button5" runat="server" Text="VOLVER AL Login" Width="140px" OnClick="Button5_Click" />
                                     <br />
                                     <br />
                                 </div>
