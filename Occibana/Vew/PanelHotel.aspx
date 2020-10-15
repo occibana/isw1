@@ -48,7 +48,9 @@
                                     <tr>
                                         <td class="auto-style19">MUNICIPIO:</td>
                                         <td>
+                                            <em>
                                 <asp:Label ID="L_Panelhotelmunicipio" runat="server"></asp:Label>
+                                            </em>
                                         </td>
                                     </tr>
                                     <tr>

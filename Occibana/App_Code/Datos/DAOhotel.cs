@@ -51,7 +51,16 @@ public class DAOhotel
     {
         return new Mapeo().hotel.Where(x => x.Idhotel.Equals(hotelE.Idhotel)).FirstOrDefault();
     }
-
+    //select zona
+    public HotelZona zona(Hotel hotelE)
+    {
+        return new Mapeo().hotelzona.Where(x => x.Idzona.Equals(hotelE.Idzona)).FirstOrDefault();
+    }
+    //select municipio
+    public HotelMunicipio municipio(Hotel hotelE)
+    {
+        return new Mapeo().hotelmunicipio.Where(x => x.Idmunicipio.Equals(hotelE.Idmunicipio)).FirstOrDefault();
+    }
 
 }
 

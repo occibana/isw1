@@ -72,7 +72,17 @@ public class DAOLogin
         return new Mapeo().usuario.Where(x => x.Usuario.ToUpper().Equals(usuarioE.Usuario.ToUpper()) && x.Correo.Equals(usuarioE.Correo)).FirstOrDefault();
     }
 
-
-
+    //actualiza contraseña
+    public void actualizarcontrasena(Registro datoE)
+    {
+        using (var db = new Mapeo())
+        {
+            Registro datoanterior = db.usuario.Where(x => x.Id == datoE.Id).First();
+            datoanterior.Contrasena = datoE.Contrasena;
+            var entry = db.Entry(datoanterior);
+            entry.State = EntityState.Modified;
+            db.SaveChanges();
+        }
+    }
 
 }
