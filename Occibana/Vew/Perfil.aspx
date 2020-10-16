@@ -67,7 +67,7 @@
                                 <h1 class="auto-style25">BIENVENIDO USUARIO</h1>
                             </td>
                             <td class="auto-style18">
-                                <asp:Button ID="Button4" runat="server" Height="31px" Text="AGREGAR HOTEL" Width="136px" OnClick="Button4_Click" />
+                                <asp:Button ID="B_AgregarHotel" runat="server" Height="31px" Text="AGREGAR HOTEL" Width="136px" OnClick="B_AgregarHotel_Click" />
                             </td>
                         </tr>
                     </table>
@@ -98,12 +98,13 @@
                                                 <br />
                                                 <br />
                                                 ESTADO DE LA MEMBRESIA:<br />
-                                                <asp:Label ID="L_Pestadomembresia" runat="server"></asp:Label>
+                                                <asp:Label ID="L_EstadoMembresia" runat="server"></asp:Label>
                                                 <br />
                                                 <br />
+                                                <asp:Button ID="B_ComprarMembresia" runat="server" Text="COMPRAR MEMBRESIA" Width="189px" Height="29px" />
                                                 <br />
                                                 <br />
-                                                <asp:Button ID="Button6" runat="server" Height="31px" Text="ACTUALIZAR MEMBRESÍA" Width="197px" />
+                                                <asp:Button ID="B_ActualizarMembresia" runat="server" Height="31px" Text="ACTUALIZAR MEMBRESÍA" Width="197px" />
                                                 <br />
                                             </td>
                                         </tr>

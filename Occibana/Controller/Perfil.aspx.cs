@@ -24,7 +24,23 @@ public partial class Vew_Perfil : System.Web.UI.Page
             {
                 fotoperfil.ImageUrl="~/Vew/img/perfilvacio.jpg";
             }
-            
+            //
+            if (((Registro)Session["usuario"]).Idestado == 1) //1 Es con menbresia, 0 sin membresia
+            {
+                B_ComprarMembresia.Visible = false;
+                B_ActualizarMembresia.Visible = true;
+                B_AgregarHotel.Visible = true;
+                L_EstadoMembresia.Text = "Con Membresia";
+
+            }
+            else
+            {
+                B_ComprarMembresia.Visible = true;
+                B_ActualizarMembresia.Visible = false;
+                B_AgregarHotel.Visible = false;
+                L_EstadoMembresia.Text = "Sin Membresia";
+            }
+            //
         }
         catch
         {
@@ -87,7 +103,7 @@ public partial class Vew_Perfil : System.Web.UI.Page
         Response.Redirect("Actualizarcontrasena.aspx");
     }
 
-    protected void Button4_Click(object sender, EventArgs e)
+    protected void B_AgregarHotel_Click(object sender, EventArgs e)
     {
         Response.Redirect("AgregarServicioHotel.aspx");
     }
