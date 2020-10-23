@@ -21,6 +21,7 @@ public class Registro
     private string contrasena;
     private int idestado;
     private string fotoperfil;
+    private DateTime fecha_vencimiento;
    
 
     [Key]

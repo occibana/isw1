@@ -54,6 +54,9 @@
         .auto-style27 {
             width: 180px;
         }
+        .auto-style28 {
+            width: 404px;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
@@ -68,6 +71,8 @@
                             </td>
                             <td class="auto-style18">
                                 <asp:Button ID="B_AgregarHotel" runat="server" Height="31px" Text="AGREGAR HOTEL" Width="136px" OnClick="B_AgregarHotel_Click" />
+                                <br />
+                                <asp:Button ID="B_mishoteles" runat="server" OnClick="B_mishoteles_Click" Text="MIS HOTELES" Width="136px"/>
                             </td>
                         </tr>
                     </table>
@@ -101,16 +106,16 @@
                                                 <asp:Label ID="L_EstadoMembresia" runat="server"></asp:Label>
                                                 <br />
                                                 <br />
-                                                <asp:Button ID="B_ComprarMembresia" runat="server" Text="COMPRAR MEMBRESIA" Width="189px" Height="29px" />
+                                                <asp:Button ID="B_ComprarMembresia" runat="server" Text="COMPRAR MEMBRESIA" Width="189px" Height="29px" OnClick="B_ComprarMembresia_Click" />
                                                 <br />
                                                 <br />
-                                                <asp:Button ID="B_ActualizarMembresia" runat="server" Height="31px" Text="ACTUALIZAR MEMBRESÍA" Width="197px" />
+                                                <asp:Button ID="B_ActualizarMembresia" runat="server" Height="31px" Text="ACTUALIZAR MEMBRESÍA" Width="197px" OnClick="B_ActualizarMembresia_Click" />
                                                 <br />
                                             </td>
                                         </tr>
                                     </table>
                                 </td>
-                                <td>
+                                <td class="auto-style28">
                                     <div class="auto-style22">
                                         <table class="auto-style23">
                                             <tr>

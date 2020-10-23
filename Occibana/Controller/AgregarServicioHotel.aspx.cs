@@ -35,16 +35,13 @@ public partial class Vew_AgregarServicioHotel : System.Web.UI.Page
         serviciohotel.Precionoche = int.Parse(TB_PrecioNoche.Text);
         serviciohotel.Idmunicipio = int.Parse(DDL_Municipio.Text);
         serviciohotel.Idzona = int.Parse(DDL_Zona.Text);
-        serviciohotel.Numhabitacion = int.Parse(TB_AnadirNumHabitacion.Text);
-        serviciohotel.Numpersona = int.Parse(TB_AnadirNumPersonas.Text);
-        serviciohotel.Numbano = int.Parse(TB_AnadirNumBanos.Text);
         serviciohotel.Checkin = TB_Checkin.Text;
         serviciohotel.Checkout = TB_Checkout.Text;
         serviciohotel.Descripcion = TB_Descripcion.Text;
         serviciohotel.Condicion = TB_Condiciones.Text;
-        serviciohotel.Usuarioencargado = ((Registro)Session["usuario"]).Nombre;
+        serviciohotel.Usuarioencargado = ((Registro)Session["usuario"]).Usuario;
+        serviciohotel.Condicionesbioseguridad = TB_descripcioncovid19.Text;
 
-        
 
         //verifica si hay archivos seleccionados
         if (FU_ImgPrincipal.HasFile)
@@ -72,6 +69,35 @@ public partial class Vew_AgregarServicioHotel : System.Web.UI.Page
         else
         {
             L_CargarimagenAgregarHotel.Text = "*Selecciona una imagen";
+        }
+
+
+        //verifica si hay archivos seleccionados
+        if (FU_ImgAdicional.HasFile)
+        {
+            string direccion;
+            string ext = System.IO.Path.GetExtension(FU_ImgAdicional.FileName);//obtiene la extencion del archivo
+            ext = ext.ToLower();//minusculas
+
+            int tam = FU_ImgAdicional.PostedFile.ContentLength;//obtiene tamano archivo
+
+            if ((ext == ".jpg" || ext == ".png") && (tam < 1048576))//menor a 1MB en bytes
+            {
+                direccion = "~/Vew/hoteles/imgadicional/" + ((Registro)Session["usuario"]).Usuario + FU_ImgAdicional.FileName;
+                FU_ImgAdicional.SaveAs(Server.MapPath(direccion));//mapea y guarda el archivo en la direccion
+                L_CargarimagenAgregarHotel.Text = "*Imagen aceptada";
+                //actualiza foto de perfil
+
+                serviciohotel.Imagen_secundaria = direccion;
+            }
+            else
+            {
+                L_CargarimagenAgregarHotel.Text = "*Imagen no esta en formato correcto o es muy pesada";
+            }
+        }
+        else
+        {
+            serviciohotel.Imagen = null;
         }
 
 

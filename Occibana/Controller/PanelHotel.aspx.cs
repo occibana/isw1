@@ -23,6 +23,11 @@ public partial class Vew_PanelHotel : System.Web.UI.Page
             L_Panelhotelprecio.Text = hotel.Precionoche.ToString();
             I_Panelimagenprincipal.ImageUrl = hotel.Imagen.ToString();
 
+            L_Descripcion.Text = hotel.Descripcion;
+            L_Condicion.Text = hotel.Condicion;
+            L_Checkin.Text = hotel.Checkin;
+            L_Checkout.Text = hotel.Checkout;
+
         }
         catch
         {
@@ -30,5 +35,27 @@ public partial class Vew_PanelHotel : System.Web.UI.Page
             Response.Redirect("index.aspx");
         }
 
+    }
+
+    protected void Button4_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("index.aspx");
+    }
+
+    protected void B_Comentarios_Click(object sender, EventArgs e)
+    {
+        //UpdatePanel1.Visible = false;
+        //UpdatePanel2.Visible = true;
+    }
+
+    protected void B_Desc_Reserva_Click(object sender, EventArgs e)
+    {
+        //UpdatePanel1.Visible = true;
+        //UpdatePanel2.Visible = false;
+    }
+
+    protected void B_Reservar_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Reserva.aspx");
     }
 }

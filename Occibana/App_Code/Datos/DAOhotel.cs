@@ -27,13 +27,15 @@ public class DAOhotel
             db.SaveChanges();
         }
     }
-    
-    //lista de hoteles por usuario
-    public List<Hotel> hotelesregistrados()
+
+    //lista de hoteles por usuario 
+    //(hoteles que se muestran en index)
+    public List<Hotel> hotelesregistrados(int consulta)
     {
         using (var db = new Mapeo())
         {
-            return (from h in db.hotel join hm in db.hotelmunicipio on h.Idmunicipio equals hm.Idmunicipio select new
+            // where ((p.CategoriaId == categoriaId) || (categoriaId == 0)) select new
+            return (from h in db.hotel join hm in db.hotelmunicipio on h.Idmunicipio equals hm.Idmunicipio where (h.Idhotel >= consulta) select new
                     { h,hm     
                     }).ToList().Select(m => new Hotel
                     {
@@ -60,6 +62,13 @@ public class DAOhotel
     public HotelMunicipio municipio(Hotel hotelE)
     {
         return new Mapeo().hotelmunicipio.Where(x => x.Idmunicipio.Equals(hotelE.Idmunicipio)).FirstOrDefault();
+    }
+
+    //obtener mis hoteles
+    //Select 
+    public List<Hotel> obtenerhoteles(string usuario)
+    {
+        return new Mapeo().hotel.Where(x => x.Usuarioencargado.Equals(usuario)).OrderBy(x => x.Idhotel).ToList<Hotel>();
     }
 
 }

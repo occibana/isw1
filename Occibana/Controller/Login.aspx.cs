@@ -30,6 +30,17 @@ public partial class Vew_Login : System.Web.UI.Page
         else
         {
             Session["usuario"] = login;
+            MAC conexion = new MAC();
+            Acceso acceso = new Acceso();
+            acceso.FechaInicio = DateTime.Now;
+            acceso.Ip = conexion.ip();
+            acceso.Mac = conexion.mac();
+            acceso.Session = Session.SessionID;
+            acceso.Userid = login.Id;
+            
+
+            new DAOSeguridad().insertarAcceso(acceso);
+
             Response.Redirect("Perfil.aspx");
         }        
     }

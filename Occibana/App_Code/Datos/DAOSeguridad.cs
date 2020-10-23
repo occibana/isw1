@@ -41,4 +41,54 @@ public class DAOSeguridad
             db.SaveChanges();
         }
     }
+    //Insertar registro de acceso
+    public void insertarAcceso(Acceso acceso)
+    {
+        using (var db = new Mapeo())
+        {
+            db.acceso.Add(acceso);
+            db.SaveChanges();
+        }
+    }
+    //capturar momento de des-logeo
+    public void cerrarAcceso(int userid)
+    {
+        using (var db = new Mapeo())
+        {
+            Acceso acceso = db.acceso.Where(x=> x.Userid == userid && x.FechaFin == null).FirstOrDefault();
+            acceso.FechaFin = DateTime.Now;
+
+            db.acceso.Attach(acceso);
+            var entry = db.Entry(acceso);
+            entry.State = EntityState.Modified;
+            db.SaveChanges();
+        }
+    }
+    //guardar datos de compra
+    public void insertarCompra(Membresia datos)
+    {
+        using (var db = new Mapeo())
+        {
+            db.membresia.Add(datos);
+            db.SaveChanges();
+        }
+    }
+    //actualizar estado membresia
+    public void actualizarmembresia(Registro datoE)
+    {
+        using (var db = new Mapeo())
+        {
+            Registro datoanterior = db.usuario.Where(x => x.Id == datoE.Id).First();
+            datoanterior.Idestado = datoE.Idestado;
+
+            var entry = db.Entry(datoanterior);
+            entry.State = EntityState.Modified;
+            db.SaveChanges();
+        }
+    }
+    //verifica vencimiento usuario con membresia
+    public Membresia verificarvencimientomembresia(int userid)
+    {
+        return new Mapeo().membresia.Where(x => x.Idusuario == userid && x.Fecha_vencimiento < DateTime.Now).FirstOrDefault();
+    }
 }

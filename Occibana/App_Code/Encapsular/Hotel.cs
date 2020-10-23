@@ -16,8 +16,6 @@ public class Hotel
     private string municipio;
     private int idmunicipio;
     private int numhabitacion;
-    private int numpersona;
-    private int numbano;
     private int precionoche;
     private string descripcion;
     private string condicion;
@@ -27,6 +25,9 @@ public class Hotel
     private string nombre;
     private string usuarioencargado;
     private int idzona;
+    private string imagen_secundaria;
+    private string condicionesbioseguridad;
+
 
     [Key]
     [Column("idhotel")]
@@ -35,10 +36,6 @@ public class Hotel
     public int Idmunicipio { get => idmunicipio; set => idmunicipio = value; }
     [Column("numhabitacion")]
     public int Numhabitacion { get => numhabitacion; set => numhabitacion = value; }
-    [Column("numpersona")]
-    public int Numpersona { get => numpersona; set => numpersona = value; }
-    [Column("numbano")]
-    public int Numbano { get => numbano; set => numbano = value; }
     [Column("precionoche")]
     public int Precionoche { get => precionoche; set => precionoche = value; }
     [Column("descripcion")]
@@ -57,7 +54,11 @@ public class Hotel
     public int Idzona { get => idzona; set => idzona = value; }
     [Column("usuarioencargado")]
     public string Usuarioencargado { get => usuarioencargado; set => usuarioencargado = value; }
-
+    [Column("imagen_secundaria")]
+    public string Imagen_secundaria { get => imagen_secundaria; set => imagen_secundaria = value; }
+    [Column("condicionesbioseguridad")]
+    public string Condicionesbioseguridad { get => condicionesbioseguridad; set => condicionesbioseguridad = value; }
     [NotMapped]
     public string Municipio { get => municipio; set => municipio = value; }
+
 }

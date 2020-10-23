@@ -52,7 +52,6 @@
                                 <asp:Label ID="L_Actnombre" runat="server"></asp:Label>
                                 <br />
                                 <asp:TextBox ID="TB_Actnombre" runat="server"></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TB_Actnombre" ErrorMessage="*" ValidationGroup="Actualizacionperfil"></asp:RequiredFieldValidator>
                                 <br />
                                 <br />
                             </td>
@@ -61,7 +60,6 @@
                                 <asp:Label ID="L_Actapellido" runat="server"></asp:Label>
                                 <br />
                                 <asp:TextBox ID="TB_Actapellido" runat="server"></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="TB_Actapellido" ErrorMessage="*" ValidationGroup="Actualizacionperfil"></asp:RequiredFieldValidator>
                                 <br />
                                 <br />
                             </td>
@@ -72,7 +70,6 @@
                                 <asp:Label ID="L_Actcorreo" runat="server"></asp:Label>
                                 <br />
                                 <asp:TextBox ID="TB_Actcorreo" runat="server" TextMode="Email"></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="TB_Actcorreo" ErrorMessage="*" ValidationGroup="Actualizacionperfil"></asp:RequiredFieldValidator>
                                 <br />
                                 <br />
                             </td>
@@ -81,7 +78,6 @@
                                 <asp:Label ID="L_Acttelefono" runat="server"></asp:Label>
                                 <br />
                                 <asp:TextBox ID="TB_Acttelefono" runat="server"></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="TB_Acttelefono" ErrorMessage="*" ValidationGroup="Actualizacionperfil"></asp:RequiredFieldValidator>
                                 <br />
                                 <br />
                             </td>
@@ -92,7 +88,6 @@
                                 <asp:Label ID="L_Actusuario0" runat="server"></asp:Label>
                                 <br />
                                 <asp:TextBox ID="TB_Actusuario" runat="server"></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="TB_Actusuario" ErrorMessage="*" ValidationGroup="Actualizacionperfil"></asp:RequiredFieldValidator>
                                 <br />
                                 <br />
                             </td>
@@ -103,7 +98,7 @@
                         <tr>
                             <td class="auto-style20">
                                 <br />
-                                <asp:Button ID="Button4" runat="server" Text="CANCELAR" Height="33px" OnClick="Button4_Click" Width="113px" />
+                                <asp:Button ID="B_Volver" runat="server" Text="CANCELAR" Height="33px" OnClick="B_Volver_Click" Width="113px" />
                                 <br />
                                 <br />
                             </td>

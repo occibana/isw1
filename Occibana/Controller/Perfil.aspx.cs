@@ -18,7 +18,6 @@ public partial class Vew_Perfil : System.Web.UI.Page
             L_Ptelefono.Text = ((Registro)Session["usuario"]).Telefono;
             L_Pusuariodatospersonales.Text = ((Registro)Session["usuario"]).Usuario;
             L_Pusuario.Text = ((Registro)Session["usuario"]).Usuario;
-            //L_Pestadomembresia.Text = ((Registro)Session["usuario"]).Idestado;
             fotoperfil.ImageUrl = ((Registro)Session["usuario"]).Fotoperfil;
             if (((Registro)Session["usuario"]).Fotoperfil == null)
             {
@@ -31,14 +30,20 @@ public partial class Vew_Perfil : System.Web.UI.Page
                 B_ActualizarMembresia.Visible = true;
                 B_AgregarHotel.Visible = true;
                 L_EstadoMembresia.Text = "Con Membresia";
-
+                var verificar = new DAOSeguridad().verificarvencimientomembresia(((Registro)Session["usuario"]).Id);
+                if (verificar != null)
+                {
+                    Registro usuario = new Registro();
+                    usuario.Id = ((Registro)Session["usuario"]).Id;
+                    usuario.Idestado = 0;
+                    new DAOSeguridad().actualizarmembresia(usuario);
+                }
             }
             else
             {
                 B_ComprarMembresia.Visible = true;
                 B_ActualizarMembresia.Visible = false;
                 B_AgregarHotel.Visible = false;
-                L_EstadoMembresia.Text = "Sin Membresia";
             }
             //
         }
@@ -51,6 +56,7 @@ public partial class Vew_Perfil : System.Web.UI.Page
 
     protected void Button5_Click(object sender, EventArgs e)
     {
+        new DAOSeguridad().cerrarAcceso(((Registro)Session["usuario"]).Id);
         Session.Remove("usuario");
         Response.Redirect("Login.aspx");
     }
@@ -106,5 +112,20 @@ public partial class Vew_Perfil : System.Web.UI.Page
     protected void B_AgregarHotel_Click(object sender, EventArgs e)
     {
         Response.Redirect("AgregarServicioHotel.aspx");
+    }
+
+    protected void B_ComprarMembresia_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Membresias.aspx");
+    }
+
+    protected void B_ActualizarMembresia_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Membresias.aspx");
+    }
+
+    protected void B_mishoteles_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Mishoteles.aspx");
     }
 }

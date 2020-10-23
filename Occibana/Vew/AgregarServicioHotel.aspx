@@ -27,9 +27,6 @@
             width: 100%;
             height: 834px;
         }
-        .auto-style21 {
-            width: 205px;
-        }
         .auto-style22 {
             text-align: center;
             width: 205px;
@@ -43,8 +40,8 @@
         .auto-style24 {
             height: 468px;
         }
-        .auto-style25 {
-            text-align: left;
+        .auto-style26 {
+            font-size: small;
         }
     </style>
 </asp:Content>
@@ -66,27 +63,36 @@
                             <td class="auto-style24">
                                 <table class="auto-style23">
                                     <tr>
-                                        <td>NOMBRE DEL HOTEL:</td>
                                         <td>
+                                            <br />
+                                            NOMBRE DEL HOTEL:<br />
+                                        </td>
+                                        <td>
+                                            <br />
                                             <asp:TextBox ID="TB_NombreHotel" runat="server"></asp:TextBox>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TB_NombreHotel" ErrorMessage="*" ValidationGroup="AnadirHotel"></asp:RequiredFieldValidator>
+                                            <br />
                                         </td>
-                                        <td class="auto-style21">AÑADIR NUMERO DE HABITACIONES</td>
-                                        <td>
-                                            <asp:TextBox ID="TB_AnadirNumHabitacion" runat="server"></asp:TextBox>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="TB_AnadirNumHabitacion" ErrorMessage="*" ValidationGroup="AnadirHotel"></asp:RequiredFieldValidator>
+                                        <td colspan="2" rowspan="6">CONDICIONES DE BIOSEGURIDAD DEL HOTEL:<br />
+                                            <span class="auto-style26">(Descripción sobre los articulos para evitar el COVID-19)</span><br />
+                                            <br />
+                                            <div class="auto-style18">
+                                                <asp:TextBox ID="TB_descripcioncovid19" runat="server" Height="70px" Width="268px"></asp:TextBox>
+                                                <br />
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ControlToValidate="TB_descripcioncovid19" ErrorMessage="*" ValidationGroup="AnadirHotel"></asp:RequiredFieldValidator>
+                                            </div>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>PRECIO POR NOCHE:</td>
                                         <td>
+                                            <br />
+                                            PRECIO POR NOCHE:<br />
+                                        </td>
+                                        <td>
+                                            <br />
                                             <asp:TextBox ID="TB_PrecioNoche" runat="server"></asp:TextBox>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="TB_PrecioNoche" ErrorMessage="*" ValidationGroup="AnadirHotel"></asp:RequiredFieldValidator>
-                                        </td>
-                                        <td class="auto-style21">AÑADIR NUMERO DE PERSONAS POR HABITACIÓN:</td>
-                                        <td>
-                                            <asp:TextBox ID="TB_AnadirNumPersonas" runat="server"></asp:TextBox>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="TB_AnadirNumPersonas" ErrorMessage="*" ValidationGroup="AnadirHotel"></asp:RequiredFieldValidator>
+                                            <br />
                                         </td>
                                     </tr>
                                     <tr>
@@ -96,11 +102,6 @@
                                             </asp:DropDownList>
                                             <asp:ObjectDataSource ID="ODS_Municipio" runat="server" SelectMethod="municipio" TypeName="DAOhotel"></asp:ObjectDataSource>
                                         </td>
-                                        <td class="auto-style21">AÑADIR NUMERO DE BAÑOS POR HABITACIÓN:</td>
-                                        <td>
-                                            <asp:TextBox ID="TB_AnadirNumBanos" runat="server"></asp:TextBox>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="TB_AnadirNumBanos" ErrorMessage="*" ValidationGroup="AnadirHotel"></asp:RequiredFieldValidator>
-                                        </td>
                                     </tr>
                                     <tr>
                                         <td>ZONA:</td>
@@ -108,17 +109,6 @@
                                             <asp:DropDownList ID="DDL_Zona" runat="server" DataSourceID="ODS_Zona" DataTextField="Nombre" DataValueField="Idzona">
                                             </asp:DropDownList>
                                             <asp:ObjectDataSource ID="ODS_Zona" runat="server" SelectMethod="zona" TypeName="DAOhotel"></asp:ObjectDataSource>
-                                        </td>
-                                        <td rowspan="3" colspan="2">CONDICIONES DE BIOSEGURIDAD DEL HOTEL:<br />
-                                            <br />
-                                            <br />
-                                            <div class="auto-style25">
-                                            <asp:CheckBoxList ID="CheckBoxList1" runat="server">
-                                                <asp:ListItem>Medidor de temperatura</asp:ListItem>
-                                                <asp:ListItem>Limpieza de pasillos</asp:ListItem>
-                                                <asp:ListItem>Desinfectante</asp:ListItem>
-                                            </asp:CheckBoxList>
-                                            </div>
                                         </td>
                                     </tr>
                                     <tr>

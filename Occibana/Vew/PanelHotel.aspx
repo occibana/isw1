@@ -17,6 +17,7 @@
         .auto-style18 {
             width: 310px;
             text-align: center;
+            height: 217px;
         }
         .auto-style19 {
             width: 196px;
@@ -26,9 +27,31 @@
             background: #ffffff;
             color: black;
         }
+        .auto-style21 {
+            width: 196px;
+            height: 23px;
+        }
+        .auto-style22 {
+            height: 23px;
+        }
+        .auto-style23 {
+            text-align: left;
+            background: #ffffff;
+        }
+        .auto-style24 {
+            text-align: center;
+            background: #00A6FF;
+        }
+        .auto-style25 {
+            height: 217px;
+        }
+        .auto-style26 {
+            font-size: x-large;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <table class="auto-style16">
         <tr>
             <td>
@@ -43,41 +66,122 @@
                             <td class="auto-style18">
                                 <asp:Image ID="I_Panelimagenprincipal" runat="server" Height="213px" Width="279px" ImageUrl="~/Vew/img/hotelvacio.png" />
                             </td>
-                            <td>
+                            <td class="auto-style25">
                                 <table class="auto-style16">
                                     <tr>
                                         <td class="auto-style19">MUNICIPIO:</td>
                                         <td>
                                             <em>
-                                <asp:Label ID="L_Panelhotelmunicipio" runat="server"></asp:Label>
+                                <asp:Label ID="L_Panelhotelmunicipio" runat="server" CssClass="auto-style26"></asp:Label>
                                             </em>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="auto-style19">ZONA:</td>
                                         <td>
-                                <asp:Label ID="L_Panelhotelzona" runat="server"></asp:Label>
+                                            <em>
+                                <asp:Label ID="L_Panelhotelzona" runat="server" CssClass="auto-style26"></asp:Label>
+                                            </em>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="auto-style19">HABITACIONES DISPONIBLES:</td>
-                                        <td>
-                                <asp:Label ID="L_Panelhotelhabitaciones" runat="server"></asp:Label>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="auto-style19">PRECIO/NOCHE:</td>
-                                        <td>
-                                <asp:Label ID="L_Panelhotelprecio" runat="server"></asp:Label>
+                                        <td class="auto-style21">PRECIO/NOCHE:</td>
+                                        <td class="auto-style22">
+                                            <em>
+                                <asp:Label ID="L_Panelhotelprecio" runat="server" CssClass="auto-style26"></asp:Label>
+                                            </em>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="auto-style19">CALIFICACIÓN:</td>
                                         <td>
-                                <asp:Label ID="L_Panelhotelcalificacion" runat="server"></asp:Label>
+                                            <em>
+                                <asp:Label ID="L_Panelhotelcalificacion" runat="server" CssClass="auto-style26"></asp:Label>
+                                            </em>
                                         </td>
                                     </tr>
                                 </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="auto-style23" colspan="2">
+                                <asp:ScriptManager ID="ScriptManager1" runat="server">
+                                </asp:ScriptManager>
+                                <asp:Button ID="B_Desc_Reserva" runat="server" Text="Descripcion y reservas" OnClick="B_Desc_Reserva_Click"/>
+                                &nbsp;<asp:Button ID="B_Comentarios" runat="server" Text="Comentarios" OnClick="B_Comentarios_Click"/>
+                            </td>
+                        </tr>
+                        <%--<tr>--%>
+                            <td class="auto-style24" colspan="2">
+                                <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
+                                    <ContentTemplate>
+                                        <strong>
+                                        <br />
+                                        <asp:Button ID="B_Reservar" runat="server" Text="RESERVAR" OnClick="B_Reservar_Click" />
+                                        <br />
+                                        <br />
+                                        <asp:Button ID="Button4" runat="server" OnClick="Button4_Click" Text="VOLVER" Width="100px" />
+                                        <br />
+                                        <br />
+                                        <table class="auto-style16">
+                                            <tr>
+                                                <td colspan="2"><strong>
+                                                    <br />
+                                                    DESCRIPCIÓN<br />
+                                                    <br />
+                                                    <asp:Label ID="L_Descripcion" runat="server" CssClass="auto-style26"></asp:Label>
+                                                    <br />
+                                                    </strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2"><strong>
+                                                    <br />
+                                                    CONDICIONES FISICAS<br />
+                                                    <br />
+                                                    <asp:Label ID="L_Condicion" runat="server" CssClass="auto-style26"></asp:Label>
+                                                    <br />
+                                                    </strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>
+                                                    <br />
+                                                    CHECK-IN<br />
+                                                    <br />
+                                                    <asp:Label ID="L_Checkin" runat="server" CssClass="auto-style26"></asp:Label>
+                                                    <br />
+                                                    </strong></td>
+                                                <td><strong>
+                                                    <br />
+                                                    CHECK-OUT<br />
+                                                    <br />
+                                                    <asp:Label ID="L_Checkout" runat="server" CssClass="auto-style26"></asp:Label>
+                                                    <br />
+                                                    </strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2"><strong>
+                                                    <br />
+                                                    HABITACIONES DISPONIBLES<br />
+                                                    <br />
+                                                    <asp:Label ID="L_Panelhotelhabitaciones" runat="server" CssClass="auto-style26"></asp:Label>
+                                                    <br />
+                                                    </strong></td>
+                                            </tr>
+                                        </table>
+                                        </strong>
+                                    </ContentTemplate>
+                                    <Triggers>
+                                        <asp:AsyncPostBackTrigger ControlID="B_Desc_Reserva" EventName="Click" />
+                                    </Triggers>
+                                </asp:UpdatePanel>
+                                <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Conditional">
+                                    <ContentTemplate>
+                                        <asp:Label ID="L_Comentarios" runat="server" Text="hola"></asp:Label>
+                                    </ContentTemplate>
+                                    <Triggers>
+                                        <asp:AsyncPostBackTrigger ControlID="B_Comentarios" EventName="Click" />
+                                    </Triggers>
+                                </asp:UpdatePanel>
                             </td>
                         </tr>
                     </table>
@@ -85,5 +189,23 @@
             </td>
         </tr>
     </table>
+
+ <!--<script type="text/javascript">
+        $('#B_Reservar').click(function () {
+            var tiempocarga = 2000;
+            $.ajax({
+                url: "DescripcionHotel.aspx",
+                beforeSend: function () {
+                    $('#B_Reservar').text('Cargando...');
+                },
+                succes: function (data) {
+                    setTimeout(function () {
+                        $('#B_Reservar').aspx(data);
+                    }, tiempocarga
+                    );
+                }
+            });
+        });
+    </script>-->
 </asp:Content>
 
