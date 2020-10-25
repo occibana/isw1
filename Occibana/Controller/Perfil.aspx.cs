@@ -44,6 +44,8 @@ public partial class Vew_Perfil : System.Web.UI.Page
                 B_ComprarMembresia.Visible = true;
                 B_ActualizarMembresia.Visible = false;
                 B_AgregarHotel.Visible = false;
+                L_EstadoMembresia.Text = "Sin Membresia";
+                B_mishoteles.Visible = false;
             }
             //
         }

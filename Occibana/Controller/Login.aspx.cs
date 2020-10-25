@@ -49,4 +49,5 @@ public partial class Vew_Login : System.Web.UI.Page
     {
         Response.Redirect("Recuperarcontrasena.aspx");
     }
+    
 }

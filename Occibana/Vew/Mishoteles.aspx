@@ -6,11 +6,20 @@
             width: 100%;
         }
         .auto-style17 {
-            width: 707px;
-            margin-left: 83px;
+            width: 85%;
+            margin-left: auto;
+            margin-right: auto;
+            color: #ffffff;
         }
         .auto-style18 {
             text-align: center;
+            background: #0056FF;
+        }
+        .GridView1{
+            margin-left: auto;
+            margin-right: auto;
+            background: #808080;
+            border: 2px solid #ffffff;
         }
     </style>
 </asp:Content>
@@ -32,18 +41,21 @@
                         <tr>
                             <td class="auto-style18">
                                 <br />
-                                <asp:GridView ID="GridView1" runat="server" Height="105px" Width="263px" AutoGenerateColumns="False" DataSourceID="ODS_Mishoteles">
+                                <asp:GridView ID="GridView1" class="GridView1" runat="server" Height="105px" Width="263px" AutoGenerateColumns="False" DataSourceID="ODS_Mishoteles" DataKeyNames="Idhotel" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
                                     <Columns>
                                         <asp:BoundField DataField="Precionoche" HeaderText="Precionoche" SortExpression="Precionoche" />
                                         <asp:BoundField DataField="Checkin" HeaderText="Checkin" SortExpression="Checkin" />
                                         <asp:BoundField DataField="Checkout" HeaderText="Checkout" SortExpression="Checkout" />
                                         <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
+                                        <asp:CommandField HeaderText="Eliminar Hotel" ShowDeleteButton="True" SortExpression="Idhotel" />
+                                        <asp:HyperLinkField HeaderText="Añadir habitacion" NavigateUrl="~/Vew/Habitacion.aspx" Text="Añadir" />
+                                        <asp:BoundField DataField="Idhotel" HeaderText="Idhotel" SortExpression="Idhotel" Visible="False" />
                                     </Columns>
                                 </asp:GridView>
-                                <div class="auto-style18">
+                                <div>
                                 <br />
                                 </div>
-                                <asp:ObjectDataSource ID="ODS_Mishoteles" runat="server" SelectMethod="obtenerhoteles" TypeName="DAOhotel">
+                                <asp:ObjectDataSource ID="ODS_Mishoteles" runat="server" SelectMethod="obtenerhoteles" TypeName="DAOhotel" DataObjectTypeName="Hotel" DeleteMethod="deleteHotel">
                                     <SelectParameters>
                                         <asp:Parameter DefaultValue="asantibo" Name="usuario" Type="String" />
                                     </SelectParameters>

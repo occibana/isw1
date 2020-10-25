@@ -71,6 +71,17 @@ public class DAOhotel
         return new Mapeo().hotel.Where(x => x.Usuarioencargado.Equals(usuario)).OrderBy(x => x.Idhotel).ToList<Hotel>();
     }
 
+    public void deleteHotel(Hotel id)
+    {
+        using (var db = new Mapeo())
+        {
+           Hotel mihotel = db.hotel.Where(x => x.Idhotel == id.Idhotel).First();
+
+            db.hotel.Remove(mihotel);
+            db.SaveChanges();
+        }
+    }
+
 }
 
 

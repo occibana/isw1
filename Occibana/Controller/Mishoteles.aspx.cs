@@ -19,4 +19,11 @@ public partial class Vew_Mishoteles : System.Web.UI.Page
             Response.Redirect("Login.aspx");
         }
     }
+
+    protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        Session["tabla"] = GridView1.SelectedRow.Cells[1].Text;
+        Response.Redirect("Habitacion.aspx");
+
+    }
 }
