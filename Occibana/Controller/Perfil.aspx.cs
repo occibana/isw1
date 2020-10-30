@@ -56,7 +56,7 @@ public partial class Vew_Perfil : System.Web.UI.Page
         }
     }
 
-    protected void Button5_Click(object sender, EventArgs e)
+    protected void B_CerrarSession_Click(object sender, EventArgs e)
     {
         new DAOSeguridad().cerrarAcceso(((Registro)Session["usuario"]).Id);
         Session.Remove("usuario");
@@ -65,23 +65,23 @@ public partial class Vew_Perfil : System.Web.UI.Page
 
 
 
-    protected void Button9_Click(object sender, EventArgs e)
+    protected void B_SubirFoto_Click(object sender, EventArgs e)
     {
         
         //verifica si hay archivos seleccionados
-        if (FileUpload1.HasFile)
+        if (FU_FotoPerfil.HasFile)
         {
             string direccion;
-            string ext = System.IO.Path.GetExtension(FileUpload1.FileName);//obtiene la extencion del archivo
+            string ext = System.IO.Path.GetExtension(FU_FotoPerfil.FileName);//obtiene la extencion del archivo
             ext = ext.ToLower();//minusculas
 
-            int tam = FileUpload1.PostedFile.ContentLength;//obtiene tamano archivo
+            int tam = FU_FotoPerfil.PostedFile.ContentLength;//obtiene tamano archivo
             //string fotoperfil;
 
             if ((ext == ".jpg" || ext == ".png") && (tam < 1048576))//menor a 1MB en bytes
             {
-                direccion = "~/Vew/imgusuarios/" + ((Registro)Session["usuario"]).Usuario + FileUpload1.FileName;
-                FileUpload1.SaveAs(Server.MapPath(direccion));//mapea y guarda el archivo en la direccion
+                direccion = "~/Vew/imgusuarios/" + ((Registro)Session["usuario"]).Usuario + FU_FotoPerfil.FileName;
+                FU_FotoPerfil.SaveAs(Server.MapPath(direccion));//mapea y guarda el archivo en la direccion
                 L_Pcargaimagen.Text = "*Imagen aceptada";
                 //actualiza foto de perfil
                 Registro nuevodat = new Registro();
@@ -101,12 +101,12 @@ public partial class Vew_Perfil : System.Web.UI.Page
         }
     }
 
-    protected void Button7_Click(object sender, EventArgs e)
+    protected void B_ActualizarDatos_Click(object sender, EventArgs e)
     {
         Response.Redirect("ActualizarDatos.aspx");
     }
 
-    protected void Button8_Click(object sender, EventArgs e)
+    protected void B_CambiarContrasena_Click(object sender, EventArgs e)
     {
         Response.Redirect("Actualizarcontrasena.aspx");
     }

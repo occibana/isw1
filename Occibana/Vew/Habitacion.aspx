@@ -35,10 +35,6 @@
             text-align: center;
             width: 100%;
         }
-        .auto-style23 {
-            text-align: left;
-            width: 50%;
-        }
         </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
@@ -58,8 +54,10 @@
                                             <br />
                                             la habitacion:<br />
                                         </td>
-                                        <td class="auto-style23">
-                                            <asp:TextBox ID="TB_NumBanio" runat="server" Width="170px"></asp:TextBox>
+                                        <td class="auto-style19">
+                                            <asp:TextBox ID="TB_NumBanio" runat="server" Width="170px" TextMode="Number"></asp:TextBox>
+                                            <br />
+                                            <asp:RangeValidator ID="RV_TB_Numbano" runat="server" ControlToValidate="TB_NumBanio" ErrorMessage="Solo positivos o iguales a cero" MaximumValue="10" MinimumValue="0" Type="Integer"></asp:RangeValidator>
                                         </td>
                                     </tr>
                                     <tr>
@@ -67,8 +65,10 @@
                                             Numero de personas<br />
                                             por habitacion:<br />
                                         </td>
-                                        <td class="auto-style23">
-                                            <asp:TextBox ID="TB_NumPersonas" runat="server" Width="170px"></asp:TextBox>
+                                        <td class="auto-style19">
+                                            <asp:TextBox ID="TB_NumPersonas" runat="server" Width="170px" TextMode="Number"></asp:TextBox>
+                                            <br />
+                                            <asp:RangeValidator ID="RangeValidator2" runat="server" ControlToValidate="TB_NumPersonas" ErrorMessage="Solo positivos o iguales a cero" MaximumValue="10" MinimumValue="0" Type="Integer"></asp:RangeValidator>
                                         </td>
                                     </tr>
                                     

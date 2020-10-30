@@ -23,8 +23,8 @@ public partial class Vew_Registro : System.Web.UI.Page
             registro.Apellido = TB_apellido.Text;
             registro.Correo = TB_correo.Text;
             registro.Telefono = TB_telefono.Text;
-            registro.Usuario = TB_usuario.Text;
-            registro.Contrasena = TB_contrasena.Text;
+            registro.Usuario = TB_usuarioregistro.Text;
+            registro.Contrasena = TB_contrasenaregistro.Text;
             
 
             Registro pedidos = new DAOLogin().verificaruser(registro);

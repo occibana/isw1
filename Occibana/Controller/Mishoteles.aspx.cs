@@ -11,7 +11,7 @@ public partial class Vew_Mishoteles : System.Web.UI.Page
     {
         try
         {
-            L_Usuario.Text = ((Registro)Session["usuario"]).Nombre;
+            L_Usuario.Text = ((Registro)Session["usuario"]).Usuario;
         }
         catch
         {
@@ -20,10 +20,15 @@ public partial class Vew_Mishoteles : System.Web.UI.Page
         }
     }
 
-    protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+    protected void GV_Mishoteles_SelectedIndexChanged(object sender, EventArgs e)
     {
-        Session["tabla"] = GridView1.SelectedRow.Cells[1].Text;
+        
+        Session["tabla"] = GV_Mishoteles.SelectedDataKey.Value;
         Response.Redirect("Habitacion.aspx");
+    }
 
+    protected void B_Volver_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Perfil.aspx");
     }
 }

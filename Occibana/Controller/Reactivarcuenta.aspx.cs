@@ -30,7 +30,7 @@ public partial class Vew_Reactivarcuenta : System.Web.UI.Page
         }
     }
 
-    protected void Button4_Click(object sender, EventArgs e)
+    protected void B_Enviar_Click(object sender, EventArgs e)
     {
         Registro contrasenausuario = new Registro();
         contrasenausuario.Contrasena = TB_UsuarioRecuperarcontrasena.Text;

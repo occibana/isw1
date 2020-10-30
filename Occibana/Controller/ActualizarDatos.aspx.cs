@@ -38,10 +38,11 @@ public partial class Vew_ActualizarDatos : System.Web.UI.Page
         Response.Redirect("Perfil.aspx");
     }
 
-    protected void Button5_Click(object sender, EventArgs e)
+    protected void B_Actualizar_Click(object sender, EventArgs e)
     {
         Registro nuevodato = new Registro();
         nuevodato.Usuario = TB_Actusuario.Text.ToUpper();
+        nuevodato.Correo = TB_Actcorreo.Text.ToUpper();
         nuevodato = new DAOLogin().verificaruser(nuevodato);
         if ((nuevodato != null) && (TB_Actusuario.Text != String.Empty))//si tb tiene algo
         {

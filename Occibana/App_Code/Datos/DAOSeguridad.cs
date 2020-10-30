@@ -55,7 +55,8 @@ public class DAOSeguridad
     {
         using (var db = new Mapeo())
         {
-            Acceso acceso = db.acceso.Where(x=> x.Userid == userid && x.FechaFin == null).FirstOrDefault();
+            Acceso acceso = new Acceso();
+            acceso = db.acceso.Where(x=> x.Userid == userid && x.FechaFin == null).FirstOrDefault();
             acceso.FechaFin = DateTime.Now;
 
             db.acceso.Attach(acceso);

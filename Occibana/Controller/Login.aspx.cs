@@ -15,7 +15,7 @@ public partial class Vew_Login : System.Web.UI.Page
         }
     }
 
-    protected void Button4_Click(object sender, EventArgs e)
+    protected void B_Ingresar_Click(object sender, EventArgs e)
     {
         Registro login = new Registro();
 
@@ -38,7 +38,6 @@ public partial class Vew_Login : System.Web.UI.Page
             acceso.Session = Session.SessionID;
             acceso.Userid = login.Id;
             
-
             new DAOSeguridad().insertarAcceso(acceso);
 
             Response.Redirect("Perfil.aspx");
@@ -49,5 +48,4 @@ public partial class Vew_Login : System.Web.UI.Page
     {
         Response.Redirect("Recuperarcontrasena.aspx");
     }
-    
 }

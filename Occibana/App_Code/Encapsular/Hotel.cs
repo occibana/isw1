@@ -27,6 +27,10 @@ public class Hotel
     private int idzona;
     private string imagen_secundaria;
     private string condicionesbioseguridad;
+    [NotMapped]
+    private string zona;
+    [NotMapped]
+    private int nummaxpersonas;
 
 
     [Key]
@@ -60,5 +64,8 @@ public class Hotel
     public string Condicionesbioseguridad { get => condicionesbioseguridad; set => condicionesbioseguridad = value; }
     [NotMapped]
     public string Municipio { get => municipio; set => municipio = value; }
-
+    [NotMapped]
+    public string Zona { get => zona; set => zona = value; }
+    [NotMapped]
+    public int NumMaxPersonas { get => nummaxpersonas; set => nummaxpersonas = value; }
 }

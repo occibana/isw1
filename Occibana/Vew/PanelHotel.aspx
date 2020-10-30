@@ -120,7 +120,7 @@
                                         <asp:Button ID="B_Reservar" runat="server" Text="RESERVAR" OnClick="B_Reservar_Click" />
                                         <br />
                                         <br />
-                                        <asp:Button ID="Button4" runat="server" OnClick="Button4_Click" Text="VOLVER" Width="100px" />
+                                        <asp:Button ID="B_Volver" runat="server" OnClick="B_Volver_Click" Text="VOLVER" Width="100px" />
                                         <br />
                                         <br />
                                         <table class="auto-style16">

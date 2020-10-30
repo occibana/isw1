@@ -50,7 +50,7 @@
         }
 
         .auto-style25 {
-            height: 366px;
+            height: 485px;
             width: 80%;
             text-align: center;
             margin-left: auto;
@@ -60,7 +60,7 @@
 
         .auto-style27 {
             width: 85%;
-            height: 271px;
+            height: 308px;
             margin-top: 10px;
             margin-right: auto;
             margin-left: auto;
@@ -73,7 +73,7 @@
 
         .auto-style29 {
             width: 100%;
-            height: 100%;
+            height: 119%;
             color: #ffffff;
             font-weight: 600;
         }
@@ -143,6 +143,12 @@
         .auto-style42 {
             width: 90%;
         }
+        .auto-style43 {
+            height: 53px;
+        }
+        .auto-style44 {
+            width: 113px;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
@@ -153,10 +159,13 @@
                     <table class="auto-style35">
                         <tr>
                             <td class="auto-style42">
+                                <br />
                                 <asp:TextBox ID="TB_Busquedageneral" runat="server" Width="80%" Height="18px"></asp:TextBox>
+                                <br />
+                                <asp:RegularExpressionValidator ID="REV_TB_Busquedageneral" runat="server" ControlToValidate="TB_Busquedageneral" ErrorMessage="No se permiten caracteres especiales :)" ValidationExpression="^[a-zA-Z0-9 ]*$"></asp:RegularExpressionValidator>
                             </td>
                             <td>
-                                <asp:ImageButton ID="ImageButton1" runat="server" Height="45px" ImageUrl="~/Vew/img/lupaicon.png" Width="49px" />
+                                <asp:ImageButton ID="IB_Busquedageneral" runat="server" Height="45px" ImageUrl="~/Vew/img/lupaicon.png" Width="49px" OnClick="IB_Busquedageneral_Click" />
                             </td>
                         </tr>
                     </table>
@@ -168,11 +177,21 @@
                                     <h6>$ PRECIOS</h6>
                                     <table class="auto-style35">
                                         <tr>
-                                            <td>
-                                                <asp:TextBox ID="TextBox1" runat="server" Width="90%"></asp:TextBox>
+                                            <td class="auto-style44">
+                                                <br />
+                                                maximo<br />
+                                                <asp:TextBox ID="TB_PrecioMax" runat="server" Width="90%"></asp:TextBox>
+                                                <br />
+                                                <br />
+                                                <asp:RegularExpressionValidator ID="REV_TB_Preciomax" runat="server" ControlToValidate="TB_PrecioMax" ErrorMessage="No caracteres especiales" ValidationExpression="[0-9]+"></asp:RegularExpressionValidator>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="TextBox2" runat="server" Width="90%"></asp:TextBox>
+                                                <br />
+                                                minimo<asp:TextBox ID="TB_PrecioMin" runat="server" Width="90%"></asp:TextBox>
+                                                <br />
+                                                <br />
+                                                <asp:RegularExpressionValidator ID="REV_TB_Preciomin" runat="server" ControlToValidate="TB_PrecioMin" ErrorMessage="No caracteres especiales" ValidationExpression="[0-9]+"></asp:RegularExpressionValidator>
+                                                <br />
                                             </td>
                                         </tr>
                                     </table>
@@ -182,10 +201,12 @@
                                     <table class="auto-style35">
                                         <tr>
                                             <td>
-                                                <asp:TextBox ID="TextBox3" runat="server" Width="90%"></asp:TextBox>
+                                                después de<br />
+                                                <asp:TextBox runat="server" Width="90%" TextMode="Date" ID="TB_DateDespuesDe"></asp:TextBox>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="TextBox4" runat="server" Width="90%"></asp:TextBox>
+                                                antes de
+                                                <asp:TextBox ID="TB_DateAntesDe" runat="server" Width="90%" TextMode="Date"></asp:TextBox>
                                             </td>
                                         </tr>
                                     </table>
@@ -193,35 +214,46 @@
                                 <td class="auto-style34">
                                     <h6>ZONAS</h6>
                                     <p>
-                                        <asp:DropDownList ID="DropDownList1" runat="server" Height="17px" Width="90%">
+    ZONAS</h6>
+                                    <p>
+                                        <asp:DropDownList ID="DDL_Zona" runat="server" Height="17px" Width="90%" DataSourceID="ODS_FiltrarZona" DataTextField="Nombre" DataValueField="Nombre" AppendDataBoundItems="True">
+                                            <asp:ListItem Value="--Seleccione--">--Seleccione--</asp:ListItem>
+                                            
                                         </asp:DropDownList>
+                                        <asp:ObjectDataSource ID="ODS_FiltrarZona" runat="server" SelectMethod="zona" TypeName="DAOhotel"></asp:ObjectDataSource>
                                     </p>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="auto-style30">
-                                    <h6>PERSONAS MAXIMAS POR HABITACIÓN</h6>
+                                    <h6 class="auto-style16">PERSONAS MAXIMAS POR HABITACIÓN</h6>
                                     <p>
-                                        <asp:TextBox ID="TextBox5" runat="server" Width="117px"></asp:TextBox>
+                                        <asp:TextBox ID="TB_Maxpersonas" runat="server" Width="117px" MaxLength="2" TextMode="Number"></asp:TextBox>
+                                    </p>
+                                    <p>
+                                        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="TB_Maxpersonas" ErrorMessage="No se permiten caracteres especiales :)" ValidationExpression="[0-9 ]"></asp:RegularExpressionValidator>
                                     </p>
                                 </td>
                                 <td class="auto-style31">
-                                    <h6>FILTRAR POR CALIFICACIÓN</h6>
-                                </td>
-                                <td>
+                                    <h6>FILTRAR POR CALIFICACIÓN                     <td>
                                     <h6>MUNICIPIOS</h6>
                                     <p>
-                                        <asp:DropDownList ID="DropDownList2" runat="server" Height="17px" Width="90%">
+                                        <asp:DropDownList ID="DDL_Municipio" runat="server" Height="17px" Width="90%" DataSourceID="ODS_FiltrarMunicipio" DataTextField="Nombre" DataValueField="Nombre" AppendDataBoundItems="True">
+                                            <asp:ListItem Value="--Seleccione--">--Seleccione--</asp:ListItem>
                                         </asp:DropDownList>
+                                        <asp:ObjectDataSource ID="ODS_FiltrarMunicipio" runat="server" SelectMethod="municipio" TypeName="DAOhotel"></asp:ObjectDataSource>
                                     </p>
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="3">
-                                    <asp:Button ID="Button4" runat="server" Height="27px" Text="FILTRAR" Width="113px" />
+                                <td colspan="3" class="auto-style43">
+                                    <asp:Button ID="B_Filtrar" runat="server" Height="27px" Text="FILTRAR" Width="113px" OnClick="B_Filtrar_Click" />
+                                    <br />
+                                    <br />
                                 </td>
                             </tr>
                         </table>
+                        <br />
                     </div>
                 </div>
             </td>
@@ -237,7 +269,7 @@
                     <br />
                     <asp:UpdatePanel ID="UP_hoteles" runat="server" UpdateMode="Conditional">
                         <ContentTemplate>
-                            <asp:DataList ID="DataList1" runat="server" DataSourceID="ODS_Hotelesindex" RepeatLayout="Flow" OnItemCommand="DataList1_ItemCommand">
+                            <asp:DataList ID="DL_Listaprincipalhoteles" runat="server" DataSourceID="ODS_Hoteles" RepeatLayout="Flow" OnItemCommand="DL_Listaprincipalhoteles_ItemCommand">
                                 <ItemTemplate>
                                     <table class="auto-style35hoteles">
                                         <tr>
@@ -264,17 +296,17 @@
                                     <br />
                                 </ItemTemplate>
                             </asp:DataList>
+                            <asp:ObjectDataSource ID="ODS_Hoteles" runat="server" SelectMethod="hotelesregistrados" TypeName="DAOhotel">
+                                <SelectParameters>
+                                    <asp:SessionParameter Name="consulta" SessionField="hotelseleccionado" Type="Object" />
+                                </SelectParameters>
+                            </asp:ObjectDataSource>
                         </ContentTemplate>
                         <Triggers>
                             <asp:AsyncPostBackTrigger ControlID="TB_Busquedageneral" EventName="TextChanged" />
                         </Triggers>
 
                     </asp:UpdatePanel>
-                    <asp:ObjectDataSource ID="ODS_Hotelesindex" runat="server" SelectMethod="hotelesregistrados" TypeName="DAOhotel">
-                        <SelectParameters>
-                            <asp:ControlParameter ControlID="TB_Busquedageneral" DefaultValue="0" Name="consulta" PropertyName="Text" Type="Int32" />
-                        </SelectParameters>
-                    </asp:ObjectDataSource>
                     <br />
                 </div>
             </td>

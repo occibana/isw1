@@ -53,6 +53,7 @@
                                 <br />
                                 <asp:TextBox ID="TB_Actnombre" runat="server"></asp:TextBox>
                                 <br />
+                                <asp:RegularExpressionValidator ID="REV_TB_Actnombre" runat="server" ControlToValidate="TB_Actnombre" ErrorMessage="Caracteres invalidos" ValidationExpression="[A-Za-z ]+"></asp:RegularExpressionValidator>
                                 <br />
                             </td>
                             <td class="auto-style19">
@@ -61,6 +62,7 @@
                                 <br />
                                 <asp:TextBox ID="TB_Actapellido" runat="server"></asp:TextBox>
                                 <br />
+                                <asp:RegularExpressionValidator ID="REV_TB_Actapellido" runat="server" ControlToValidate="TB_Actapellido" ErrorMessage="Caracteres invalidos" ValidationExpression="[A-Za-z ]+"></asp:RegularExpressionValidator>
                                 <br />
                             </td>
                         </tr>
@@ -79,6 +81,7 @@
                                 <br />
                                 <asp:TextBox ID="TB_Acttelefono" runat="server"></asp:TextBox>
                                 <br />
+                                <asp:RegularExpressionValidator ID="REV_TB_Acttelefono" runat="server" ControlToValidate="TB_Acttelefono" ErrorMessage="Caracteres invalidos" ValidationExpression="[0-9+ ]+"></asp:RegularExpressionValidator>
                                 <br />
                             </td>
                         </tr>
@@ -89,6 +92,7 @@
                                 <br />
                                 <asp:TextBox ID="TB_Actusuario" runat="server"></asp:TextBox>
                                 <br />
+                                <asp:RegularExpressionValidator ID="REV_TB_Actusuario" runat="server" ControlToValidate="TB_Actusuario" ErrorMessage="Caracteres invalidos" ValidationExpression="[A-Za-z0-9 ]+"></asp:RegularExpressionValidator>
                                 <br />
                             </td>
                             <td class="auto-style19">
@@ -104,7 +108,7 @@
                             </td>
                             <td class="auto-style19">
                                 <strong>
-                                <asp:Button ID="Button5" runat="server" Text="ACTUALIZAR" Height="33px" Width="113px" OnClick="Button5_Click" ValidationGroup="Actualizacionperfil" />
+                                <asp:Button ID="B_Actualizar" runat="server" Text="ACTUALIZAR" Height="33px" Width="113px" OnClick="B_Actualizar_Click" ValidationGroup="Actualizacionperfil" />
                                 </strong>
                             </td>
                         </tr>

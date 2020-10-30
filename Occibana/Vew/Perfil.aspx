@@ -90,10 +90,10 @@
                                             <td class="auto-style24">
                                                 <asp:Label ID="L_Pcargaimagen" runat="server"></asp:Label>
                                                 <br />
-                                                <asp:FileUpload ID="FileUpload1" runat="server" />
+                                                <asp:FileUpload ID="FU_FotoPerfil" runat="server" />
                                                 <br />
                                                 <br />
-                                                <asp:Button ID="Button9" runat="server" Text="SUBIR FOTO" OnClick="Button9_Click" />
+                                                <asp:Button ID="B_SubirFoto" runat="server" Text="SUBIR FOTO" OnClick="B_SubirFoto_Click" />
                                                 <br />
                                                 <br />
                                                 SESIÓN:
@@ -169,7 +169,7 @@
                                             </tr>
                                             <tr>
                                                 <td class="auto-style18">
-                                                    <asp:Button ID="Button7" runat="server" Height="31px" Text="EDITAR MIS DATOS" Width="197px" OnClick="Button7_Click"/>
+                                                    <asp:Button ID="B_ActualizarDatos" runat="server" Height="31px" Text="EDITAR MIS DATOS" Width="197px" OnClick="B_ActualizarDatos_Click"/>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -178,7 +178,7 @@
                                                     <br />
                                                     <strong>SEGURIDAD</strong><br />
                                                     <br />
-                                                    <asp:Button ID="Button8" runat="server" Height="33px" Text="CAMBIAR CONTRASEÑA" Width="197px" OnClick="Button8_Click" />
+                                                    <asp:Button ID="B_CambiarContrasena" runat="server" Height="33px" Text="CAMBIAR CONTRASEÑA" Width="197px" OnClick="B_CambiarContrasena_Click" />
                                                 </td>
                                             </tr>
                                         </table>
@@ -187,7 +187,7 @@
                             </tr>
                             <tr>
                                 <td class="auto-style20" colspan="2">
-                                    <asp:Button ID="Button5" runat="server" Height="31px" Text="CERRAR SESIÓN" Width="136px" OnClick="Button5_Click" />
+                                    <asp:Button ID="B_CerrarSession" runat="server" Height="31px" Text="CERRAR SESIÓN" Width="136px" OnClick="B_CerrarSession_Click" />
                                 </td>
                             </tr>
                         </table>

@@ -20,5 +20,6 @@ public class HotelZona
     public int Idzona { get => idzona; set => idzona = value; }
     [Column("nombre")]
     public string Nombre { get => nombre; set => nombre = value; }
+   
 }
 

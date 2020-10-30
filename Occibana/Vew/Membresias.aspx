@@ -44,14 +44,14 @@
                                             <td>
                                                 <br />
                                                 Numero de tarjeta<br />
-                                                <asp:TextBox ID="TB_Numerotarjeta" runat="server"></asp:TextBox>
+                                                <asp:TextBox ID="TB_Numerotarjeta" runat="server" TextMode="Number"></asp:TextBox>
                                                 <br />
                                                 <br />
                                             </td>
                                             <td>
                                                 <br />
                                                 Código de seguridád<br />
-                                                <asp:TextBox ID="TB_Codigoseguridad" runat="server"></asp:TextBox>
+                                                <asp:TextBox ID="TB_Codigoseguridad" runat="server" TextMode="Number"></asp:TextBox>
                                                 <br />
                                                 <br />
                                             </td>
@@ -109,7 +109,7 @@
                                             <td>
                                                 <br />
                                                 Contraseña<br />
-                                                <asp:TextBox ID="TB_Contrasena" runat="server"></asp:TextBox>
+                                                <asp:TextBox ID="TB_Contrasena" runat="server" TextMode="Password"></asp:TextBox>
                                                 <br />
                                                 <br />
                                             </td>

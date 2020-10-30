@@ -97,7 +97,7 @@ public partial class Vew_AgregarServicioHotel : System.Web.UI.Page
         }
         else
         {
-            serviciohotel.Imagen = null;
+            serviciohotel.Imagen_secundaria = null;
         }
 
 

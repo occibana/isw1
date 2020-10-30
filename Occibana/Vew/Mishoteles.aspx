@@ -41,23 +41,27 @@
                         <tr>
                             <td class="auto-style18">
                                 <br />
-                                <asp:GridView ID="GridView1" class="GridView1" runat="server" Height="105px" Width="263px" AutoGenerateColumns="False" DataSourceID="ODS_Mishoteles" DataKeyNames="Idhotel" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
+                                <asp:GridView ID="GV_Mishoteles" class="GridView1" runat="server" Height="105px" Width="263px" AutoGenerateColumns="False" DataSourceID="ODS_Mishoteles" DataKeyNames="Idhotel" OnSelectedIndexChanged="GV_Mishoteles_SelectedIndexChanged">
                                     <Columns>
+                                        <asp:BoundField DataField="Numhabitacion" HeaderText="Numhabitacion" SortExpression="Numhabitacion" />
                                         <asp:BoundField DataField="Precionoche" HeaderText="Precionoche" SortExpression="Precionoche" />
                                         <asp:BoundField DataField="Checkin" HeaderText="Checkin" SortExpression="Checkin" />
                                         <asp:BoundField DataField="Checkout" HeaderText="Checkout" SortExpression="Checkout" />
                                         <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
                                         <asp:CommandField HeaderText="Eliminar Hotel" ShowDeleteButton="True" SortExpression="Idhotel" />
-                                        <asp:HyperLinkField HeaderText="Añadir habitacion" NavigateUrl="~/Vew/Habitacion.aspx" Text="Añadir" />
                                         <asp:BoundField DataField="Idhotel" HeaderText="Idhotel" SortExpression="Idhotel" Visible="False" />
+                                        <asp:CommandField SelectText="Añadir" ShowSelectButton="True" HeaderText="Añadir habitación" />
                                     </Columns>
                                 </asp:GridView>
                                 <div>
+                                    <br />
+                                    <br />
+                                    <asp:Button ID="B_Volver" runat="server" OnClick="B_Volver_Click" Text="VOLVER" />
                                 <br />
                                 </div>
                                 <asp:ObjectDataSource ID="ODS_Mishoteles" runat="server" SelectMethod="obtenerhoteles" TypeName="DAOhotel" DataObjectTypeName="Hotel" DeleteMethod="deleteHotel">
                                     <SelectParameters>
-                                        <asp:Parameter DefaultValue="asantibo" Name="usuario" Type="String" />
+                                        <asp:ControlParameter ControlID="L_Usuario" DefaultValue="" Name="usuario" PropertyName="Text" Type="String" />
                                     </SelectParameters>
                                 </asp:ObjectDataSource>
                             </td>

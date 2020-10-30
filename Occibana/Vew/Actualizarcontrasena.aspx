@@ -45,8 +45,9 @@
                                             <br />
                                             INGRESE SU CONTRASEÑA ACTUAL<br />
                                             <br />
-                                            <asp:TextBox ID="TB_Contrasenaactual" runat="server"></asp:TextBox>
+                                            <asp:TextBox ID="TB_Contrasenaactual" runat="server" TextMode="Password"></asp:TextBox>
                                             <br />
+                                            <asp:RegularExpressionValidator ID="REV_TB_Contrasenaactual" runat="server" ControlToValidate="TB_Contrasenaactual" ErrorMessage="Caracteres invallidos" ValidationExpression="[a-zA-Z0-9 ]+"></asp:RegularExpressionValidator>
                                             <br />
                                         </td>
                                     </tr>
@@ -55,8 +56,9 @@
                                             <br />
                                             INGRESE SU NUEVA CONTRASEÑA<br />
                                             <br />
-                                            <asp:TextBox ID="TB_Nuevacontrasena" runat="server"></asp:TextBox>
+                                            <asp:TextBox ID="TB_Nuevacontrasena" runat="server" TextMode="Password"></asp:TextBox>
                                             <br />
+                                            <asp:RegularExpressionValidator ID="REV_TB_Nuevacontrasena" runat="server" ControlToValidate="TB_Nuevacontrasena" ErrorMessage="Caracteres invalidos" ValidationExpression="[a-zA-Z0-9 ]+"></asp:RegularExpressionValidator>
                                             <br />
                                         </td>
                                     </tr>
@@ -70,10 +72,10 @@
                                 <div class="auto-style19">
                                     <asp:Label ID="L_Error_noregistro" runat="server"></asp:Label>
                                     <br />
-                                    <asp:Button ID="Button4" runat="server" Text="ENVIAR" Width="140px" OnClick="Button4_Click" />
+                                    <asp:Button ID="B_Enviar" runat="server" Text="ENVIAR" Width="140px" OnClick="B_Enviar_Click" />
                                     <br />
                                     <br />
-                                    <asp:Button ID="Button5" runat="server" Text="VOLVER AL PERFIL" Width="140px" OnClick="Button5_Click" />
+                                    <asp:Button ID="B_Volver" runat="server" Text="VOLVER AL PERFIL" Width="140px" OnClick="B_Volver_Click" />
                                     <br />
                                     <br />
                                 </div>

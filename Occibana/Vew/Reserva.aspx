@@ -1,11 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Vew/MasterPage.master" AutoEventWireup="true" CodeFile="~/Controller/Reserva.aspx.cs" Inherits="Vew_Reserva" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <style type="text/css">
         .auto-style16 {
             width: 100%;
-
         }
+
         .auto-style17 {
             width: 80%;
             margin-left: auto;
@@ -13,144 +13,163 @@
             background: #00A6FF;
             color: #ffffff;
         }
-        .auto-style18 {
-            background:#0056FF;
-            text-align: center;
-        }
-        .auto-style19 {
-            width: 80%;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .auto-style20 {
-            width: 80%;
-            text-align: center;
-            margin-left: auto;
-            margin-right: auto;
-            background: #ff0000;
-        }
+
         .auto-style21 {
             height: 23px;
             text-align: center;
         }
+
         .auto-style22 {
-            height: 23px;
-            width: 232px;
-            text-align: center;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
         }
-        .auto-style23 {
-            width: 232px;
-        }
+
         .auto-style24 {
-            background: #0056FF;
-        }
-        .auto-style25 {
             text-align: center;
+        }
+        #fechas-style{
+            background: #0040BD;
+        }
+        .auto-style27 {
+            height: 42px;
+            width: 214px;
+            text-align: center;
+        }
+
+        .auto-style28 {
+            width: 214px;
+            text-align: center;
+        }
+
+        .datos-style {
+            background: #E60004;
         }
     </style>
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <table class="auto-style16">
         <tr>
             <td>
                 <div class="auto-style17">
                     <table class="auto-style16">
                         <tr>
-                            <td class="auto-style21" colspan="2">Bienvenido:
-                                <asp:Label ID="L_Nombreusuario" runat="server"></asp:Label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="auto-style22">
-                                <br />
-                                HABITACIONES DISPONIBLES<br />
-                            </td>
                             <td class="auto-style21">
-                                <br />
-                                PRECIO TOTAL POR NOCHE: <br />
+                                <h2>Bienvenido:
+                                <asp:Label ID="L_Nombreusuario" runat="server"></asp:Label>
+                                    <br />
+                                    <br />
+                                    Aquí podrá reservar una habitación </h2>
+                                <h2>del hotel
+                                    <asp:Label ID="L_NombreHotel" runat="server"></asp:Label>
+                                </h2>
                             </td>
                         </tr>
                         <tr>
-                            <td class="auto-style23">&nbsp;</td>
                             <td>
-                                <table class="auto-style16" align="center">
-                                    <tr>
-                                        <td class="auto-style24">
-                                            <div class="auto-style25">
-                                                FECHA LLEGADA<br />
-                                            </div>
-                                            <asp:Calendar ID="Calendar_Fechallegada" runat="server"></asp:Calendar>
-                                            <br />
-                                        </td>
-                                        <td class="auto-style18">FECHA SALIDA<asp:Calendar ID="Calendar_Fechasalida" runat="server"></asp:Calendar>
-                                            <br />
-                                        </td>
-                                    </tr>
-                                </table>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">
-                                <div class="auto-style19">
+                                <div class="auto-style22">
                                     <table class="auto-style16">
                                         <tr>
-                                            <td class="auto-style18">
-                                                <br />
-                                                NUMERO DE PERSONAS:<br />
-                                                <br />
-                                            </td>
-                                            <td class="auto-style18">
-                                                <br />
-                                                <asp:TextBox ID="TB_Numpersonas" runat="server"></asp:TextBox>
-                                                <br />
-                                                <br />
-                                            </td>
-                                            <td class="auto-style18">
-                                                <br />
-                                                <asp:Button ID="Button4" runat="server" Text="Confirmar mi reserva" OnClick="Button4_Click" />
-                                                <br />
-                                                <br />
+                                            <td>
+                                                <table class="auto-style16">
+                                                    <tr>
+                                                        <td id="fechas-style" class="auto-style24">FECHA A RESERVAR<br />
+                                                            <br />
+                                                            <table class="auto-style16">
+                                                                <tr>
+                                                                    <td>FECHA LLEGADA</td>
+                                                                    <td>FECHA SALIDA</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        <asp:Calendar ID="C_FechaLlegada" runat="server"></asp:Calendar>
+                                                                    </td>
+                                                                    <td>
+                                                                        <asp:Calendar ID="C_FechaSalida" runat="server"></asp:Calendar>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                        <td class="auto-style24">
+                                                            <br />
+                                                            DISPONIBILIDAD<br />
+                                                            <br />
+                                                            <table class="auto-style16">
+                                                                <tr>
+                                                                    <td>NUMERO DE PERSONAS<br />
+                                                                        <asp:TextBox ID="TB_NumPersonas" runat="server"></asp:TextBox>
+                                                                        <br />
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        <br />
+                                                                        <asp:Button ID="B_BuscarDisponibilidad" runat="server" Height="26px" Text="BUSCAR DISPINIBILIDAD" Width="170px" OnClick="B_BuscarDisponibilidad_Click" />
+                                                                        <br />
+                                                                        <br />
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        <br />
+                                                                        Habitaciones disponibles según solicitud<br />
+                                                                        <br />
+                                                                        Número de habitaciones disponibles:&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                        <asp:Label ID="L_Habitacionesdisponibles" runat="server"></asp:Label>
+                                                                        <br />
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                </table>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td colspan="3">
-                                                <div class="auto-style20">
-                                                    <br />
-                                                    <asp:Label ID="L_Mensajesinsession" runat="server"></asp:Label>
-                                                    <br />
-                                                    <br />
+                                            <td>
+                                                <div class="datos-style">
                                                     <table class="auto-style16">
                                                         <tr>
-                                                            <td>
-                                                                <br />
-                                                                NOMBRE<br />
-                                                                <asp:TextBox ID="TB_nombre" runat="server"></asp:TextBox>
-                                                            </td>
-                                                            <td>
-                                                                <br />
-                                                                APELLIDO<br />
-                                                                <asp:TextBox ID="TB_apellido" runat="server"></asp:TextBox>
+                                                            <td class="auto-style24">
+                                                                <asp:Label ID="L_MensajeestadoSession" runat="server"></asp:Label>
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td>
-                                                                <br />
-                                                                CORREO ELECTRÓNICO<br />
-                                                                <asp:TextBox ID="TB_correo" runat="server"></asp:TextBox>
-                                                                <br />
-                                                                <br />
-                                                            </td>
-                                                            <td>
-                                                                <br />
-                                                                CONFIRME SU CORREO<br />
-                                                                <asp:TextBox ID="TB_confircorreo" runat="server"></asp:TextBox>
-                                                                <br />
-                                                                <br />
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td colspan="2">
-                                                                <asp:Label ID="L_Mensajefallo" runat="server"></asp:Label>
+                                                                <table class="auto-style16">
+                                                                    <tr>
+                                                                        <td class="auto-style27">
+                                                                            <br />
+                                                                            NOMBRE<br />
+                                                                            <asp:TextBox ID="TB_Nombre" runat="server"></asp:TextBox>
+                                                                            <br />
+                                                                            <br />
+                                                                        </td>
+                                                                        <td class="auto-style27">CORREO<br />
+                                                                            <asp:TextBox ID="TB_Correo" runat="server"></asp:TextBox>
+                                                                            <br />
+                                                                        </td>
+                                                                        <td class="auto-style24" rowspan="2">
+                                                                            <asp:Button ID="B_ConfirmarReserva" runat="server" Height="26px" Text="CONFIRMAR RESERVA" Width="165px" />
+                                                                            <br />
+                                                                            <br />
+                                                                            <asp:Button ID="B_Volver" runat="server" OnClick="B_Volver_Click" Text="VOLVER" />
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="auto-style28">
+                                                                            <br />
+                                                                            APELLIDO<br />
+                                                                            <asp:TextBox ID="TB_Apellido" runat="server"></asp:TextBox>
+                                                                            <br />
+                                                                            <br />
+                                                                        </td>
+                                                                        <td class="auto-style28">CONFIRMAR CORREO<br />
+                                                                            <asp:TextBox ID="TB_CCorreo" runat="server"></asp:TextBox>
+                                                                            <br />
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
                                                             </td>
                                                         </tr>
                                                     </table>

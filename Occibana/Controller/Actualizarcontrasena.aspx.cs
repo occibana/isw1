@@ -32,12 +32,12 @@ public partial class Vew_Actualizarcontrasena : System.Web.UI.Page
         }
     }
 
-    protected void Button5_Click(object sender, EventArgs e)
+    protected void B_Volver_Click(object sender, EventArgs e)
     {
         Response.Redirect("Perfil.aspx");
     }
 
-    protected void Button4_Click(object sender, EventArgs e)
+    protected void B_Enviar_Click(object sender, EventArgs e)
     {
         Registro login = new Registro();
 

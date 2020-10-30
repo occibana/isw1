@@ -37,7 +37,7 @@ public partial class Vew_PanelHotel : System.Web.UI.Page
 
     }
 
-    protected void Button4_Click(object sender, EventArgs e)
+    protected void B_Volver_Click(object sender, EventArgs e)
     {
         Response.Redirect("index.aspx");
     }
