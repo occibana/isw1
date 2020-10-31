@@ -24,11 +24,11 @@ public class DAOReserva
     {
         //int habitaciones = new Mapeo().reserva.Where(x => (x.Idhotel == disponibilidadE.Idhotel) && (x.Numpersona == disponibilidadE.Numpersona)).ToList().Count();
         //return habitaciones;
-        return new Mapeo().habitacion.Where(x => (x.Idhotel == disponibilidadE.Idhotel) && (x.Numpersonas == disponibilidadE.Numpersona)).ToList().Count();
+        return new Mapeo().habitacion.Where(x => (x.Idhotel == disponibilidadE.Idhotel) && (x.Numpersonas == disponibilidadE.Numpersona) ).ToList().Count();
     }
 
     //actualiza estado de habitaciones
-    public void actualizarhabitaciones(Hotel reservaE)
+    /*public void actualizarhabitaciones(Hotel reservaE)
     {
         using (var db = new Mapeo())
         {
@@ -39,7 +39,14 @@ public class DAOReserva
             entry.State = EntityState.Modified;
             db.SaveChanges();
         }
+    }*/
+
+    //select fechas disponibles
+    public int fechasdisponibles(Reserva disponibilidadE)
+    {
+        //int habitaciones = new Mapeo().reserva.Where(x => (x.Idhotel == disponibilidadE.Idhotel) && (x.Numpersona == disponibilidadE.Numpersona)).ToList().Count();
+        //return habitaciones;
+        return new Mapeo().reserva.Where(x => (x.Idhotel == disponibilidadE.Idhotel) && (x.Fecha_llegada >= disponibilidadE.Fecha_llegada) && (x.Fecha_salida <= disponibilidadE.Fecha_salida)).ToList().Count();
     }
 
-    
 }

@@ -31,22 +31,22 @@ public partial class Vew_Reserva : System.Web.UI.Page
                 L_Nombreusuario.Text = "Cliente";
                 L_MensajeestadoSession.Text = "Al parecer no te haz registrado o iniciado sesión, no hay problema igualmente puedes reservar, solo dejanos saber algunos datos.";
             }
-            
+
             if (hotel.Numhabitacion > 0)
             {
                 L_Habitacionesdisponibles.Text = hotel.Numhabitacion.ToString();
             }
-            else if(hotel.Numhabitacion <= 0)
+            else if (hotel.Numhabitacion <= 0)
             {
                 L_Habitacionesdisponibles.Text = "Sin habitaciones disponibles";
             }
-            
+
         }
         catch
         {
             Response.Redirect("index.aspx");
         }
-        
+
     }
 
     /*protected void B_Confirmarreserva_Click(object sender, EventArgs e)
@@ -109,12 +109,80 @@ public partial class Vew_Reserva : System.Web.UI.Page
         reserva.Numpersona = int.Parse(TB_NumPersonas.Text);
         if (C_FechaLlegada.SelectedDate > C_FechaSalida.SelectedDate)
         {
-            L_Habitacionesdisponibles.Text = "Seleccione una fecha de salida posterior a\n"+ C_FechaLlegada.SelectedDate;
+            L_Habitacionesdisponibles.Text = "Seleccione una fecha de salida posterior a\n" + C_FechaLlegada.SelectedDate;
         }
         else if (C_FechaLlegada.SelectedDate <= C_FechaSalida.SelectedDate)
         {
-           var disponibles = new DAOReserva().habitacionesdisponibles(reserva);
-           L_Habitacionesdisponibles.Text = (disponibles).ToString();
+            var hdisponibles = new DAOReserva().habitacionesdisponibles(reserva);
+            L_Habitacionesdisponibles.Text = (hdisponibles).ToString();
+            if (hdisponibles >= 1)
+            {
+                var fdisponibles = new DAOReserva().fechasdisponibles(reserva);
+                if (fdisponibles == 0)
+                {                  
+                    habilitarbotones();
+                }
+                else
+                {
+                    L_Habitacionesdisponibles.Text = (hdisponibles).ToString();
+                    deshabilitarbotones();
+                }
+            }
+            else
+            {
+                deshabilitarbotones();
+            }
+        }
+    }
+
+    protected void deshabilitarbotones()
+    {
+        TB_Nombre.Enabled = false;
+        TB_Correo.Enabled = false;
+        TB_Apellido.Enabled = false;
+        TB_CCorreo.Enabled = false;
+        B_ConfirmarReserva.Enabled = false;
+    }
+
+    protected void habilitarbotones()
+    {
+        TB_Nombre.Enabled = true;
+        TB_Correo.Enabled = true;
+        TB_Apellido.Enabled = true;
+        TB_CCorreo.Enabled = true;
+        B_ConfirmarReserva.Enabled = true;
+    }
+
+    protected void B_ConfirmarReserva_Click(object sender, EventArgs e)
+    {
+        Hotel hotel = new Hotel();
+        hotel.Idhotel = ((Hotel)Session["visitarhotel"]).Idhotel;
+        hotel = new DAOhotel().infohotel(hotel);
+        Reserva reserva = new Reserva();
+
+        reserva.Apellido = TB_Apellido.Text;
+        reserva.Nombre = TB_Nombre.Text;
+        reserva.Numpersona = int.Parse(TB_NumPersonas.Text);
+        reserva.Correo = TB_Correo.Text;
+        reserva.Idhotel = ((Hotel)Session["visitarhotel"]).Idhotel;
+        reserva.Fecha_llegada = C_FechaLlegada.SelectedDate;
+        reserva.Fecha_salida = C_FechaSalida.SelectedDate;
+
+        if (Session["usuario"] != null)
+        {
+            reserva.Idusuario = ((Registro)Session["usuario"]).Id;          
+            new DAOReserva().insertReserva(reserva);
+            L_MensajeestadoSession.Text = "NO EXISTEN HABITACIÓNES DISPONIBLES";
+            //hotel.Numhabitacion = hotel.Numhabitacion - 1;
+            //new DAOReserva().actualizarhabitaciones(hotel);
+            L_MensajeestadoSession.Text = "REESERVA EXITOSA";//, REVISE SU CORREO PARA MÁS DETALLES
+        }
+        else
+        {
+            new DAOReserva().insertReserva(reserva);
+            //hotel.Numhabitacion = hotel.Numhabitacion - 1;
+            //new DAOReserva().actualizarhabitaciones(hotel);
+            L_MensajeestadoSession.Text = "REESERVA EXITOSA";//, REVISE SU CORREO PARA MÁS DETALLES
         }
     }
 }

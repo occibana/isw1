@@ -97,14 +97,18 @@
                                                             <table class="auto-style16">
                                                                 <tr>
                                                                     <td>NUMERO DE PERSONAS<br />
-                                                                        <asp:TextBox ID="TB_NumPersonas" runat="server"></asp:TextBox>
+                                                                        <asp:TextBox ID="TB_NumPersonas" runat="server" TextMode="Number" ValidationGroup="disponibilidad"></asp:TextBox>
+                                                                        <asp:RequiredFieldValidator ID="RFV_TB_Numpersonas" runat="server" ControlToValidate="TB_NumPersonas" ErrorMessage="*" ValidationGroup="disponibilidad"></asp:RequiredFieldValidator>
+                                                                        <br />
+                                                                        <asp:RangeValidator ID="RV_TB_Numpersona" runat="server" ControlToValidate="TB_NumPersonas" ErrorMessage="Debe ser mayor 0" MaximumValue="10" MinimumValue="1" Type="Integer"></asp:RangeValidator>
+                                                                        <br />
                                                                         <br />
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>
                                                                         <br />
-                                                                        <asp:Button ID="B_BuscarDisponibilidad" runat="server" Height="26px" Text="BUSCAR DISPINIBILIDAD" Width="170px" OnClick="B_BuscarDisponibilidad_Click" />
+                                                                        <asp:Button ID="B_BuscarDisponibilidad" runat="server" Height="26px" Text="BUSCAR DISPINIBILIDAD" Width="170px" OnClick="B_BuscarDisponibilidad_Click" ValidationGroup="disponibilidad" />
                                                                         <br />
                                                                         <br />
                                                                     </td>
@@ -150,7 +154,7 @@
                                                                             <br />
                                                                         </td>
                                                                         <td class="auto-style24" rowspan="2">
-                                                                            <asp:Button ID="B_ConfirmarReserva" runat="server" Height="26px" Text="CONFIRMAR RESERVA" Width="165px" />
+                                                                            <asp:Button ID="B_ConfirmarReserva" runat="server" Height="26px" Text="CONFIRMAR RESERVA" Width="165px" OnClick="B_ConfirmarReserva_Click" />
                                                                             <br />
                                                                             <br />
                                                                             <asp:Button ID="B_Volver" runat="server" OnClick="B_Volver_Click" Text="VOLVER" />
@@ -163,10 +167,15 @@
                                                                             <asp:TextBox ID="TB_Apellido" runat="server"></asp:TextBox>
                                                                             <br />
                                                                             <br />
+                                                                            <br />
                                                                         </td>
-                                                                        <td class="auto-style28">CONFIRMAR CORREO<br />
+                                                                        <td class="auto-style28">
+                                                                            <br />
+                                                                            CONFIRMAR CORREO<br />
                                                                             <asp:TextBox ID="TB_CCorreo" runat="server"></asp:TextBox>
                                                                             <br />
+                                                                            <br />
+                                                                            <asp:CompareValidator ID="CV_Correos" runat="server" ControlToCompare="TB_Correo" ControlToValidate="TB_CCorreo" ErrorMessage="Los correos deben ser identicos"></asp:CompareValidator>
                                                                         </td>
                                                                     </tr>
                                                                 </table>
