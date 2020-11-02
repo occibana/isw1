@@ -31,6 +31,8 @@ public class Hotel
     private string zona;
     [NotMapped]
     private int nummaxpersonas;
+    [NotMapped]
+    private string tipo;
 
 
     [Key]
@@ -68,4 +70,7 @@ public class Hotel
     public string Zona { get => zona; set => zona = value; }
     [NotMapped]
     public int NumMaxPersonas { get => nummaxpersonas; set => nummaxpersonas = value; }
+    [NotMapped]
+    public string Tipo { get => tipo; set => tipo = value; }
+
 }

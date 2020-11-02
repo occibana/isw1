@@ -104,7 +104,7 @@ public partial class Vew_AgregarServicioHotel : System.Web.UI.Page
         new DAOhotel().insertHotel(serviciohotel);
        
         cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('El hotel ha sido cargado');</script>");
-        //Response.Redirect("Perfil.aspx");
+        Response.Redirect("Perfil.aspx");
         return;
 
     }

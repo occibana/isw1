@@ -55,9 +55,10 @@
                                             la habitacion:<br />
                                         </td>
                                         <td class="auto-style19">
-                                            <asp:TextBox ID="TB_NumBanio" runat="server" Width="170px" TextMode="Number"></asp:TextBox>
+                                            <asp:TextBox ID="TB_NumBanio" runat="server" Width="170px" TextMode="Number" ValidationGroup="AgregarHabitacion"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RFV_TB_NumBanio" runat="server" ControlToValidate="TB_NumBanio" ErrorMessage="*" ValidationGroup="AgregarHabitacion"></asp:RequiredFieldValidator>
                                             <br />
-                                            <asp:RangeValidator ID="RV_TB_Numbano" runat="server" ControlToValidate="TB_NumBanio" ErrorMessage="Solo positivos o iguales a cero" MaximumValue="10" MinimumValue="0" Type="Integer"></asp:RangeValidator>
+                                            <asp:RangeValidator ID="RV_TB_Numbano" runat="server" ControlToValidate="TB_NumBanio" ErrorMessage="Solo positivos o iguales a cero" MaximumValue="10" MinimumValue="0" Type="Integer" ValidationGroup="AgregarHabitacion"></asp:RangeValidator>
                                         </td>
                                     </tr>
                                     <tr>
@@ -66,9 +67,20 @@
                                             por habitacion:<br />
                                         </td>
                                         <td class="auto-style19">
-                                            <asp:TextBox ID="TB_NumPersonas" runat="server" Width="170px" TextMode="Number"></asp:TextBox>
+                                            <asp:TextBox ID="TB_NumPersonas" runat="server" Width="170px" TextMode="Number" ValidationGroup="AgregarHabitacion"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RFV_TB_Numpersonas" runat="server" ControlToValidate="TB_NumPersonas" ErrorMessage="*" ValidationGroup="AgregarHabitacion"></asp:RequiredFieldValidator>
                                             <br />
-                                            <asp:RangeValidator ID="RangeValidator2" runat="server" ControlToValidate="TB_NumPersonas" ErrorMessage="Solo positivos o iguales a cero" MaximumValue="10" MinimumValue="0" Type="Integer"></asp:RangeValidator>
+                                            <asp:RangeValidator ID="RV_TB_Numpersonas" runat="server" ControlToValidate="TB_NumPersonas" ErrorMessage="Solo positivos o iguales a cero" MaximumValue="10" MinimumValue="0" Type="Integer" ValidationGroup="AgregarHabitacion"></asp:RangeValidator>
+                                        </td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td class="auto-style19">
+                                            Tipo de habitacion:</td>
+                                        <td class="auto-style19">
+                                            <asp:TextBox ID="TB_Tipo" runat="server"></asp:TextBox>
+                                            <br />
+                                            <asp:RequiredFieldValidator ID="RFV_Tipo" runat="server" ControlToValidate="TB_Tipo" ErrorMessage="Llenar Campo" ValidationGroup="AgregarHabitacion"></asp:RequiredFieldValidator>
                                         </td>
                                     </tr>
                                     
@@ -81,7 +93,7 @@
                                 <div class="auto-style22">
                                     <asp:Label ID="L_Error_habitacion" runat="server"></asp:Label>
                                     <br />
-                                    <asp:Button ID="B_AgregarHabitacion" runat="server" Text="ENVIAR" Width="140px" OnClick="B_AgregarHabitacion_Click"  />
+                                    <asp:Button ID="B_AgregarHabitacion" runat="server" Text="ENVIAR" Width="140px" OnClick="B_AgregarHabitacion_Click" ValidationGroup="AgregarHabitacion"  />
                                     <br />
                                     <br />
                                     <asp:Button ID="B_Volver" runat="server" Text="Volver A Perfil" Width="140px" OnClick="B_Volver_Click" />

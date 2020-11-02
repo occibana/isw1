@@ -122,7 +122,7 @@
 
         .auto-style38 {
             width: 70%;
-            height: 100px;
+            height: 137px;
             margin-left: auto;
             margin-right: auto;
             background: #ffffff;
@@ -147,7 +147,11 @@
             height: 53px;
         }
         .auto-style44 {
-            width: 113px;
+            width: 50%;
+        }
+        .auto-style45 {
+            width: 100%;
+            height: 82px;
         }
     </style>
 </asp:Content>
@@ -198,7 +202,7 @@
                                 </td>
                                 <td class="auto-style33">
                                     <h6>RANGO DE FECHAS</h6>
-                                    <table class="auto-style35">
+                                    <table class="auto-style45">
                                         <tr>
                                             <td>
                                                 después de<br />
@@ -282,13 +286,15 @@
                                         <tr>
                                             <td class="auto-style41">
                                                 <div class="auto-style38">
-                                                    &nbsp;<br />
-                                                    Precionoche:
+                                                    &nbsp;<br />Precionoche:
                                             <asp:Label ID="PrecionocheLabel" runat="server" Text='<%# Eval("Precionoche") %>' />
                                                     <br />
                                                     Municipio:
                                             <br />
                                                     <asp:Label ID="MunicipioLabel" runat="server" Text='<%# Eval("Municipio") %>' />
+                                                    <br />
+                                                    Habitacion:<br />
+                                                    <asp:Label ID="TipoLabel" runat="server" Text='<%# Eval("Tipo") %>' />
                                                 </div>
                                             </td>
                                         </tr>

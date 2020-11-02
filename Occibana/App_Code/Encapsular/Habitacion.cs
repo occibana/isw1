@@ -17,6 +17,8 @@ public class Habitacion
     private int numpersonas;
     private int numbanio;
     private int idhotel;
+    private string tipo;
+
 
     [Key]
     [Column("id")]
@@ -27,5 +29,6 @@ public class Habitacion
     public int Numbanio { get => numbanio; set => numbanio = value; }
     [Column("idhotel")]
     public int Idhotel { get => idhotel; set => idhotel = value; }
-   
+    [Column("tipo")]
+    public string Tipo { get => tipo; set => tipo = value; }
 }

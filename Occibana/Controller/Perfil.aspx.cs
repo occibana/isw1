@@ -78,7 +78,7 @@ public partial class Vew_Perfil : System.Web.UI.Page
             int tam = FU_FotoPerfil.PostedFile.ContentLength;//obtiene tamano archivo
             //string fotoperfil;
 
-            if ((ext == ".jpg" || ext == ".png") && (tam < 1048576))//menor a 1MB en bytes
+            if ((ext == ".jpg" || ext == ".png" || ext == ".jpeg") && (tam < 1048576))//menor a 1MB en bytes
             {
                 direccion = "~/Vew/imgusuarios/" + ((Registro)Session["usuario"]).Usuario + FU_FotoPerfil.FileName;
                 FU_FotoPerfil.SaveAs(Server.MapPath(direccion));//mapea y guarda el archivo en la direccion
@@ -88,12 +88,15 @@ public partial class Vew_Perfil : System.Web.UI.Page
                 nuevodat.Id = ((Registro)Session["usuario"]).Id;
                 nuevodat.Fotoperfil = direccion;
                 new DAOLogin().actualizarfoto(nuevodat);
-                L_Pcargaimagen.Text = "*Imagen cargada con exito";                
+                fotoperfil.ImageUrl = ((Registro)Session["usuario"]).Fotoperfil;
+                L_Pcargaimagen.Text = "*Imagen cargada con exito";
+       
             }
             else
             {
                 L_Pcargaimagen.Text = "*Imagen no esta en formato correcto o es muy pesada";
-            }            
+            }
+            
         }
         else
         {

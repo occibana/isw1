@@ -12,17 +12,17 @@ public partial class Vew_MasterPage : System.Web.UI.MasterPage
 
     }
 
-    protected void Button3_Click(object sender, EventArgs e)
+    protected void B_Login_Click(object sender, EventArgs e)
     {
         Response.Redirect("Login.aspx");
     }
 
-    protected void Button1_Click(object sender, EventArgs e)
+    protected void B_Inicio_Click(object sender, EventArgs e)
     {
         Response.Redirect("index.aspx");
     }
 
-    protected void Button2_Click(object sender, EventArgs e)
+    protected void B_Registro_Click(object sender, EventArgs e)
     {
         Response.Redirect("Registro.aspx");
     }

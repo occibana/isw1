@@ -59,6 +59,10 @@
             margin-top: 15px;
             height: 41px;
         }
+        .auto-style26 {
+            color: #000000;
+            font-size: large;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
@@ -70,7 +74,7 @@
                         <tr>
                             <td colspan="2" class="auto-style25">
                                 <br />
-                                REGíSTRESE EN OCCIBANA<br />
+                                <span class="auto-style26"><em><strong>REGíSTRESE EN OCCIBANA</strong></em></span><br />
                                 <br />
                             </td>
                         </tr>
@@ -81,9 +85,9 @@
                                 NOMBRE/S<br />
                                 <br />
                                 <asp:TextBox ID="TB_nombre" runat="server"></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="TB_nombre" ErrorMessage="*" ValidationGroup="TB_registro"></asp:RequiredFieldValidator>
+                                <asp:RequiredFieldValidator ID="RFV_Nombre" runat="server" ControlToValidate="TB_nombre" ErrorMessage="*" ValidationGroup="TB_registro"></asp:RequiredFieldValidator>
                                 <br />
-                                <asp:RegularExpressionValidator ID="REV_TB_Nombre" runat="server" ControlToValidate="TB_nombre" ErrorMessage="Caracter no valido" ValidationExpression="[A-Za-z ]+"></asp:RegularExpressionValidator>
+                                <asp:RegularExpressionValidator ID="REV_TB_Nombre" runat="server" ControlToValidate="TB_nombre" ErrorMessage="Caracter no valido" ValidationExpression="[A-Za-z ]+" ValidationGroup="TB_registro"></asp:RegularExpressionValidator>
                                 <br />
                             </td>
                             <td>
@@ -91,9 +95,9 @@
                                 NUM DE TELÉFONO<br />
                                 <br />
                                 <asp:TextBox ID="TB_telefono" runat="server"></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="TB_telefono" ErrorMessage="*" ValidationGroup="TB_registro"></asp:RequiredFieldValidator>
+                                <asp:RequiredFieldValidator ID="RFV_Telefono" runat="server" ControlToValidate="TB_telefono" ErrorMessage="*" ValidationGroup="TB_registro"></asp:RequiredFieldValidator>
                                 <br />
-                                <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="TB_telefono" ErrorMessage="Caracter no valido" ValidationExpression="[0-9+ ]+"></asp:RegularExpressionValidator>
+                                <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="TB_telefono" ErrorMessage="Caracter no valido" ValidationExpression="[0-9+ ]+" ValidationGroup="TB_registro"></asp:RegularExpressionValidator>
                                 <br />
                             </td>
                         </tr>
@@ -104,9 +108,9 @@
                                 APELLIDO/S<br />
                                 <br />
                                 <asp:TextBox ID="TB_apellido" runat="server"></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="TB_apellido" ErrorMessage="*" ValidationGroup="TB_registro"></asp:RequiredFieldValidator>
+                                <asp:RequiredFieldValidator ID="RFV_Apellido" runat="server" ControlToValidate="TB_apellido" ErrorMessage="*" ValidationGroup="TB_registro"></asp:RequiredFieldValidator>
                                 <br />
-                                <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="TB_apellido" ErrorMessage="Caracter no valido" ValidationExpression="[A-Za-z ]+"></asp:RegularExpressionValidator>
+                                <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="TB_apellido" ErrorMessage="Caracter no valido" ValidationExpression="[A-Za-z ]+" ValidationGroup="TB_registro"></asp:RegularExpressionValidator>
                                 <br />
                             </td>
                             <td>
@@ -115,8 +119,10 @@
                                 <br />
                                 <asp:TextBox ID="TB_usuarioregistro" runat="server"></asp:TextBox>
 
+                                <asp:RequiredFieldValidator ID="RFV_NomUsuario" runat="server" ControlToValidate="TB_usuarioregistro" ErrorMessage="*" ValidationGroup="TB_registro"></asp:RequiredFieldValidator>
+
                                 <br />
-                                <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" ControlToValidate="TB_usuarioregistro" ErrorMessage="Caracter no valido" ValidationExpression="[A-Za-z0-9]+"></asp:RegularExpressionValidator>
+                                <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" ControlToValidate="TB_usuarioregistro" ErrorMessage="Caracter no valido" ValidationExpression="[A-Za-z0-9]+" ValidationGroup="TB_registro"></asp:RegularExpressionValidator>
                                 <br />
                             </td>
                         </tr>
@@ -129,7 +135,7 @@
                                 ELECTRÓNICO<br />
                                 <br />
                                 <asp:TextBox ID="TB_correo" runat="server" TextMode="Email"></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="TB_correo" ErrorMessage="*" ValidationGroup="TB_registro"></asp:RequiredFieldValidator>
+                                <asp:RequiredFieldValidator ID="RFV_Correo" runat="server" ControlToValidate="TB_correo" ErrorMessage="*" ValidationGroup="TB_registro"></asp:RequiredFieldValidator>
                                 <br />
                             </td>
                             <td class="auto-style24">
@@ -144,7 +150,7 @@
                                             <asp:TextBox ID="TB_contrasenaregistro" runat="server" TextMode="Password"></asp:TextBox>
 
                                             <br />
-                                            <asp:RegularExpressionValidator ID="RegularExpressionValidator6" runat="server" ControlToValidate="TB_contrasenaregistro" ErrorMessage="Caracter no valido" ValidationExpression="[A-Za-z0-9]+"></asp:RegularExpressionValidator>
+                                            <asp:RegularExpressionValidator ID="RegularExpressionValidator6" runat="server" ControlToValidate="TB_contrasenaregistro" ErrorMessage="Caracter no valido" ValidationExpression="[A-Za-z0-9]+" ValidationGroup="TB_registro"></asp:RegularExpressionValidator>
                                         </td>
                                         <td>
                                             <br />
@@ -153,7 +159,7 @@
                                             <asp:TextBox ID="TB_ccontrasena" runat="server" TextMode="Password"></asp:TextBox>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="TB_ccontrasena" ErrorMessage="*" ValidateRequestMode="Enabled" ValidationGroup="TB_registro"></asp:RequiredFieldValidator>
                                             <br />
-                                            <asp:RegularExpressionValidator ID="RegularExpressionValidator5" runat="server" ControlToValidate="TB_ccontrasena" ErrorMessage="Caracter no valido" ValidationExpression="[A-Za-z0-9]+"></asp:RegularExpressionValidator>
+                                            <asp:RegularExpressionValidator ID="REV_ConfirmarContra" runat="server" ControlToValidate="TB_ccontrasena" ErrorMessage="Caracter no valido" ValidationExpression="[A-Za-z0-9]+" ValidationGroup="TB_registro"></asp:RegularExpressionValidator>
                                         </td>
                                     </tr>
                                 </table>
@@ -166,7 +172,7 @@
                         <tr>
                             <td class="auto-style20" colspan="2">
                                 <br />
-                                <asp:Button ID="Button4" runat="server" Text="REGISTRARME" OnClick="Button4_Click" Height="24px" ValidationGroup="TB_registro" />
+                                <asp:Button ID="B_Registrar" runat="server" Text="REGISTRARME" OnClick="B_Registrar_Click" Height="24px" ValidationGroup="TB_registro" />
                                 <br />
                                 <asp:Label ID="L_fallo" runat="server"></asp:Label>
                                 <br />
@@ -174,7 +180,7 @@
                         </tr>
                     </table>
                     <br />
-                    <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Vew/Login.aspx">Ya me encuantro registrado, quiero iniciar sesion</asp:HyperLink>
+                    <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Vew/Login.aspx" Font-Size="Small" Font-Underline="True" ForeColor="White">YA ESTOY REGISTRADO, QUIERO INICIAR SESION</asp:HyperLink>
                 </div>
             </td>
         </tr>

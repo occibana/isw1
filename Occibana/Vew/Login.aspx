@@ -54,6 +54,9 @@
             color: #ffffff;
             text-decoration: none;
         }
+        .auto-style26 {
+            color: #CCCCCC;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
@@ -100,10 +103,10 @@
                             </div>
                         </div>
                         <br />
-                        <asp:LinkButton ID="LB_OlvidemicontrasenaLogin" runat="server" OnClick="LB_OlvidemicontrasenaLogin_Click">OLVIDE MI CONTRASEÑA</asp:LinkButton>
+                        <asp:LinkButton ID="LB_OlvidemicontrasenaLogin" runat="server" OnClick="LB_OlvidemicontrasenaLogin_Click" CssClass="auto-style26" ForeColor="White">OLVIDE MI CONTRASEÑA</asp:LinkButton>
                         <br />
                         <br />
-                        <asp:HyperLink ID="HL_Noestoyregistrado" runat="server" NavigateUrl="~/Vew/Registro.aspx">NO ESTOY REGISTRADO Y QUIERO REGISTRARME</asp:HyperLink>
+                        <asp:HyperLink ID="HL_Noestoyregistrado" runat="server" NavigateUrl="~/Vew/Registro.aspx" ForeColor="White">NO ESTOY REGISTRADO Y QUIERO REGISTRARME</asp:HyperLink>
                     </div>
                 </div>
             </td>

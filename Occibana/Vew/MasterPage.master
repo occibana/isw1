@@ -61,13 +61,13 @@
                 </td>
                 <td id="nav" class="auto-style4">&nbsp;</td>
                 <td id="nav" class="auto-style11">
-                    <asp:Button ID="Button1" runat="server" Text="INICIO" Width="102px" Font-Size="12px" BackColor="Red" ForeColor="White" Height="30px" OnClick="Button1_Click" />
+                    <asp:Button ID="B_Inicio" runat="server" Text="INICIO" Width="102px" Font-Size="12px" BackColor="Red" ForeColor="White" Height="30px" OnClick="B_Inicio_Click" />
                 </td>
                 <td id="nav" class="auto-style14">
-                    <asp:Button ID="Button2" runat="server" Text="REGISTRARME" Width="102px" Font-Size="12px" BackColor="Red" ForeColor="White" Height="30px" OnClick="Button2_Click" />
+                    <asp:Button ID="B_Registro" runat="server" Text="REGISTRARME" Width="102px" Font-Size="12px" BackColor="Red" ForeColor="White" Height="30px" OnClick="B_Registro_Click" />
                 </td>
                 <td id="nav" class="auto-style10">
-                    <asp:Button ID="Button3" runat="server" Text="INICIAR SESIÓN" Width="102px" Font-Size="12px" BackColor="Red" ForeColor="White" Height="30px" OnClick="Button3_Click" />
+                    <asp:Button ID="B_Login" runat="server" Text="INICIAR SESIÓN" Width="102px" Font-Size="12px" BackColor="Red" ForeColor="White" Height="30px" OnClick="B_Login_Click" />
                 </td>
             </tr>
             <tr>
