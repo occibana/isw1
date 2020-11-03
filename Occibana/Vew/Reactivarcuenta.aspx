@@ -47,7 +47,8 @@
                                             <br />
                                             <asp:TextBox ID="TB_CorreoRecuperarcontrasena" runat="server" TextMode="Password"></asp:TextBox>
                                             <br />
-                                            <asp:RegularExpressionValidator ID="REV_TB_Nuevacontrasena" runat="server" ControlToValidate="TB_CorreoRecuperarcontrasena" ErrorMessage="Caracteres no validos"></asp:RegularExpressionValidator>
+                                            <asp:RegularExpressionValidator ID="REV_TB_Nuevacontrasena" runat="server" ControlToValidate="TB_CorreoRecuperarcontrasena" ErrorMessage="Caracteres no validos" ValidationExpression="[A-Za-z0-9 ]+"></asp:RegularExpressionValidator>
+                                            <br />
                                             <br />
                                         </td>
                                     </tr>
@@ -58,7 +59,8 @@
                                             <br />
                                             <asp:TextBox ID="TB_UsuarioRecuperarcontrasena" runat="server" TextMode="Password"></asp:TextBox>
                                             <br />
-                                            <asp:RegularExpressionValidator ID="REV_TB_Confirmarcontrasena" runat="server" ControlToValidate="TB_UsuarioRecuperarcontrasena" ErrorMessage="Caracteres no validos"></asp:RegularExpressionValidator>
+                                            <asp:RegularExpressionValidator ID="REV_TB_Confirmarcontrasena" runat="server" ControlToValidate="TB_UsuarioRecuperarcontrasena" ErrorMessage="Caracteres no validos" ValidationExpression="[A-Za-z0-9 ]+"></asp:RegularExpressionValidator>
+                                            <br />
                                             <br />
                                         </td>
                                     </tr>
@@ -67,8 +69,11 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <td class="auto-style19">
+                                <div class="auto-style19">
+                                    <asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="TB_CorreoRecuperarcontrasena" ControlToValidate="TB_UsuarioRecuperarcontrasena" ErrorMessage="Las contraseñas deben ser identicas"></asp:CompareValidator>
                                 <br />
+                                </div>
                                 <div class="auto-style19">
                                     <asp:Label ID="L_Error_noregistro" runat="server"></asp:Label>
                                     <br />

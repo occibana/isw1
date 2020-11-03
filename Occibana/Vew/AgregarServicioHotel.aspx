@@ -100,7 +100,7 @@
                                                 <br />
                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ControlToValidate="TB_descripcioncovid19" ErrorMessage="*" ValidationGroup="AnadirHotel"></asp:RequiredFieldValidator>
                                                 <br />
-                                                <asp:RegularExpressionValidator ID="REV_TB_descripcioncovid19" runat="server" ControlToValidate="TB_descripcioncovid19" ErrorMessage="Caracteres no validos" ValidationExpression="[A-Za-z0-9 ]+" ValidationGroup="AnadirHotel"></asp:RegularExpressionValidator>
+                                                <asp:RegularExpressionValidator ID="REV_TB_descripcioncovid19" runat="server" ControlToValidate="TB_descripcioncovid19" ErrorMessage="Caracteres no validos" ValidationExpression="[A-Za-z0-9,.: ]+" ValidationGroup="AnadirHotel"></asp:RegularExpressionValidator>
                                             </div>
                                         </td>
                                     </tr>
@@ -192,7 +192,7 @@
                                                 <br />
                                                 <asp:TextBox ID="TB_Descripcion" runat="server" Height="49px" Width="503px"></asp:TextBox>
                                                 <br />
-                                                <asp:RegularExpressionValidator ID="REV_TB_Descripcion" runat="server" ControlToValidate="TB_Descripcion" ErrorMessage="Caracteres no validos" ValidationExpression="[A-Za-z0-9 ]+" ValidationGroup="AnadirHotel"></asp:RegularExpressionValidator>
+                                                <asp:RegularExpressionValidator ID="REV_TB_Descripcion" runat="server" ControlToValidate="TB_Descripcion" ErrorMessage="Caracteres no validos" ValidationExpression="[A-Za-z0-9,.: ]+" ValidationGroup="AnadirHotel"></asp:RegularExpressionValidator>
                                             </td>
                                         </tr>
                                         <tr>
@@ -204,13 +204,15 @@
                                                 <br />
                                                 <asp:TextBox ID="TB_Condiciones" runat="server" Height="49px" Width="503px"></asp:TextBox>
                                                 <br />
-                                                <asp:RegularExpressionValidator ID="REV_TB_Condiciones" runat="server" ControlToValidate="TB_Condiciones" ErrorMessage="Caracteres no validos" ValidationExpression="[A-Za-z0-9 ]+" ValidationGroup="AnadirHotel"></asp:RegularExpressionValidator>
+                                                <asp:RegularExpressionValidator ID="REV_TB_Condiciones" runat="server" ControlToValidate="TB_Condiciones" ErrorMessage="Caracteres no validos" ValidationExpression="[A-Za-z0-9,.: ]+" ValidationGroup="AnadirHotel"></asp:RegularExpressionValidator>
                                                 <br />
                                             </td>
                                         </tr>
                                     </table>
                                     <br />
                                     <asp:Button ID="B_CargarHotel" runat="server" Text="CARGAR HOTEL" Width="189px" Height="38px" ValidationGroup="AnadirHotel" OnClick="B_CargarHotel_Click" />
+                                    <br />
+                                    <asp:Label ID="L_Fallo" runat="server"></asp:Label>
                                 </div>
                             </td>
                         </tr>

@@ -100,7 +100,7 @@
                                                                         <asp:TextBox ID="TB_NumPersonas" runat="server" TextMode="Number" ValidationGroup="disponibilidad"></asp:TextBox>
                                                                         <asp:RequiredFieldValidator ID="RFV_TB_Numpersonas" runat="server" ControlToValidate="TB_NumPersonas" ErrorMessage="*" ValidationGroup="disponibilidad"></asp:RequiredFieldValidator>
                                                                         <br />
-                                                                        <asp:RangeValidator ID="RV_TB_Numpersona" runat="server" ControlToValidate="TB_NumPersonas" ErrorMessage="Debe ser mayor 0" MaximumValue="10" MinimumValue="1" Type="Integer"></asp:RangeValidator>
+                                                                        <asp:RangeValidator ID="RV_TB_Numpersona" runat="server" ControlToValidate="TB_NumPersonas" ErrorMessage="Debe ser mayor 0" MaximumValue="10" MinimumValue="1" Type="Integer" ValidationGroup="disponibilidad"></asp:RangeValidator>
                                                                         <br />
                                                                         <br />
                                                                     </td>

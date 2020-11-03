@@ -31,7 +31,7 @@ public partial class Vew_index : System.Web.UI.Page
         }
         else
         {
-            busqueda.nombrehotel = TB_Busquedageneral.Text;
+            busqueda.nombrehotel = (TB_Busquedageneral.Text).ToUpper();
         }
         Session["hotelseleccionado"] = busqueda;
         DL_Listaprincipalhoteles.DataBind();
@@ -39,7 +39,6 @@ public partial class Vew_index : System.Web.UI.Page
 
     protected void B_Filtrar_Click(object sender, EventArgs e)
     {
-
         Filtro busqueda = new Filtro();
         if (TB_PrecioMin.Text == String.Empty)
         {

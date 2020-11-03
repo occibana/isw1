@@ -9,25 +9,34 @@ public partial class Vew_Reactivarcuenta : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Request.QueryString.Count > 0 )
+        try
         {
-            Token token = new DAOSeguridad().validartoken(Request.QueryString[0]);//enviando url+token 
-            if (token == null)
+            if (Request.QueryString.Count > 0)
             {
-                this.RegisterStartupScript("mensaje", "<script type='text/javascript'>alert('No puede acceder sin un link de recuperacion, verifique su correo');window.location=\"Login.aspx\"</script>");
-            }else if (token.Fecha_caducidad < DateTime.Now)
-            {
-                this.RegisterStartupScript("mensaje", "<script type='text/javascript'>alert('Tiempo de validez de token ha terminado');window.location=\"Login.aspx\"</script>");
+                Token token = new DAOSeguridad().validartoken(Request.QueryString[0]);//enviando url+token 
+                if (token == null)
+                {
+                    this.RegisterStartupScript("mensaje", "<script type='text/javascript'>alert('No puede acceder sin un link de recuperacion, verifique su correo');window.location=\"Login.aspx\"</script>");
+                }
+                else if (token.Fecha_caducidad < DateTime.Now)
+                {
+                    this.RegisterStartupScript("mensaje", "<script type='text/javascript'>alert('Tiempo de validez de token ha terminado');window.location=\"Login.aspx\"</script>");
+                }
+                else
+                {
+                    Session["user_id"] = token.User_id;
+                }
             }
             else
             {
-                Session["user_id"] = token.User_id;
+                Response.Redirect("Login.aspx");
             }
         }
-        else
+        catch
         {
             Response.Redirect("Login.aspx");
         }
+        
     }
 
     protected void B_Enviar_Click(object sender, EventArgs e)

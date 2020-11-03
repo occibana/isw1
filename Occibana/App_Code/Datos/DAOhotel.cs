@@ -56,7 +56,7 @@ public class DAOhotel
             }
             if (consulta.numpersonas != null)
             {
-                elementos = elementos.Where(x => (x.NumMaxPersonas <= consulta.numpersonas)).ToList();
+                elementos = elementos.Where(x => (x.NumMaxPersonas == consulta.numpersonas)).ToList();
             }
             if (consulta.nombrehotel != null)
             {

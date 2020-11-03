@@ -57,7 +57,7 @@
                                             <br />
                                             <asp:TextBox ID="TB_UsuarioRecuperarcontrasena" runat="server"></asp:TextBox>
                                             <br />
-                                            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="TB_UsuarioRecuperarcontrasena" ErrorMessage="REV_TB_Usuario" ValidationExpression="[A-Za-z0-9 ]"></asp:RegularExpressionValidator>
+                                            <asp:RegularExpressionValidator ID="REV_TB_Usuario" runat="server" ControlToValidate="TB_UsuarioRecuperarcontrasena" ErrorMessage="caracteres no validos" ValidationExpression="[A-Za-z0-9 ]+"></asp:RegularExpressionValidator>
                                             <br />
                                             <br />
                                         </td>
