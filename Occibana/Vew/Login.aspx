@@ -79,7 +79,7 @@
                                             <asp:TextBox ID="TB_user" runat="server"></asp:TextBox>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TB_user" ErrorMessage="*" ValidationGroup="TB_LN"></asp:RequiredFieldValidator>
                                             <br />
-                                            <asp:RegularExpressionValidator ID="REV_TB_usuario" runat="server" ControlToValidate="TB_user" ErrorMessage="Elementos no validos" ValidationExpression="[A-Za-z0-9]+"></asp:RegularExpressionValidator>
+                                            <asp:RegularExpressionValidator ID="REV_TB_usuario" runat="server" ControlToValidate="TB_user" ErrorMessage="Elementos no validos" ValidationExpression="[A-Za-z0-9]+" ValidationGroup="IngresoLogin"></asp:RegularExpressionValidator>
                                             <br />
                                         </td>
                                     </tr>
@@ -88,12 +88,12 @@
                                             <asp:TextBox ID="TB_contrasena" runat="server" TextMode="Password" ValidateRequestMode="Disabled"></asp:TextBox>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="TB_contrasena" ErrorMessage="*" ValidationGroup="TB_LN"></asp:RequiredFieldValidator>
                                             <br />
-                                            <asp:RegularExpressionValidator ID="REV_TB_contrasena" runat="server" ControlToValidate="TB_contrasena" ErrorMessage="Elementos no validos" ValidationExpression="[A-Za-z0-9]+"></asp:RegularExpressionValidator>
+                                            <asp:RegularExpressionValidator ID="REV_TB_contrasena" runat="server" ControlToValidate="TB_contrasena" ErrorMessage="Elementos no validos" ValidationExpression="[A-Za-z0-9]+" ValidationGroup="IngresoLogin"></asp:RegularExpressionValidator>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <asp:Button ID="B_Ingresar" runat="server" Text="INGRESAR" OnClick="B_Ingresar_Click" ValidationGroup="TB_LN" />
+                                            <asp:Button ID="B_Ingresar" runat="server" Text="INGRESAR" OnClick="B_Ingresar_Click" ValidationGroup="IngresoLogin" />
                                             <br />
                                             <br />
                                             <asp:Label ID="L_msj" runat="server"></asp:Label>

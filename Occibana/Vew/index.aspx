@@ -50,7 +50,7 @@
         }
 
         .auto-style25 {
-            height: 485px;
+            height: 525px;
             width: 80%;
             text-align: center;
             margin-left: auto;
@@ -60,7 +60,7 @@
 
         .auto-style27 {
             width: 85%;
-            height: 308px;
+            height: 351px;
             margin-top: 10px;
             margin-right: auto;
             margin-left: auto;
@@ -178,6 +178,7 @@
                         <table class="auto-style29">
                             <tr>
                                 <td class="auto-style32">
+                                    <h6>&nbsp;</h6>
                                     <h6>$ PRECIOS</h6>
                                     <table class="auto-style35">
                                         <tr>
@@ -187,14 +188,18 @@
                                                 <asp:TextBox ID="TB_PrecioMax" runat="server" Width="90%"></asp:TextBox>
                                                 <br />
                                                 <br />
-                                                <asp:RegularExpressionValidator ID="REV_TB_Preciomax" runat="server" ControlToValidate="TB_PrecioMax" ErrorMessage="No caracteres especiales" ValidationExpression="[0-9]+"></asp:RegularExpressionValidator>
+                                                <asp:RegularExpressionValidator ID="REV_TB_Preciomax" runat="server" ControlToValidate="TB_PrecioMax" ErrorMessage="No caracteres especiales" ValidationExpression="[0-9]+" ValidationGroup="filtrar"></asp:RegularExpressionValidator>
+                                                <br />
+                                                <asp:RangeValidator ID="RV_TB_Preciomax" runat="server" ControlToValidate="TB_PrecioMax" ErrorMessage="valor no valido" MaximumValue="9999999" MinimumValue="0" Type="Integer" ValidationGroup="filtrar"></asp:RangeValidator>
                                             </td>
                                             <td>
                                                 <br />
                                                 minimo<asp:TextBox ID="TB_PrecioMin" runat="server" Width="90%"></asp:TextBox>
                                                 <br />
                                                 <br />
-                                                <asp:RegularExpressionValidator ID="REV_TB_Preciomin" runat="server" ControlToValidate="TB_PrecioMin" ErrorMessage="No caracteres especiales" ValidationExpression="[0-9]+"></asp:RegularExpressionValidator>
+                                                <asp:RegularExpressionValidator ID="REV_TB_Preciomin" runat="server" ControlToValidate="TB_PrecioMin" ErrorMessage="No caracteres especiales" ValidationExpression="[0-9]+" ValidationGroup="filtrar"></asp:RegularExpressionValidator>
+                                                <br />
+                                                <asp:RangeValidator ID="RV_TB_Preciomin" runat="server" ControlToValidate="TB_PrecioMin" ErrorMessage="valor no valido" MaximumValue="9999999" MinimumValue="0" Type="Integer" ValidationGroup="filtrar"></asp:RangeValidator>
                                                 <br />
                                             </td>
                                         </tr>
@@ -218,8 +223,6 @@
                                 <td class="auto-style34">
                                     <h6>ZONAS</h6>
                                     <p>
-    ZONAS</h6>
-                                    <p>
                                         <asp:DropDownList ID="DDL_Zona" runat="server" Height="17px" Width="90%" DataSourceID="ODS_FiltrarZona" DataTextField="Nombre" DataValueField="Nombre" AppendDataBoundItems="True">
                                             <asp:ListItem Value="--Seleccione--">--Seleccione--</asp:ListItem>
                                             
@@ -235,7 +238,7 @@
                                         <asp:TextBox ID="TB_Maxpersonas" runat="server" Width="117px" MaxLength="2" TextMode="Number"></asp:TextBox>
                                     </p>
                                     <p>
-                                        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="TB_Maxpersonas" ErrorMessage="No se permiten caracteres especiales :)" ValidationExpression="[0-9 ]"></asp:RegularExpressionValidator>
+                                        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="TB_Maxpersonas" ErrorMessage="No se permiten caracteres especiales :)" ValidationExpression="[0-9 ]" ValidationGroup="filtrar"></asp:RegularExpressionValidator>
                                     </p>
                                 </td>
                                 <td class="auto-style31">
@@ -251,7 +254,7 @@
                             </tr>
                             <tr>
                                 <td colspan="3" class="auto-style43">
-                                    <asp:Button ID="B_Filtrar" runat="server" Height="27px" Text="FILTRAR" Width="113px" OnClick="B_Filtrar_Click" />
+                                    <asp:Button ID="B_Filtrar" runat="server" Height="27px" Text="FILTRAR" Width="113px" OnClick="B_Filtrar_Click" ValidationGroup="filtrar" />
                                     <br />
                                     <br />
                                 </td>

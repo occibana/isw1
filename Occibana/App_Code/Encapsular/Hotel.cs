@@ -33,7 +33,10 @@ public class Hotel
     private int nummaxpersonas;
     [NotMapped]
     private string tipo;
-
+    [NotMapped]
+    private DateTime fecha_antesde;
+    [NotMapped]
+    private DateTime fecha_despuesde;
 
     [Key]
     [Column("idhotel")]
@@ -72,5 +75,8 @@ public class Hotel
     public int NumMaxPersonas { get => nummaxpersonas; set => nummaxpersonas = value; }
     [NotMapped]
     public string Tipo { get => tipo; set => tipo = value; }
-
+    [NotMapped]
+    public DateTime Fecha_despuesde { get => fecha_despuesde; set => fecha_despuesde = value; }
+    [NotMapped]
+    public DateTime Fecha_antesde { get => fecha_antesde; set => fecha_antesde = value; }
 }

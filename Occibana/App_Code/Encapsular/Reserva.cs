@@ -22,6 +22,8 @@ public class Reserva
     private string apellido;
     private string correo;
     private int idhotel;
+    [NotMapped]
+    private string nombrehotel;
 
     [Key]
     [Column("id")]
@@ -42,4 +44,6 @@ public class Reserva
     public string Correo { get => correo; set => correo = value; }
     [Column("idhotel")]
     public int Idhotel { get => idhotel; set => idhotel = value; }
+    [NotMapped]
+    public string Nombrehotel { get => nombrehotel; set => nombrehotel = value; }
 }

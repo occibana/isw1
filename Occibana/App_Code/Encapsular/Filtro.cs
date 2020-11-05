@@ -17,5 +17,6 @@ public class Filtro
     public Nullable<int> numpersonas;
     public String municipio;
     public String zona;
-
+    public Nullable<DateTime> fecha_antesde;
+    public Nullable<DateTime> fecha_despuesde;
 }

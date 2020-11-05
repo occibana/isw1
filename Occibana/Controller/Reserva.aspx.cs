@@ -10,6 +10,7 @@ public partial class Vew_Reserva : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        deshabilitarbotones();
         try
         {
             Hotel hotel = new Hotel();
@@ -49,52 +50,6 @@ public partial class Vew_Reserva : System.Web.UI.Page
 
     }
 
-    /*protected void B_Confirmarreserva_Click(object sender, EventArgs e)
-    {
-
-        Hotel hotel = new Hotel();
-        hotel.Idhotel = ((Hotel)Session["visitarhotel"]).Idhotel;
-        hotel = new DAOhotel().infohotel(hotel);
-        Reserva reserva = new Reserva();
-
-        if (Session["usuario"] != null)
-        {
-            reserva.Idusuario = ((Registro)Session["usuario"]).Id;
-            reserva.Apellido = TB_apellido.Text;
-            reserva.Nombre = TB_nombre.Text;
-            reserva.Numpersona = int.Parse(TB_Numpersonas.Text);
-            reserva.Correo = TB_correo.Text;
-            reserva.Idhotel = ((Hotel)Session["visitarhotel"]).Idhotel;
-            reserva.Fecha_llegada = Calendar_Fechallegada.SelectedDate;
-            reserva.Fecha_salida = Calendar_Fechasalida.SelectedDate;
-            new DAOReserva().insertReserva(reserva);
-            if (hotel.Numhabitacion <= 0)
-            {
-                L_Mensajefallo.Text = "NO EXISTEN HABITACIÓNES DISPONIBLES";
-            }
-            else
-            {
-                hotel.Numhabitacion = hotel.Numhabitacion - 1;
-                new DAOReserva().actualizarhabitaciones(hotel);
-                L_Mensajefallo.Text = "REESERVA EXITOSA, REVISE SU CORREO PARA MÁS DETALLES";
-            }
-        }
-        else
-        {
-            reserva.Apellido = TB_apellido.Text;
-            reserva.Nombre = TB_nombre.Text;
-            reserva.Numpersona = int.Parse(TB_Numpersonas.Text);
-            reserva.Correo = TB_correo.Text;
-            reserva.Idhotel = ((Hotel)Session["visitarhotel"]).Idhotel;
-            reserva.Fecha_llegada = Calendar_Fechallegada.SelectedDate;
-            reserva.Fecha_salida = Calendar_Fechasalida.SelectedDate;
-            new DAOReserva().insertReserva(reserva);
-            hotel.Numhabitacion = hotel.Numhabitacion - 1;
-            new DAOReserva().actualizarhabitaciones(hotel);
-            L_Mensajefallo.Text = "REESERVA EXITOSA, REVISE SU CORREO PARA MÁS DETALLES";
-        }
-    }*/
-
     protected void B_Volver_Click(object sender, EventArgs e)
     {
         Response.Redirect("index.aspx");
@@ -107,32 +62,41 @@ public partial class Vew_Reserva : System.Web.UI.Page
         reserva.Fecha_salida = C_FechaSalida.SelectedDate;
         reserva.Fecha_llegada = C_FechaLlegada.SelectedDate;
         reserva.Numpersona = int.Parse(TB_NumPersonas.Text);
-        if (C_FechaLlegada.SelectedDate > C_FechaSalida.SelectedDate)
+        if (reserva.Fecha_llegada == null || reserva.Fecha_salida == null)
         {
-            L_Habitacionesdisponibles.Text = "Seleccione una fecha de salida posterior a\n" + C_FechaLlegada.SelectedDate;
+            L_Habitacionesdisponibles.Text = "Seleccione las fechas correctamente";
+            deshabilitarbotones();
         }
-        else if (C_FechaLlegada.SelectedDate <= C_FechaSalida.SelectedDate)
+        else if (reserva.Fecha_llegada != null || reserva.Fecha_salida != null)
         {
-            var hdisponibles = new DAOReserva().habitacionesdisponibles(reserva);
-            L_Habitacionesdisponibles.Text = (hdisponibles).ToString();
-            if (hdisponibles >= 1)
+            if (C_FechaLlegada.SelectedDate > C_FechaSalida.SelectedDate)
             {
-                var fdisponibles = new DAOReserva().fechasdisponibles(reserva);
-                if (fdisponibles == 0)
-                {                  
-                    habilitarbotones();
+                L_Habitacionesdisponibles.Text = "Seleccione una fecha de salida posterior a\n" + C_FechaLlegada.SelectedDate;
+            }
+            else if (C_FechaLlegada.SelectedDate <= C_FechaSalida.SelectedDate)
+            {
+                var hdisponibles = new DAOReserva().habitacionesdisponibles(reserva);
+                L_Habitacionesdisponibles.Text = (hdisponibles).ToString();
+                if (hdisponibles >= 1)
+                {
+                    var fechasreservadas = new DAOReserva().fechasdisponibles(reserva);
+                    if (fechasreservadas == 0)//cero personas han reservado en esa fecha
+                    {
+                        habilitarbotones();
+                    }
+                    else
+                    {
+                        L_Habitacionesdisponibles.Text = "0";
+                        deshabilitarbotones();
+                    }
                 }
                 else
                 {
-                    L_Habitacionesdisponibles.Text = (hdisponibles).ToString();
                     deshabilitarbotones();
                 }
             }
-            else
-            {
-                deshabilitarbotones();
-            }
         }
+        
     }
 
     protected void deshabilitarbotones()

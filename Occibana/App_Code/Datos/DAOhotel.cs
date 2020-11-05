@@ -37,8 +37,9 @@ public class DAOhotel
             // where ((p.CategoriaId == categoriaId) || (categoriaId == 0)) select new
             List<Hotel> elementos = (from h in db.hotel join hm in db.hotelmunicipio on h.Idmunicipio equals hm.Idmunicipio
                                      join hz in db.hotelzona on h.Idzona equals hz.Idzona join hhab in db.habitacion on h.Idhotel equals hhab.Idhotel
+                                     join rh in db.reserva on h.Idhotel equals rh.Idhotel
                                      select new
-                                     { h, hm, hz, hhab
+                                     { h, hm, hz, hhab, rh
                                      }).ToList().Select(m => new Hotel
                                      {
                                          Idhotel = m.h.Idhotel,
@@ -49,11 +50,23 @@ public class DAOhotel
                                          Zona = m.hz.Nombre,
                                          NumMaxPersonas = m.hhab.Numpersonas,
                                          Tipo = m.hhab.Tipo,
+                                         Fecha_antesde = m.rh.Fecha_salida,
+                                         Fecha_despuesde = m.rh.Fecha_llegada,
                     }).ToList();
             if (consulta == null)
             {
                 return elementos;
             }
+            
+           /* if (consulta.fecha_antesde != null && consulta.fecha_despuesde != null)
+            {
+                elementos = elementos.Where(x => (x.Fecha_antesde == consulta.fecha_antesde)).ToList();
+            }*/
+            if (consulta.fecha_antesde != null && consulta.fecha_despuesde !=null)
+            {
+                elementos = elementos.Where(x => !(consulta.fecha_antesde <= x.Fecha_antesde && consulta.fecha_despuesde >= x.Fecha_despuesde)).ToList();
+            }
+
             if (consulta.numpersonas != null)
             {
                 elementos = elementos.Where(x => (x.NumMaxPersonas == consulta.numpersonas)).ToList();

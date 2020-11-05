@@ -147,14 +147,17 @@
                                                                             NOMBRE<br />
                                                                             <asp:TextBox ID="TB_Nombre" runat="server"></asp:TextBox>
                                                                             <br />
+                                                                            <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="TB_Nombre" ErrorMessage="caracteres no validos" ValidationExpression="[A-Za-z ]+" ValidationGroup="confirmar"></asp:RegularExpressionValidator>
+                                                                            <br />
                                                                             <br />
                                                                         </td>
                                                                         <td class="auto-style27">CORREO<br />
-                                                                            <asp:TextBox ID="TB_Correo" runat="server"></asp:TextBox>
+                                                                            <asp:TextBox ID="TB_Correo" runat="server" AutoCompleteType="Email" TextMode="Email"></asp:TextBox>
+                                                                            <br />
                                                                             <br />
                                                                         </td>
                                                                         <td class="auto-style24" rowspan="2">
-                                                                            <asp:Button ID="B_ConfirmarReserva" runat="server" Height="26px" Text="CONFIRMAR RESERVA" Width="165px" OnClick="B_ConfirmarReserva_Click" />
+                                                                            <asp:Button ID="B_ConfirmarReserva" runat="server" Height="26px" Text="CONFIRMAR RESERVA" Width="165px" OnClick="B_ConfirmarReserva_Click" ValidationGroup="confirmar" />
                                                                             <br />
                                                                             <br />
                                                                             <asp:Button ID="B_Volver" runat="server" OnClick="B_Volver_Click" Text="VOLVER" />
@@ -166,13 +169,16 @@
                                                                             APELLIDO<br />
                                                                             <asp:TextBox ID="TB_Apellido" runat="server"></asp:TextBox>
                                                                             <br />
+                                                                            <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="TB_Apellido" ErrorMessage="caracteres no validos" ValidationExpression="[A-Za-z ]+" ValidationGroup="confirmar"></asp:RegularExpressionValidator>
+                                                                            <br />
                                                                             <br />
                                                                             <br />
                                                                         </td>
                                                                         <td class="auto-style28">
                                                                             <br />
                                                                             CONFIRMAR CORREO<br />
-                                                                            <asp:TextBox ID="TB_CCorreo" runat="server"></asp:TextBox>
+                                                                            <asp:TextBox ID="TB_CCorreo" runat="server" AutoCompleteType="Email" TextMode="Email"></asp:TextBox>
+                                                                            <br />
                                                                             <br />
                                                                             <br />
                                                                             <asp:CompareValidator ID="CV_Correos" runat="server" ControlToCompare="TB_Correo" ControlToValidate="TB_CCorreo" ErrorMessage="Los correos deben ser identicos"></asp:CompareValidator>

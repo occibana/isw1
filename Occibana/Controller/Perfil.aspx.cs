@@ -133,4 +133,9 @@ public partial class Vew_Perfil : System.Web.UI.Page
     {
         Response.Redirect("Mishoteles.aspx");
     }
+
+    protected void B_Misreservas_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Misreservas.aspx");
+    }
 }

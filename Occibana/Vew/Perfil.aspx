@@ -73,6 +73,8 @@
                                 <asp:Button ID="B_AgregarHotel" runat="server" Height="31px" Text="AGREGAR HOTEL" Width="136px" OnClick="B_AgregarHotel_Click" />
                                 <br />
                                 <asp:Button ID="B_mishoteles" runat="server" OnClick="B_mishoteles_Click" Text="MIS HOTELES" Width="136px"/>
+                                <br />
+                                <asp:Button ID="B_Misreservas" runat="server" OnClick="B_Misreservas_Click" Text="MIS RESERVAS" Width="136px" />
                             </td>
                         </tr>
                     </table>

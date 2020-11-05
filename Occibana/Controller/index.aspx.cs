@@ -64,6 +64,14 @@ public partial class Vew_index : System.Web.UI.Page
         {
             busqueda.numpersonas = int.Parse(TB_Maxpersonas.Text);
         }
+        if (TB_DateAntesDe.Text != String.Empty)
+        {
+            busqueda.fecha_antesde = DateTime.Parse(TB_DateAntesDe.Text);
+        }
+        if (TB_DateDespuesDe.Text != String.Empty)
+        {
+            busqueda.fecha_despuesde = DateTime.Parse(TB_DateDespuesDe.Text);
+        }
         busqueda.zona = DDL_Zona.Text;
         busqueda.municipio = DDL_Municipio.Text;
         if (busqueda.zona.Equals("--Seleccione--"))

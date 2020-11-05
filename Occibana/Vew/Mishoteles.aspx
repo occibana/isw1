@@ -51,6 +51,7 @@
                                         <asp:CommandField HeaderText="Eliminar Hotel" ShowDeleteButton="True" SortExpression="Idhotel" />
                                         <asp:BoundField DataField="Idhotel" HeaderText="Idhotel" SortExpression="Idhotel" Visible="False" />
                                         <asp:CommandField SelectText="Añadir" ShowSelectButton="True" HeaderText="Añadir habitación" />
+                                        <asp:CommandField HeaderText="Reservas" SelectText="Ver reservas" ShowSelectButton="True" />
                                     </Columns>
                                 </asp:GridView>
                                 <div>
