@@ -22,7 +22,6 @@ public partial class Vew_Mishoteles : System.Web.UI.Page
 
     protected void GV_Mishoteles_SelectedIndexChanged(object sender, EventArgs e)
     {
-        
         Session["tabla"] = GV_Mishoteles.SelectedDataKey.Value;
         Response.Redirect("Habitacion.aspx");
     }
@@ -30,5 +29,17 @@ public partial class Vew_Mishoteles : System.Web.UI.Page
     protected void B_Volver_Click(object sender, EventArgs e)
     {
         Response.Redirect("Perfil.aspx");
+    }
+
+    protected void GV_Mishoteles_RowCommand(object sender, GridViewCommandEventArgs e)
+    {
+        int index = int.Parse(e.CommandArgument.ToString());
+
+        if (e.CommandName == "reservashotel")
+        {
+            
+            Session["tabla"] = GV_Mishoteles.DataKeys[index].Value.ToString();
+            Response.Redirect("Reservas.aspx");
+        }
     }
 }

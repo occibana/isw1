@@ -35,7 +35,6 @@ public partial class Vew_Habitacion : System.Web.UI.Page
        TB_NumPersonas.Text = "";
         TB_NumBanio.Text = "";
         TB_Tipo.Text = "";
-        
-
+     
     }
 }

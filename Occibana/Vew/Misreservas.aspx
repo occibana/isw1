@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Vew/MasterPage.master" AutoEventWireup="true" CodeFile="Misreservas.aspx.cs" Inherits="Vew_Misreservas" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Vew/MasterPage.master" AutoEventWireup="true" CodeFile="~/Controller/Misreservas.aspx.cs" Inherits="Vew_Misreservas" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <style type="text/css">
@@ -6,8 +6,9 @@
             width: 100%;
         }
         .auto-style17 {
-            width: 690px;
-            margin-left: 106px;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
         }
         .auto-style18 {
             text-align: center;

@@ -50,9 +50,9 @@ public class DAOReserva
     }*/
 
     //select mostrar reservas
-    public List<Reserva> mostrarreservas(Reserva disponibilidadE)
+    public List<Reserva> mostrarreservas(int disponibilidadE)
     {
-        return new Mapeo().reserva.Where(x => x.Idhotel == disponibilidadE.Idhotel).ToList();
+        return new Mapeo().reserva.Where(x => x.Idhotel == disponibilidadE).ToList();
     }
 
     public List<Reserva> mostrarmisreservas(Registro disponibilidadE)

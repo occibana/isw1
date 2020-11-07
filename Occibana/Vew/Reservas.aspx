@@ -6,11 +6,20 @@
             width: 100%;
         }
         .auto-style17 {
-            width: 710px;
-            margin-left: 109px;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
         }
         .auto-style18 {
             text-align: center;
+            background: #0056FF;
+            color: #ffffff;
+        }
+        #GV_Reservas{
+            margin-right: auto;
+            margin-left: auto;
+            color: #ffffff;
+            background: #808080;
         }
     </style>
 </asp:Content>
@@ -28,7 +37,15 @@
                         <tr>
                             <td class="auto-style18">
                                 <br />
-                                <asp:GridView ID="GV_Reservas" runat="server">
+                                <asp:GridView ID="GV_Reservas" runat="server" AutoGenerateColumns="False" DataSourceID="ODS_Reservas">
+                                    <Columns>
+                                        <asp:BoundField DataField="Numpersona" HeaderText="Numpersona" SortExpression="Numpersona" />
+                                        <asp:BoundField DataField="Fecha_llegada" HeaderText="Fecha_llegada" SortExpression="Fecha_llegada" />
+                                        <asp:BoundField DataField="Fecha_salida" HeaderText="Fecha_salida" SortExpression="Fecha_salida" />
+                                        <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
+                                        <asp:BoundField DataField="Apellido" HeaderText="Apellido" SortExpression="Apellido" />
+                                        <asp:BoundField DataField="Correo" HeaderText="Correo" SortExpression="Correo" />
+                                    </Columns>
                                 </asp:GridView>
                                 <asp:ObjectDataSource ID="ODS_Reservas" runat="server" SelectMethod="mostrarreservas" TypeName="DAOReserva">
                                     <SelectParameters>

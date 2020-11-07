@@ -41,7 +41,7 @@
                         <tr>
                             <td class="auto-style18">
                                 <br />
-                                <asp:GridView ID="GV_Mishoteles" class="GridView1" runat="server" Height="105px" Width="263px" AutoGenerateColumns="False" DataSourceID="ODS_Mishoteles" DataKeyNames="Idhotel" OnSelectedIndexChanged="GV_Mishoteles_SelectedIndexChanged">
+                                <asp:GridView ID="GV_Mishoteles" class="GridView1" runat="server" Height="105px" Width="263px" AutoGenerateColumns="False" DataSourceID="ODS_Mishoteles" DataKeyNames="Idhotel" OnSelectedIndexChanged="GV_Mishoteles_SelectedIndexChanged" OnRowCommand="GV_Mishoteles_RowCommand">
                                     <Columns>
                                         <asp:BoundField DataField="Numhabitacion" HeaderText="Numhabitacion" SortExpression="Numhabitacion" />
                                         <asp:BoundField DataField="Precionoche" HeaderText="Precionoche" SortExpression="Precionoche" />
@@ -51,7 +51,7 @@
                                         <asp:CommandField HeaderText="Eliminar Hotel" ShowDeleteButton="True" SortExpression="Idhotel" />
                                         <asp:BoundField DataField="Idhotel" HeaderText="Idhotel" SortExpression="Idhotel" Visible="False" />
                                         <asp:CommandField SelectText="Añadir" ShowSelectButton="True" HeaderText="Añadir habitación" />
-                                        <asp:CommandField HeaderText="Reservas" SelectText="Ver reservas" ShowSelectButton="True" />
+                                        <asp:ButtonField CommandName="reservashotel" HeaderText="Reservas/hotel" Text="Ver reservas"  />
                                     </Columns>
                                 </asp:GridView>
                                 <div>

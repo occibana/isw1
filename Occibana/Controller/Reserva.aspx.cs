@@ -119,6 +119,7 @@ public partial class Vew_Reserva : System.Web.UI.Page
 
     protected void B_ConfirmarReserva_Click(object sender, EventArgs e)
     {
+        ClientScriptManager cm = this.ClientScript;//script
         Hotel hotel = new Hotel();
         hotel.Idhotel = ((Hotel)Session["visitarhotel"]).Idhotel;
         hotel = new DAOhotel().infohotel(hotel);
@@ -136,17 +137,13 @@ public partial class Vew_Reserva : System.Web.UI.Page
         {
             reserva.Idusuario = ((Registro)Session["usuario"]).Id;          
             new DAOReserva().insertReserva(reserva);
-            L_MensajeestadoSession.Text = "NO EXISTEN HABITACIÓNES DISPONIBLES";
-            //hotel.Numhabitacion = hotel.Numhabitacion - 1;
-            //new DAOReserva().actualizarhabitaciones(hotel);
             L_MensajeestadoSession.Text = "REESERVA EXITOSA";//, REVISE SU CORREO PARA MÁS DETALLES
         }
         else
         {
             new DAOReserva().insertReserva(reserva);
-            //hotel.Numhabitacion = hotel.Numhabitacion - 1;
-            //new DAOReserva().actualizarhabitaciones(hotel);
             L_MensajeestadoSession.Text = "REESERVA EXITOSA";//, REVISE SU CORREO PARA MÁS DETALLES
+            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('La reserva ha sido exitosa');</script>");
         }
     }
 }
