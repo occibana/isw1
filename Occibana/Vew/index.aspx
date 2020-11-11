@@ -143,15 +143,34 @@
         .auto-style42 {
             width: 90%;
         }
+
         .auto-style43 {
             height: 53px;
         }
+
         .auto-style44 {
             width: 50%;
         }
+
         .auto-style45 {
             width: 100%;
             height: 82px;
+        }
+
+        .auto-style46 {
+            width: 60%;
+            margin-left: auto;
+            margin-right: auto;
+            background: #0040BD;
+        }
+
+        .DL_Hotelesdestacadosstyle {
+            width: 80%;
+            margin-top: 5px;
+            margin-left: auto;
+            margin-right: auto;
+            background: #E60004;
+            color: #ffffff;
         }
     </style>
 </asp:Content>
@@ -209,12 +228,10 @@
                                     <h6>RANGO DE FECHAS</h6>
                                     <table class="auto-style45">
                                         <tr>
-                                            <td>
-                                                después de<br />
+                                            <td>después de<br />
                                                 <asp:TextBox runat="server" Width="90%" TextMode="Date" ID="TB_DateDespuesDe"></asp:TextBox>
                                             </td>
-                                            <td>
-                                                antes de
+                                            <td>antes de
                                                 <asp:TextBox ID="TB_DateAntesDe" runat="server" Width="90%" TextMode="Date"></asp:TextBox>
                                             </td>
                                         </tr>
@@ -225,7 +242,7 @@
                                     <p>
                                         <asp:DropDownList ID="DDL_Zona" runat="server" Height="17px" Width="90%" DataSourceID="ODS_FiltrarZona" DataTextField="Nombre" DataValueField="Nombre" AppendDataBoundItems="True">
                                             <asp:ListItem Value="--Seleccione--">--Seleccione--</asp:ListItem>
-                                            
+
                                         </asp:DropDownList>
                                         <asp:ObjectDataSource ID="ODS_FiltrarZona" runat="server" SelectMethod="zona" TypeName="DAOhotel"></asp:ObjectDataSource>
                                     </p>
@@ -242,7 +259,9 @@
                                     </p>
                                 </td>
                                 <td class="auto-style31">
-                                    <h6>FILTRAR POR CALIFICACIÓN                     <td>
+                                    <h6>
+                                    FILTRAR POR CALIFICACIÓN                    
+                                <td>
                                     <h6>MUNICIPIOS</h6>
                                     <p>
                                         <asp:DropDownList ID="DDL_Municipio" runat="server" Height="17px" Width="90%" DataSourceID="ODS_FiltrarMunicipio" DataTextField="Nombre" DataValueField="Nombre" AppendDataBoundItems="True">
@@ -289,15 +308,17 @@
                                         <tr>
                                             <td class="auto-style41">
                                                 <div class="auto-style38">
-                                                    &nbsp;<br />Precionoche:
+                                                    Precionoche:
                                             <asp:Label ID="PrecionocheLabel" runat="server" Text='<%# Eval("Precionoche") %>' />
                                                     <br />
                                                     Municipio:
                                             <br />
                                                     <asp:Label ID="MunicipioLabel" runat="server" Text='<%# Eval("Municipio") %>' />
                                                     <br />
-                                                    Habitacion:<br />
-                                                    <asp:Label ID="TipoLabel" runat="server" Text='<%# Eval("Tipo") %>' />
+                                                    # Habitaciones
+                                                    <br />
+                                                    <asp:Label ID="L_HabitacionesDisponibles" runat="server" Text='<%# Eval("NumHabitDisponibles") %>'></asp:Label>
+                                                    <br />
                                                 </div>
                                             </td>
                                         </tr>
@@ -322,6 +343,24 @@
         </tr>
         <tr>
             <td class="auto-style16">
+                <br />
+                <h3>Sugerencias y hoteles destacados</h3>
+                <div class="auto-style46">
+                    <div class="DL_Hotelesdestacadosstyle">
+                        <asp:DataList ID="DL_Hotelesdestacados" runat="server" DataSourceID="ODS_Hotelesdestacados" RepeatDirection="Horizontal">
+                            <ItemTemplate>
+                                <div>
+                                    <asp:ImageButton ID="IB_HotelDestacado" runat="server" Height="92px" Width="100px" ImageUrl='<%# Eval("Imagen") %>' CommandArgument='<%# Eval("Idhotel") %>' />
+                                    <br />
+                                    <asp:Label ID="L_NombreHotelDestacado" runat="server" Text='<%# Eval("Nombre") %>'></asp:Label>
+                                </div>
+                            </ItemTemplate>
+                        </asp:DataList>
+                    </div>
+                    <br />
+                    <asp:ObjectDataSource ID="ODS_Hotelesdestacados" runat="server" SelectMethod="hotelesdestacados" TypeName="DAOhotel"></asp:ObjectDataSource>
+                </div>
+                <br />
                 <br />
                 <h2>SOBRE NOSOTROS           </h2>
                 <br />

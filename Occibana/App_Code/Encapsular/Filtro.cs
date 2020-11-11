@@ -15,6 +15,7 @@ public class Filtro
     public Nullable<double> preciomax;
     public Nullable<double> preciomin;
     public Nullable<int> numpersonas;
+    //public int numpersonas;
     public String municipio;
     public String zona;
     public Nullable<DateTime> fecha_antesde;

@@ -85,7 +85,7 @@ public partial class Vew_AgregarServicioHotel : System.Web.UI.Page
             {
                 direccion = "~/Vew/hoteles/imgadicional/" + ((Registro)Session["usuario"]).Usuario + FU_ImgAdicional.FileName;
                 FU_ImgAdicional.SaveAs(Server.MapPath(direccion));//mapea y guarda el archivo en la direccion
-                L_CargarimagenAgregarHotel.Text = "*Imagen aceptada";
+                L_CargarimagenAgregarHotel0.Text = "*Imagen aceptada";
                 //actualiza foto de perfil
 
                 serviciohotel.Imagen_secundaria = direccion;
@@ -99,6 +99,37 @@ public partial class Vew_AgregarServicioHotel : System.Web.UI.Page
         {
             serviciohotel.Imagen_secundaria = null;
         }
+
+
+        //verifica si hay archivos seleccionados
+        if (FU_ImgAdicional0.HasFile)
+        {
+            string direccion;
+            string ext = System.IO.Path.GetExtension(FU_ImgAdicional0.FileName);//obtiene la extencion del archivo
+            ext = ext.ToLower();//minusculas
+
+            int tam = FU_ImgAdicional0.PostedFile.ContentLength;//obtiene tamano archivo
+
+            if ((ext == ".jpg" || ext == ".png") && (tam < 1048576))//menor a 1MB en bytes
+            {
+                direccion = "~/Vew/hoteles/imgadicional/" + ((Registro)Session["usuario"]).Usuario + FU_ImgAdicional0.FileName;
+                FU_ImgAdicional0.SaveAs(Server.MapPath(direccion));//mapea y guarda el archivo en la direccion
+                L_CargarimagenAgregarHotel1.Text = "*Imagen aceptada";
+                //actualiza foto de perfil
+
+                serviciohotel.Imagen_secundaria2 = direccion;
+            }
+            else
+            {
+                L_CargarimagenAgregarHotel1.Text = "*Imagen no esta en formato correcto o es muy pesada";
+            }
+        }
+        else
+        {
+            serviciohotel.Imagen_secundaria2 = null;
+        }
+
+
 
 
         new DAOhotel().insertHotel(serviciohotel);

@@ -28,61 +28,89 @@ public class DAOhotel
         }
     }
 
+    //lista de hoteles destacados
+    public List<Hotel> hotelesdestacados()
+    {
+        using (var db = new Mapeo())
+        {
+            return (from h in db.hotel
+                   
+                    //where h.Numhabitacion > 4
+                    select new
+                    {
+                        h
+                    }).Take(6).ToList().Select(m => new Hotel
+                    {
+                        Nombre = m.h.Nombre,
+                        Imagen = m.h.Imagen,
+                    }).ToList();
+        }
+    }
+
     //lista de hoteles por usuario 
     //(hoteles que se muestran en index)
     public List<Hotel> hotelesregistrados(Filtro consulta)
     {
+        int num=0;
+        if (consulta != null && consulta.numpersonas != null)
+        {
+            num = int.Parse((consulta.numpersonas).ToString());
+        }
+        /*if (consulta != null && consulta.fecha_antesde != null && consulta.fecha_despuesde != null)
+        {
+            consulta.fecha_antesde = consulta.fecha_antesde;
+            consulta.fecha_despuesde = consulta.fecha_despuesde;
+        }
+        else
+        {
+            consulta.fecha_antesde = DateTime.Parse("11/11/2020 00:00:00");
+        }*/
+
         using (var db = new Mapeo())
         {
+
             List<Hotel> elementos = (from h in db.hotel
                                      join hm in db.hotelmunicipio on h.Idmunicipio equals hm.Idmunicipio
                                      join hz in db.hotelzona on h.Idzona equals hz.Idzona
-                                     //group new { h.Nombre, h.Idmunicipio, h.Idzona } by new { h, hm, hz} into hgroup
-                                     join rh in db.reserva on h.Idhotel equals rh.Idhotel
-                                     join hhab in db.habitacion on h.Idhotel equals hhab.Idhotel
-                                     //group new { h.Nombre,h.Idmunicipio, h.Idzona} by new { h,hm,hz,rh,hhab} into hgroup
+
+                                     //join rh in db.reserva on h.Idhotel equals rh.Idhotel
+                                     //join hhab in db.habitacion on h.Idhotel equals hhab.Idhotel
+
                                      select new
                                      {
-                                         /*
-                                         hgroup.Key.h,
-                                         hgroup.Key.hm,
-                                         hgroup.Key.hz,
-                                         hgroup.Key.hhab,
-                                         hgroup.Key.rh,
-                                         */
                                          h,
                                          hm,
                                          hz,
-                                         hhab,
-                                         rh
+                                         //hhab,
+                                         //rh
+
+                                     }).OrderBy(h => h.h.Nombre).ToList().Select(m => new Hotel
+                                     {
                                          
-                                     }).ToList().Select(m => new Hotel
-                                     {                                                                                
+                                         NumHabitDisponibles = db.habitacion.Where(x => x.Idhotel == m.h.Idhotel).Count(),
+                                         
                                          Idhotel = m.h.Idhotel,
                                          Nombre = m.h.Nombre,
                                          Precionoche = m.h.Precionoche,
                                          Imagen = m.h.Imagen,
                                          Municipio = m.hm.Nombre,
                                          Zona = m.hz.Nombre,
-                                         NumMaxPersonas = m.hhab.Numpersonas,
-                                         Tipo = m.hhab.Tipo,
-                                         Fecha_antesde = m.rh.Fecha_salida,
-                                         Fecha_despuesde = m.rh.Fecha_llegada,
-                                     }).ToList();
+                                         NumMaxPersonas = db.habitacion.Where(x => x.Numpersonas == num && x.Idhotel == m.h.Idhotel).Count() == 0?  0 : 1,
+
+                                         //Fecha_antesde = m.rh.Fecha_salida,
+                                         //Fecha_despuesde = m.rh.Fecha_llegada,
+                                         
+                                     }).Where(x =>  num > 0 ? x.NumMaxPersonas > 0 : x.NumMaxPersonas == 0).ToList();
             if (consulta == null)
             {
                 return elementos;
             }
             
-            if (consulta.fecha_antesde != null && consulta.fecha_despuesde !=null)
+            /*if (consulta.fecha_antesde != null && consulta.fecha_despuesde !=null)
             {
                 elementos = elementos.Where(x => !(consulta.fecha_antesde <= x.Fecha_antesde && consulta.fecha_despuesde >= x.Fecha_despuesde)).ToList();
-            }
-
-            if (consulta.numpersonas != null)
-            {
-                elementos = elementos.Where(x => (x.NumMaxPersonas == consulta.numpersonas)).ToList();
-            }
+            }*/
+            
             if (consulta.nombrehotel != null)
             {
                 elementos = elementos.Where(x => x.Nombre.ToUpper().Equals(consulta.nombrehotel)).ToList();

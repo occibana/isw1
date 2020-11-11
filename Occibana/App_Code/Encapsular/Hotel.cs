@@ -26,6 +26,7 @@ public class Hotel
     private string usuarioencargado;
     private int idzona;
     private string imagen_secundaria;
+    private string imagen_secundaria2;
     private string condicionesbioseguridad;
     [NotMapped]
     private string zona;
@@ -37,6 +38,8 @@ public class Hotel
     private DateTime fecha_antesde;
     [NotMapped]
     private DateTime fecha_despuesde;
+    [NotMapped]
+    private int numHabitDisponibles;
 
     [Key]
     [Column("idhotel")]
@@ -65,6 +68,8 @@ public class Hotel
     public string Usuarioencargado { get => usuarioencargado; set => usuarioencargado = value; }
     [Column("imagen_secundaria")]
     public string Imagen_secundaria { get => imagen_secundaria; set => imagen_secundaria = value; }
+    [Column("imagen_secundaria2")]
+    public string Imagen_secundaria2 { get => imagen_secundaria2; set => imagen_secundaria2 = value; }
     [Column("condicionesbioseguridad")]
     public string Condicionesbioseguridad { get => condicionesbioseguridad; set => condicionesbioseguridad = value; }
     [NotMapped]
@@ -79,4 +84,7 @@ public class Hotel
     public DateTime Fecha_despuesde { get => fecha_despuesde; set => fecha_despuesde = value; }
     [NotMapped]
     public DateTime Fecha_antesde { get => fecha_antesde; set => fecha_antesde = value; }
+    [NotMapped]
+    public int NumHabitDisponibles { get => numHabitDisponibles; set => numHabitDisponibles = value; }
+    
 }

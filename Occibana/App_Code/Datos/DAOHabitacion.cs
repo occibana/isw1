@@ -16,6 +16,11 @@ public class DAOHabitacion
             db.SaveChanges();
         }
     }
+
+    public int cantidadHabitaciones(Habitacion habitE)
+    {
+        return new Mapeo().habitacion.Where(x => x.Idhotel == habitE.Idhotel).ToList().Count();
+    }
     /*
     //select info habitacion
     public Hotel infohabitacion(Habitacion habitacionE)

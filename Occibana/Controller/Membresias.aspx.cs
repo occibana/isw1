@@ -62,6 +62,7 @@ public partial class Vew_Membresias : System.Web.UI.Page
         usuario.Usuario = TB_Usuario.Text;
         usuario.Contrasena = TB_Contrasena.Text;
         usuario.Id = ((Registro)Session["usuario"]).Id;
+        usuario.Correo = ((Registro)Session["usuario"]).Correo;
         try
         {
             if ((((Registro)Session["usuario"]).Usuario).Equals(usuario.Usuario))
@@ -80,6 +81,7 @@ public partial class Vew_Membresias : System.Web.UI.Page
                         L_error.Text = "Compra realizada con exito";
                         usuario.Idestado = 1;
                         new DAOSeguridad().actualizarmembresia(usuario);
+                        new Mail().mailconfirmarcompra(usuario);
                     }
                     catch
                     {

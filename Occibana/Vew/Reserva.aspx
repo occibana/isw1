@@ -45,6 +45,9 @@
         .datos-style {
             background: #E60004;
         }
+        .auto-style29 {
+            text-align: left;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
@@ -161,6 +164,14 @@
                                                                             <br />
                                                                             <br />
                                                                             <asp:Button ID="B_Volver" runat="server" OnClick="B_Volver_Click" Text="VOLVER" />
+                                                                            <br />
+                                                                            <br />
+                                                                            <div class="auto-style29">
+                                                                                <asp:CheckBoxList ID="CHBL_Mediodepago" runat="server">
+                                                                                    <asp:ListItem>EFECTIVO</asp:ListItem>
+                                                                                    <asp:ListItem>TARJETA</asp:ListItem>
+                                                                                </asp:CheckBoxList>
+                                                                            </div>
                                                                         </td>
                                                                     </tr>
                                                                     <tr>
@@ -178,7 +189,6 @@
                                                                             <br />
                                                                             CONFIRMAR CORREO<br />
                                                                             <asp:TextBox ID="TB_CCorreo" runat="server" AutoCompleteType="Email" TextMode="Email"></asp:TextBox>
-                                                                            <br />
                                                                             <br />
                                                                             <br />
                                                                             <asp:CompareValidator ID="CV_Correos" runat="server" ControlToCompare="TB_Correo" ControlToValidate="TB_CCorreo" ErrorMessage="Los correos deben ser identicos"></asp:CompareValidator>

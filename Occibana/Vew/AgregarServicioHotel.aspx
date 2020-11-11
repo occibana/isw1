@@ -168,8 +168,15 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>&nbsp;</td>
-                                        <td>&nbsp;</td>
+                                        <td>IMAGEN ADICIONAL:</td>
+                                        <td>
+                                            <asp:Image ID="I_AdicionalAnadirHotel0" runat="server" Height="112px" ImageUrl="~/Vew/img/hotelvacio.png" Width="167px" />
+                                            <br />
+                                            <asp:FileUpload ID="FU_ImgAdicional0" runat="server" />
+                                            <br />
+                                            <br />
+                                            <asp:Label ID="L_CargarimagenAgregarHotel1" runat="server"></asp:Label>
+                                            </td>
                                         <td class="auto-style22">CHECK OUT:</td>
                                         <td>
                                             <asp:TextBox ID="TB_Checkout" runat="server" TextMode="Time"></asp:TextBox>

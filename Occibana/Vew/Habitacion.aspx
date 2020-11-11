@@ -58,7 +58,7 @@
                                             <asp:TextBox ID="TB_NumBanio" runat="server" Width="170px" TextMode="Number" ValidationGroup="AgregarHabitacion"></asp:TextBox>
                                             <asp:RequiredFieldValidator ID="RFV_TB_NumBanio" runat="server" ControlToValidate="TB_NumBanio" ErrorMessage="*" ValidationGroup="AgregarHabitacion"></asp:RequiredFieldValidator>
                                             <br />
-                                            <asp:RangeValidator ID="RV_TB_Numbano" runat="server" ControlToValidate="TB_NumBanio" ErrorMessage="Solo positivos o iguales a cero" MaximumValue="10" MinimumValue="0" Type="Integer" ValidationGroup="AgregarHabitacion"></asp:RangeValidator>
+                                            <asp:RangeValidator ID="RV_TB_Numbano" runat="server" ControlToValidate="TB_NumBanio" ErrorMessage="Solo positivos o iguales a cero" MaximumValue="3" MinimumValue="0" Type="Integer" ValidationGroup="AgregarHabitacion"></asp:RangeValidator>
                                         </td>
                                     </tr>
                                     <tr>

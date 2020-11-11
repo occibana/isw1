@@ -27,14 +27,21 @@ public partial class Vew_Habitacion : System.Web.UI.Page
         habit.Numbanio = int.Parse(TB_NumBanio.Text);
         habit.Idhotel = int.Parse(L_Prueba.Text);
         habit.Tipo = TB_Tipo.Text;
-           
-        new DAOHabitacion().insertHabitacion(habit);
-        new DAOhotel().actualizarhabiatacion(habit);
-        L_Error_habitacion.Text = " Habitacion añadida con exito";
 
-       TB_NumPersonas.Text = "";
-        TB_NumBanio.Text = "";
-        TB_Tipo.Text = "";
-     
+        int cantHabitaciones = new DAOHabitacion().cantidadHabitaciones(habit);
+        if (cantHabitaciones == 150)
+        {
+            L_Error_habitacion.Text = " Limite de habitaciones alcanzado";
+        }
+        else
+        {
+            new DAOHabitacion().insertHabitacion(habit);
+            new DAOhotel().actualizarhabiatacion(habit);
+            L_Error_habitacion.Text = " Habitacion añadida con exito";
+
+            TB_NumPersonas.Text = "";
+            TB_NumBanio.Text = "";
+            TB_Tipo.Text = "";
+        }
     }
 }

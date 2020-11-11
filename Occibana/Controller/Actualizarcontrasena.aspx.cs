@@ -43,6 +43,7 @@ public partial class Vew_Actualizarcontrasena : System.Web.UI.Page
 
         login.Usuario = ((Registro)Session["usuario"]).Usuario.ToString();
         login.Contrasena = TB_Contrasenaactual.Text;
+        login.Correo = ((Registro)Session["usuario"]).Correo.ToString();
 
         login = new DAOLogin().verificar(login);
 
@@ -51,10 +52,10 @@ public partial class Vew_Actualizarcontrasena : System.Web.UI.Page
             L_Error_noregistro.Text = "Verifica tus datos.\n La contraseña no coinside con tu usuario";
         }
         else
-        {
-            
+        {           
             login.Contrasena = TB_Nuevacontrasena.Text;
             new DAOLogin().actualizarcontrasena(login);
+            new Mail().mailactualizarcontrasena(login);
             L_Error_noregistro.Text = "Contraseña actualizada";
         }
     }

@@ -72,10 +72,10 @@
                                 <div class="auto-style19">
                                     <asp:Label ID="L_Error_noregistro" runat="server"></asp:Label>
                                     <br />
-                                    <asp:Button ID="B_Enviar" runat="server" Text="ENVIAR" Width="140px" OnClick="B_Enviar_Click" />
+                                    <asp:Button ID="B_Enviar" runat="server" Text="CONFIRMAR/ENVIAR" Width="140px" OnClick="B_Enviar_Click" />
                                     <br />
                                     <br />
-                                    <asp:Button ID="B_Volver" runat="server" Text="VOLVER AL PERFIL" Width="140px" OnClick="B_Volver_Click" />
+                                    <asp:Button ID="B_Volver" runat="server" Text="CANCELAR/VOLVER AL PERFIL" Width="210px" OnClick="B_Volver_Click" />
                                     <br />
                                     <br />
                                 </div>

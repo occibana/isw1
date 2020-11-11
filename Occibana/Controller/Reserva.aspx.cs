@@ -132,18 +132,21 @@ public partial class Vew_Reserva : System.Web.UI.Page
         reserva.Idhotel = ((Hotel)Session["visitarhotel"]).Idhotel;
         reserva.Fecha_llegada = C_FechaLlegada.SelectedDate;
         reserva.Fecha_salida = C_FechaSalida.SelectedDate;
+        reserva.Mediopago = CHBL_Mediodepago.Text;
 
         if (Session["usuario"] != null)
         {
             reserva.Idusuario = ((Registro)Session["usuario"]).Id;          
             new DAOReserva().insertReserva(reserva);
             L_MensajeestadoSession.Text = "REESERVA EXITOSA";//, REVISE SU CORREO PARA MÁS DETALLES
+            new Mail().mailconfirmarreserva(reserva);
         }
         else
         {
             new DAOReserva().insertReserva(reserva);
             L_MensajeestadoSession.Text = "REESERVA EXITOSA";//, REVISE SU CORREO PARA MÁS DETALLES
             cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('La reserva ha sido exitosa');</script>");
+            new Mail().mailconfirmarreserva(reserva);
         }
     }
 }
