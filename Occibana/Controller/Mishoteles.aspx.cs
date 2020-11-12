@@ -42,4 +42,9 @@ public partial class Vew_Mishoteles : System.Web.UI.Page
             Response.Redirect("Reservas.aspx");
         }
     }
+
+    protected void B_GenerarReporte_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Reportes/ReporteHoteles/ReporteHoteles.aspx");
+    }
 }

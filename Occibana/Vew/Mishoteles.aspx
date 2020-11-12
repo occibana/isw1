@@ -56,6 +56,8 @@
                                 </asp:GridView>
                                 <div>
                                     <br />
+                                    <asp:Button ID="B_GenerarReporte" runat="server" OnClick="B_GenerarReporte_Click" Text="GENERAR REPORTE" />
+                                    <br />
                                     <br />
                                     <asp:Button ID="B_Volver" runat="server" OnClick="B_Volver_Click" Text="VOLVER" />
                                 <br />
