@@ -46,6 +46,8 @@ public partial class Vew_PanelHotel : System.Web.UI.Page
     {
         //UpdatePanel1.Visible = false;
         //UpdatePanel2.Visible = true;
+        Response.Redirect("ComentariosHotel.aspx");
+
     }
 
     protected void B_Desc_Reserva_Click(object sender, EventArgs e)
