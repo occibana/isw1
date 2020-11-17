@@ -52,6 +52,7 @@ public partial class Vew_Perfil : System.Web.UI.Page
         catch
         {
             Session.Remove("usuario");
+            Session.Remove("visitarhotel"); 
             Response.Redirect("Login.aspx");
         }
     }
@@ -60,6 +61,7 @@ public partial class Vew_Perfil : System.Web.UI.Page
     {
         new DAOSeguridad().cerrarAcceso(((Registro)Session["usuario"]).Id);
         Session.Remove("usuario");
+        Session.Remove("visitarhotel");
         Response.Redirect("Login.aspx");
     }
 

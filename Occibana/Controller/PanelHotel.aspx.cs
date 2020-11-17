@@ -14,7 +14,7 @@ public partial class Vew_PanelHotel : System.Web.UI.Page
             Hotel hotel = new Hotel();
             hotel.Idhotel = ((Hotel)Session["visitarhotel"]).Idhotel;
             hotel = new DAOhotel().infohotel(hotel);
-            //hotel = new DAOhotel().municipio(hotel.Idmunicipio);
+            
 
             L_Panelhotelnombre.Text = hotel.Nombre.ToUpper();
             L_Panelhotelzona.Text = (new DAOhotel().zona(hotel)).Nombre;

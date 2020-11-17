@@ -37,6 +37,8 @@
                         <tr>
                             <td class="auto-style18">
                                 <br />
+                                RESERVAS POR EFECTUAR<br />
+                                <br />
                                 <asp:GridView ID="GV_Reservas" runat="server" AutoGenerateColumns="False" DataSourceID="ODS_Reservas">
                                     <Columns>
                                         <asp:BoundField DataField="Numpersona" HeaderText="Numpersona" SortExpression="Numpersona" />
@@ -50,6 +52,24 @@
                                 <asp:ObjectDataSource ID="ODS_Reservas" runat="server" SelectMethod="mostrarreservas" TypeName="DAOReserva">
                                     <SelectParameters>
                                         <asp:SessionParameter Name="disponibilidadE" SessionField="tabla" Type="Object" />
+                                    </SelectParameters>
+                                </asp:ObjectDataSource>
+                                RESERVAS REALIZADAS<br />
+                                <br />
+                                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="ODS_ReservasPasadas">
+                                    <Columns>
+                                        <asp:BoundField DataField="Numpersona" HeaderText="Numpersona" SortExpression="Numpersona" />
+                                        <asp:BoundField DataField="Fecha_llegada" HeaderText="Fecha_llegada" SortExpression="Fecha_llegada" />
+                                        <asp:BoundField DataField="Fecha_salida" HeaderText="Fecha_salida" SortExpression="Fecha_salida" />
+                                        <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
+                                        <asp:BoundField DataField="Apellido" HeaderText="Apellido" SortExpression="Apellido" />
+                                        <asp:BoundField DataField="Correo" HeaderText="Correo" SortExpression="Correo" />
+                                        <asp:BoundField DataField="Mediopago" HeaderText="Mediopago" SortExpression="Mediopago" />
+                                    </Columns>
+                                </asp:GridView>
+                                <asp:ObjectDataSource ID="ODS_ReservasPasadas" runat="server" SelectMethod="mostrarreservascompletadas" TypeName="DAOReserva">
+                                    <SelectParameters>
+                                        <asp:SessionParameter Name="disponibilidadE" SessionField="tabla" Type="Int32" />
                                     </SelectParameters>
                                 </asp:ObjectDataSource>
                                 <br />

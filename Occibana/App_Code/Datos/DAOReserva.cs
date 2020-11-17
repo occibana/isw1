@@ -52,9 +52,16 @@ public class DAOReserva
     //select mostrar reservas
     public List<Reserva> mostrarreservas(int disponibilidadE)
     {
-        return new Mapeo().reserva.Where(x => x.Idhotel == disponibilidadE).ToList();
+        return new Mapeo().reserva.Where(x => x.Idhotel == disponibilidadE && x.Fecha_salida >= DateTime.Now).ToList();
     }
 
+    //select mostrar reservas completadas
+    public List<Reserva> mostrarreservascompletadas(int disponibilidadE)
+    {
+        return new Mapeo().reserva.Where(x => x.Idhotel == disponibilidadE && x.Fecha_salida <= DateTime.Now).ToList();
+    }
+
+    // select mis reservas
     public List<Reserva> mostrarmisreservas(Registro disponibilidadE)
     {
         using (var db = new Mapeo())
@@ -66,6 +73,8 @@ public class DAOReserva
                     r
                     }).ToList().Select(m => new Reserva
                     {
+                        Id = m.r.Id,
+                        Idhotel = m.h.Idhotel,
                         Numpersona = m.r.Numpersona,
                         Nombrehotel = m.h.Nombre,
                         Fecha_llegada = m.r.Fecha_llegada,
@@ -73,8 +82,70 @@ public class DAOReserva
                         Nombre = m.r.Nombre,
                         Apellido = m.r.Apellido,
                         Correo = m.r.Correo,
+                        Mediopago = m.r.Mediopago,
                     }).ToList();
         }
         //return new Mapeo().reserva.Where(x => x.Idusuario == disponibilidadE.Id).ToList();
     }
+
+    //select reserva
+    //select fechas disponibles
+    public Reserva inforeserva(Reserva reserva)
+    {
+        return new Mapeo().reserva.Where(x => (x.Id == reserva.Id)).FirstOrDefault();
+    }
+
+    //actualizar calificacion
+    //actualiza foto perfil
+    public void actualizarcalificacion(Reserva datosE)
+    {
+        using (var db = new Mapeo())
+        {
+            Reserva calificacionanterior = db.reserva.Where(x => x.Id == datosE.Id).First();
+
+            calificacionanterior.Calificacion = datosE.Calificacion;
+            var entry = db.Entry(calificacionanterior);
+            entry.State = EntityState.Modified;
+            db.SaveChanges();
+        }
+    }
+
+
+    //actualizar promedio de calificacion
+    //contar elementos
+    public int cantidaddereservasconcalificacion(Reserva hotel)
+    {
+        double? reservas = new Mapeo().reserva.Where(x => (x.Idhotel == hotel.Idhotel) && (x.Calificacion != null)).Average(x => x.Calificacion);
+        double variable = Convert.ToDouble(reservas);
+        reservas = Math.Round(variable);
+        return int.Parse(reservas.ToString());
+    }
+    //actualizar promedio de calificacion
+
+
+
+
+    // solicitar calificaciones
+    /*public void cambiarestadoreserva(int id)
+    {
+        using (var db = new Mapeo())
+        {
+            Registro datoanterior = db.usuario.Where(x => x.Id == datoE.Id).First();
+            datoanterior.Nombre = datoE.Nombre;
+            datoanterior.Apellido = datoE.Apellido;
+            datoanterior.Correo = datoE.Correo;
+            datoanterior.Telefono = datoE.Telefono;
+            datoanterior.Usuario = datoE.Usuario;
+            var entry = db.Entry(datoanterior);
+            entry.State = EntityState.Modified;
+            db.SaveChanges();
+        }
+    }*/
+    /*
+public List<Reserva> reservasporefectuar()
+{
+    List<Reserva> reservasrealizadas = new Mapeo().reserva.Where(x => x.Estado == 0 && x.Fecha_salida < DateTime.Now).ToList();
+
+    return reservasrealizadas;
+}*/
 }

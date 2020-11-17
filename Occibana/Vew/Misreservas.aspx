@@ -38,15 +38,20 @@
                         <tr>
                             <td id="Gridmisreservas">
                                 <div class="auto-style19">
-                                <asp:GridView ID="GV_Mishoteles" runat="server" AutoGenerateColumns="False" DataSourceID="ODS_MisReservas" Width="591px">
+                                <asp:GridView ID="GV_Mishoteles" runat="server" AutoGenerateColumns="False" DataSourceID="ODS_MisReservas" Width="591px" OnRowCommand="GV_Mishoteles_RowCommand" DataKeyNames="Id">
                                     <Columns>
+                                        <asp:BoundField DataField="Id" HeaderText="Id" SortExpression="Id" Visible="False" />
                                         <asp:BoundField DataField="Numpersona" HeaderText="Numpersona" SortExpression="Numpersona" />
                                         <asp:BoundField DataField="Fecha_llegada" HeaderText="Fecha_llegada" SortExpression="Fecha_llegada" />
                                         <asp:BoundField DataField="Fecha_salida" HeaderText="Fecha_salida" SortExpression="Fecha_salida" />
                                         <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
                                         <asp:BoundField DataField="Apellido" HeaderText="Apellido" SortExpression="Apellido" />
                                         <asp:BoundField DataField="Correo" HeaderText="Correo" SortExpression="Correo" />
+                                        <asp:BoundField DataField="Mediopago" HeaderText="Mediopago" SortExpression="Mediopago" />
+                                        <asp:BoundField DataField="Calificacion" HeaderText="Calificacion" SortExpression="Calificacion" Visible="False" />
                                         <asp:BoundField DataField="Nombrehotel" HeaderText="Nombrehotel" SortExpression="Nombrehotel" />
+                                        <asp:ButtonField CommandName="calificarreserva" HeaderText="Calificar y comentar" Text="calificar/comentar" />
+                                        <asp:BoundField DataField="Idhotel" HeaderText="Idhotel" SortExpression="Idhotel" Visible="False" />
                                     </Columns>
                                 </asp:GridView>
                                 </div>

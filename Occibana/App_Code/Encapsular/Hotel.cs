@@ -28,6 +28,7 @@ public class Hotel
     private string imagen_secundaria;
     private string imagen_secundaria2;
     private string condicionesbioseguridad;
+    private Nullable<int> promediocalificacion;
     [NotMapped]
     private string zona;
     [NotMapped]
@@ -40,6 +41,10 @@ public class Hotel
     private DateTime fecha_despuesde;
     [NotMapped]
     private int numHabitDisponibles;
+    [NotMapped]
+    private int habfechaantesde;
+    [NotMapped]
+    private int habfechadespuesde;
 
     [Key]
     [Column("idhotel")]
@@ -72,6 +77,8 @@ public class Hotel
     public string Imagen_secundaria2 { get => imagen_secundaria2; set => imagen_secundaria2 = value; }
     [Column("condicionesbioseguridad")]
     public string Condicionesbioseguridad { get => condicionesbioseguridad; set => condicionesbioseguridad = value; }
+    [Column("promcalificacion")]
+    public Nullable<int> Promediocalificacion { get => promediocalificacion; set => promediocalificacion = value; }
     [NotMapped]
     public string Municipio { get => municipio; set => municipio = value; }
     [NotMapped]
@@ -86,5 +93,8 @@ public class Hotel
     public DateTime Fecha_antesde { get => fecha_antesde; set => fecha_antesde = value; }
     [NotMapped]
     public int NumHabitDisponibles { get => numHabitDisponibles; set => numHabitDisponibles = value; }
-    
+    [NotMapped]
+    public int Habfechaantesde { get => habfechaantesde; set => habfechaantesde = value; }
+    [NotMapped]
+    public int Habfechadespuesde { get => habfechadespuesde; set => habfechadespuesde = value; }
 }

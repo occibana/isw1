@@ -14,16 +14,16 @@ public partial class Vew_MasterPage : System.Web.UI.MasterPage
 
     protected void B_Login_Click(object sender, EventArgs e)
     {
-        Response.Redirect("Login.aspx");
+        Response.Redirect("~/Vew/Login.aspx");
     }
 
     protected void B_Inicio_Click(object sender, EventArgs e)
     {
-        Response.Redirect("index.aspx");
+        Response.Redirect("~/Vew/index.aspx");
     }
 
     protected void B_Registro_Click(object sender, EventArgs e)
     {
-        Response.Redirect("Registro.aspx");
+        Response.Redirect("~/Vew/Registro.aspx");
     }
 }

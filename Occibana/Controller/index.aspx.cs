@@ -74,6 +74,7 @@ public partial class Vew_index : System.Web.UI.Page
         }
         busqueda.zona = DDL_Zona.Text;
         busqueda.municipio = DDL_Municipio.Text;
+        busqueda.calificacion = DDL_Calificacion.Text;
         if (busqueda.zona.Equals("--Seleccione--"))
         {
             busqueda.zona = null;
@@ -82,8 +83,11 @@ public partial class Vew_index : System.Web.UI.Page
         {
             busqueda.municipio = null;
         }
+        if (busqueda.calificacion.Equals("--Seleccione--"))
+        {
+            busqueda.calificacion = null;
+        }
         Session["hotelseleccionado"] = busqueda;
         DL_Listaprincipalhoteles.DataBind();
-        
     }
 }

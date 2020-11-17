@@ -52,19 +52,23 @@ public class DAOhotel
     public List<Hotel> hotelesregistrados(Filtro consulta)
     {
         int num=0;
+        Nullable<DateTime> fecha_antesde = null;
+        Nullable<DateTime> fecha_despuesde = null;
+
         if (consulta != null && consulta.numpersonas != null)
         {
             num = int.Parse((consulta.numpersonas).ToString());
         }
-        /*if (consulta != null && consulta.fecha_antesde != null && consulta.fecha_despuesde != null)
+        if (consulta != null && consulta.fecha_antesde != null && consulta.fecha_despuesde != null)
         {
-            consulta.fecha_antesde = consulta.fecha_antesde;
-            consulta.fecha_despuesde = consulta.fecha_despuesde;
+            fecha_antesde = consulta.fecha_antesde;
+            fecha_despuesde = consulta.fecha_despuesde;
         }
         else
         {
-            consulta.fecha_antesde = DateTime.Parse("11/11/2020 00:00:00");
-        }*/
+            fecha_antesde = null;
+            fecha_despuesde = null;
+        }
 
         using (var db = new Mapeo())
         {
@@ -88,7 +92,7 @@ public class DAOhotel
                                      {
                                          
                                          NumHabitDisponibles = db.habitacion.Where(x => x.Idhotel == m.h.Idhotel).Count(),
-                                         
+                                         Promediocalificacion = m.h.Promediocalificacion,
                                          Idhotel = m.h.Idhotel,
                                          Nombre = m.h.Nombre,
                                          Precionoche = m.h.Precionoche,
@@ -97,19 +101,33 @@ public class DAOhotel
                                          Zona = m.hz.Nombre,
                                          NumMaxPersonas = db.habitacion.Where(x => x.Numpersonas == num && x.Idhotel == m.h.Idhotel).Count() == 0?  0 : 1,
 
-                                         //Fecha_antesde = m.rh.Fecha_salida,
+                                         Habfechaantesde = db.reserva.Where(x => x.Fecha_salida > fecha_antesde).Count() ==0? 0:1,
+                                         //Habfechadespuesde = db.reserva.Where(x => x.Fecha_llegada == fecha_despuesde).Count() == 0 ? 0:1,
                                          //Fecha_despuesde = m.rh.Fecha_llegada,
-                                         
-                                     }).Where(x =>  num > 0 ? x.NumMaxPersonas > 0 : x.NumMaxPersonas == 0).ToList();
+
+                                     }).Where(x =>  (num > 0 ? x.NumMaxPersonas > 0 : x.NumMaxPersonas == 0) || (fecha_antesde != null ? x.Habfechaantesde > 0 : x.Habfechaantesde == 0)).ToList();
             if (consulta == null)
             {
                 return elementos;
             }
-            
+
             /*if (consulta.fecha_antesde != null && consulta.fecha_despuesde !=null)
             {
                 elementos = elementos.Where(x => !(consulta.fecha_antesde <= x.Fecha_antesde && consulta.fecha_despuesde >= x.Fecha_despuesde)).ToList();
             }*/
+
+            if (consulta.calificacion != null)
+            {
+                if (consulta.calificacion.Equals("--Seleccionar--"))
+                {
+                    elementos = elementos.Where(x => (x.Promediocalificacion <= 5) || (x.Promediocalificacion == null)).ToList();//&& (x.Promediocalificacion == null)
+                }
+                else
+                {
+                    elementos = elementos.Where(x => x.Promediocalificacion == (int.Parse(consulta.calificacion))).ToList();
+                }
+                
+            }
             
             if (consulta.nombrehotel != null)
             {
@@ -152,7 +170,7 @@ public class DAOhotel
     //select info hotel panel hotel
     public Hotel infohotel(Hotel hotelE)
     {
-        return new Mapeo().hotel.Where(x => x.Idhotel.Equals(hotelE.Idhotel)).FirstOrDefault();
+        return new Mapeo().hotel.Where(x => x.Idhotel == hotelE.Idhotel).FirstOrDefault();
     }
     //select zona
     public HotelZona zona(Hotel hotelE)
@@ -198,6 +216,20 @@ public class DAOhotel
             db.SaveChanges();
         }
     }
+
+    //actualizar calificacion
+    public void actualizarcalificacion(Hotel hotelE)
+    {
+        using (var db = new Mapeo())
+        {
+            Hotel datoanterior = db.hotel.Where(x => x.Idhotel == hotelE.Idhotel).First();
+            datoanterior.Promediocalificacion  = hotelE.Promediocalificacion;        
+            var entry = db.Entry(datoanterior);
+            entry.State = EntityState.Modified;
+            db.SaveChanges();
+        }
+    }
+
 }
 
 

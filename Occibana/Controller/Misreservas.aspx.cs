@@ -11,4 +11,21 @@ public partial class Vew_Misreservas : System.Web.UI.Page
     {
 
     }
+
+    protected void GV_Mishoteles_RowCommand(object sender, GridViewCommandEventArgs e)
+    {
+        int idreserva = int.Parse(e.CommandArgument.ToString());
+
+        if (e.CommandName == "calificarreserva")
+        {
+            Reserva inforeserva = new Reserva();
+            inforeserva.Id = int.Parse(GV_Mishoteles.DataKeys[idreserva].Value.ToString());
+            inforeserva = new DAOReserva().inforeserva(inforeserva);
+            Hotel hotelinfo = new Hotel();
+            hotelinfo.Idhotel = int.Parse((inforeserva.Idhotel).ToString());
+            Session["visitarhotel"] = hotelinfo;
+            Session["calificarhotel"] = int.Parse(GV_Mishoteles.DataKeys[idreserva].Value.ToString());
+            Response.Redirect("ComentariosHotel.aspx"); 
+        }
+    }
 }

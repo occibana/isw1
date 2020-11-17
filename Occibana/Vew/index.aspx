@@ -111,6 +111,7 @@
             margin-right: auto;
             margin-top: 15px;
             background: #E60004;
+            height: 296px;
         }
 
         .auto-style36 {
@@ -122,7 +123,7 @@
 
         .auto-style38 {
             width: 70%;
-            height: 137px;
+            height: 173px;
             margin-left: auto;
             margin-right: auto;
             background: #ffffff;
@@ -261,6 +262,19 @@
                                 <td class="auto-style31">
                                     <h6>
                                     FILTRAR POR CALIFICACIÓN                    
+                                    <p>
+                                        <asp:Image ID="I_Calificacionestrellas" runat="server" Height="16px" ImageUrl="~/Vew/hoteles/calificaciones/5.jpg" Width="88px" />
+                                    </p>
+                                    <p>
+                                        <asp:DropDownList ID="DDL_Calificacion" runat="server">
+                                            <asp:ListItem Selected="True">--Seleccionar--</asp:ListItem>
+                                            <asp:ListItem>1</asp:ListItem>
+                                            <asp:ListItem>2</asp:ListItem>
+                                            <asp:ListItem>3</asp:ListItem>
+                                            <asp:ListItem>4</asp:ListItem>
+                                            <asp:ListItem>5</asp:ListItem>
+                                        </asp:DropDownList>
+                                    </p>
                                 <td>
                                     <h6>MUNICIPIOS</h6>
                                     <p>
@@ -318,6 +332,10 @@
                                                     # Habitaciones
                                                     <br />
                                                     <asp:Label ID="L_HabitacionesDisponibles" runat="server" Text='<%# Eval("NumHabitDisponibles") %>'></asp:Label>
+                                                    <br />
+                                                    Calificación promedio<br />
+                                                    <asp:Label ID="L_Calificacionprom" runat="server" Text='<%# Eval("Promediocalificacion") %>'></asp:Label>
+                                                    <br />
                                                     <br />
                                                 </div>
                                             </td>

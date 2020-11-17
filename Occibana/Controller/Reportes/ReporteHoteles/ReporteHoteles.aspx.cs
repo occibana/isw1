@@ -18,7 +18,7 @@ public partial class Vew_Reportes_ReporteHoteles_ReporteHoteles : System.Web.UI.
         catch
         {
             Session.Remove("usuario");
-            Response.Redirect("~/Occibana/vew/Login.aspx");
+            Response.Redirect("~/vew/Login.aspx");
         }
 
     }

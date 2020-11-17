@@ -9,12 +9,22 @@ public partial class Vew_Reservas : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        Hotel infohotel = new Hotel();
+        try
+        {
+            Hotel infohotel = new Hotel();
 
-        infohotel.Idhotel = int.Parse(Session["tabla"].ToString());
+            infohotel.Idhotel = int.Parse(Session["tabla"].ToString());
 
-        infohotel = new DAOhotel().infohotel(infohotel);
+            infohotel = new DAOhotel().infohotel(infohotel);
 
-        L_Nombrehotel.Text = infohotel.Nombre;
+            L_Nombrehotel.Text = infohotel.Nombre;
+        }
+        catch
+        {
+           Response.Redirect("index.aspx");
+        }
+        
     }
+
+
 }

@@ -16,10 +16,6 @@
             width: 30%;
             height: 23px;
         }
-        .auto-style19 {
-            width: 70%;
-            height: 23px;
-        }
         .auto-style20 {
             text-align: center;
         }
@@ -28,7 +24,6 @@
         }
         .auto-style23 {
             width: 70%;
-            height: 23px;
             text-align: left;
         }
         .auto-style24 {
@@ -44,6 +39,9 @@
         .auto-style25 {
             height: 23px;
             text-align: center;
+        }
+        .auto-style26 {
+            width: 100%;
         }
     </style>
 </asp:Content>
@@ -89,31 +87,77 @@
         
         <tr>
             <td class="auto-style18">
+                USUARIO:
                 <asp:Label ID="L_Usuario" runat="server" Font-Size="Large"></asp:Label>
             </td>
-            <td class="auto-style23">
-                <asp:TextBox ID="TB_Comentario" runat="server" MaxLength="250" TextMode="MultiLine" Width="85%" ValidationGroup="AgregarComentario" OnTextChanged="TB_Comentario_TextChanged"></asp:TextBox>
+            <td class="auto-style23" rowspan="2">
+                <asp:TextBox ID="TB_Comentario" runat="server" MaxLength="250" TextMode="MultiLine" Width="85%" ValidationGroup="AgregarComentario" OnTextChanged="TB_Comentario_TextChanged" Height="94px"></asp:TextBox>
+                <br />
                 <asp:RequiredFieldValidator ID="RFV_TextComentario" runat="server" ControlToValidate="TB_Comentario" ErrorMessage="*Llene el campo" ForeColor="Black" ValidationGroup="AgregarComentario"></asp:RequiredFieldValidator>
-            </td>
-        </tr>
-        <tr>
-            <td class="auto-style17">&nbsp;</td>
-            <td class="auto-style19">
+                <br />
                 <asp:RegularExpressionValidator ID="REV_ExpresionComentario" runat="server" ErrorMessage="Caracteres no validos" ForeColor="Black" ValidationExpression="[A-Za-z0-9,.: ]+" ValidationGroup="AgregarComentario" ControlToValidate="TB_Comentario"></asp:RegularExpressionValidator>
             </td>
         </tr>
         <tr>
-            <td class="auto-style17">&nbsp;</td>
-            <td class="auto-style21">
+            <td class="auto-style17" rowspan="2">Califica el Hotel:&nbsp;&nbsp;
+                <asp:Label ID="L_Nombrehotel2" runat="server"></asp:Label>
+                <br />
+                <table class="auto-style26">
+                    <tr>
+                        <td>
+                            <asp:RadioButton ID="RB_0estrella" runat="server" GroupName="estrellas" />
+                            <asp:Image ID="I_0estrella" runat="server" Height="25px" ImageUrl="~/Vew/hoteles/calificaciones/0.jpg" Width="94px" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <asp:RadioButton ID="RB_1estrella" runat="server" GroupName="estrellas" />
+                            <asp:Image ID="I_1estrella" runat="server" Height="25px" ImageUrl="~/Vew/hoteles/calificaciones/1.jpg" Width="94px" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <asp:RadioButton ID="RB_2estrella" runat="server" GroupName="estrellas" />
+                            <asp:Image ID="I_2estrella" runat="server" Height="25px" ImageUrl="~/Vew/hoteles/calificaciones/2.jpg" Width="94px" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <asp:RadioButton ID="RB_3estrella" runat="server" GroupName="estrellas" />
+                            <asp:Image ID="I_3estrella" runat="server" Height="25px" ImageUrl="~/Vew/hoteles/calificaciones/3.jpg" Width="94px" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <asp:RadioButton ID="RB_4estrella" runat="server" GroupName="estrellas" />
+                            <asp:Image ID="I_4estrella" runat="server" Height="25px" ImageUrl="~/Vew/hoteles/calificaciones/4.jpg" Width="94px" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <asp:RadioButton ID="RB_5estrella" runat="server" GroupName="estrellas" />
+                            <asp:Image ID="I_5estrella" runat="server" Height="25px" ImageUrl="~/Vew/hoteles/calificaciones/5.jpg" Width="94px" />
+                        </td>
+                    </tr>
+                </table>
+                <br />
+                <br />
+            </td>
+        </tr>
+        <tr>
+            <td class="auto-style21" rowspan="2">
                 <asp:Button ID="B_Comentar" runat="server" OnClick="B_Comentar_Click" Text="Comentar" ValidationGroup="AgregarComentario" />
                 <asp:Label ID="L_Mensaje" runat="server"></asp:Label>
+                <br />
             </td>
         </tr>
         <tr>
             <td class="auto-style17">
-                &nbsp;</td>
-            <td class="auto-style21">
-                <br />
+                <div>
+                    <asp:Button ID="B_Calificar" runat="server" OnClick="B_Calificar_Click" Text="Calificar" Width="122px" />
+                    <br />
+                    <asp:Label ID="L_Fallocalificacion" runat="server"></asp:Label>
+                </div>
             </td>
         </tr>
     </table>
