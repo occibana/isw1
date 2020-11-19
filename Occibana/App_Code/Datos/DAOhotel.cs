@@ -61,7 +61,7 @@ public class DAOhotel
             num = int.Parse((consulta.numpersonas).ToString());
         }
 
-        if (consulta != null && (consulta.fecha_antesde != null || consulta.fecha_despuesde != null))
+        if (consulta != null && (consulta.fecha_antesde != null && consulta.fecha_despuesde != null))
         {
 
             using (var db = new Mapeo())
@@ -69,19 +69,22 @@ public class DAOhotel
                 List<Hotel> elementos = (from h in db.hotel
                                          join hm in db.hotelmunicipio on h.Idmunicipio equals hm.Idmunicipio
                                          join hz in db.hotelzona on h.Idzona equals hz.Idzona
-                                         join rh in db.reserva on h.Idhotel equals rh.Idhotel
+                                         //join rh in db.reserva on h.Idhotel equals rh.Idhotel
 
                                          select new
                                          {
                                              h,
                                              hm,
                                              hz,
-                                             rh,
+                                             //rh,
                                          }).OrderBy(h => h.h.Nombre).ToList().Select(m => new Hotel
                                          {
 
-                                             NumHabitDisponibles = ((db.habitacion.Where(x => x.Idhotel == m.h.Idhotel).Count()) - (db.reserva.Where(x => (x.Idhotel == m.h.Idhotel)&&(consulta.fecha_despuesde>=x.Fecha_llegada && consulta.fecha_antesde <= x.Fecha_salida)).Count())),/* <0? 0
-                                                                    : ((db.habitacion.Where(x => x.Idhotel == m.h.Idhotel).Count()) - (db.reserva.Where(x => (x.Idhotel == m.h.Idhotel) && (consulta.fecha_despuesde >= x.Fecha_llegada || consulta.fecha_antesde <= x.Fecha_salida)).Count()))),*/
+                                             NumHabitDisponibles = ((db.habitacion.Where(x => x.Idhotel == m.h.Idhotel).Count()) - (db.reserva.Where(x => (x.Idhotel == m.h.Idhotel)&&
+                                                                    ((consulta.fecha_despuesde>=x.Fecha_llegada && consulta.fecha_antesde <= x.Fecha_salida))).Count()) <0? 0
+                                                                    : (db.habitacion.Where(x => x.Idhotel == m.h.Idhotel).Count()) - (db.reserva.Where(x => (x.Idhotel == m.h.Idhotel) &&
+                                                                    ((consulta.fecha_despuesde >= x.Fecha_llegada && consulta.fecha_antesde <= x.Fecha_salida))).Count())),
+                                                                    
                                              Promediocalificacion = m.h.Promediocalificacion,
                                              Idhotel = m.h.Idhotel,
                                              Nombre = m.h.Nombre,
@@ -89,16 +92,10 @@ public class DAOhotel
                                              Imagen = m.h.Imagen,
                                              Municipio = m.hm.Nombre,
                                              Zona = m.hz.Nombre,
-                                             Fecha_antesde = m.rh.Fecha_salida,
-                                             Fecha_despuesde = m.rh.Fecha_llegada,
+                                             //Fecha_antesde = m.rh.Fecha_salida,
+                                             //Fecha_despuesde = m.rh.Fecha_llegada,
                                              
-                                         }).ToList();
-
-               /* if (consulta.fecha_antesde != null && consulta.fecha_despuesde !=null)
-                {
-                   
-                    elementos = elementos.Where(x => !(consulta.fecha_antesde <= x.Fecha_antesde && consulta.fecha_despuesde >= x.Fecha_despuesde)).ToList();
-                }*/
+                                         }).Where(x => x.NumHabitDisponibles > 0).ToList();
                 return elementos;
             }
 

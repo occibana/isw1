@@ -74,7 +74,7 @@ public partial class Vew_index : System.Web.UI.Page
         }
         if (DateTime.Parse(TB_DateDespuesDe.Text) < DateTime.Now)
         {
-            L_MensajeFalloFechas.Text = "La fecha espesificada debe ser menor a     "+ DateTime.Now.ToString("dd-MM-yyyy"); 
+            L_MensajeFalloFechas.Text = "La fecha especificada debe ser después de     "+ DateTime.Now.ToString("dd-MM-yyyy"); 
         }
         busqueda.zona = DDL_Zona.Text;
         busqueda.municipio = DDL_Municipio.Text;
