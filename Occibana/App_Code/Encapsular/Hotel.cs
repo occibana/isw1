@@ -41,10 +41,6 @@ public class Hotel
     private DateTime fecha_despuesde;
     [NotMapped]
     private int numHabitDisponibles;
-    [NotMapped]
-    private int habfechaantesde;
-    [NotMapped]
-    private int habfechadespuesde;
 
     [Key]
     [Column("idhotel")]
@@ -93,8 +89,4 @@ public class Hotel
     public DateTime Fecha_antesde { get => fecha_antesde; set => fecha_antesde = value; }
     [NotMapped]
     public int NumHabitDisponibles { get => numHabitDisponibles; set => numHabitDisponibles = value; }
-    [NotMapped]
-    public int Habfechaantesde { get => habfechaantesde; set => habfechaantesde = value; }
-    [NotMapped]
-    public int Habfechadespuesde { get => habfechadespuesde; set => habfechadespuesde = value; }
 }

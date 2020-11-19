@@ -230,13 +230,15 @@
                                     <table class="auto-style45">
                                         <tr>
                                             <td>después de<br />
-                                                <asp:TextBox runat="server" Width="90%" TextMode="Date" ID="TB_DateDespuesDe"></asp:TextBox>
+                                                <asp:TextBox runat="server" Width="90%" TextMode="Date" ID="TB_DateDespuesDe" ValidationGroup="filtrofechas"></asp:TextBox>
                                             </td>
                                             <td>antes de
-                                                <asp:TextBox ID="TB_DateAntesDe" runat="server" Width="90%" TextMode="Date"></asp:TextBox>
+                                                <asp:TextBox ID="TB_DateAntesDe" runat="server" Width="90%" TextMode="Date" ValidationGroup="filtrofechas"></asp:TextBox>
                                             </td>
                                         </tr>
                                     </table>
+                                    <br />
+                                    <asp:Label ID="L_MensajeFalloFechas" runat="server"></asp:Label>
                                 </td>
                                 <td class="auto-style34">
                                     <h6>ZONAS</h6>
@@ -256,7 +258,7 @@
                                         <asp:TextBox ID="TB_Maxpersonas" runat="server" Width="117px" MaxLength="2" TextMode="Number"></asp:TextBox>
                                     </p>
                                     <p>
-                                        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="TB_Maxpersonas" ErrorMessage="No se permiten caracteres especiales :)" ValidationExpression="[0-9 ]" ValidationGroup="filtrar"></asp:RegularExpressionValidator>
+                                        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="TB_Maxpersonas" ErrorMessage="No se permiten caracteres especiales" ValidationExpression="[0-9 ]" ValidationGroup="filtrar"></asp:RegularExpressionValidator>
                                     </p>
                                 </td>
                                 <td class="auto-style31">
@@ -365,7 +367,7 @@
                 <h3>Sugerencias y hoteles destacados</h3>
                 <div class="auto-style46">
                     <div class="DL_Hotelesdestacadosstyle">
-                        <asp:DataList ID="DL_Hotelesdestacados" runat="server" DataSourceID="ODS_Hotelesdestacados" RepeatDirection="Horizontal">
+                        <asp:DataList ID="DL_Hotelesdestacados" runat="server" DataSourceID="ODS_Hotelesdestacados" RepeatDirection="Horizontal" OnItemCommand="DL_Listaprincipalhoteles_ItemCommand">
                             <ItemTemplate>
                                 <div>
                                     <asp:ImageButton ID="IB_HotelDestacado" runat="server" Height="92px" Width="100px" ImageUrl='<%# Eval("Imagen") %>' CommandArgument='<%# Eval("Idhotel") %>' />

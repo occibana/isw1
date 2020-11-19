@@ -33,7 +33,7 @@ public class DAOhotel
     {
         using (var db = new Mapeo())
         {
-            return (from h in db.hotel
+            List <Hotel>hotelesdestacados = (from h in db.hotel orderby (h.Promediocalificacion != null? h.Promediocalificacion : -1) descending
                    
                     //where h.Numhabitacion > 4
                     select new
@@ -41,9 +41,12 @@ public class DAOhotel
                         h
                     }).Take(6).ToList().Select(m => new Hotel
                     {
+                        Idhotel = m.h.Idhotel,
                         Nombre = m.h.Nombre,
                         Imagen = m.h.Imagen,
+                        Promediocalificacion = m.h.Promediocalificacion,
                     }).ToList();
+            return hotelesdestacados;
         }
     }
 
@@ -52,119 +55,148 @@ public class DAOhotel
     public List<Hotel> hotelesregistrados(Filtro consulta)
     {
         int num=0;
-        Nullable<DateTime> fecha_antesde = null;
-        Nullable<DateTime> fecha_despuesde = null;
 
         if (consulta != null && consulta.numpersonas != null)
         {
             num = int.Parse((consulta.numpersonas).ToString());
         }
-        if (consulta != null && consulta.fecha_antesde != null && consulta.fecha_despuesde != null)
-        {
-            fecha_antesde = consulta.fecha_antesde;
-            fecha_despuesde = consulta.fecha_despuesde;
-        }
-        else
-        {
-            fecha_antesde = null;
-            fecha_despuesde = null;
-        }
 
-        using (var db = new Mapeo())
+        if (consulta != null && (consulta.fecha_antesde != null || consulta.fecha_despuesde != null))
         {
 
-            List<Hotel> elementos = (from h in db.hotel
-                                     join hm in db.hotelmunicipio on h.Idmunicipio equals hm.Idmunicipio
-                                     join hz in db.hotelzona on h.Idzona equals hz.Idzona
-
-                                     //join rh in db.reserva on h.Idhotel equals rh.Idhotel
-                                     //join hhab in db.habitacion on h.Idhotel equals hhab.Idhotel
-
-                                     select new
-                                     {
-                                         h,
-                                         hm,
-                                         hz,
-                                         //hhab,
-                                         //rh
-
-                                     }).OrderBy(h => h.h.Nombre).ToList().Select(m => new Hotel
-                                     {
-                                         
-                                         NumHabitDisponibles = db.habitacion.Where(x => x.Idhotel == m.h.Idhotel).Count(),
-                                         Promediocalificacion = m.h.Promediocalificacion,
-                                         Idhotel = m.h.Idhotel,
-                                         Nombre = m.h.Nombre,
-                                         Precionoche = m.h.Precionoche,
-                                         Imagen = m.h.Imagen,
-                                         Municipio = m.hm.Nombre,
-                                         Zona = m.hz.Nombre,
-                                         NumMaxPersonas = db.habitacion.Where(x => x.Numpersonas == num && x.Idhotel == m.h.Idhotel).Count() == 0?  0 : 1,
-
-                                         Habfechaantesde = db.reserva.Where(x => x.Fecha_salida > fecha_antesde).Count() ==0? 0:1,
-                                         //Habfechadespuesde = db.reserva.Where(x => x.Fecha_llegada == fecha_despuesde).Count() == 0 ? 0:1,
-                                         //Fecha_despuesde = m.rh.Fecha_llegada,
-
-                                     }).Where(x =>  (num > 0 ? x.NumMaxPersonas > 0 : x.NumMaxPersonas == 0) || (fecha_antesde != null ? x.Habfechaantesde > 0 : x.Habfechaantesde == 0)).ToList();
-            if (consulta == null)
+            using (var db = new Mapeo())
             {
+                List<Hotel> elementos = (from h in db.hotel
+                                         join hm in db.hotelmunicipio on h.Idmunicipio equals hm.Idmunicipio
+                                         join hz in db.hotelzona on h.Idzona equals hz.Idzona
+                                         join rh in db.reserva on h.Idhotel equals rh.Idhotel
+
+                                         select new
+                                         {
+                                             h,
+                                             hm,
+                                             hz,
+                                             rh,
+                                         }).OrderBy(h => h.h.Nombre).ToList().Select(m => new Hotel
+                                         {
+
+                                             NumHabitDisponibles = ((db.habitacion.Where(x => x.Idhotel == m.h.Idhotel).Count()) - (db.reserva.Where(x => (x.Idhotel == m.h.Idhotel)&&(consulta.fecha_despuesde>=x.Fecha_llegada && consulta.fecha_antesde <= x.Fecha_salida)).Count())),/* <0? 0
+                                                                    : ((db.habitacion.Where(x => x.Idhotel == m.h.Idhotel).Count()) - (db.reserva.Where(x => (x.Idhotel == m.h.Idhotel) && (consulta.fecha_despuesde >= x.Fecha_llegada || consulta.fecha_antesde <= x.Fecha_salida)).Count()))),*/
+                                             Promediocalificacion = m.h.Promediocalificacion,
+                                             Idhotel = m.h.Idhotel,
+                                             Nombre = m.h.Nombre,
+                                             Precionoche = m.h.Precionoche,
+                                             Imagen = m.h.Imagen,
+                                             Municipio = m.hm.Nombre,
+                                             Zona = m.hz.Nombre,
+                                             Fecha_antesde = m.rh.Fecha_salida,
+                                             Fecha_despuesde = m.rh.Fecha_llegada,
+                                             
+                                         }).ToList();
+
+               /* if (consulta.fecha_antesde != null && consulta.fecha_despuesde !=null)
+                {
+                   
+                    elementos = elementos.Where(x => !(consulta.fecha_antesde <= x.Fecha_antesde && consulta.fecha_despuesde >= x.Fecha_despuesde)).ToList();
+                }*/
                 return elementos;
             }
 
-            /*if (consulta.fecha_antesde != null && consulta.fecha_despuesde !=null)
-            {
-                elementos = elementos.Where(x => !(consulta.fecha_antesde <= x.Fecha_antesde && consulta.fecha_despuesde >= x.Fecha_despuesde)).ToList();
-            }*/
 
-            if (consulta.calificacion != null)
+        }
+        else
+        {
+            using (var db = new Mapeo())
             {
-                if (consulta.calificacion.Equals("--Seleccionar--"))
+
+                List<Hotel> elementos = (from h in db.hotel
+                                         join hm in db.hotelmunicipio on h.Idmunicipio equals hm.Idmunicipio
+                                         join hz in db.hotelzona on h.Idzona equals hz.Idzona
+
+                                         //join rh in db.reserva on h.Idhotel equals rh.Idhotel
+                                         //join hhab in db.habitacion on h.Idhotel equals hhab.Idhotel
+
+                                         select new
+                                         {
+                                             h,
+                                             hm,
+                                             hz,
+
+                                         }).OrderBy(h => h.h.Nombre).ToList().Select(m => new Hotel
+                                         {
+
+                                             NumHabitDisponibles = db.habitacion.Where(x => x.Idhotel == m.h.Idhotel).Count(),
+                                             Promediocalificacion = m.h.Promediocalificacion,
+                                             Idhotel = m.h.Idhotel,
+                                             Nombre = m.h.Nombre,
+                                             Precionoche = m.h.Precionoche,
+                                             Imagen = m.h.Imagen,
+                                             Municipio = m.hm.Nombre,
+                                             Zona = m.hz.Nombre,
+                                             NumMaxPersonas = db.habitacion.Where(x => x.Numpersonas == num && x.Idhotel == m.h.Idhotel).Count() == 0 ? 0 : 1,
+
+                                         }).Where(x => num > 0 ? x.NumMaxPersonas > 0 : x.NumMaxPersonas == 0).ToList();
+                if (consulta == null)
                 {
-                    elementos = elementos.Where(x => (x.Promediocalificacion <= 5) || (x.Promediocalificacion == null)).ToList();//&& (x.Promediocalificacion == null)
+                    return elementos;
+                }
+
+                /*if (consulta.fecha_antesde != null && consulta.fecha_despuesde !=null)
+                {
+                    elementos = elementos.Where(x => !(consulta.fecha_antesde <= x.Fecha_antesde && consulta.fecha_despuesde >= x.Fecha_despuesde)).ToList();
+                }*/
+
+                if (consulta.calificacion != null)
+                {
+                    if (consulta.calificacion.Equals("--Seleccionar--"))
+                    {
+                        elementos = elementos.Where(x => (x.Promediocalificacion <= 5) || (x.Promediocalificacion == null)).ToList();//&& (x.Promediocalificacion == null)
+                    }
+                    else
+                    {
+                        elementos = elementos.Where(x => x.Promediocalificacion == (int.Parse(consulta.calificacion))).ToList();
+                    }
+
+                }
+
+                if (consulta.nombrehotel != null)
+                {
+                    elementos = elementos.Where(x => x.Nombre.ToUpper().Equals(consulta.nombrehotel)).ToList();
+                }
+                if (consulta.preciomin != null && consulta.preciomax != null)
+                {
+                    elementos = elementos.Where(x => x.Precionoche <= consulta.preciomax && x.Precionoche >= consulta.preciomin).ToList();
                 }
                 else
                 {
-                    elementos = elementos.Where(x => x.Promediocalificacion == (int.Parse(consulta.calificacion))).ToList();
+                    if (consulta.preciomax != null && consulta.preciomin == null)
+                    {
+                        elementos = elementos.Where(x => x.Precionoche <= consulta.preciomax).ToList();
+                    }
+                    if (consulta.preciomin != null && consulta.preciomax == null)
+                    {
+                        elementos = elementos.Where(x => x.Precionoche >= consulta.preciomin).ToList();
+                    }
                 }
-                
-            }
-            
-            if (consulta.nombrehotel != null)
-            {
-                elementos = elementos.Where(x => x.Nombre.ToUpper().Equals(consulta.nombrehotel)).ToList();
-            }
-            if (consulta.preciomin != null && consulta.preciomax != null)
-            {
-                elementos = elementos.Where(x => x.Precionoche <= consulta.preciomax && x.Precionoche >= consulta.preciomin).ToList();
-            }
-            else
-            {
-                if (consulta.preciomax != null && consulta.preciomin == null)
+                if (consulta.zona != null && consulta.municipio != null)
                 {
-                    elementos = elementos.Where(x => x.Precionoche <= consulta.preciomax).ToList();
+                    elementos = elementos.Where(x => (x.Municipio.Equals(consulta.municipio)) && (x.Zona.Equals(consulta.zona))).ToList();
                 }
-                if (consulta.preciomin != null && consulta.preciomax == null)
+                else
                 {
-                    elementos = elementos.Where(x => x.Precionoche >= consulta.preciomin).ToList();
+                    if (consulta.municipio != null && consulta.zona == null)
+                    {
+                        elementos = elementos.Where(x => x.Municipio.Equals(consulta.municipio)).ToList();
+                    }
+                    else
+                    if (consulta.zona != null && consulta.municipio == null)
+                    {
+                        elementos = elementos.Where(x => x.Zona.Equals(consulta.zona)).ToList();
+                    }
                 }
-            }         
-            if (consulta.zona != null && consulta.municipio != null)
-            {
-                elementos = elementos.Where(x => (x.Municipio.Equals(consulta.municipio)) && (x.Zona.Equals(consulta.zona))).ToList();
+
+                return elementos;
             }
-            else
-            {
-                if (consulta.municipio != null && consulta.zona == null)
-                {
-                    elementos = elementos.Where(x => x.Municipio.Equals(consulta.municipio)).ToList();
-                }else
-                if (consulta.zona != null && consulta.municipio == null)
-                {
-                    elementos = elementos.Where(x => x.Zona.Equals(consulta.zona)).ToList();
-                }
-            }
-            
-            return elementos;
         }
     }
     //select info hotel panel hotel
