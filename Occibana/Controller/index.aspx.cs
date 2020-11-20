@@ -19,6 +19,7 @@ public partial class Vew_index : System.Web.UI.Page
         Hotel hotelinfo = new Hotel();
         hotelinfo.Idhotel = int.Parse(e.CommandArgument.ToString());
         Session["visitarhotel"] = hotelinfo;
+        Session.Remove("calificarhotel");
         Response.Redirect("PanelHotel.aspx");
     }
 
@@ -70,12 +71,16 @@ public partial class Vew_index : System.Web.UI.Page
         }
         if (TB_DateDespuesDe.Text != String.Empty)
         {
-            busqueda.fecha_despuesde = DateTime.Parse(TB_DateDespuesDe.Text);
+            if (DateTime.Parse(TB_DateDespuesDe.Text) < DateTime.Now)
+            {
+                L_MensajeFalloFechas.Text = "La fecha especificada debe ser después de     " + DateTime.Now.ToString("dd-MM-yyyy");
+            }
+            else
+            {
+                busqueda.fecha_despuesde = DateTime.Parse(TB_DateDespuesDe.Text);
+            }
         }
-        if (DateTime.Parse(TB_DateDespuesDe.Text) < DateTime.Now)
-        {
-            L_MensajeFalloFechas.Text = "La fecha especificada debe ser después de     "+ DateTime.Now.ToString("dd-MM-yyyy"); 
-        }
+        
         busqueda.zona = DDL_Zona.Text;
         busqueda.municipio = DDL_Municipio.Text;
         busqueda.calificacion = DDL_Calificacion.Text;

@@ -82,50 +82,74 @@ public partial class Vew_ComentariosHotel : System.Web.UI.Page
     protected void B_Calificar_Click(object sender, EventArgs e)
     {
         Reserva inforeserva = new Reserva();
-        inforeserva.Id = int.Parse(Session["calificarhotel"].ToString());
-        
-        inforeserva = new DAOReserva().inforeserva(inforeserva);
-
-        if (inforeserva.Calificacion == null)
+        if (Session["calificarhotel"]!=null)
         {
-            if (RB_0estrella.Checked)
-            {
-                inforeserva.Calificacion = 0;
-            }
-            else if (RB_1estrella.Checked)
-            {
-                inforeserva.Calificacion = 1;
-            }
-            else if (RB_2estrella.Checked)
-            {
-                inforeserva.Calificacion = 2;
-            }
-            else if (RB_3estrella.Checked)
-            {
-                inforeserva.Calificacion = 3;
-            }
-            else if (RB_4estrella.Checked)
-            {
-                inforeserva.Calificacion = 4;
-
-            }
-            else if (RB_5estrella.Checked)
-            {
-                inforeserva.Calificacion = 5;
-            }
-
-            new DAOReserva().actualizarcalificacion(inforeserva);
-            L_Fallocalificacion.Text = "Calificacion realizada con exito";
-            new DAOReserva().cantidaddereservasconcalificacion(inforeserva);
-            var promediocalificacion = new DAOReserva().cantidaddereservasconcalificacion(inforeserva);
-            Hotel hotel = new Hotel();
-            hotel.Idhotel = int.Parse((inforeserva.Idhotel).ToString());
-            hotel.Promediocalificacion = promediocalificacion;
-            new DAOhotel().actualizarcalificacion(hotel);
+            inforeserva.Id = int.Parse(Session["calificarhotel"].ToString());
         }
-        else if (inforeserva.Calificacion != null)
+        else
         {
-            L_Fallocalificacion.Text = "Este servicio ha sido calificado antes";
+            inforeserva.Idhotel = ((Hotel)Session["visitarhotel"]).Idhotel;
+            inforeserva.Idusuario = ((Registro)Session["usuario"]).Id;
+            inforeserva = new DAOReserva().ultimareserva(inforeserva);
+        }
+
+        if (inforeserva != null)
+        {
+            inforeserva = new DAOReserva().inforeserva(inforeserva);
+
+            if (inforeserva.Calificacion == null)
+            {
+
+                if (RB_0estrella.Checked)
+                {
+                    inforeserva.Calificacion = 0;
+                }
+                else if (RB_1estrella.Checked)
+                {
+                    inforeserva.Calificacion = 1;
+                }
+                else if (RB_2estrella.Checked)
+                {
+                    inforeserva.Calificacion = 2;
+                }
+                else if (RB_3estrella.Checked)
+                {
+                    inforeserva.Calificacion = 3;
+                }
+                else if (RB_4estrella.Checked)
+                {
+                    inforeserva.Calificacion = 4;
+
+                }
+                else if (RB_5estrella.Checked)
+                {
+                    inforeserva.Calificacion = 5;
+                }
+
+                if (inforeserva.Calificacion != null)
+                {
+                    new DAOReserva().actualizarcalificacion(inforeserva);
+                    L_Fallocalificacion.Text = "Calificacion realizada con exito";
+                    new DAOReserva().cantidaddereservasconcalificacion(inforeserva);
+                    var promediocalificacion = new DAOReserva().cantidaddereservasconcalificacion(inforeserva);
+                    Hotel hotel = new Hotel();
+                    hotel.Idhotel = int.Parse((inforeserva.Idhotel).ToString());
+                    hotel.Promediocalificacion = promediocalificacion;
+                    new DAOhotel().actualizarcalificacion(hotel);
+                }
+                else
+                {
+                    L_Fallocalificacion.Text = "Seleccione una opcion a calificar";
+                }
+
+            }
+            else if (inforeserva.Calificacion != null)
+            {
+                L_Fallocalificacion.Text = "Este servicio ha sido calificado antes";
+            }
+        }else if (inforeserva == null)
+        {
+            L_Fallocalificacion.Text = "Todas sus reservas han sido calificadas";
         }
     }
 }

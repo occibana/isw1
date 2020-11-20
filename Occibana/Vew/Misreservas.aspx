@@ -50,6 +50,7 @@
                                         <asp:BoundField DataField="Mediopago" HeaderText="Mediopago" SortExpression="Mediopago" />
                                         <asp:BoundField DataField="Calificacion" HeaderText="Calificacion" SortExpression="Calificacion" Visible="False" />
                                         <asp:BoundField DataField="Nombrehotel" HeaderText="Nombrehotel" SortExpression="Nombrehotel" />
+                                        <asp:BoundField DataField="Calificacion" HeaderText="Calificacion" SortExpression="Calificacion" />
                                         <asp:ButtonField CommandName="calificarreserva" HeaderText="Calificar y comentar" Text="calificar/comentar" />
                                         <asp:BoundField DataField="Idhotel" HeaderText="Idhotel" SortExpression="Idhotel" Visible="False" />
                                     </Columns>

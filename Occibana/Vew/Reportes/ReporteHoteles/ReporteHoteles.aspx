@@ -18,7 +18,7 @@
     <CR:CrystalReportViewer ID="CRV_ReporteHoteles" runat="server" AutoDataBind="True" GroupTreeImagesFolderUrl="" Height="1202px" ReportSourceID="CRS_ReporteHoteles" ToolbarImagesFolderUrl="" ToolPanelWidth="200px" Width="1104px" />
     </div>
     <CR:CrystalReportSource ID="CRS_ReporteHoteles" runat="server">
-        <Report FileName="C:\Users\asant\source\repos\occibana\isw1\Occibana\ReportesOccibana\CR_ReporteHoteles.rpt">
+        <Report FileName="~\ReportesOccibana\CR_ReporteHoteles.rpt">
         </Report>
     </CR:CrystalReportSource>
 </asp:Content>

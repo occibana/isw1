@@ -83,6 +83,7 @@ public class DAOReserva
                         Apellido = m.r.Apellido,
                         Correo = m.r.Correo,
                         Mediopago = m.r.Mediopago,
+                        Calificacion = m.r.Calificacion,
                     }).ToList();
         }
         //return new Mapeo().reserva.Where(x => x.Idusuario == disponibilidadE.Id).ToList();
@@ -120,6 +121,17 @@ public class DAOReserva
         reservas = Math.Round(variable);
         return int.Parse(reservas.ToString());
     }
+
+
+    //informacion de la reserva - ultima reserva sin calificar
+    public Reserva ultimareserva(Reserva reservaE)
+    {
+        Reserva ultimareserva = new Mapeo().reserva.Where(x => (x.Idhotel == reservaE.Idhotel) && (x.Idusuario == reservaE.Idusuario) && (x.Calificacion == null)).FirstOrDefault();
+        
+        return ultimareserva;
+    }
+
+
     //actualizar promedio de calificacion
 
 
