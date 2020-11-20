@@ -18,6 +18,7 @@ public partial class Vew_Reserva : System.Web.UI.Page
             hotel = new DAOhotel().infohotel(hotel);
             L_NombreHotel.Text = hotel.Nombre.ToUpper();
             L_Habitacionesdisponibles.Text = hotel.Numhabitacion.ToString();
+            L_PrecioNoche.Text = hotel.Precionoche.ToString();
             if (Session["usuario"] != null)
             {
                 L_Nombreusuario.Text = ((Registro)Session["usuario"]).Nombre;
@@ -62,41 +63,48 @@ public partial class Vew_Reserva : System.Web.UI.Page
         reserva.Fecha_salida = C_FechaSalida.SelectedDate;
         reserva.Fecha_llegada = C_FechaLlegada.SelectedDate;
         reserva.Numpersona = int.Parse(TB_NumPersonas.Text);
-        if (reserva.Fecha_llegada == null || reserva.Fecha_salida == null)
+        if (reserva.Fecha_llegada < DateTime.Now)
         {
-            L_Habitacionesdisponibles.Text = "Seleccione las fechas correctamente";
+            L_Habitacionesdisponibles.Text = "Seleccione fechas de llegada despues de "+ DateTime.Now.Date;
             deshabilitarbotones();
         }
-        else if (reserva.Fecha_llegada != null || reserva.Fecha_salida != null)
+        else
         {
-            if (C_FechaLlegada.SelectedDate > C_FechaSalida.SelectedDate)
+            if (reserva.Fecha_llegada == null || reserva.Fecha_salida == null)
             {
-                L_Habitacionesdisponibles.Text = "Seleccione una fecha de salida posterior a\n" + C_FechaLlegada.SelectedDate;
+                L_Habitacionesdisponibles.Text = "Seleccione las fechas correctamente";
+                deshabilitarbotones();
             }
-            else if (C_FechaLlegada.SelectedDate <= C_FechaSalida.SelectedDate)
+            else if (reserva.Fecha_llegada != null || reserva.Fecha_salida != null)
             {
-                var hdisponibles = new DAOReserva().habitacionesdisponibles(reserva);
-                L_Habitacionesdisponibles.Text = (hdisponibles).ToString();
-                if (hdisponibles >= 1)
+                if (C_FechaLlegada.SelectedDate > C_FechaSalida.SelectedDate)
                 {
-                    var fechasreservadas = new DAOReserva().fechasdisponibles(reserva);
-                    if (fechasreservadas == 0)//cero personas han reservado en esa fecha
+                    L_Habitacionesdisponibles.Text = "Seleccione una fecha de salida posterior a\n" + C_FechaLlegada.SelectedDate;
+                }
+                else if (C_FechaLlegada.SelectedDate <= C_FechaSalida.SelectedDate)
+                {
+                    var hdisponibles = new DAOReserva().habitacionesdisponibles(reserva);
+                    L_Habitacionesdisponibles.Text = (hdisponibles).ToString();
+                    if (hdisponibles >= 1)
                     {
-                        habilitarbotones();
+                        var fechasreservadas = new DAOReserva().fechasdisponibles(reserva);
+                        if (fechasreservadas == 0)//cero personas han reservado en esa fecha
+                        {
+                            habilitarbotones();
+                        }
+                        else
+                        {
+                            L_Habitacionesdisponibles.Text = "0";
+                            deshabilitarbotones();
+                        }
                     }
                     else
                     {
-                        L_Habitacionesdisponibles.Text = "0";
                         deshabilitarbotones();
                     }
                 }
-                else
-                {
-                    deshabilitarbotones();
-                }
             }
         }
-        
     }
 
     protected void deshabilitarbotones()

@@ -45,15 +45,18 @@
                                                 <br />
                                                 Numero de tarjeta<br />
                                                 <asp:TextBox ID="TB_Numerotarjeta" runat="server" TextMode="Number"></asp:TextBox>
+                                                <asp:RequiredFieldValidator ID="RFV_TB_Numerotarjeta" runat="server" ControlToValidate="TB_Numerotarjeta" ErrorMessage="*" ValidationGroup="compramembresia"></asp:RequiredFieldValidator>
                                                 <br />
+                                                <asp:RangeValidator ID="RV_TB_Numerotarjeta" runat="server" ControlToValidate="TB_Numerotarjeta" ErrorMessage="Numero no valido" MaximumValue="999999999999999999" MinimumValue="10000000000000" ValidationGroup="compramembresia"></asp:RangeValidator>
                                                 <br />
                                             </td>
                                             <td>
                                                 <br />
                                                 Código de seguridád<br />
                                                 <asp:TextBox ID="TB_Codigoseguridad" runat="server" TextMode="Number"></asp:TextBox>
+                                                <asp:RequiredFieldValidator ID="RFV_TB_Codigoseguridad" runat="server" ErrorMessage="*" ValidationGroup="compramembresia" ControlToValidate="TB_Codigoseguridad"></asp:RequiredFieldValidator>
                                                 <br />
-                                                <br />
+                                                <asp:RangeValidator ID="RV_TB_Codigoseguridad" runat="server" ControlToValidate="TB_Codigoseguridad" ErrorMessage="Numero no valido" MaximumValue="9999" MinimumValue="1000" ValidationGroup="compramembresia"></asp:RangeValidator>
                                             </td>
                                         </tr>
                                     </table>
@@ -68,21 +71,27 @@
                                                 Nombre<br />
                                                 (Propietario de la tarjeta)<br />
                                                 <asp:TextBox ID="TB_Nombrepropietario" runat="server"></asp:TextBox>
+                                                <asp:RequiredFieldValidator ID="RFV_TB_Nombreppropietario" runat="server" ErrorMessage="*" ValidationGroup="compramembresia" ControlToValidate="TB_Nombrepropietario"></asp:RequiredFieldValidator>
                                                 <br />
+                                                <asp:RegularExpressionValidator ID="REV_TB_Nombrepropietario" runat="server" ControlToValidate="TB_Nombrepropietario" ErrorMessage="caracteres no validos" ValidationExpression="[A-Za-zñ ]+" ValidationGroup="compramembresia"></asp:RegularExpressionValidator>
                                                 <br />
                                             </td>
                                             <td>
                                                 <br />
                                                 Direccion de residencia<br />
                                                 <asp:TextBox ID="TB_Direccionpropietario" runat="server"></asp:TextBox>
+                                                <asp:RequiredFieldValidator ID="RFV_TB_Direccionpropietario" runat="server" ErrorMessage="*" ValidationGroup="compramembresia" ControlToValidate="TB_Direccionpropietario"></asp:RequiredFieldValidator>
                                                 <br />
+                                                <asp:RegularExpressionValidator ID="REV_TB_Direccionpropietario" runat="server" ControlToValidate="TB_Direccionpropietario" ErrorMessage="caracteres no validos" ValidationExpression="[A-Za-z1-9# ]+" ValidationGroup="compramembresia"></asp:RegularExpressionValidator>
                                             </td>
                                             <td>
                                                 <br />
                                                 Cedula de ciudadania<br />
                                                 (Propietario de la tarjeta)<br />
                                                 <asp:TextBox ID="TB_cedulapropietario" runat="server"></asp:TextBox>
+                                                <asp:RequiredFieldValidator ID="RFV_TB_Cedulapropietario" runat="server" ErrorMessage="*" ValidationGroup="compramembresia" ControlToValidate="TB_cedulapropietario"></asp:RequiredFieldValidator>
                                                 <br />
+                                                <asp:RegularExpressionValidator ID="REV_TB_cedulapropietario" runat="server" ControlToValidate="TB_cedulapropietario" ErrorMessage="caracteres no validos" ValidationExpression="[0-9]+" ValidationGroup="compramembresia"></asp:RegularExpressionValidator>
                                                 <br />
                                             </td>
                                         </tr>
@@ -103,14 +112,18 @@
                                                 <br />
                                                 Usuario<br />
                                                 <asp:TextBox ID="TB_Usuario" runat="server"></asp:TextBox>
+                                                <asp:RequiredFieldValidator ID="RFV_TB_Usuario" runat="server" ErrorMessage="*" ValidationGroup="compramembresia" ControlToValidate="TB_Usuario"></asp:RequiredFieldValidator>
                                                 <br />
+                                                <asp:RegularExpressionValidator ID="REV_TB_Usuario" runat="server" ControlToValidate="TB_Usuario" ErrorMessage="caracteres no validos" ValidationExpression="[A-Za-z1-9]+" ValidationGroup="compramembresia"></asp:RegularExpressionValidator>
                                                 <br />
                                             </td>
                                             <td>
                                                 <br />
                                                 Contraseña<br />
                                                 <asp:TextBox ID="TB_Contrasena" runat="server" TextMode="Password"></asp:TextBox>
+                                                <asp:RequiredFieldValidator ID="RFV_TB_Contrasena" runat="server" ErrorMessage="*" ValidationGroup="compramembresia" ControlToValidate="TB_Contrasena"></asp:RequiredFieldValidator>
                                                 <br />
+                                                <asp:RegularExpressionValidator ID="REV_TB_Contrasena" runat="server" ControlToValidate="TB_Contrasena" ErrorMessage="caracteres no validos" ValidationExpression="[A-Za-z1-9]+" ValidationGroup="compramembresia"></asp:RegularExpressionValidator>
                                                 <br />
                                             </td>
                                         </tr>
@@ -128,13 +141,14 @@
                             </tr>
                             <tr>
                                 <td colspan="3">
-                                    <asp:Button ID="B_comprar" runat="server" Text="COMPRAR" OnClick="B_comprar_Click" />
+                                    <asp:Button ID="B_comprar" runat="server" Text="COMPRAR" OnClick="B_comprar_Click" ValidationGroup="compramembresia" />
                                     <br />
                                     <br />
                                     <asp:Button ID="B_Volver" runat="server" OnClick="B_Volver_Click" Text="VOLVER AL PERFIL" />
                                     <br />
                                     <br />
                                     <asp:Label ID="L_error" runat="server"></asp:Label>
+                                    <br />
                                 </td>
                             </tr>
                         </table>

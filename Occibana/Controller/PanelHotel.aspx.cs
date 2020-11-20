@@ -21,6 +21,7 @@ public partial class Vew_PanelHotel : System.Web.UI.Page
             L_Panelhotelmunicipio.Text = (new DAOhotel().municipio(hotel)).Nombre;
             L_Panelhotelhabitaciones.Text = hotel.Numhabitacion.ToString();
             L_Panelhotelprecio.Text = hotel.Precionoche.ToString();
+            L_Panelhotelcalificacion.Text = hotel.Promediocalificacion.ToString()+" Estrellas";
             I_Panelimagenprincipal.ImageUrl = hotel.Imagen.ToString();
 
             L_Descripcion.Text = hotel.Descripcion;

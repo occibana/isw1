@@ -171,6 +171,10 @@
                                                                                     <asp:ListItem>EFECTIVO</asp:ListItem>
                                                                                     <asp:ListItem>TARJETA</asp:ListItem>
                                                                                 </asp:CheckBoxList>
+                                                                                <br />
+                                                                                PRECIO NOCHE:
+                                                                                <br />
+                                                                                <asp:Label ID="L_PrecioNoche" runat="server"></asp:Label>
                                                                             </div>
                                                                         </td>
                                                                     </tr>
