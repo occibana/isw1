@@ -30,9 +30,7 @@ public class DAOReserva
     public int fechasdisponibles(Reserva disponibilidadE)
     {
         return new Mapeo().reserva.Where(x => (x.Idhotel == disponibilidadE.Idhotel) && 
-        ((disponibilidadE.Fecha_llegada >=  x.Fecha_llegada && disponibilidadE.Fecha_llegada <= x.Fecha_salida) ||
-        (disponibilidadE.Fecha_salida >= x.Fecha_llegada && disponibilidadE.Fecha_salida <= x.Fecha_salida)
-          )).ToList().Count();
+        (disponibilidadE.Fecha_llegada >=  x.Fecha_llegada && disponibilidadE.Fecha_llegada <= x.Fecha_salida) && (x.Numpersona == disponibilidadE.Numpersona)).ToList().Count();                                                                                                                        //(disponibilidadE.Fecha_salida >= x.Fecha_llegada && disponibilidadE.Fecha_salida <= x.Fecha_salida)                                                                                                                                                                        //)).ToList().Count();
     }
 
     //actualiza estado de habitaciones

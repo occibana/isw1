@@ -83,14 +83,15 @@ public partial class Vew_Reserva : System.Web.UI.Page
                 }
                 else if (C_FechaLlegada.SelectedDate <= C_FechaSalida.SelectedDate)
                 {
-                    var hdisponibles = new DAOReserva().habitacionesdisponibles(reserva);
-                    L_Habitacionesdisponibles.Text = (hdisponibles).ToString();
+                    var hdisponibles = new DAOReserva().habitacionesdisponibles(reserva);//hdisponibles-fechasreservadas
+                    var fechasreservadas = new DAOReserva().fechasdisponibles(reserva);
+                    var disponibilidad = hdisponibles - fechasreservadas;
                     if (hdisponibles >= 1)
                     {
-                        var fechasreservadas = new DAOReserva().fechasdisponibles(reserva);
-                        if (fechasreservadas == 0)//cero personas han reservado en esa fecha
+                        if (disponibilidad > 0)
                         {
                             habilitarbotones();
+                            L_Habitacionesdisponibles.Text = (disponibilidad).ToString();
                         }
                         else
                         {
@@ -100,6 +101,7 @@ public partial class Vew_Reserva : System.Web.UI.Page
                     }
                     else
                     {
+                        L_Habitacionesdisponibles.Text = "No hay habitaciones disponibles para ese numero de personas";
                         deshabilitarbotones();
                     }
                 }
