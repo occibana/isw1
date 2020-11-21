@@ -24,6 +24,7 @@ public partial class Vew_PanelHotel : System.Web.UI.Page
             L_Panelhotelcalificacion.Text = hotel.Promediocalificacion.ToString()+" Estrellas";
             I_Panelimagenprincipal.ImageUrl = hotel.Imagen.ToString();
 
+            L_Direccion.Text = hotel.Direccion;
             L_Descripcion.Text = hotel.Descripcion;
             L_Condicion.Text = hotel.Condicion;
             L_Checkin.Text = hotel.Checkin;

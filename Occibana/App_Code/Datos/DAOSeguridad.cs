@@ -92,4 +92,10 @@ public class DAOSeguridad
     {
         return new Mapeo().membresia.Where(x => x.Idusuario == userid && x.Fecha_vencimiento < DateTime.Now).FirstOrDefault();
     }
+
+    //info compra
+    public Membresia fechavencimiento(Registro usuarioidE)
+    {
+        return new Mapeo().membresia.Where(x=> x.Idusuario == usuarioidE.Id).FirstOrDefault();
+    }
 }

@@ -125,7 +125,10 @@
                                         <br />
                                         <table class="auto-style16">
                                             <tr>
-                                                <td colspan="2"><strong>
+                                                <td colspan="2">DIRECCIÓN<br /> <strong>
+                                                    <br />
+                                                    <asp:Label ID="L_Direccion" runat="server"></asp:Label>
+                                                    <br />
                                                     <br />
                                                     DESCRIPCIÓN<br />
                                                     <br />

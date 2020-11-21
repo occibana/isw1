@@ -29,6 +29,7 @@ public class Hotel
     private string imagen_secundaria2;
     private string condicionesbioseguridad;
     private Nullable<int> promediocalificacion;
+    private string direccion;
     [NotMapped]
     private string zona;
     [NotMapped]
@@ -75,6 +76,8 @@ public class Hotel
     public string Condicionesbioseguridad { get => condicionesbioseguridad; set => condicionesbioseguridad = value; }
     [Column("promcalificacion")]
     public Nullable<int> Promediocalificacion { get => promediocalificacion; set => promediocalificacion = value; }
+    [Column("direccion")]
+    public string Direccion { get => direccion; set => direccion = value; }
     [NotMapped]
     public string Municipio { get => municipio; set => municipio = value; }
     [NotMapped]
@@ -89,4 +92,5 @@ public class Hotel
     public DateTime Fecha_antesde { get => fecha_antesde; set => fecha_antesde = value; }
     [NotMapped]
     public int NumHabitDisponibles { get => numHabitDisponibles; set => numHabitDisponibles = value; }
+    
 }

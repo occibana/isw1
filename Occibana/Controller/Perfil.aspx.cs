@@ -37,6 +37,7 @@ public partial class Vew_Perfil : System.Web.UI.Page
                     usuario.Id = ((Registro)Session["usuario"]).Id;
                     usuario.Idestado = 0;
                     new DAOSeguridad().actualizarmembresia(usuario);
+                    Response.Redirect("Perfil.aspx");
                 }
             }
             else

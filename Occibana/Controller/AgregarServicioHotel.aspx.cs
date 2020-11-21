@@ -20,7 +20,7 @@ public partial class Vew_AgregarServicioHotel : System.Web.UI.Page
         }
     }
 
-    protected void Button1_Click(object sender, EventArgs e)
+    protected void B_Volver_Click(object sender, EventArgs e)
     {
         Response.Redirect("Perfil.aspx");
     }
@@ -41,6 +41,7 @@ public partial class Vew_AgregarServicioHotel : System.Web.UI.Page
         serviciohotel.Condicion = TB_Condiciones.Text;
         serviciohotel.Usuarioencargado = ((Registro)Session["usuario"]).Usuario;
         serviciohotel.Condicionesbioseguridad = TB_descripcioncovid19.Text;
+        serviciohotel.Direccion = TB_Direccion.Text;
 
 
         //verifica si hay archivos seleccionados

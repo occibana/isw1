@@ -148,8 +148,8 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td rowspan="2">IMAGEN ADICIONAL:</td>
-                                        <td class="auto-style18" rowspan="2">
+                                        <td rowspan="3">IMAGEN ADICIONAL:</td>
+                                        <td class="auto-style18" rowspan="3">
                                             <asp:Image ID="I_AdicionalAnadirHotel" runat="server" Height="112px" ImageUrl="~/Vew/img/hotelvacio.png" Width="167px" />
                                             <br />
                                             <asp:FileUpload ID="FU_ImgAdicional" runat="server" />
@@ -158,6 +158,15 @@
                                             <asp:Label ID="L_CargarimagenAgregarHotel0" runat="server"></asp:Label>
                                             <br />
                                             <br />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="auto-style22">DIRECCION/UBICACIÓN</td>
+                                        <td>
+                                            <asp:TextBox ID="TB_Direccion" runat="server"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RFV_TB_Direccion" runat="server" ControlToValidate="TB_Direccion" ErrorMessage="*" ValidationGroup="AnadirHotel"></asp:RequiredFieldValidator>
+                                            <br />
+                                                <asp:RegularExpressionValidator ID="REV_TB_Direccion" runat="server" ControlToValidate="TB_Direccion" ErrorMessage="Caracteres no validos" ValidationExpression="[A-Za-z0-9,.: ]+" ValidationGroup="AnadirHotel"></asp:RegularExpressionValidator>
                                         </td>
                                     </tr>
                                     <tr>
@@ -227,7 +236,7 @@
                     <br />
                     <br />
                     <br />
-                    <asp:Button ID="B_Volver" runat="server" Text="VOLVER AL PERFIL" OnClick="Button1_Click" />
+                    <asp:Button ID="B_Volver" runat="server" Text="VOLVER AL PERFIL" OnClick="B_Volver_Click" />
                     <br />
                     <br />
                 </div>

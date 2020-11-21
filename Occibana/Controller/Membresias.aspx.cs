@@ -27,11 +27,13 @@ public partial class Vew_Membresias : System.Web.UI.Page
                 B_comprar.Enabled = false;
 
             
-                DateTime fechavencimiento = DateTime.Now;
                 L_Actualizar_Comprar.Text = "Actualizar membresía";
                 L_Mensajecompra.Text = "El costo de actualización es de: ";
                 L_Costo.Text = "50.000 ";
-                L_vencimiento.Text = (fechavencimiento.AddYears(1)).ToString();
+                Registro usuario = new Registro();
+                usuario.Id = ((Registro)Session["usuario"]).Id;
+                Membresia fechavencimiento = new DAOSeguridad().fechavencimiento(usuario);
+                L_vencimiento.Text = (fechavencimiento.Fecha_vencimiento).ToString();
             }
             else
             {
