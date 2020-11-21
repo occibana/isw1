@@ -389,7 +389,7 @@
                     <asp:Image ID="Image2" runat="server" Height="120px" ImageUrl="~/Vew/img/fotoefectos.com_.jpg" Width="148px" />
                     <br />
                     <br />
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tincidunt congue ligula in rutrum. Morbi nec lacus condimentum, hendrerit mi eu, feugiat.<br />
+                    Occibana, los mejores hoteles de la sabana occidente de Cundinamarca en una sola página web y con disponibilidades a un clic<br />
                     <br />
                     <div class="auto-style21">
                         <br />
@@ -397,18 +397,17 @@
                             <tr>
                                 <td>MISION<br />
                                     <br />
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tincidunt congue ligula in rutrum. Morbi nec lacus condimentum, hendrerit mi eu, feugiat</td>
+                                    Ser reconocidos a nimer municipal y a nuvel cundinamarca como la mejor opcion para reserva de hoteles.</td>
                                 <td>VISION<br />
                                     <br />
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tincidunt congue ligula in rutrum. Morbi nec lacus condimentum, hendrerit mi eu, feugiat</td>
+                                    Ser reconocidos en el 2021 como una plataforma segura y servir a nuestros clientes garantizando satisfaccion en cada uno de nuestros servicios.</td>
                             </tr>
                         </table>
                         <div class="auto-style24">
                             <br />
                             LEMA<br />
                             <br />
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tincidunt congue ligula in rutrum. Morbi nec lacus condimentum, hendrerit mi eu, feugia.
-                        </div>
+                            Los mejores hoteles de la sabana occidente a un solo clic</div>
                         <br />
                         <br />
                         <br />
