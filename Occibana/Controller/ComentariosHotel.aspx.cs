@@ -54,29 +54,36 @@ public partial class Vew_ComentariosHotel : System.Web.UI.Page
             comenta.Id_usuario = ((Registro)Session["usuario"]).Id;
             comenta.Comentario = TB_Comentario.Text;
             comenta.Fecha_comentario = DateTime.Now;
-            //new DAOComentarios().consulta(comenta);
-            new DAOComentarios().insertComentario(comenta);
-            TB_Comentario.Text = "";
-            L_Mensaje.Text = "Comentario Agregado.";
-           // cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Comentario Agregado');</script>");
+            
+            Boolean consulta = new DAOComentarios().consulta(comenta);
+            if (consulta == true)
+            {
+                new DAOComentarios().insertComentario(comenta);
+                TB_Comentario.Text = "";
+                L_Mensaje.Text = "Comentario Agregado.";
+            }
+            else
+            {
+                L_Mensaje.Text = "No puede comentar.";
+                cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('No tiene permitido comentar');</script>");
+            }
+
+           // new DAOComentarios().insertComentario(comenta);
+           // TB_Comentario.Text = "";
+           // L_Mensaje.Text = "Comentario Agregado.";
+           //// cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Comentario Agregado');</script>");
             
         }
-        catch 
+        catch (Exception ex) 
         {
             L_Mensaje.Text = "Para comentar, inicie sesion.";
             L_Mensaje.Visible = true;
             TB_Comentario.Text = "";
             cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('No tiene permitido comentar');</script>");
-            //Response.Redirect("ComentariosHotel.aspx");
-            
+            //Response.Redirect("ComentariosHotel.aspx"); 
         }
 
 
-    }
-
-    protected void TB_Comentario_TextChanged(object sender, EventArgs e)
-    {
-        //L_Mensaje.Visible = false;
     }
 
     protected void B_Calificar_Click(object sender, EventArgs e)

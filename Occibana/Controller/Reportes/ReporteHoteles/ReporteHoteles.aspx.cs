@@ -28,6 +28,7 @@ public partial class Vew_Reportes_ReporteHoteles_ReporteHoteles : System.Web.UI.
         CRS_ReporteHoteles.ReportDocument.SetDataSource(llenarReporte(usuario));
         CRV_ReporteHoteles.ReportSource = CRS_ReporteHoteles;
     }
+
     public ReporteHoteles llenarReporte(string usuario)
     {
         ReporteHoteles informe = new ReporteHoteles();

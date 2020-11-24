@@ -91,7 +91,7 @@
                 <asp:Label ID="L_Usuario" runat="server" Font-Size="Large"></asp:Label>
             </td>
             <td class="auto-style23" rowspan="2">
-                <asp:TextBox ID="TB_Comentario" runat="server" MaxLength="250" TextMode="MultiLine" Width="85%" ValidationGroup="AgregarComentario" OnTextChanged="TB_Comentario_TextChanged" Height="94px"></asp:TextBox>
+                <asp:TextBox ID="TB_Comentario" runat="server" MaxLength="250" TextMode="MultiLine" Width="85%" ValidationGroup="AgregarComentario" Height="94px"></asp:TextBox>
                 <br />
                 <asp:RequiredFieldValidator ID="RFV_TextComentario" runat="server" ControlToValidate="TB_Comentario" ErrorMessage="*Llene el campo" ForeColor="Black" ValidationGroup="AgregarComentario"></asp:RequiredFieldValidator>
                 <br />

@@ -36,4 +36,9 @@ public partial class Vew_Misreservas : System.Web.UI.Page
             Response.Redirect("ComentariosHotel.aspx"); 
         }
     }
+
+    protected void B_ReporteReservas_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Reportes/ReporteHoteles/ReporteUsuarioReservas.aspx");
+    }
 }

@@ -40,6 +40,7 @@ public partial class Vew_ActualizarDatos : System.Web.UI.Page
 
     protected void B_Actualizar_Click(object sender, EventArgs e)
     {
+        ClientScriptManager cm = this.ClientScript;
         Registro nuevodato = new Registro();
         nuevodato.Usuario = TB_Actusuario.Text.ToUpper();
         nuevodato.Correo = TB_Actcorreo.Text.ToUpper();
@@ -82,9 +83,57 @@ public partial class Vew_ActualizarDatos : System.Web.UI.Page
                 nuevodat.Correo = ((Registro)Session["usuario"]).Correo;
             }
             new DAOLogin().actualizarperfil(nuevodat);
+           
             LB_Actfallo.Text = "Datos actualizados correctamente";
+            this.RegisterStartupScript("mensaje", "<script type='text/javascript'>alert('Datos actualizados correctamente');window.location=\"Perfil.aspx\"</script>");
+
+            //L_Actnombre.Text = TB_Actnombre.Text;
+            //L_Actapellido.Text = TB_Actapellido.Text;
+            //L_Actcorreo.Text = TB_Actcorreo.Text;
+            //L_Acttelefono.Text = TB_Acttelefono.Text;
+            //L_Actusuario0.Text = TB_Actusuario.Text;
+
+            //if (TB_Actnombre.Text == "")
+            //{
+            //    L_Actusuario.Text = "Bienvenido usuario: " + ((Registro)Session["usuario"]).Nombre;
+            //}
+            //else
+            //{
+            //    L_Actusuario.Text = "Bienvenido usuario: " + TB_Actnombre.Text;
+            //}
+
+            //if (L_Actnombre.Text == "")
+            //{
+            //    L_Actnombre.Text = ((Registro)Session["usuario"]).Nombre;
+            //}
+            //if (L_Actapellido.Text == "")
+            //{
+            //    L_Actapellido.Text = ((Registro)Session["usuario"]).Apellido;
+            //}
+            //if (L_Actcorreo.Text == "")
+            //{
+            //    L_Actcorreo.Text = ((Registro)Session["usuario"]).Correo;
+            //}
+            //if (L_Acttelefono.Text == "")
+            //{
+            //    L_Acttelefono.Text = ((Registro)Session["usuario"]).Telefono;
+            //}
+            //if (L_Actusuario0.Text == "")
+            //{
+            //    L_Actusuario0.Text = ((Registro)Session["usuario"]).Usuario;
+            //}
+
+            //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Sus datos han sido actualizados.');</script>");
+            //TB_Actnombre.Text = "";
+            //TB_Actapellido.Text = "";
+            //TB_Actcorreo.Text = "";
+            //TB_Acttelefono.Text = "";
+            //TB_Actusuario.Text = "";
+
             this.Controls.OfType<TextBox>().ToList().ForEach(o => o.Text = "");
             B_Volver.Text = "VOLVER";
+
+            return;
         }
     }
 }

@@ -21,6 +21,9 @@
             text-align: center;
             color: azure;
         }
+        .auto-style20 {
+            text-align: center;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
@@ -36,7 +39,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td id="Gridmisreservas">
+                            <td id="Gridmisreservas" class="auto-style20">
                                 <div class="auto-style19">
                                 <asp:GridView ID="GV_Mishoteles" runat="server" AutoGenerateColumns="False" DataSourceID="ODS_MisReservas" Width="591px" OnRowCommand="GV_Mishoteles_RowCommand" DataKeyNames="Id">
                                     <Columns>
@@ -51,7 +54,9 @@
                                         <asp:BoundField DataField="Calificacion" HeaderText="Calificacion" SortExpression="Calificacion" Visible="False" />
                                         <asp:BoundField DataField="Nombrehotel" HeaderText="Nombrehotel" SortExpression="Nombrehotel" />
                                         <asp:BoundField DataField="Calificacion" HeaderText="Calificacion" SortExpression="Calificacion" />
-                                        <asp:ButtonField CommandName="calificarreserva" HeaderText="Calificar y comentar" Text="calificar/comentar" />
+                                        <asp:ButtonField CommandName="calificarreserva" HeaderText="Calificar y comentar" Text="calificar/comentar" >
+                                        <ControlStyle BackColor="#999999" BorderColor="#999999" />
+                                        </asp:ButtonField>
                                         <asp:BoundField DataField="Idhotel" HeaderText="Idhotel" SortExpression="Idhotel" Visible="False" />
                                     </Columns>
                                 </asp:GridView>
@@ -62,6 +67,7 @@
                                         <asp:SessionParameter Name="disponibilidadE" SessionField="usuario" Type="Object" />
                                     </SelectParameters>
                                 </asp:ObjectDataSource>
+                                <asp:Button ID="Button1" runat="server" Text="Button" />
                             </td>
                         </tr>
                         <tr>

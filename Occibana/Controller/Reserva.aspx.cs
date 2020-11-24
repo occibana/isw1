@@ -143,6 +143,7 @@ public partial class Vew_Reserva : System.Web.UI.Page
         reserva.Fecha_llegada = C_FechaLlegada.SelectedDate;
         reserva.Fecha_salida = C_FechaSalida.SelectedDate;
         reserva.Mediopago = CHBL_Mediodepago.Text;
+        reserva.Limite_comentario = reserva.Fecha_salida.AddDays(3);
 
         if (Session["usuario"] != null)
         {

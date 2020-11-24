@@ -12,7 +12,7 @@ public class DAOComentarios
     {
         using (var db = new Mapeo())
         {
-            //           return new Mapeo().comentario.Where(x => x.Id_hotel.Equals(id.Idhotel)).ToList<Comentarios>();
+            
          List<Comentarios> comentariosHotel =  (from ch in db.comentario
                     join us in db.usuario on ch.Id_usuario equals us.Id
 
@@ -31,7 +31,6 @@ public class DAOComentarios
             if (comentariosHotel != null && id.Idhotel != null)
             {
                 comentariosHotel = comentariosHotel.Where(x => x.Id_hotel.Equals(id.Idhotel)).ToList();
-
             }
             
             return comentariosHotel;
@@ -47,16 +46,56 @@ public class DAOComentarios
         }
     }
 
-    //public Boolean consulta(Comentarios user)
+    public Boolean consulta(Comentarios user)
+    {
+        Double tdia = 3;
+        List<Comentarios> comentario = new Mapeo().comentario.Where(x => (x.Id_hotel == user.Id_hotel) && (user.Id_usuario == x.Id_usuario)).ToList();
+        int cantidad = new Mapeo().reserva.Where(x => x.Idhotel == user.Id_hotel &&
+       ((user.Id_usuario == x.Idusuario && user.Fecha_comentario >= x.Fecha_salida && 
+       user.Fecha_comentario <= x.Limite_comentario))).Count();
+        if (cantidad > 0)
+        {
+            //confirma = true;
+            return true;
+        }
+        else
+        {
+            //confirma = false;
+            return false;
+        }
+
+    }
+
+    //public Boolean consult(Comentarios user)
     //{
-    //    if (new Mapeo().reserva.Where(x => (x.Idhotel == user.Id_hotel) &&
-    //   ((user.Fecha_comentario >= x.Fecha_salida && user.Fecha_comentario <= x.Fecha_salida.AddDays(3))
-    //     )))
+    //    using (var db = new Mapeo())
     //    {
-    //        return true;
+    //        List<Comentarios> comentar= (from ch in db.comentario
+    //               join re in db.reserva on ch.Id_usuario equals re.Idusuario
+
+    //               select new
+    //              {
+    //                 ch,
+    //                 re
+    //              }).ToList().Select(m => new Reserva
+    //              {
+                     
+    //                  Idusuario = m.ch.Id_usuario,
+    //                  Idhotel = m.ch.Id_hotel,
+    //                  Fecha_comentario = user.Fecha_comentario,
+    //                  Fecha_salida =m.re.Fecha_salida.AddDays(3),
+    //              }).Where(x => x.Idhotel == user.Id_hotel &&
+    //   ((user.Id_usuario == x.Idusuario && user.Fecha_comentario >= x.Fecha_salida &&
+    //   user.Fecha_comentario))).ToList<Comentarios>();
+
+    //        if (comentar != null && user.Idhotel != null)
+    //        {
+    //            comentariosHotel = comentariosHotel.Where(x => x.Id_hotel.Equals(id.Idhotel)).ToList();
+    //        }
+
+    //        return comentariosHotel;
     //    }
-    //    else return false;
 
-
+    //        return false;
     //}
 }

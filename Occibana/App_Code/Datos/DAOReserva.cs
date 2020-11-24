@@ -64,11 +64,11 @@ public class DAOReserva
     {
         using (var db = new Mapeo())
         {
-            return (from h in db.hotel join r in db.reserva on h.Idhotel equals r.Idhotel where r.Idusuario == disponibilidadE.Id 
+            return (from h in db.hotel join r in db.reserva on h.Idhotel equals r.Idhotel where r.Idusuario == disponibilidadE.Id
                     select new
                     {
-                    h,
-                    r
+                        h,
+                        r
                     }).ToList().Select(m => new Reserva
                     {
                         Id = m.r.Id,
@@ -82,6 +82,7 @@ public class DAOReserva
                         Correo = m.r.Correo,
                         Mediopago = m.r.Mediopago,
                         Calificacion = m.r.Calificacion,
+                        PrecioNoche = m.h.Precionoche,
                     }).ToList();
         }
         //return new Mapeo().reserva.Where(x => x.Idusuario == disponibilidadE.Id).ToList();

@@ -130,13 +130,10 @@ public partial class Vew_AgregarServicioHotel : System.Web.UI.Page
             serviciohotel.Imagen_secundaria2 = null;
         }
 
-
-
-
         new DAOhotel().insertHotel(serviciohotel);
-       
-        cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('El hotel ha sido cargado');</script>");
-        Response.Redirect("Perfil.aspx");
+
+        this.RegisterStartupScript("mensaje", "<script type='text/javascript'>alert('Hotel agregado correctamente');window.location=\"Perfil.aspx\"</script>");
+     
         return;
 
     }

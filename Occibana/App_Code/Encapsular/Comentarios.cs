@@ -17,7 +17,10 @@ public class Comentarios
     private int id_hotel;
     private int id_usuario;
     private DateTime fecha_comentario;
+    [NotMapped]
     private string nombre_usuario;
+    [NotMapped]
+    private DateTime fecha_salida;
 
     [Key]
     [Column("id_coment")]
@@ -32,5 +35,6 @@ public class Comentarios
     public DateTime Fecha_comentario { get => fecha_comentario; set => fecha_comentario = value; }
     [NotMapped]
     public string Nombre_usuario { get => nombre_usuario; set => nombre_usuario = value; }
-    
+    [NotMapped]
+    public DateTime Fecha_salida { get => fecha_salida; set => fecha_salida = value; }
 }
