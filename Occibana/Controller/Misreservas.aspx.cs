@@ -41,4 +41,9 @@ public partial class Vew_Misreservas : System.Web.UI.Page
     {
         Response.Redirect("Reportes/ReporteHoteles/ReporteUsuarioReservas.aspx");
     }
+
+    protected void B_Volver_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Perfil.aspx");
+    }
 }

@@ -45,7 +45,7 @@
                                             <br />
                                             INGRESE SU CORREO ELECRÓNICO<br />
                                             <br />
-                                            <asp:TextBox ID="TB_CorreoRecuperarcontrasena" runat="server" TextMode="Email"></asp:TextBox>
+                                            <asp:TextBox ID="TB_CorreoRecuperarcontrasena" runat="server" TextMode="Email" MaxLength="30"></asp:TextBox>
                                             <br />
                                             <br />
                                         </td>
@@ -55,7 +55,7 @@
                                             <br />
                                             INGRESE SU USUARIO<br />
                                             <br />
-                                            <asp:TextBox ID="TB_UsuarioRecuperarcontrasena" runat="server"></asp:TextBox>
+                                            <asp:TextBox ID="TB_UsuarioRecuperarcontrasena" runat="server" MaxLength="10"></asp:TextBox>
                                             <br />
                                             <asp:RegularExpressionValidator ID="REV_TB_Usuario" runat="server" ControlToValidate="TB_UsuarioRecuperarcontrasena" ErrorMessage="caracteres no validos" ValidationExpression="[A-Za-z0-9 ]+"></asp:RegularExpressionValidator>
                                             <br />

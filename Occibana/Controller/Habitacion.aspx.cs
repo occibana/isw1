@@ -27,6 +27,7 @@ public partial class Vew_Habitacion : System.Web.UI.Page
         habit.Numbanio = int.Parse(TB_NumBanio.Text);
         habit.Idhotel = int.Parse(L_Prueba.Text);
         habit.Tipo = TB_Tipo.Text;
+        habit.Numcamas = int.Parse(TB_NumeroDeCamas.Text);
 
         int cantHabitaciones = new DAOHabitacion().cantidadHabitaciones(habit);
         if (cantHabitaciones == 150)
@@ -42,6 +43,7 @@ public partial class Vew_Habitacion : System.Web.UI.Page
             TB_NumPersonas.Text = "";
             TB_NumBanio.Text = "";
             TB_Tipo.Text = "";
+            TB_NumeroDeCamas.Text = "";
         }
     }
 }

@@ -83,7 +83,13 @@ public partial class Vew_ActualizarDatos : System.Web.UI.Page
                 nuevodat.Correo = ((Registro)Session["usuario"]).Correo;
             }
             new DAOLogin().actualizarperfil(nuevodat);
-           
+
+            ((Registro)Session["usuario"]).Usuario = nuevodat.Usuario;
+            ((Registro)Session["usuario"]).Nombre = nuevodat.Nombre;
+            ((Registro)Session["usuario"]).Apellido = nuevodat.Apellido;
+            ((Registro)Session["usuario"]).Telefono = nuevodat.Telefono;
+            ((Registro)Session["usuario"]).Correo = nuevodat.Correo;
+
             LB_Actfallo.Text = "Datos actualizados correctamente";
             this.RegisterStartupScript("mensaje", "<script type='text/javascript'>alert('Datos actualizados correctamente');window.location=\"Perfil.aspx\"</script>");
 

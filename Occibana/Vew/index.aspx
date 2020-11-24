@@ -184,7 +184,7 @@
                         <tr>
                             <td class="auto-style42">
                                 <br />
-                                <asp:TextBox ID="TB_Busquedageneral" runat="server" Width="80%" Height="18px"></asp:TextBox>
+                                <asp:TextBox ID="TB_Busquedageneral" runat="server" Width="80%" Height="18px" MaxLength="30"></asp:TextBox>
                                 <br />
                                 <asp:RegularExpressionValidator ID="REV_TB_Busquedageneral" runat="server" ControlToValidate="TB_Busquedageneral" ErrorMessage="No se permiten caracteres especiales :)" ValidationExpression="^[a-zA-Z0-9 ]*$"></asp:RegularExpressionValidator>
                             </td>
@@ -205,7 +205,7 @@
                                             <td class="auto-style44">
                                                 <br />
                                                 maximo<br />
-                                                <asp:TextBox ID="TB_PrecioMax" runat="server" Width="90%"></asp:TextBox>
+                                                <asp:TextBox ID="TB_PrecioMax" runat="server" Width="90%" MaxLength="10"></asp:TextBox>
                                                 <br />
                                                 <br />
                                                 <asp:RegularExpressionValidator ID="REV_TB_Preciomax" runat="server" ControlToValidate="TB_PrecioMax" ErrorMessage="No caracteres especiales" ValidationExpression="[0-9]+" ValidationGroup="filtrar"></asp:RegularExpressionValidator>
@@ -214,7 +214,7 @@
                                             </td>
                                             <td>
                                                 <br />
-                                                minimo<asp:TextBox ID="TB_PrecioMin" runat="server" Width="90%"></asp:TextBox>
+                                                minimo<asp:TextBox ID="TB_PrecioMin" runat="server" Width="90%" MaxLength="10"></asp:TextBox>
                                                 <br />
                                                 <br />
                                                 <asp:RegularExpressionValidator ID="REV_TB_Preciomin" runat="server" ControlToValidate="TB_PrecioMin" ErrorMessage="No caracteres especiales" ValidationExpression="[0-9]+" ValidationGroup="filtrar"></asp:RegularExpressionValidator>

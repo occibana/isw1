@@ -148,16 +148,16 @@
                                                                         <td class="auto-style27">
                                                                             <br />
                                                                             NOMBRE<br />
-                                                                            <asp:TextBox ID="TB_Nombre" runat="server"></asp:TextBox>
+                                                                            <asp:TextBox ID="TB_Nombre" runat="server" MaxLength="20"></asp:TextBox>
+                                                                            <asp:RequiredFieldValidator ID="RFV_TB_Nombre" runat="server" ControlToValidate="TB_Nombre" ErrorMessage="*" ValidationGroup="confirmar"></asp:RequiredFieldValidator>
                                                                             <br />
                                                                             <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="TB_Nombre" ErrorMessage="caracteres no validos" ValidationExpression="[A-Za-z ]+" ValidationGroup="confirmar"></asp:RegularExpressionValidator>
                                                                             <br />
                                                                             <br />
                                                                         </td>
                                                                         <td class="auto-style27">CORREO<br />
-                                                                            <asp:TextBox ID="TB_Correo" runat="server" AutoCompleteType="Email" TextMode="Email"></asp:TextBox>
-                                                                            <br />
-                                                                            <br />
+                                                                            <asp:TextBox ID="TB_Correo" runat="server" AutoCompleteType="Email" TextMode="Email" MaxLength="30"></asp:TextBox>
+                                                                            <asp:RequiredFieldValidator ID="RFV_TB_Correo" runat="server" ControlToValidate="TB_Correo" ErrorMessage="*" ValidationGroup="confirmar"></asp:RequiredFieldValidator>
                                                                         </td>
                                                                         <td class="auto-style24" rowspan="2">
                                                                             <asp:Button ID="B_ConfirmarReserva" runat="server" Height="26px" Text="CONFIRMAR RESERVA" Width="165px" OnClick="B_ConfirmarReserva_Click" ValidationGroup="confirmar" />
@@ -182,7 +182,8 @@
                                                                         <td class="auto-style28">
                                                                             <br />
                                                                             APELLIDO<br />
-                                                                            <asp:TextBox ID="TB_Apellido" runat="server"></asp:TextBox>
+                                                                            <asp:TextBox ID="TB_Apellido" runat="server" MaxLength="20"></asp:TextBox>
+                                                                            <asp:RequiredFieldValidator ID="RFV_TB_Apellido" runat="server" ControlToValidate="TB_Apellido" ErrorMessage="*" ValidationGroup="confirmar"></asp:RequiredFieldValidator>
                                                                             <br />
                                                                             <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="TB_Apellido" ErrorMessage="caracteres no validos" ValidationExpression="[A-Za-z ]+" ValidationGroup="confirmar"></asp:RegularExpressionValidator>
                                                                             <br />
@@ -192,10 +193,11 @@
                                                                         <td class="auto-style28">
                                                                             <br />
                                                                             CONFIRMAR CORREO<br />
-                                                                            <asp:TextBox ID="TB_CCorreo" runat="server" AutoCompleteType="Email" TextMode="Email"></asp:TextBox>
+                                                                            <asp:TextBox ID="TB_CCorreo" runat="server" AutoCompleteType="Email" TextMode="Email" MaxLength="30"></asp:TextBox>
+                                                                            <asp:RequiredFieldValidator ID="RFV_TB_CCorreo" runat="server" ControlToValidate="TB_CCorreo" ErrorMessage="*" ValidationGroup="confirmar"></asp:RequiredFieldValidator>
                                                                             <br />
                                                                             <br />
-                                                                            <asp:CompareValidator ID="CV_Correos" runat="server" ControlToCompare="TB_Correo" ControlToValidate="TB_CCorreo" ErrorMessage="Los correos deben ser identicos"></asp:CompareValidator>
+                                                                            <asp:CompareValidator ID="CV_Correos" runat="server" ControlToCompare="TB_Correo" ControlToValidate="TB_CCorreo" ErrorMessage="Los correos deben ser identicos" ValidationGroup="confirmar"></asp:CompareValidator>
                                                                         </td>
                                                                     </tr>
                                                                 </table>

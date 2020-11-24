@@ -50,7 +50,7 @@
                                     <td class="auto-style20" __designer:mapid="27">NOMBRE/S<br __designer:mapid="28" />
                                         <asp:Label ID="L_Actnombre" runat="server"></asp:Label>
                                 <br __designer:mapid="2a" />
-                                        <asp:TextBox ID="TB_Actnombre" runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="TB_Actnombre" runat="server" MaxLength="20"></asp:TextBox>
                                 <br __designer:mapid="2c" />
                                         <asp:RegularExpressionValidator ID="REV_TB_Actnombre" runat="server" ControlToValidate="TB_Actnombre" ErrorMessage="Caracteres invalidos" ValidationExpression="[A-Za-z ]+" ValidationGroup="Actualizacionperfil"></asp:RegularExpressionValidator>
                                 <br __designer:mapid="2e" />
@@ -58,7 +58,7 @@
                                     <td class="auto-style19" __designer:mapid="2f">APELLIDO/S<br __designer:mapid="30" />
                                         <asp:Label ID="L_Actapellido" runat="server"></asp:Label>
                                 <br __designer:mapid="32" />
-                                        <asp:TextBox ID="TB_Actapellido" runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="TB_Actapellido" runat="server" MaxLength="20"></asp:TextBox>
                                 <br __designer:mapid="34" />
                                         <asp:RegularExpressionValidator ID="REV_TB_Actapellido" runat="server" ControlToValidate="TB_Actapellido" ErrorMessage="Caracteres invalidos" ValidationExpression="[A-Za-z ]+" ValidationGroup="Actualizacionperfil"></asp:RegularExpressionValidator>
                                 <br __designer:mapid="36" />
@@ -68,14 +68,14 @@
                                     <td class="auto-style20" __designer:mapid="38">CORREO ELECTRÓNICO<br __designer:mapid="39" />
                                         <asp:Label ID="L_Actcorreo" runat="server"></asp:Label>
                                 <br __designer:mapid="3b" />
-                                        <asp:TextBox ID="TB_Actcorreo" runat="server" TextMode="Email"></asp:TextBox>
+                                        <asp:TextBox ID="TB_Actcorreo" runat="server" TextMode="Email" MaxLength="30"></asp:TextBox>
                                 <br __designer:mapid="3d" />
                                 <br __designer:mapid="3e" />
                                     </td>
                                     <td class="auto-style19" __designer:mapid="3f">TELÉFONO<br __designer:mapid="40" />
                                         <asp:Label ID="L_Acttelefono" runat="server"></asp:Label>
                                 <br __designer:mapid="42" />
-                                        <asp:TextBox ID="TB_Acttelefono" runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="TB_Acttelefono" runat="server" MaxLength="15"></asp:TextBox>
                                 <br __designer:mapid="44" />
                                         <asp:RegularExpressionValidator ID="REV_TB_Acttelefono" runat="server" ControlToValidate="TB_Acttelefono" ErrorMessage="Caracteres invalidos" ValidationExpression="[0-9+ ]+" ValidationGroup="Actualizacionperfil"></asp:RegularExpressionValidator>
                                 <br __designer:mapid="46" />
@@ -85,7 +85,7 @@
                                     <td class="auto-style20" __designer:mapid="48">USUARIO<br __designer:mapid="49" />
                                         <asp:Label ID="L_Actusuario0" runat="server"></asp:Label>
                                 <br __designer:mapid="4b" />
-                                        <asp:TextBox ID="TB_Actusuario" runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="TB_Actusuario" runat="server" MaxLength="10"></asp:TextBox>
                                 <br __designer:mapid="4d" />
                                         <asp:RegularExpressionValidator ID="REV_TB_Actusuario" runat="server" ControlToValidate="TB_Actusuario" ErrorMessage="Caracteres invalidos" ValidationExpression="[A-Za-z0-9 ]+" ValidationGroup="Actualizacionperfil"></asp:RegularExpressionValidator>
                                 <br __designer:mapid="4f" />

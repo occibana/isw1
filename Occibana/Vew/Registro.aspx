@@ -84,7 +84,7 @@
                                 REGISTRE SU/S
                                 NOMBRE/S<br />
                                 <br />
-                                <asp:TextBox ID="TB_nombre" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="TB_nombre" runat="server" MaxLength="20"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RFV_Nombre" runat="server" ControlToValidate="TB_nombre" ErrorMessage="*" ValidationGroup="TB_registro"></asp:RequiredFieldValidator>
                                 <br />
                                 <asp:RegularExpressionValidator ID="REV_TB_Nombre" runat="server" ControlToValidate="TB_nombre" ErrorMessage="Caracter no valido" ValidationExpression="[A-Za-z ]+" ValidationGroup="TB_registro"></asp:RegularExpressionValidator>
@@ -94,7 +94,7 @@
                                 <br />
                                 NUM DE TELÉFONO<br />
                                 <br />
-                                <asp:TextBox ID="TB_telefono" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="TB_telefono" runat="server" MaxLength="15"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RFV_Telefono" runat="server" ControlToValidate="TB_telefono" ErrorMessage="*" ValidationGroup="TB_registro"></asp:RequiredFieldValidator>
                                 <br />
                                 <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="TB_telefono" ErrorMessage="Caracter no valido" ValidationExpression="[0-9+ ]+" ValidationGroup="TB_registro"></asp:RegularExpressionValidator>
@@ -107,7 +107,7 @@
                                 REGISTRE SU/S
                                 APELLIDO/S<br />
                                 <br />
-                                <asp:TextBox ID="TB_apellido" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="TB_apellido" runat="server" MaxLength="20"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RFV_Apellido" runat="server" ControlToValidate="TB_apellido" ErrorMessage="*" ValidationGroup="TB_registro"></asp:RequiredFieldValidator>
                                 <br />
                                 <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="TB_apellido" ErrorMessage="Caracter no valido" ValidationExpression="[A-Za-z ]+" ValidationGroup="TB_registro"></asp:RegularExpressionValidator>
@@ -117,7 +117,7 @@
                                 <br />
                                 NOMBRE DE USUARIO<br />
                                 <br />
-                                <asp:TextBox ID="TB_usuarioregistro" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="TB_usuarioregistro" runat="server" MaxLength="10"></asp:TextBox>
 
                                 <asp:RequiredFieldValidator ID="RFV_NomUsuario" runat="server" ControlToValidate="TB_usuarioregistro" ErrorMessage="*" ValidationGroup="TB_registro"></asp:RequiredFieldValidator>
 
@@ -134,7 +134,7 @@
                                 <br />
                                 ELECTRÓNICO<br />
                                 <br />
-                                <asp:TextBox ID="TB_correo" runat="server" TextMode="Email"></asp:TextBox>
+                                <asp:TextBox ID="TB_correo" runat="server" TextMode="Email" MaxLength="30"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RFV_Correo" runat="server" ControlToValidate="TB_correo" ErrorMessage="*" ValidationGroup="TB_registro"></asp:RequiredFieldValidator>
                                 <br />
                             </td>
@@ -147,25 +147,29 @@
                                             <br />
                                             REGISTRE SU<br />
                                             CONTRSEÑA<br />
-                                            <asp:TextBox ID="TB_contrasenaregistro" runat="server" TextMode="Password"></asp:TextBox>
+                                            <asp:TextBox ID="TB_contrasenaregistro" runat="server" TextMode="Password" MaxLength="20"></asp:TextBox>
+
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="TB_contrasenaregistro" ErrorMessage="*" ValidateRequestMode="Enabled" ValidationGroup="TB_registro"></asp:RequiredFieldValidator>
 
                                             <br />
                                             <asp:RegularExpressionValidator ID="RegularExpressionValidator6" runat="server" ControlToValidate="TB_contrasenaregistro" ErrorMessage="Caracter no valido" ValidationExpression="[A-Za-z0-9]+" ValidationGroup="TB_registro"></asp:RegularExpressionValidator>
+                                            <br />
                                         </td>
                                         <td>
                                             <br />
                                             CONFIRMAR<br />
                                             CONTRASEÑA<br />
-                                            <asp:TextBox ID="TB_ccontrasena" runat="server" TextMode="Password"></asp:TextBox>
+                                            <asp:TextBox ID="TB_ccontrasena" runat="server" TextMode="Password" MaxLength="20"></asp:TextBox>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="TB_ccontrasena" ErrorMessage="*" ValidateRequestMode="Enabled" ValidationGroup="TB_registro"></asp:RequiredFieldValidator>
                                             <br />
                                             <asp:RegularExpressionValidator ID="REV_ConfirmarContra" runat="server" ControlToValidate="TB_ccontrasena" ErrorMessage="Caracter no valido" ValidationExpression="[A-Za-z0-9]+" ValidationGroup="TB_registro"></asp:RegularExpressionValidator>
+                                            <br />
                                         </td>
                                     </tr>
                                 </table>
                                 <br />
-                                &nbsp;&nbsp;&nbsp;<br />
-                                <asp:CompareValidator ID="CV_contraseñas" runat="server" ControlToCompare="TB_contrasenaregistro" ControlToValidate="TB_ccontrasena" ErrorMessage="*Las contraseñas deben ser idénticas" ValidationGroup="TB_registro"></asp:CompareValidator>
+                                <br />
+                                &nbsp;<asp:CompareValidator ID="CV_contraseñas" runat="server" ControlToCompare="TB_contrasenaregistro" ControlToValidate="TB_ccontrasena" ErrorMessage="*Las contraseñas deben ser idénticas" ValidationGroup="TB_registro"></asp:CompareValidator>
                                 <br />
                             </td>
                         </tr>

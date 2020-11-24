@@ -45,7 +45,7 @@
                                             <br />
                                             INGRESE SU CONTRASEÑA ACTUAL<br />
                                             <br />
-                                            <asp:TextBox ID="TB_Contrasenaactual" runat="server" TextMode="Password"></asp:TextBox>
+                                            <asp:TextBox ID="TB_Contrasenaactual" runat="server" TextMode="Password" MaxLength="20"></asp:TextBox>
                                             <br />
                                             <asp:RegularExpressionValidator ID="REV_TB_Contrasenaactual" runat="server" ControlToValidate="TB_Contrasenaactual" ErrorMessage="Caracteres invallidos" ValidationExpression="[a-zA-Z0-9 ]+"></asp:RegularExpressionValidator>
                                             <br />
@@ -56,7 +56,7 @@
                                             <br />
                                             INGRESE SU NUEVA CONTRASEÑA<br />
                                             <br />
-                                            <asp:TextBox ID="TB_Nuevacontrasena" runat="server" TextMode="Password"></asp:TextBox>
+                                            <asp:TextBox ID="TB_Nuevacontrasena" runat="server" TextMode="Password" MaxLength="20"></asp:TextBox>
                                             <br />
                                             <asp:RegularExpressionValidator ID="REV_TB_Nuevacontrasena" runat="server" ControlToValidate="TB_Nuevacontrasena" ErrorMessage="Caracteres invalidos" ValidationExpression="[a-zA-Z0-9 ]+"></asp:RegularExpressionValidator>
                                             <br />

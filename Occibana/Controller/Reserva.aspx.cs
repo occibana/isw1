@@ -144,20 +144,29 @@ public partial class Vew_Reserva : System.Web.UI.Page
         reserva.Fecha_salida = C_FechaSalida.SelectedDate;
         reserva.Mediopago = CHBL_Mediodepago.Text;
         reserva.Limite_comentario = reserva.Fecha_salida.AddDays(3);
-
-        if (Session["usuario"] != null)
+        int cantreservas = new DAOReserva().verificarreserva(reserva);
+        if (cantreservas==0)
         {
-            reserva.Idusuario = ((Registro)Session["usuario"]).Id;          
-            new DAOReserva().insertReserva(reserva);
-            L_MensajeestadoSession.Text = "REESERVA EXITOSA";//, REVISE SU CORREO PARA MÁS DETALLES
-            new Mail().mailconfirmarreserva(reserva);
+            if (Session["usuario"] != null)
+            {
+                reserva.Idusuario = ((Registro)Session["usuario"]).Id;
+                new DAOReserva().insertReserva(reserva);
+                L_MensajeestadoSession.Text = "REESERVA EXITOSA";//, REVISE SU CORREO PARA MÁS DETALLES
+                new Mail().mailconfirmarreserva(reserva);
+            }
+            else
+            {
+                new DAOReserva().insertReserva(reserva);
+                L_MensajeestadoSession.Text = "REESERVA EXITOSA";//, REVISE SU CORREO PARA MÁS DETALLES
+                cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('La reserva ha sido exitosa');</script>");
+                new Mail().mailconfirmarreserva(reserva);
+            }
         }
         else
         {
-            new DAOReserva().insertReserva(reserva);
-            L_MensajeestadoSession.Text = "REESERVA EXITOSA";//, REVISE SU CORREO PARA MÁS DETALLES
-            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('La reserva ha sido exitosa');</script>");
-            new Mail().mailconfirmarreserva(reserva);
+            L_MensajeestadoSession.Text = "RESERVA OCUPADA";//, REVISE SU CORREO PARA MÁS DETALLES
+            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('ESTA RESERVA SE ENCUENTRA OCUPADA');</script>");
         }
+        
     }
 }

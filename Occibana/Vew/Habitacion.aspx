@@ -58,7 +58,7 @@
                                             <asp:TextBox ID="TB_NumBanio" runat="server" Width="170px" TextMode="Number" ValidationGroup="AgregarHabitacion"></asp:TextBox>
                                             <asp:RequiredFieldValidator ID="RFV_TB_NumBanio" runat="server" ControlToValidate="TB_NumBanio" ErrorMessage="*" ValidationGroup="AgregarHabitacion"></asp:RequiredFieldValidator>
                                             <br />
-                                            <asp:RangeValidator ID="RV_TB_Numbano" runat="server" ControlToValidate="TB_NumBanio" ErrorMessage="Solo positivos o iguales a cero" MaximumValue="3" MinimumValue="0" Type="Integer" ValidationGroup="AgregarHabitacion"></asp:RangeValidator>
+                                            <asp:RangeValidator ID="RV_TB_Numbano" runat="server" ControlToValidate="TB_NumBanio" ErrorMessage="Solo positivos hasta 3 o iguales a cero" MaximumValue="3" MinimumValue="0" Type="Integer" ValidationGroup="AgregarHabitacion"></asp:RangeValidator>
                                         </td>
                                     </tr>
                                     <tr>
@@ -70,19 +70,35 @@
                                             <asp:TextBox ID="TB_NumPersonas" runat="server" Width="170px" TextMode="Number" ValidationGroup="AgregarHabitacion"></asp:TextBox>
                                             <asp:RequiredFieldValidator ID="RFV_TB_Numpersonas" runat="server" ControlToValidate="TB_NumPersonas" ErrorMessage="*" ValidationGroup="AgregarHabitacion"></asp:RequiredFieldValidator>
                                             <br />
-                                            <asp:RangeValidator ID="RV_TB_Numpersonas" runat="server" ControlToValidate="TB_NumPersonas" ErrorMessage="Solo positivos o iguales a cero" MaximumValue="10" MinimumValue="1" Type="Integer" ValidationGroup="AgregarHabitacion"></asp:RangeValidator>
+                                            <asp:RangeValidator ID="RV_TB_Numpersonas" runat="server" ControlToValidate="TB_NumPersonas" ErrorMessage="Solo positivos entre 1 y 10" MaximumValue="10" MinimumValue="1" Type="Integer" ValidationGroup="AgregarHabitacion"></asp:RangeValidator>
                                         </td>
                                     </tr>
                                     
                                     <tr>
                                         <td class="auto-style19">
-                                            Tipo de habitacion:</td>
+                                            Tipo de habitación:</td>
                                         <td class="auto-style19">
-                                            <asp:TextBox ID="TB_Tipo" runat="server"></asp:TextBox>
+                                            <asp:TextBox ID="TB_Tipo" runat="server" Width="170px" MaxLength="10"></asp:TextBox>
                                             <br />
                                             <asp:RegularExpressionValidator ID="REV_TB_Tipo" runat="server" ControlToValidate="TB_Tipo" ErrorMessage="Caracteres no validos" ValidationExpression="[A-Za-z,. ]+" ValidationGroup="AgregarHabitacion"></asp:RegularExpressionValidator>
                                             <br />
                                             <asp:RequiredFieldValidator ID="RFV_Tipo" runat="server" ControlToValidate="TB_Tipo" ErrorMessage="Llenar Campo" ValidationGroup="AgregarHabitacion"></asp:RequiredFieldValidator>
+                                        </td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td class="auto-style19">
+                                            <br />
+                                            Número de camas:
+                                            <br />
+                                        </td>
+                                        <td class="auto-style19">
+                                            <br />
+                                            <asp:TextBox ID="TB_NumeroDeCamas" runat="server" Width="170px"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RFV_TB_NumeroDeCamas" runat="server" ControlToValidate="TB_NumeroDeCamas" ErrorMessage="*" ValidationGroup="AgregarHabitacion"></asp:RequiredFieldValidator>
+                                            <br />
+                                            <asp:RegularExpressionValidator ID="REV_TB_NumeroDeCamas" runat="server" ControlToValidate="TB_NumeroDeCamas" ErrorMessage="Caracteres no validos" ValidationExpression="[0-9]+" ValidationGroup="AgregarHabitacion" Enabled="False"></asp:RegularExpressionValidator>
+                                            <br />
                                         </td>
                                     </tr>
                                     

@@ -76,7 +76,7 @@
                                 <table class="auto-style25">
                                     <tr>
                                         <td>Usuario<br />
-                                            <asp:TextBox ID="TB_user" runat="server"></asp:TextBox>
+                                            <asp:TextBox ID="TB_user" runat="server" MaxLength="10"></asp:TextBox>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TB_user" ErrorMessage="*" ValidationGroup="TB_LN"></asp:RequiredFieldValidator>
                                             <br />
                                             <asp:RegularExpressionValidator ID="REV_TB_usuario" runat="server" ControlToValidate="TB_user" ErrorMessage="Elementos no validos" ValidationExpression="[A-Za-z0-9]+" ValidationGroup="IngresoLogin"></asp:RegularExpressionValidator>
@@ -85,7 +85,7 @@
                                     </tr>
                                     <tr>
                                         <td>Contraseña<br />
-                                            <asp:TextBox ID="TB_contrasena" runat="server" TextMode="Password" ValidateRequestMode="Disabled"></asp:TextBox>
+                                            <asp:TextBox ID="TB_contrasena" runat="server" TextMode="Password" ValidateRequestMode="Disabled" MaxLength="20"></asp:TextBox>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="TB_contrasena" ErrorMessage="*" ValidationGroup="TB_LN"></asp:RequiredFieldValidator>
                                             <br />
                                             <asp:RegularExpressionValidator ID="REV_TB_contrasena" runat="server" ControlToValidate="TB_contrasena" ErrorMessage="Elementos no validos" ValidationExpression="[A-Za-z0-9]+" ValidationGroup="IngresoLogin"></asp:RegularExpressionValidator>

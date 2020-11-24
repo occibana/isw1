@@ -131,6 +131,16 @@ public class DAOReserva
     }
 
 
+    //verificar si la reserva ya se encuentra antes de hacerla efectiva
+    public int verificarreserva(Reserva reservaE)
+    {
+        int reserva = new Mapeo().reserva.Where(x => (x.Idhotel == reservaE.Idhotel) && (x.Numpersona == reservaE.Numpersona) && (x.Fecha_llegada == reservaE.Fecha_llegada) && (x.Fecha_salida == reservaE.Fecha_salida)).Count();
+        return reserva;
+    }
+
+
+
+
     //actualizar promedio de calificacion
 
 

@@ -67,7 +67,10 @@
                                         <asp:SessionParameter Name="disponibilidadE" SessionField="usuario" Type="Object" />
                                     </SelectParameters>
                                 </asp:ObjectDataSource>
-                                <asp:Button ID="Button1" runat="server" Text="Button" />
+                                <asp:Button ID="B_ReporteReservas" runat="server" Text="Generar reporte" OnClick="B_ReporteReservas_Click" />
+                                <br />
+                                <br />
+                                <asp:Button ID="B_Volver" runat="server" Text="VOLVER" OnClick="B_Volver_Click" />
                             </td>
                         </tr>
                         <tr>

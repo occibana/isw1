@@ -77,6 +77,7 @@ public partial class Vew_index : System.Web.UI.Page
             }
             else
             {
+                L_MensajeFalloFechas.Text = " ";
                 busqueda.fecha_despuesde = DateTime.Parse(TB_DateDespuesDe.Text);
             }
         }
