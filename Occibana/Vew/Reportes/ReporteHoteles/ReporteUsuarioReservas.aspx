@@ -22,7 +22,7 @@
             <asp:Label ID="L_NombreUsuario" runat="server"></asp:Label>
             <CR:CrystalReportViewer ID="CRV_Reserva" runat="server" AutoDataBind="True" EnableDatabaseLogonPrompt="False" EnableParameterPrompt="False" GroupTreeImagesFolderUrl="" Height="50px" ReportSourceID="CRS_ReservasUsuario" ToolbarImagesFolderUrl="" ToolPanelWidth="200px" Width="350px" />
             <CR:CrystalReportSource ID="CRS_ReservasUsuario" runat="server">
-                <Report FileName="C:\Users\wacho\source\repos\occibana\isw1\Occibana\ReportesOccibana\CR_HistorialReservas.rpt">
+                <Report FileName="~\ReportesOccibana\CR_HistorialReservas.rpt">
                 </Report>
             </CR:CrystalReportSource>
         </div>

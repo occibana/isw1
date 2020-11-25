@@ -165,7 +165,7 @@
                                                             </tr>
                                                             <tr>
                                                                 <td colspan="3">
-                                                                    <asp:Button ID="B_Reservar" runat="server" Text="RESERVAR AHORA!" Width="440px" CommandArgument='<%# Eval("Id") %>'/>
+                                                                    <asp:Button ID="B_Reservar" runat="server" Text="REALIZAR RESERVA !" Width="440px" CommandArgument='<%# Eval("Id") %>'/>
                                                                     <br />
                                                                 </td>
                                                             </tr>
@@ -180,6 +180,7 @@
                                         <asp:ObjectDataSource ID="ODS_Habitaciones" runat="server" SelectMethod="habitacionesHotel" TypeName="DAOHabitacion">
                                             <SelectParameters>
                                                 <asp:SessionParameter Name="idE" SessionField="visitarhotel" Type="Object" />
+                                                <asp:SessionParameter Name="consulta" SessionField="hotelseleccionado" Type="Object" />
                                             </SelectParameters>
                                         </asp:ObjectDataSource>
                                         <br />
@@ -193,7 +194,7 @@
                                                     <asp:Label ID="L_Direccion" runat="server"></asp:Label>
                                                     <br />
                                                     <br />
-                                                    DESCRIPCIÓN<br />
+                                                    DESCRIPCIÓN Y SERVICIOS<br />
                                                     <br />
                                                     <asp:Label ID="L_Descripcion" runat="server" CssClass="auto-style26"></asp:Label>
                                                     <br />
@@ -229,7 +230,7 @@
                                             <tr>
                                                 <td colspan="2"><strong>
                                                     <br />
-                                                    HABITACIONES DISPONIBLES<br />
+                                                    HABITACIONES DISPONIBLES EN EL HOTEL (GENERAL)<br />
                                                     <br />
                                                     <asp:Label ID="L_Panelhotelhabitaciones" runat="server" CssClass="auto-style26"></asp:Label>
                                                     <br />

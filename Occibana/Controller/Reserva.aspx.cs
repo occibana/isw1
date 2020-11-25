@@ -140,8 +140,6 @@ public partial class Vew_Reserva : System.Web.UI.Page
         int cantReservas = new DAOReserva().verificarreserva(reserva);
         string fechaLlegada = (reserva.Fecha_llegada).ToString();
         string fechaSalida = (reserva.Fecha_salida).ToString();
-        //var habitacionesDisponibles = new DAOReserva().habitacionesdisponibles(reserva);//numero de habitaciones en ese hotel para ese numero maximo de personas
-        //int disponibilidad = habitacionesDisponibles - cantReservas;
         if (fechasreservadas==1)
         {
             cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('No hay disponibilidad entre las fechas '"+fechaLlegada+" y "+fechaSalida+");</script>");
