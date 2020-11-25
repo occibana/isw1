@@ -30,7 +30,7 @@ public class DAOReserva
     public int fechasdisponibles(Reserva disponibilidadE)
     {
         return new Mapeo().reserva.Where(x => (x.Idhotel == disponibilidadE.Idhotel) && 
-        (disponibilidadE.Fecha_llegada >=  x.Fecha_llegada && disponibilidadE.Fecha_llegada <= x.Fecha_salida) && (x.Numpersona == disponibilidadE.Numpersona)).ToList().Count();                                                                                                                        //(disponibilidadE.Fecha_salida >= x.Fecha_llegada && disponibilidadE.Fecha_salida <= x.Fecha_salida)                                                                                                                                                                        //)).ToList().Count();
+        (disponibilidadE.Fecha_llegada >=  x.Fecha_llegada && disponibilidadE.Fecha_llegada <= x.Fecha_salida) && (x.Numpersona == disponibilidadE.Numpersona) && (x.Id_habitacion == disponibilidadE.Id_habitacion)).ToList().Count();                                                                                                                        //(disponibilidadE.Fecha_salida >= x.Fecha_llegada && disponibilidadE.Fecha_salida <= x.Fecha_salida)                                                                                                                                                                        //)).ToList().Count();
     }
 
     //actualiza estado de habitaciones
@@ -134,7 +134,7 @@ public class DAOReserva
     //verificar si la reserva ya se encuentra antes de hacerla efectiva
     public int verificarreserva(Reserva reservaE)
     {
-        int reserva = new Mapeo().reserva.Where(x => (x.Idhotel == reservaE.Idhotel) && (x.Numpersona == reservaE.Numpersona) && (x.Fecha_llegada == reservaE.Fecha_llegada) && (x.Fecha_salida == reservaE.Fecha_salida)).Count();
+        int reserva = new Mapeo().reserva.Where(x => (x.Idhotel == reservaE.Idhotel) && (x.Numpersona == reservaE.Numpersona) && (x.Fecha_llegada == reservaE.Fecha_llegada) && (x.Fecha_salida == reservaE.Fecha_salida) && (x.Id_habitacion == reservaE.Id_habitacion)).Count();
         return reserva;
     }
 

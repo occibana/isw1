@@ -115,12 +115,11 @@
                                                                 <tr>
                                                                     <td>
                                                                         <br />
-                                                                        Habitaciones disponibles según solicitud<br />
+                                                                        <asp:Label ID="L_DisponibilidadTxt" runat="server" Text="DISPONIBILIDAD:"></asp:Label>
+                                                                        &nbsp;&nbsp;&nbsp;&nbsp;<br />
+                                                                        <asp:Label ID="L_Habitaciondisponible" runat="server"></asp:Label>
                                                                         <br />
-                                                                        Número de habitaciones disponibles:&nbsp;&nbsp;&nbsp;&nbsp;<br />
-                                                                        Esta habitación y
-                                                                        <asp:Label ID="L_Habitacionesdisponibles" runat="server"></asp:Label>
-                                                                        &nbsp;más.<br />
+                                                                        <br />
                                                                     </td>
                                                                 </tr>
                                                             </table>

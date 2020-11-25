@@ -25,6 +25,7 @@ public class Reserva
     private string mediopago;
     private Nullable <int> calificacion;
     private DateTime limite_comentario;
+    private int id_habitacion;
     [NotMapped]
     private string nombrehotel;
     [NotMapped]
@@ -57,6 +58,8 @@ public class Reserva
     public Nullable<int> Calificacion { get => calificacion; set => calificacion = value; }
     [Column("limite_comentario")]
     public DateTime Limite_comentario { get => limite_comentario; set => limite_comentario = value; }
+    [Column("id_habitacion")]
+    public int Id_habitacion { get => id_habitacion; set => id_habitacion = value; }
     [NotMapped]
     public string Nombrehotel { get => nombrehotel; set => nombrehotel = value; }
     [NotMapped]
