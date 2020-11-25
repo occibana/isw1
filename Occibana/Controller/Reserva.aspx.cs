@@ -10,15 +10,21 @@ public partial class Vew_Reserva : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        int habitacionesDisponibles;
         deshabilitarbotones();
         try
         {
+            
             Hotel hotel = new Hotel();
             hotel.Idhotel = ((Hotel)Session["visitarhotel"]).Idhotel;
             hotel = new DAOhotel().infohotel(hotel);
             L_NombreHotel.Text = hotel.Nombre.ToUpper();
-            L_Habitacionesdisponibles.Text = hotel.Numhabitacion.ToString();
+            habitacionesDisponibles = int.Parse(hotel.Numhabitacion.ToString());
+            habitacionesDisponibles = habitacionesDisponibles - 1;
+
+            L_Habitacionesdisponibles.Text = habitacionesDisponibles.ToString();
             L_PrecioNoche.Text = hotel.Precionoche.ToString();
+            L_NumeroDePersonas.Text = (((Habitacion)Session["idhabitacion"]).Numpersonas).ToString();
             if (Session["usuario"] != null)
             {
                 L_Nombreusuario.Text = ((Registro)Session["usuario"]).Nombre;
@@ -36,7 +42,7 @@ public partial class Vew_Reserva : System.Web.UI.Page
 
             if (hotel.Numhabitacion > 0)
             {
-                L_Habitacionesdisponibles.Text = hotel.Numhabitacion.ToString();
+                L_Habitacionesdisponibles.Text = habitacionesDisponibles.ToString();
             }
             else if (hotel.Numhabitacion <= 0)
             {
@@ -44,7 +50,7 @@ public partial class Vew_Reserva : System.Web.UI.Page
             }
 
         }
-        catch
+        catch (Exception ex)
         {
             Response.Redirect("index.aspx");
         }
@@ -53,7 +59,7 @@ public partial class Vew_Reserva : System.Web.UI.Page
 
     protected void B_Volver_Click(object sender, EventArgs e)
     {
-        Response.Redirect("index.aspx");
+        Response.Redirect("PanelHotel.aspx");
     }
 
     protected void B_BuscarDisponibilidad_Click(object sender, EventArgs e)
@@ -62,7 +68,8 @@ public partial class Vew_Reserva : System.Web.UI.Page
         reserva.Idhotel = ((Hotel)Session["visitarhotel"]).Idhotel;
         reserva.Fecha_salida = C_FechaSalida.SelectedDate;
         reserva.Fecha_llegada = C_FechaLlegada.SelectedDate;
-        reserva.Numpersona = int.Parse(TB_NumPersonas.Text);
+        reserva.Numpersona = int.Parse(L_NumeroDePersonas.Text);
+        reserva.Id = ((Habitacion)Session["idhabitacion"]).Id;
         if (reserva.Fecha_llegada < DateTime.Now)
         {
             L_Habitacionesdisponibles.Text = "Seleccione fechas de llegada despues de "+ DateTime.Now.Date;
@@ -83,6 +90,7 @@ public partial class Vew_Reserva : System.Web.UI.Page
                 }
                 else if (C_FechaLlegada.SelectedDate <= C_FechaSalida.SelectedDate)
                 {
+                   
                     var hdisponibles = new DAOReserva().habitacionesdisponibles(reserva);//hdisponibles-fechasreservadas
                     var fechasreservadas = new DAOReserva().fechasdisponibles(reserva);
                     var disponibilidad = hdisponibles - fechasreservadas;
@@ -91,7 +99,7 @@ public partial class Vew_Reserva : System.Web.UI.Page
                         if (disponibilidad > 0)
                         {
                             habilitarbotones();
-                            L_Habitacionesdisponibles.Text = (disponibilidad).ToString();
+                            L_Habitacionesdisponibles.Text = (disponibilidad-1).ToString();
                         }
                         else
                         {
@@ -137,7 +145,7 @@ public partial class Vew_Reserva : System.Web.UI.Page
 
         reserva.Apellido = TB_Apellido.Text;
         reserva.Nombre = TB_Nombre.Text;
-        reserva.Numpersona = int.Parse(TB_NumPersonas.Text);
+        reserva.Numpersona = int.Parse(L_NumeroDePersonas.Text);
         reserva.Correo = TB_Correo.Text;
         reserva.Idhotel = ((Hotel)Session["visitarhotel"]).Idhotel;
         reserva.Fecha_llegada = C_FechaLlegada.SelectedDate;

@@ -138,35 +138,21 @@ public class DAOReserva
         return reserva;
     }
 
-
-
-
-    //actualizar promedio de calificacion
-
-
-
-
-    // solicitar calificaciones
-    /*public void cambiarestadoreserva(int id)
+    //disponibbilidad de personas
+    public List<Habitacion> disponibilidadDePeronas(Hotel datosE)
     {
         using (var db = new Mapeo())
         {
-            Registro datoanterior = db.usuario.Where(x => x.Id == datoE.Id).First();
-            datoanterior.Nombre = datoE.Nombre;
-            datoanterior.Apellido = datoE.Apellido;
-            datoanterior.Correo = datoE.Correo;
-            datoanterior.Telefono = datoE.Telefono;
-            datoanterior.Usuario = datoE.Usuario;
-            var entry = db.Entry(datoanterior);
-            entry.State = EntityState.Modified;
-            db.SaveChanges();
-        }
-    }*/
-    /*
-public List<Reserva> reservasporefectuar()
-{
-    List<Reserva> reservasrealizadas = new Mapeo().reserva.Where(x => x.Estado == 0 && x.Fecha_salida < DateTime.Now).ToList();
+            List<Habitacion> limiteDePersonas = (from hhab in db.habitacion where hhab.Idhotel==datosE.Idhotel
+                                                 select new
+                    {
+                        hhab
+                    }).ToList().Select(m => new Habitacion
+                    {
+                        Id = m.hhab.Numpersonas,
+                    }).ToList();
 
-    return reservasrealizadas;
-}*/
+            return limiteDePersonas;
+        }
+    }
 }

@@ -141,4 +141,9 @@ public partial class Vew_Perfil : System.Web.UI.Page
     {
         Response.Redirect("Misreservas.aspx");
     }
+
+    protected void B_VerReporte_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("~/Vew/Reportes/ReporteHoteles/HistorialLogin.aspx");
+    }
 }

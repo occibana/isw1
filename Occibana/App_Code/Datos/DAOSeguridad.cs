@@ -98,4 +98,10 @@ public class DAOSeguridad
     {
         return new Mapeo().membresia.Where(x=> x.Idusuario == usuarioidE.Id).FirstOrDefault();
     }
+
+    //registro de ingresos
+    public List<Acceso> RegistrosAcceso(int usuarioE)
+    {
+        return new Mapeo().acceso.Where(x => x.Userid == usuarioE).ToList();
+    }
 }

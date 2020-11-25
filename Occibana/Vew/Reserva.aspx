@@ -100,11 +100,7 @@
                                                             <table class="auto-style16">
                                                                 <tr>
                                                                     <td>NUMERO DE PERSONAS<br />
-                                                                        <asp:TextBox ID="TB_NumPersonas" runat="server" TextMode="Number" ValidationGroup="disponibilidad"></asp:TextBox>
-                                                                        <asp:RequiredFieldValidator ID="RFV_TB_Numpersonas" runat="server" ControlToValidate="TB_NumPersonas" ErrorMessage="*" ValidationGroup="disponibilidad"></asp:RequiredFieldValidator>
-                                                                        <br />
-                                                                        <asp:RangeValidator ID="RV_TB_Numpersona" runat="server" ControlToValidate="TB_NumPersonas" ErrorMessage="Debe ser mayor 0" MaximumValue="10" MinimumValue="1" Type="Integer" ValidationGroup="disponibilidad"></asp:RangeValidator>
-                                                                        <br />
+                                                                        <asp:Label ID="L_NumeroDePersonas" runat="server"></asp:Label>
                                                                         <br />
                                                                     </td>
                                                                 </tr>
@@ -121,9 +117,10 @@
                                                                         <br />
                                                                         Habitaciones disponibles según solicitud<br />
                                                                         <br />
-                                                                        Número de habitaciones disponibles:&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                        Número de habitaciones disponibles:&nbsp;&nbsp;&nbsp;&nbsp;<br />
+                                                                        Esta habitación y
                                                                         <asp:Label ID="L_Habitacionesdisponibles" runat="server"></asp:Label>
-                                                                        <br />
+                                                                        &nbsp;más.<br />
                                                                     </td>
                                                                 </tr>
                                                             </table>

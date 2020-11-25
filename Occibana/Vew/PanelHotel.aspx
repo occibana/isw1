@@ -4,6 +4,7 @@
     <style type="text/css">
         .auto-style16 {
             width: 100%;
+            border: 1px solid #ffffff;
         }
         .auto-style17 {
             width: 85%;
@@ -47,6 +48,15 @@
         }
         .auto-style26 {
             font-size: x-large;
+        }
+        .datalistdiv{
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+            background: #ff0000;
+        }
+        .auto-style27 {
+            height: 61px;
         }
     </style>
 </asp:Content>
@@ -117,8 +127,61 @@
                                     <ContentTemplate>
                                         <strong>
                                         <br />
-                                        <asp:Button ID="B_Reservar" runat="server" Text="RESERVAR" OnClick="B_Reservar_Click" />
+                                        <asp:Button ID="B_Volver0" runat="server" OnClick="B_Volver_Click" Text="VOLVER" Width="100px" />
                                         <br />
+                                        <br />
+                                        HABITACIONES<br />
+                                        <br />
+                                        <div class="datalistdiv">
+                                            <strong>
+                                            <asp:DataList ID="DL_Habitaciones" runat="server" DataSourceID="ODS_Habitaciones" Width="100%" OnItemCommand="DL_Habitaciones_ItemCommand">
+                                                <ItemTemplate>
+                                                    <div>
+                                                        <table class="auto-style16">
+                                                            <tr>
+                                                                <td colspan="3" class="auto-style27">
+                                                                    <br />
+                                                                    TIPO HABITACIÓN:
+                                                                    <asp:Label ID="L_Tipo" runat="server" Text='<%# Eval("Tipo") %>'></asp:Label>
+                                                                    <br />
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <br />
+                                                                    NUMERO DE PERSONAS:<asp:Label ID="L_NumPersonas" runat="server" Text='<%# Eval("Numpersonas") %>'></asp:Label>
+                                                                    <br />
+                                                                </td>
+                                                                <td>
+                                                                    <br />
+                                                                    NUMERO DE CAMAS:<asp:Label ID="L_NumCamas" runat="server" Text='<%# Eval("Numcamas") %>'></asp:Label>
+                                                                    <br />
+                                                                </td>
+                                                                <td>
+                                                                    <br />
+                                                                    CANTIDAD DE BAÑOS:<asp:Label ID="L_NumBanos" runat="server" Text='<%# Eval("Numbanio") %>'></asp:Label>
+                                                                    <br />
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="3">
+                                                                    <asp:Button ID="B_Reservar" runat="server" Text="RESERVAR AHORA!" Width="440px" CommandArgument='<%# Eval("Id") %>'/>
+                                                                    <br />
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                </ItemTemplate>
+                                            </asp:DataList>
+                                            </strong>
+                                            &nbsp;&nbsp;
+                                        </div>
+                                        <br />
+                                        <asp:ObjectDataSource ID="ODS_Habitaciones" runat="server" SelectMethod="habitacionesHotel" TypeName="DAOHabitacion">
+                                            <SelectParameters>
+                                                <asp:SessionParameter Name="idE" SessionField="visitarhotel" Type="Object" />
+                                            </SelectParameters>
+                                        </asp:ObjectDataSource>
                                         <br />
                                         <asp:Button ID="B_Volver" runat="server" OnClick="B_Volver_Click" Text="VOLVER" Width="100px" />
                                         <br />
@@ -143,7 +206,9 @@
                                                     <br />
                                                     <asp:Label ID="L_Condicion" runat="server" CssClass="auto-style26"></asp:Label>
                                                     <br />
-                                                    </strong></td>
+                                                    <br />
+                                                    <br />
+                                                    HORARIOS DE REGISTRO</strong></td>
                                             </tr>
                                             <tr>
                                                 <td><strong>
@@ -175,14 +240,6 @@
                                     </ContentTemplate>
                                     <Triggers>
                                         <asp:AsyncPostBackTrigger ControlID="B_Desc_Reserva" EventName="Click" />
-                                    </Triggers>
-                                </asp:UpdatePanel>
-                                <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Conditional">
-                                    <ContentTemplate>
-                                        <asp:Label ID="L_Comentarios" runat="server" Text="hola"></asp:Label>
-                                    </ContentTemplate>
-                                    <Triggers>
-                                        <asp:AsyncPostBackTrigger ControlID="B_Comentarios" EventName="Click" />
                                     </Triggers>
                                 </asp:UpdatePanel>
                             </td>

@@ -21,12 +21,38 @@ public class DAOHabitacion
     {
         return new Mapeo().habitacion.Where(x => x.Idhotel == habitE.Idhotel).ToList().Count();
     }
-    /*
-    //select info habitacion
-    public Hotel infohabitacion(Habitacion habitacionE)
+
+
+    //habitaciones por hotel
+    public List<Habitacion> habitacionesHotel(Hotel idE)
     {
-        return new Mapeo().hotel.Where(x => x.Idhotel.Equals(habitacionE.Idhotel)).FirstOrDefault();
-    }*/
+        using (var db = new Mapeo())
+        {
+            List<Habitacion> habitaciones = (from hhab in db.habitacion
+                                             
+                                             select new
+                                             {
+                                                 hhab
+                                             }).ToList().Select(m => new Habitacion
+                                             {
+                                                 Tipo = m.hhab.Tipo,
+                                                 Id = m.hhab.Id,
+                                                 Numbanio=m.hhab.Numbanio,
+                                                 Numcamas=m.hhab.Numcamas,
+                                                 Numpersonas=m.hhab.Numpersonas,
+                                                 Idhotel=m.hhab.Idhotel,
+                                                 
+                                             }).Where(x=> x.Idhotel == idE.Idhotel).ToList();
+            return habitaciones;
+        }
+    }
+
+    
+    //select info habitacion
+    public Habitacion infoHabitacion(int habitacionE)
+    {
+        return new Mapeo().habitacion.Where(x => (x.Id == habitacionE)).FirstOrDefault();
+    }
 
 
 }

@@ -183,6 +183,14 @@
                                                     <asp:Button ID="B_CambiarContrasena" runat="server" Height="33px" Text="CAMBIAR CONTRASEÑA" Width="197px" OnClick="B_CambiarContrasena_Click" />
                                                 </td>
                                             </tr>
+                                            <tr>
+                                                <td class="auto-style18">
+                                                    <br />
+                                                    REPORTE ACTIVIDAD DE LA CUENTA<br />
+                                                    <asp:Button ID="B_VerReporte" runat="server" OnClick="B_VerReporte_Click" Text="VER REPORTE" Width="197px" />
+                                                    <br />
+                                                </td>
+                                            </tr>
                                         </table>
                                     </div>
                                 </td>

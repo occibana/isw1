@@ -62,4 +62,14 @@ public partial class Vew_PanelHotel : System.Web.UI.Page
     {
         Response.Redirect("Reserva.aspx");
     }
+
+
+    protected void DL_Habitaciones_ItemCommand(object source, DataListCommandEventArgs e)
+    {
+        Habitacion habitacioninfo = new Habitacion();
+        habitacioninfo.Id = int.Parse(e.CommandArgument.ToString());
+        habitacioninfo = new DAOHabitacion().infoHabitacion(habitacioninfo.Id);
+        Session["idhabitacion"] = habitacioninfo;
+        Response.Redirect("Reserva.aspx");
+    }
 }

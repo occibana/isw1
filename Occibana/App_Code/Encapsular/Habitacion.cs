@@ -18,7 +18,7 @@ public class Habitacion
     private int numbanio;
     private int idhotel;
     private string tipo;
-    private int numcamas;
+    private Nullable<int> numcamas;
 
 
     [Key]
@@ -33,5 +33,5 @@ public class Habitacion
     [Column("tipo")]
     public string Tipo { get => tipo; set => tipo = value; }
     [Column("numcamas")]
-    public int Numcamas { get => numcamas; set => numcamas = value; }
+    public Nullable<int> Numcamas { get => numcamas; set => numcamas = value; }
 }
