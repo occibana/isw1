@@ -27,7 +27,7 @@ public class DAOHabitacion
     public List<Habitacion> habitacionesHotel(Hotel idE, Filtro consulta)
     {
 
-        if (consulta == null)
+        if (consulta.numpersonas == null)
         {
             using (var db = new Mapeo())
             {
@@ -44,6 +44,7 @@ public class DAOHabitacion
                                                      Numcamas = m.hhab.Numcamas,
                                                      Numpersonas = m.hhab.Numpersonas,
                                                      Idhotel = m.hhab.Idhotel,
+                                                     Precio = m.hhab.Precio,
 
                                                  }).Where(x => x.Idhotel == idE.Idhotel).ToList();
                 return habitaciones;
@@ -66,6 +67,7 @@ public class DAOHabitacion
                                                      Numcamas = m.hhab.Numcamas,
                                                      Numpersonas = m.hhab.Numpersonas,
                                                      Idhotel = m.hhab.Idhotel,
+                                                     Precio = m.hhab.Precio,
 
                                                  }).Where(x => (x.Idhotel == idE.Idhotel) && (x.Numpersonas == consulta.numpersonas)).ToList();
                 return habitaciones;

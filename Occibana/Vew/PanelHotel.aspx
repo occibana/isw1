@@ -164,6 +164,13 @@
                                                                 </td>
                                                             </tr>
                                                             <tr>
+                                                                <td>&nbsp;</td>
+                                                                <td>PRECIO NOCHE:<br />
+                                                                    <asp:Label ID="L_Precio" runat="server" Text='<%# Eval("Precio") %>'></asp:Label>
+                                                                </td>
+                                                                <td>&nbsp;</td>
+                                                            </tr>
+                                                            <tr>
                                                                 <td colspan="3">
                                                                     <asp:Button ID="B_Reservar" runat="server" Text="REALIZAR RESERVA !" Width="440px" CommandArgument='<%# Eval("Id") %>'/>
                                                                     <br />

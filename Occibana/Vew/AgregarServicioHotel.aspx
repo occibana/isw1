@@ -87,16 +87,16 @@
                                         <td class="auto-style30">
                                             <br />
                                             <asp:TextBox ID="TB_NombreHotel" runat="server" MaxLength="30"></asp:TextBox>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TB_NombreHotel" ErrorMessage="*" ValidationGroup="AnadirHotel"></asp:RequiredFieldValidator>
+                                            <asp:RequiredFieldValidator ID="RFV_TB_NombreHotel" runat="server" ControlToValidate="TB_NombreHotel" ErrorMessage="*" ValidationGroup="AnadirHotel"></asp:RequiredFieldValidator>
                                             <br />
                                             <asp:RegularExpressionValidator ID="REV_TB_Nombredelhotel" runat="server" ControlToValidate="TB_NombreHotel" ErrorMessage="Caracteres no validos" ValidationExpression="[A-Za-z0-9 ]+" ValidationGroup="AnadirHotel"></asp:RegularExpressionValidator>
                                             <br />
                                         </td>
-                                        <td colspan="2" rowspan="6">CONDICIONES DE BIOSEGURIDAD DEL HOTEL:<br />
+                                        <td colspan="2" rowspan="8">CONDICIONES DE BIOSEGURIDAD DEL HOTEL:<br />
                                             <span class="auto-style26">(Descripción sobre los articulos para evitar el COVID-19)</span><br />
                                             <br />
                                             <div class="auto-style18">
-                                                <asp:TextBox ID="TB_descripcioncovid19" runat="server" Height="70px" Width="268px" MaxLength="150"></asp:TextBox>
+                                                <asp:TextBox ID="TB_descripcioncovid19" runat="server" Height="280px" Width="268px" MaxLength="150"></asp:TextBox>
                                                 <br />
                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ControlToValidate="TB_descripcioncovid19" ErrorMessage="*" ValidationGroup="AnadirHotel"></asp:RequiredFieldValidator>
                                                 <br />
@@ -107,15 +107,42 @@
                                     <tr>
                                         <td>
                                             <br />
-                                            PRECIO POR NOCHE:<br />
+                                            PRECIO HABITACION SENCILLA<br />
+                                            <br />
                                         </td>
                                         <td>
                                             <br />
                                             <asp:TextBox ID="TB_PrecioNoche" runat="server" MaxLength="10"></asp:TextBox>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="TB_PrecioNoche" ErrorMessage="*" ValidationGroup="AnadirHotel"></asp:RequiredFieldValidator>
+                                            <asp:RequiredFieldValidator ID="RFV_TB_PrecioNoche" runat="server" ControlToValidate="TB_PrecioNoche" ErrorMessage="*" ValidationGroup="AnadirHotel"></asp:RequiredFieldValidator>
                                             <br />
                                             <asp:RegularExpressionValidator ID="REV_TB_Precionoche" runat="server" ControlToValidate="TB_PrecioNoche" ErrorMessage="Caracteres no validos" ValidationExpression="[A-Za-z0-9 ]+" ValidationGroup="AnadirHotel"></asp:RegularExpressionValidator>
                                             <br />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <br />
+                                            PRECIO HABITACIÓN DOBLE:<br />
+                                        </td>
+                                        <td>
+                                            <br />
+                                            <asp:TextBox ID="TB_PrecioNocheDoble" runat="server" MaxLength="10"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RFV_PrecioNocheDoble" runat="server" ControlToValidate="TB_PrecioNocheDoble" ErrorMessage="*" ValidationGroup="AnadirHotel"></asp:RequiredFieldValidator>
+                                            <br />
+                                            <asp:RegularExpressionValidator ID="REV_TB_PrecionocheDoble" runat="server" ControlToValidate="TB_PrecioNocheDoble" ErrorMessage="Caracteres no validos" ValidationExpression="[A-Za-z0-9 ]+" ValidationGroup="AnadirHotel"></asp:RegularExpressionValidator>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <br />
+                                            PRECIO HABITACIÓN PREMIUM:<br />
+                                        </td>
+                                        <td>
+                                            <br />
+                                            <asp:TextBox ID="TB_PrecioNochePremium" runat="server" MaxLength="10"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RFV_TB_PrecioNochePremium" runat="server" ControlToValidate="TB_PrecioNochePremium" ErrorMessage="*" ValidationGroup="AnadirHotel"></asp:RequiredFieldValidator>
+                                            <br />
+                                            <asp:RegularExpressionValidator ID="REV_TB_PrecionochePremium" runat="server" ControlToValidate="TB_PrecioNochePremium" ErrorMessage="Caracteres no validos" ValidationExpression="[A-Za-z0-9 ]+" ValidationGroup="AnadirHotel"></asp:RegularExpressionValidator>
                                         </td>
                                     </tr>
                                     <tr>
@@ -166,7 +193,7 @@
                                             <asp:TextBox ID="TB_Direccion" runat="server" MaxLength="20"></asp:TextBox>
                                             <asp:RequiredFieldValidator ID="RFV_TB_Direccion" runat="server" ControlToValidate="TB_Direccion" ErrorMessage="*" ValidationGroup="AnadirHotel"></asp:RequiredFieldValidator>
                                             <br />
-                                                <asp:RegularExpressionValidator ID="REV_TB_Direccion" runat="server" ControlToValidate="TB_Direccion" ErrorMessage="Caracteres no validos" ValidationExpression="[A-Za-z0-9,.: ]+" ValidationGroup="AnadirHotel"></asp:RegularExpressionValidator>
+                                                <asp:RegularExpressionValidator ID="REV_TB_Direccion" runat="server" ControlToValidate="TB_Direccion" ErrorMessage="Caracteres no validos" ValidationExpression="[A-Za-z0-9,.:# ]+" ValidationGroup="AnadirHotel"></asp:RegularExpressionValidator>
                                         </td>
                                     </tr>
                                     <tr>
@@ -200,7 +227,7 @@
                                 <div class="auto-style19">
                                     <table class="auto-style28">
                                         <tr>
-                                            <td>DESCRIPCIÓN (Escriba un apartado para describir generalidades del hotel):<asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="TB_Descripcion" ErrorMessage="*" ValidationGroup="AnadirHotel"></asp:RequiredFieldValidator>
+                                            <td>DESCRIPCIÓN (Escriba un apartado para describir generalidades del hotel y servicos):<asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="TB_Descripcion" ErrorMessage="*" ValidationGroup="AnadirHotel"></asp:RequiredFieldValidator>
                                             </td>
                                         </tr>
                                         <tr>

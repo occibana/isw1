@@ -17,6 +17,8 @@ public class Hotel
     private int idmunicipio;
     private int numhabitacion;
     private int precionoche;
+    private int precioNocheDoble;
+    private int precioNochePremium;
     private string descripcion;
     private string condicion;
     private string checkin;
@@ -52,6 +54,10 @@ public class Hotel
     public int Numhabitacion { get => numhabitacion; set => numhabitacion = value; }
     [Column("precionoche")]
     public int Precionoche { get => precionoche; set => precionoche = value; }
+    [Column("precionochedoble")]
+    public int PrecioNocheDoble { get => precioNocheDoble; set => precioNocheDoble = value; }
+    [Column("precionochepremium")]
+    public int PrecioNochePremium { get => precioNochePremium; set => precioNochePremium = value; }
     [Column("descripcion")]
     public string Descripcion { get => descripcion; set => descripcion = value; }
     [Column("condicion")]
@@ -92,5 +98,5 @@ public class Hotel
     public DateTime Fecha_antesde { get => fecha_antesde; set => fecha_antesde = value; }
     [NotMapped]
     public int NumHabitDisponibles { get => numHabitDisponibles; set => numHabitDisponibles = value; }
-    
+
 }

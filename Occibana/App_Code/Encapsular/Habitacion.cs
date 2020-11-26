@@ -18,6 +18,7 @@ public class Habitacion
     private int numbanio;
     private int idhotel;
     private string tipo;
+    private Nullable<int> precio;
     private Nullable<int> numcamas;
 
 
@@ -34,4 +35,6 @@ public class Habitacion
     public string Tipo { get => tipo; set => tipo = value; }
     [Column("numcamas")]
     public Nullable<int> Numcamas { get => numcamas; set => numcamas = value; }
+    [Column("precio")]
+    public Nullable<int> Precio { get => precio; set => precio = value; }
 }

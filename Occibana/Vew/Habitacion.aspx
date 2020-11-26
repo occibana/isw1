@@ -78,17 +78,21 @@
                                         <td class="auto-style19">
                                             Tipo de habitación:</td>
                                         <td class="auto-style19">
-                                            <asp:TextBox ID="TB_Tipo" runat="server" Width="170px" MaxLength="10"></asp:TextBox>
                                             <br />
-                                            <asp:RegularExpressionValidator ID="REV_TB_Tipo" runat="server" ControlToValidate="TB_Tipo" ErrorMessage="Caracteres no validos" ValidationExpression="[A-Za-z,. ]+" ValidationGroup="AgregarHabitacion"></asp:RegularExpressionValidator>
+                                            <asp:DropDownList ID="DDL_Tipo" runat="server">
+                                                <asp:ListItem Selected="True">--Seleccionar--</asp:ListItem>
+                                                <asp:ListItem>Básica</asp:ListItem>
+                                                <asp:ListItem>Doble</asp:ListItem>
+                                                <asp:ListItem>Premium</asp:ListItem>
+                                            </asp:DropDownList>
                                             <br />
-                                            <asp:RequiredFieldValidator ID="RFV_Tipo" runat="server" ControlToValidate="TB_Tipo" ErrorMessage="Llenar Campo" ValidationGroup="AgregarHabitacion"></asp:RequiredFieldValidator>
+                                            <asp:Label ID="L_Tipo" runat="server" Text="Seleccione una opción"></asp:Label>
+                                            <br />
                                         </td>
                                     </tr>
                                     
                                     <tr>
                                         <td class="auto-style19">
-                                            <br />
                                             Número de camas:
                                             <br />
                                         </td>

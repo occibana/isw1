@@ -42,6 +42,8 @@ public partial class Vew_AgregarServicioHotel : System.Web.UI.Page
         serviciohotel.Usuarioencargado = ((Registro)Session["usuario"]).Usuario;
         serviciohotel.Condicionesbioseguridad = TB_descripcioncovid19.Text;
         serviciohotel.Direccion = TB_Direccion.Text;
+        serviciohotel.PrecioNocheDoble = int.Parse(TB_PrecioNocheDoble.Text);
+        serviciohotel.PrecioNochePremium = int.Parse(TB_PrecioNochePremium.Text); 
 
 
         //verifica si hay archivos seleccionados

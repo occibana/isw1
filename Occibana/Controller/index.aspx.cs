@@ -93,7 +93,7 @@ public partial class Vew_index : System.Web.UI.Page
         {
             busqueda.municipio = null;
         }
-        if (busqueda.calificacion.Equals("--Seleccione--"))
+        if (busqueda.calificacion.Equals("--Seleccionar--"))
         {
             busqueda.calificacion = null;
         }
