@@ -100,4 +100,10 @@ public partial class Vew_index : System.Web.UI.Page
         Session["hotelseleccionado"] = busqueda;
         DL_Listaprincipalhoteles.DataBind();
     }
+
+    protected void B_LimpiarFechas_Click(object sender, EventArgs e)
+    {
+        TB_DateAntesDe.Text = "";
+        TB_DateDespuesDe.Text = "";
+    }
 }

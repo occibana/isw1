@@ -48,10 +48,12 @@ public partial class Vew_Reserva : System.Web.UI.Page
 
     protected void B_BuscarDisponibilidad_Click(object sender, EventArgs e)
     {
+        ClientScriptManager cm = this.ClientScript;//script
         Reserva reserva = new Reserva();
         reserva.Idhotel = ((Hotel)Session["visitarhotel"]).Idhotel;
         reserva.Fecha_salida = C_FechaSalida.SelectedDate;
         reserva.Fecha_llegada = C_FechaLlegada.SelectedDate;
+        DateTime fechaMaxima = reserva.Fecha_llegada.AddDays(30);
         reserva.Numpersona = int.Parse(L_NumeroDePersonas.Text);
         reserva.Id_habitacion = ((Habitacion)Session["idhabitacion"]).Id;
         if (reserva.Fecha_llegada < DateTime.Now)
@@ -61,42 +63,52 @@ public partial class Vew_Reserva : System.Web.UI.Page
         }
         else
         {
-            if (reserva.Fecha_llegada == null || reserva.Fecha_salida == null)
+            if (reserva.Fecha_salida > fechaMaxima)
             {
-                L_Habitaciondisponible.Text = "Seleccione las fechas correctamente";
+                cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Su estadia en el hotel no puede superar los 30 dias.');</script>");
                 deshabilitarbotones();
             }
-            else if (reserva.Fecha_llegada != null || reserva.Fecha_salida != null)
+            else
             {
-                if (C_FechaLlegada.SelectedDate > C_FechaSalida.SelectedDate)
+                if (reserva.Fecha_llegada == null || reserva.Fecha_salida == null)
                 {
-                    L_Habitaciondisponible.Text = "Seleccione una fecha de salida posterior a\n" + C_FechaLlegada.SelectedDate;
+                    L_Habitaciondisponible.Text = "Seleccione las fechas correctamente";
+                    deshabilitarbotones();
                 }
-                else if (C_FechaLlegada.SelectedDate <= C_FechaSalida.SelectedDate)
-                {                 
-                    var hdisponibles = new DAOReserva().habitacionesdisponibles(reserva);//numero de habitaciones en ese hotel para ese numero maximo de personas
-                    var fechasreservadas = new DAOReserva().fechasdisponibles(reserva);
-                    //var disponibilidad = hdisponibles - fechasreservadas;
-                    if (hdisponibles >= 1)
+                else if (reserva.Fecha_llegada != null || reserva.Fecha_salida != null)
+                {
+                    if (C_FechaLlegada.SelectedDate > C_FechaSalida.SelectedDate)
                     {
-                        if (fechasreservadas==1)
+                        L_Habitaciondisponible.Text = "Seleccione una fecha de salida posterior a\n" + C_FechaLlegada.SelectedDate;
+                    }
+                    else if (C_FechaLlegada.SelectedDate <= C_FechaSalida.SelectedDate)
+                    {
+                        var hdisponibles = new DAOReserva().habitacionesdisponibles(reserva);//numero de habitaciones en ese hotel para ese numero maximo de personas
+                        var fechasreservadas = new DAOReserva().fechasdisponibles(reserva);
+                        //var disponibilidad = hdisponibles - fechasreservadas;
+                        if (hdisponibles >= 1)
                         {
-                            L_Habitaciondisponible.Text = "No hay disponibilidad para las fechas selccionadas";
+                            if (fechasreservadas == 1)
+                            {
+                                L_Habitaciondisponible.Text = "No hay disponibilidad para las fechas selccionadas";
+                                deshabilitarbotones();
+                            }
+                            else if (fechasreservadas == 0)
+                            {
+                                L_Habitaciondisponible.Text = "habitación disponible para las fechas selccionadas";
+                                habilitarbotones();
+                            }
+                        }
+                        else
+                        {
+                            L_Habitaciondisponible.Text = "No hay habitaciones disponibles para ese numero de personas";
                             deshabilitarbotones();
                         }
-                        else if(fechasreservadas ==0)
-                        {
-                            L_Habitaciondisponible.Text = "habitación disponible para las fechas selccionadas";
-                            habilitarbotones();
-                        }
-                    }
-                    else
-                    {
-                        L_Habitaciondisponible.Text = "No hay habitaciones disponibles para ese numero de personas";
-                        deshabilitarbotones();
                     }
                 }
             }
+
+
         }
     }
 
@@ -133,6 +145,7 @@ public partial class Vew_Reserva : System.Web.UI.Page
         reserva.Idhotel = ((Hotel)Session["visitarhotel"]).Idhotel;
         reserva.Fecha_llegada = C_FechaLlegada.SelectedDate;
         reserva.Fecha_salida = C_FechaSalida.SelectedDate;
+        DateTime fechaMaxima = reserva.Fecha_llegada.AddDays(30);
         reserva.Mediopago = CHBL_Mediodepago.Text;
         reserva.Id_habitacion = ((Habitacion)Session["idhabitacion"]).Id;
         reserva.Limite_comentario = reserva.Fecha_salida.AddDays(3);
@@ -140,34 +153,43 @@ public partial class Vew_Reserva : System.Web.UI.Page
         int cantReservas = new DAOReserva().verificarreserva(reserva);
         string fechaLlegada = (reserva.Fecha_llegada).ToString();
         string fechaSalida = (reserva.Fecha_salida).ToString();
-        if (fechasreservadas==1)
-        {
-            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('No hay disponibilidad entre las fechas '"+fechaLlegada+" y "+fechaSalida+");</script>");
-        }
-        else if (fechasreservadas==0)
-        {
-            if (cantReservas == 0)
+        //if (reserva.Fecha_salida > fechaMaxima)
+        //{
+        //    cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Su estadia en el hotel no puede superar los 30 dias.');</script>");
+
+        //}
+        //else
+        //{
+            if (fechasreservadas == 1)
             {
-                if (Session["usuario"] != null)
+                cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('No hay disponibilidad entre estas fechas');</script>");
+            }
+            else if (fechasreservadas == 0)
+            {
+                if (cantReservas == 0)
                 {
-                    reserva.Idusuario = ((Registro)Session["usuario"]).Id;
-                    new DAOReserva().insertReserva(reserva);
-                    L_MensajeestadoSession.Text = "REESERVA EXITOSA";//, REVISE SU CORREO PARA MÁS DETALLES
-                    new Mail().mailconfirmarreserva(reserva);
+                    if (Session["usuario"] != null)
+                    {
+                        reserva.Idusuario = ((Registro)Session["usuario"]).Id;
+                        new DAOReserva().insertReserva(reserva);
+                        L_MensajeestadoSession.Text = "REESERVA EXITOSA";//, REVISE SU CORREO PARA MÁS DETALLES
+                        new Mail().mailconfirmarreserva(reserva);
+                    }
+                    else
+                    {
+                        new DAOReserva().insertReserva(reserva);
+                        L_MensajeestadoSession.Text = "REESERVA EXITOSA";//, REVISE SU CORREO PARA MÁS DETALLES
+                        cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('La reserva ha sido exitosa');</script>");
+                        new Mail().mailconfirmarreserva(reserva);
+                    }
                 }
                 else
                 {
-                    new DAOReserva().insertReserva(reserva);
-                    L_MensajeestadoSession.Text = "REESERVA EXITOSA";//, REVISE SU CORREO PARA MÁS DETALLES
-                    cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('La reserva ha sido exitosa');</script>");
-                    new Mail().mailconfirmarreserva(reserva);
+                    L_MensajeestadoSession.Text = "RESERVA OCUPADA";//, REVISE SU CORREO PARA MÁS DETALLES
+                    cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('ESTA RESERVA SE ENCUENTRA OCUPADA');</script>");
                 }
             }
-            else
-            {
-                L_MensajeestadoSession.Text = "RESERVA OCUPADA";//, REVISE SU CORREO PARA MÁS DETALLES
-                cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('ESTA RESERVA SE ENCUENTRA OCUPADA');</script>");
-            }
-        }       
+        //}
+              
     }
 }

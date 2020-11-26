@@ -31,19 +31,29 @@ public partial class Vew_Registro : System.Web.UI.Page
             Registro pedidos = new DAOLogin().verificaruser(registro);
             if (pedidos == null)
             {
-                new DAOLogin().insertRegistro(registro);
-                new Mail().enviarmail(registro);
-                L_fallo.Text = " Usuario registrado con exito";
-                cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Registro Exitoso, Por Favor Inice Sesion');</script>");
-                TB_nombre.Text = "";
-                TB_apellido.Text = "";
-                TB_correo.Text = "";
-                TB_telefono.Text = "";
-                TB_usuarioregistro.Text = "";
+                if (registro.Contrasena.Length < 5)
+                {
+                    cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ingrese una contraseña minimo de 5 caracteres');</script>");
+                    TB_ccontrasena.Text = "";
+                    TB_contrasenaregistro.Text = "";
+                }
+                else
+                {
+                    new DAOLogin().insertRegistro(registro);
+                    new Mail().enviarmail(registro);
+                    L_fallo.Text = " Usuario registrado con exito";
+                    cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Registro Exitoso, Por Favor Inice Sesion');</script>");
+                    TB_nombre.Text = "";
+                    TB_apellido.Text = "";
+                    TB_correo.Text = "";
+                    TB_telefono.Text = "";
+                    TB_usuarioregistro.Text = "";
+                }
+
             }
             else
             {
-                L_fallo.Text = "Este usuario o correo ya existe o esta regiatrado";
+                L_fallo.Text = "Este usuario o correo ya existe o esta registrado";
             }
             //Response.Redirect("Login.aspx");
 

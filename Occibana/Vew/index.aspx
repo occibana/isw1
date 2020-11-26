@@ -239,6 +239,8 @@
                                     </table>
                                     <br />
                                     <asp:Label ID="L_MensajeFalloFechas" runat="server"></asp:Label>
+                                    <br />
+                                    <asp:Button ID="B_LimpiarFechas" runat="server" OnClick="B_LimpiarFechas_Click" Text="Limpiar" />
                                 </td>
                                 <td class="auto-style34">
                                     <h6>ZONAS</h6>
