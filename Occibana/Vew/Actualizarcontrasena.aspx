@@ -47,7 +47,7 @@
                                             <br />
                                             <asp:TextBox ID="TB_Contrasenaactual" runat="server" TextMode="Password" MaxLength="20"></asp:TextBox>
                                             <br />
-                                            <asp:RegularExpressionValidator ID="REV_TB_Contrasenaactual" runat="server" ControlToValidate="TB_Contrasenaactual" ErrorMessage="Caracteres invallidos" ValidationExpression="[a-zA-Z0-9 ]+"></asp:RegularExpressionValidator>
+                                            <asp:RegularExpressionValidator ID="REV_TB_Contrasenaactual" runat="server" ControlToValidate="TB_Contrasenaactual" ErrorMessage="Caracteres invallidos" ValidationExpression="[A-Za-z0-9]+"></asp:RegularExpressionValidator>
                                             <br />
                                         </td>
                                     </tr>
@@ -58,7 +58,7 @@
                                             <br />
                                             <asp:TextBox ID="TB_Nuevacontrasena" runat="server" TextMode="Password" MaxLength="20"></asp:TextBox>
                                             <br />
-                                            <asp:RegularExpressionValidator ID="REV_TB_Nuevacontrasena" runat="server" ControlToValidate="TB_Nuevacontrasena" ErrorMessage="Caracteres invalidos" ValidationExpression="[a-zA-Z0-9 ]+"></asp:RegularExpressionValidator>
+                                            <asp:RegularExpressionValidator ID="REV_TB_Nuevacontrasena" runat="server" ControlToValidate="TB_Nuevacontrasena" ErrorMessage="Caracteres invalidos" ValidationExpression="[A-Za-z0-9]+"></asp:RegularExpressionValidator>
                                             <br />
                                         </td>
                                     </tr>

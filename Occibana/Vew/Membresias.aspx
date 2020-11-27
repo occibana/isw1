@@ -123,7 +123,7 @@
                                                 <asp:TextBox ID="TB_Contrasena" runat="server" TextMode="Password" MaxLength="20"></asp:TextBox>
                                                 <asp:RequiredFieldValidator ID="RFV_TB_Contrasena" runat="server" ErrorMessage="*" ValidationGroup="compramembresia" ControlToValidate="TB_Contrasena"></asp:RequiredFieldValidator>
                                                 <br />
-                                                <asp:RegularExpressionValidator ID="REV_TB_Contrasena" runat="server" ControlToValidate="TB_Contrasena" ErrorMessage="caracteres no validos" ValidationExpression="[A-Za-z1-9]+" ValidationGroup="compramembresia"></asp:RegularExpressionValidator>
+                                                <asp:RegularExpressionValidator ID="REV_TB_Contrasena" runat="server" ControlToValidate="TB_Contrasena" ErrorMessage="caracteres no validos" ValidationExpression="[A-Za-z0-9]+" ValidationGroup="compramembresia"></asp:RegularExpressionValidator>
                                                 <br />
                                             </td>
                                         </tr>

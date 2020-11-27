@@ -89,6 +89,8 @@ public class DAOhotel
                                              Idhotel = m.h.Idhotel,
                                              Nombre = m.h.Nombre,
                                              Precionoche = m.h.Precionoche,
+                                             PrecioNocheDoble = m.h.PrecioNocheDoble,
+                                             PrecioNochePremium = m.h.PrecioNochePremium,
                                              Imagen = m.h.Imagen,
                                              Municipio = m.hm.Nombre,
                                              Zona = m.hz.Nombre,
@@ -127,6 +129,8 @@ public class DAOhotel
                                              Idhotel = m.h.Idhotel,
                                              Nombre = m.h.Nombre,
                                              Precionoche = m.h.Precionoche,
+                                             PrecioNocheDoble = m.h.PrecioNocheDoble,
+                                             PrecioNochePremium = m.h.PrecioNochePremium,
                                              Imagen = m.h.Imagen,
                                              Municipio = m.hm.Nombre,
                                              Zona = m.hz.Nombre,
@@ -162,7 +166,26 @@ public class DAOhotel
                 }
                 if (consulta.preciomin != null && consulta.preciomax != null)
                 {
-                    elementos = elementos.Where(x => x.Precionoche <= consulta.preciomax && x.Precionoche >= consulta.preciomin).ToList();
+                    if (consulta.tipo != null)
+                    {
+                        if (consulta.tipo.Equals("Basica"))
+                        {
+                            elementos = elementos.Where(x => (x.Precionoche <= consulta.preciomax && x.Precionoche >= consulta.preciomin)).ToList();
+                        }
+                        if (consulta.tipo.Equals("Doble"))
+                        {
+                            elementos = elementos.Where(x => (x.PrecioNocheDoble <= consulta.preciomax && x.PrecioNocheDoble >= consulta.preciomin)).ToList();
+                        }
+                        if (consulta.tipo.Equals("Premium"))
+                        {
+                            elementos = elementos.Where(x => (x.PrecioNochePremium <= consulta.preciomax && x.PrecioNochePremium >= consulta.preciomin)).ToList();
+                        }
+
+                    }
+                    else if(consulta.tipo== null)
+                    {
+                        elementos = elementos.Where(x => x.Precionoche <= consulta.preciomax && x.Precionoche >= consulta.preciomin).ToList();
+                    }           
                 }
                 else
                 {

@@ -50,7 +50,7 @@
         }
 
         .auto-style25 {
-            height: 525px;
+            height: 582px;
             width: 80%;
             text-align: center;
             margin-left: auto;
@@ -60,7 +60,7 @@
 
         .auto-style27 {
             width: 85%;
-            height: 351px;
+            height: 460px;
             margin-top: 10px;
             margin-right: auto;
             margin-left: auto;
@@ -73,7 +73,7 @@
 
         .auto-style29 {
             width: 100%;
-            height: 119%;
+            height: 101%;
             color: #ffffff;
             font-weight: 600;
         }
@@ -111,7 +111,7 @@
             margin-right: auto;
             margin-top: 15px;
             background: #E60004;
-            height: 296px;
+            height: 346px;
         }
 
         .auto-style36 {
@@ -122,8 +122,8 @@
         }
 
         .auto-style38 {
-            width: 70%;
-            height: 173px;
+            width: 63%;
+            height: 231px;
             margin-left: auto;
             margin-right: auto;
             background: #ffffff;
@@ -201,6 +201,17 @@
                                     <h6>&nbsp;</h6>
                                     <h6>$ PRECIOS</h6>
                                     <table class="auto-style35">
+                                        <tr>
+                                            <td colspan="2">
+                                                seleccione el tipo de habitación<br />
+                                                <asp:DropDownList ID="DDL_Tipo" runat="server">
+                                                    <asp:ListItem Selected="True">--Seleccionar--</asp:ListItem>
+                                                    <asp:ListItem Value="Basica">Básica</asp:ListItem>
+                                                    <asp:ListItem>Doble</asp:ListItem>
+                                                    <asp:ListItem>Premium</asp:ListItem>
+                                                </asp:DropDownList>
+                                            </td>
+                                        </tr>
                                         <tr>
                                             <td class="auto-style44">
                                                 <br />
@@ -318,7 +329,7 @@
                                     <table class="auto-style35hoteles">
                                         <tr>
                                             <td rowspan="2" class="auto-style40">
-                                                <asp:ImageButton ID="IB_Hotelindex" runat="server" Height="230px" Width="100%" ImageUrl='<%# Eval("Imagen") %>' CommandArgument='<%# Eval("Idhotel") %>' />
+                                                <asp:ImageButton ID="IB_Hotelindex" runat="server" Height="230px" Width="70%" ImageUrl='<%# Eval("Imagen") %>' CommandArgument='<%# Eval("Idhotel") %>' />
                                             </td>
                                             <td class="auto-style39">Nombre del hotel:<asp:Label ID="NombreLabel" runat="server" Text='<%# Eval("Nombre") %>' />
                                             </td>
@@ -326,8 +337,14 @@
                                         <tr>
                                             <td class="auto-style41">
                                                 <div class="auto-style38">
-                                                    Precionoche:
+                                                    Precio noche habitación basica:
                                             <asp:Label ID="PrecionocheLabel" runat="server" Text='<%# Eval("Precionoche") %>' />
+                                                    <br />
+                                                    Precio noche habitación doble:<br />
+                                                    <asp:Label ID="L_Precionochedoble" runat="server" Text='<%# Eval("PrecioNocheDoble") %>'></asp:Label>
+                                                    <br />
+                                                    Precio noche habitación premium:<br />
+                                                    <asp:Label ID="L_PrecioNochePremium" runat="server" Text='<%# Eval("PrecioNochePremium") %>'></asp:Label>
                                                     <br />
                                                     Municipio:
                                             <br />

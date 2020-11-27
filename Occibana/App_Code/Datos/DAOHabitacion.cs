@@ -26,8 +26,7 @@ public class DAOHabitacion
     //habitaciones por hotel
     public List<Habitacion> habitacionesHotel(Hotel idE, Filtro consulta)
     {
-
-        if (consulta.numpersonas == null)
+        if (consulta == null)//consulta.numpersonas == null || 
         {
             using (var db = new Mapeo())
             {

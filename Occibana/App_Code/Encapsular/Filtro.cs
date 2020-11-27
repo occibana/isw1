@@ -20,4 +20,5 @@ public class Filtro
     public String zona;
     public Nullable<DateTime> fecha_antesde;
     public Nullable<DateTime> fecha_despuesde;
+    public string tipo;
 }
