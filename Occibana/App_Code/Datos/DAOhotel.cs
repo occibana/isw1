@@ -81,10 +81,10 @@ public class DAOhotel
                                          {
 
                                              NumHabitDisponibles = ((db.habitacion.Where(x => x.Idhotel == m.h.Idhotel).Count()) - (db.reserva.Where(x => (x.Idhotel == m.h.Idhotel)&&
-                                                                    ((consulta.fecha_despuesde>=x.Fecha_llegada && consulta.fecha_antesde <= x.Fecha_salida))).Count()) <0? 0
+                                                                    ((consulta.fecha_despuesde>=x.Fecha_llegada && consulta.fecha_despuesde <= x.Fecha_salida) || (consulta.fecha_antesde >= x.Fecha_salida && consulta.fecha_antesde <= x.Fecha_salida))).Count()) <0? 0
                                                                     : (db.habitacion.Where(x => x.Idhotel == m.h.Idhotel).Count()) - (db.reserva.Where(x => (x.Idhotel == m.h.Idhotel) &&
-                                                                    ((consulta.fecha_despuesde >= x.Fecha_llegada && consulta.fecha_antesde <= x.Fecha_salida))).Count())),
-                                                                    
+                                                                    ((consulta.fecha_despuesde >= x.Fecha_llegada && consulta.fecha_despuesde <= x.Fecha_salida) || (consulta.fecha_antesde >= x.Fecha_salida && consulta.fecha_antesde <= x.Fecha_salida))).Count())),
+                                            
                                              Promediocalificacion = m.h.Promediocalificacion,
                                              Idhotel = m.h.Idhotel,
                                              Nombre = m.h.Nombre,
@@ -184,7 +184,7 @@ public class DAOhotel
                     }
                     else if(consulta.tipo== null)
                     {
-                        elementos = elementos.Where(x => x.Precionoche <= consulta.preciomax && x.Precionoche >= consulta.preciomin).ToList();
+                        elementos = elementos.Where(x => x.Precionoche !=null && x.Precionoche !=null).ToList();
                     }           
                 }
                 else

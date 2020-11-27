@@ -26,54 +26,104 @@ public class DAOHabitacion
     //habitaciones por hotel
     public List<Habitacion> habitacionesHotel(Hotel idE, Filtro consulta)
     {
-        if (consulta == null)//consulta.numpersonas == null || 
+        try
         {
-            using (var db = new Mapeo())
+            if (consulta.numpersonas == null)
             {
-                List<Habitacion> habitaciones = (from hhab in db.habitacion
+                using (var db = new Mapeo())
+                {
+                    List<Habitacion> habitaciones = (from hhab in db.habitacion
 
-                                                 select new
-                                                 {
-                                                     hhab
-                                                 }).ToList().Select(m => new Habitacion
-                                                 {
-                                                     Tipo = m.hhab.Tipo,
-                                                     Id = m.hhab.Id,
-                                                     Numbanio = m.hhab.Numbanio,
-                                                     Numcamas = m.hhab.Numcamas,
-                                                     Numpersonas = m.hhab.Numpersonas,
-                                                     Idhotel = m.hhab.Idhotel,
-                                                     Precio = m.hhab.Precio,
+                                                     select new
+                                                     {
+                                                         hhab
+                                                     }).ToList().Select(m => new Habitacion
+                                                     {
+                                                         Tipo = m.hhab.Tipo,
+                                                         Id = m.hhab.Id,
+                                                         Numbanio = m.hhab.Numbanio,
+                                                         Numcamas = m.hhab.Numcamas,
+                                                         Numpersonas = m.hhab.Numpersonas,
+                                                         Idhotel = m.hhab.Idhotel,
+                                                         Precio = m.hhab.Precio,
 
-                                                 }).Where(x => x.Idhotel == idE.Idhotel).ToList();
-                return habitaciones;
+                                                     }).Where(x => x.Idhotel == idE.Idhotel).ToList();
+                    return habitaciones;
+                }
+            }
+            else
+            {
+                using (var db = new Mapeo())
+                {
+                    List<Habitacion> habitaciones = (from hhab in db.habitacion
+
+                                                     select new
+                                                     {
+                                                         hhab
+                                                     }).ToList().Select(m => new Habitacion
+                                                     {
+                                                         Tipo = m.hhab.Tipo,
+                                                         Id = m.hhab.Id,
+                                                         Numbanio = m.hhab.Numbanio,
+                                                         Numcamas = m.hhab.Numcamas,
+                                                         Numpersonas = m.hhab.Numpersonas,
+                                                         Idhotel = m.hhab.Idhotel,
+                                                         Precio = m.hhab.Precio,
+
+                                                     }).Where(x => (x.Idhotel == idE.Idhotel) && (x.Numpersonas == consulta.numpersonas)).ToList();
+                    return habitaciones;
+                }
             }
         }
-        else
+        catch
         {
-            using (var db = new Mapeo())
+            if (consulta == null)
             {
-                List<Habitacion> habitaciones = (from hhab in db.habitacion
+                using (var db = new Mapeo())
+                {
+                    List<Habitacion> habitaciones = (from hhab in db.habitacion
 
-                                                 select new
-                                                 {
-                                                     hhab
-                                                 }).ToList().Select(m => new Habitacion
-                                                 {
-                                                     Tipo = m.hhab.Tipo,
-                                                     Id = m.hhab.Id,
-                                                     Numbanio = m.hhab.Numbanio,
-                                                     Numcamas = m.hhab.Numcamas,
-                                                     Numpersonas = m.hhab.Numpersonas,
-                                                     Idhotel = m.hhab.Idhotel,
-                                                     Precio = m.hhab.Precio,
+                                                     select new
+                                                     {
+                                                         hhab
+                                                     }).ToList().Select(m => new Habitacion
+                                                     {
+                                                         Tipo = m.hhab.Tipo,
+                                                         Id = m.hhab.Id,
+                                                         Numbanio = m.hhab.Numbanio,
+                                                         Numcamas = m.hhab.Numcamas,
+                                                         Numpersonas = m.hhab.Numpersonas,
+                                                         Idhotel = m.hhab.Idhotel,
+                                                         Precio = m.hhab.Precio,
 
-                                                 }).Where(x => (x.Idhotel == idE.Idhotel) && (x.Numpersonas == consulta.numpersonas)).ToList();
-                return habitaciones;
+                                                     }).Where(x => x.Idhotel == idE.Idhotel).ToList();
+                    return habitaciones;
+                }
             }
-        }
+            else
+            {
+                using (var db = new Mapeo())
+                {
+                    List<Habitacion> habitaciones = (from hhab in db.habitacion
 
+                                                     select new
+                                                     {
+                                                         hhab
+                                                     }).ToList().Select(m => new Habitacion
+                                                     {
+                                                         Tipo = m.hhab.Tipo,
+                                                         Id = m.hhab.Id,
+                                                         Numbanio = m.hhab.Numbanio,
+                                                         Numcamas = m.hhab.Numcamas,
+                                                         Numpersonas = m.hhab.Numpersonas,
+                                                         Idhotel = m.hhab.Idhotel,
+                                                         Precio = m.hhab.Precio,
 
+                                                     }).Where(x => (x.Idhotel == idE.Idhotel) && (x.Numpersonas == consulta.numpersonas)).ToList();
+                    return habitaciones;
+                }
+            }
+        }     
     }
 
     
