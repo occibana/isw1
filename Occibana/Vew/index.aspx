@@ -143,6 +143,7 @@
 
         .auto-style42 {
             width: 90%;
+            text-align: center;
         }
 
         .auto-style43 {
@@ -173,6 +174,13 @@
             background: #E60004;
             color: #ffffff;
         }
+        .auto-style47 {
+            font-size: x-large;
+            color: #FFFFFF;
+        }
+        .auto-style48 {
+            width: 50%;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
@@ -183,6 +191,7 @@
                     <table class="auto-style35">
                         <tr>
                             <td class="auto-style42">
+                                <asp:Label ID="L_Aviso" runat="server" CssClass="auto-style47" Text="Realize su busqueda por el nombre del hotel o empresa"></asp:Label>
                                 <br />
                                 <asp:TextBox ID="TB_Busquedageneral" runat="server" Width="80%" Height="18px" MaxLength="30"></asp:TextBox>
                                 <br />
@@ -414,9 +423,9 @@
                         <br />
                         <table class="auto-style23">
                             <tr>
-                                <td>MISION<br />
+                                <td class="auto-style48">MISION<br />
                                     <br />
-                                    Ser reconocidos a nimer municipal y a nuvel cundinamarca como la mejor opcion para reserva de hoteles.</td>
+                                    Ser reconocidos a nivel municipal y a nivel cundinamarca como la mejor opcion para reserva de hoteles.</td>
                                 <td>VISION<br />
                                     <br />
                                     Ser reconocidos en el 2021 como una plataforma segura y servir a nuestros clientes garantizando satisfaccion en cada uno de nuestros servicios.</td>

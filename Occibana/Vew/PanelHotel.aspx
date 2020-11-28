@@ -95,10 +95,29 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="auto-style21">PRECIO/NOCHE:</td>
+                                        <td class="auto-style21">PRECIO/NOCHE<br />
+                                            BASICA:</td>
                                         <td class="auto-style22">
                                             <em>
                                 <asp:Label ID="L_Panelhotelprecio" runat="server" CssClass="auto-style26"></asp:Label>
+                                            </em>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="auto-style19">PRECIO/NOCHE<br />
+                                            DOBLE:</td>
+                                        <td>
+                                            <em>
+                                            <asp:Label ID="L_PanelHotelPrecioDoble" runat="server" CssClass="auto-style26"></asp:Label>
+                                            </em>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="auto-style19">PRECIO/NOCHE<br />
+                                            PREMIUM:</td>
+                                        <td>
+                                            <em>
+                                            <asp:Label ID="L_PanelHotelPrecioPremium" runat="server" CssClass="auto-style26"></asp:Label>
                                             </em>
                                         </td>
                                     </tr>

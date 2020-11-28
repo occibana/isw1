@@ -43,7 +43,9 @@ public partial class Vew_Reportes_ReporteHoteles_ReporteHoteles : System.Web.UI.
             filas["Numbre_del_Hotel"] = hoteles.Nombre;
             filas["Precio_Noche"] = hoteles.Precionoche;
             filas["#Hbitaciones"] = hoteles.Numhabitacion;
-            
+            filas["Precio_Noche_Doble"] = hoteles.PrecioNocheDoble;
+            filas["Precio_Noche_Premium"] = hoteles.PrecioNochePremium;
+
             datosReportes.Rows.Add(filas);
 
         }

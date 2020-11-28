@@ -45,8 +45,8 @@
                                     <Columns>
                                         <asp:BoundField DataField="Id" HeaderText="Id" SortExpression="Id" Visible="False" />
                                         <asp:BoundField DataField="Numpersona" HeaderText="Numpersona" SortExpression="Numpersona" />
-                                        <asp:BoundField DataField="Fecha_llegada" HeaderText="Fecha_llegada" SortExpression="Fecha_llegada" />
-                                        <asp:BoundField DataField="Fecha_salida" HeaderText="Fecha_salida" SortExpression="Fecha_salida" />
+                                        <asp:BoundField DataField="Fecha_llegada" HeaderText="Fecha_llegada" SortExpression="Fecha_llegada" DataFormatString="{0:d}" />
+                                        <asp:BoundField DataField="Fecha_salida" HeaderText="Fecha_salida" SortExpression="Fecha_salida" DataFormatString="{0:d}" />
                                         <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
                                         <asp:BoundField DataField="Apellido" HeaderText="Apellido" SortExpression="Apellido" />
                                         <asp:BoundField DataField="Correo" HeaderText="Correo" SortExpression="Correo" />

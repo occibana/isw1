@@ -62,9 +62,8 @@
                                 <asp:Label ID="L_Nombreusuario" runat="server"></asp:Label>
                                     <br />
                                     <br />
-                                    Aquí podrá reservar una habitación </h2>
-                                <h2>del hotel
-                                    <asp:Label ID="L_NombreHotel" runat="server"></asp:Label>
+                                    Aquí podrá reservar una habitación del hotel</h2>
+                                <h2>&nbsp;<asp:Label ID="L_NombreHotel" runat="server"></asp:Label>
                                 </h2>
                             </td>
                         </tr>

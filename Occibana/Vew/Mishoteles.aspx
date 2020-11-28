@@ -45,6 +45,8 @@
                                     <Columns>
                                         <asp:BoundField DataField="Numhabitacion" HeaderText="Numhabitacion" SortExpression="Numhabitacion" />
                                         <asp:BoundField DataField="Precionoche" HeaderText="Precionoche" SortExpression="Precionoche" />
+                                        <asp:BoundField DataField="PrecioNocheDoble" HeaderText="PrecioDoble" SortExpression="PrecioNocheDoble" />
+                                        <asp:BoundField DataField="PrecioNochePremium" HeaderText="PrecioPremium" SortExpression="PrecioNochePremium" />
                                         <asp:BoundField DataField="Checkin" HeaderText="Checkin" SortExpression="Checkin" />
                                         <asp:BoundField DataField="Checkout" HeaderText="Checkout" SortExpression="Checkout" />
                                         <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />

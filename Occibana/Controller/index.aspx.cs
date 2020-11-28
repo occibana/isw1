@@ -67,7 +67,17 @@ public partial class Vew_index : System.Web.UI.Page
         }
         if (TB_DateAntesDe.Text != String.Empty)
         {
-            busqueda.fecha_antesde = DateTime.Parse(TB_DateAntesDe.Text);
+
+            if (DateTime.Parse(TB_DateAntesDe.Text) < DateTime.Parse(TB_DateDespuesDe.Text))
+            {
+                L_MensajeFalloFechas.Text = "La fecha Antes de, debe ser mayor de   " + DateTime.Parse(TB_DateDespuesDe.Text).ToString("dd-MM-yyyy");
+            }
+            else
+            {
+                L_MensajeFalloFechas.Text = " ";
+                busqueda.fecha_antesde = DateTime.Parse(TB_DateAntesDe.Text);
+            }
+
         }
         if (TB_DateDespuesDe.Text != String.Empty)
         {
@@ -108,8 +118,14 @@ public partial class Vew_index : System.Web.UI.Page
 
     protected void B_LimpiarFechas_Click(object sender, EventArgs e)
     {
-        TB_DateAntesDe.Text = "";
-        TB_DateDespuesDe.Text = "";
+        //TB_DateAntesDe.Text = "";
+        //TB_DateDespuesDe.Text = "";
+        //DDL_Zona.Text = "--Seleccionar--";
+        //DDL_Municipio.Text = "--Seleccionar--";
+
+        Response.Redirect("index.aspx");
+
+
     }
 
 }

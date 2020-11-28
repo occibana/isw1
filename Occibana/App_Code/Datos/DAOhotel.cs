@@ -142,11 +142,6 @@ public class DAOhotel
                     return elementos;
                 }
 
-                /*if (consulta.fecha_antesde != null && consulta.fecha_despuesde !=null)
-                {
-                    elementos = elementos.Where(x => !(consulta.fecha_antesde <= x.Fecha_antesde && consulta.fecha_despuesde >= x.Fecha_despuesde)).ToList();
-                }*/
-
                 if (consulta.calificacion != null)
                 {
                     if (consulta.calificacion.Equals("--Seleccionar--"))

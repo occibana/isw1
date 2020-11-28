@@ -107,7 +107,7 @@
                                     <tr>
                                         <td>
                                             <br />
-                                            PRECIO HABITACION SENCILLA<br />
+                                            PRECIO HABITACION BÁSICA:<br />
                                             <br />
                                         </td>
                                         <td>

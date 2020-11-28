@@ -39,6 +39,7 @@ public partial class Vew_Actualizarcontrasena : System.Web.UI.Page
 
     protected void B_Enviar_Click(object sender, EventArgs e)
     {
+        ClientScriptManager cm = this.ClientScript;//script
         Registro login = new Registro();
 
         login.Usuario = ((Registro)Session["usuario"]).Usuario.ToString();
@@ -54,9 +55,20 @@ public partial class Vew_Actualizarcontrasena : System.Web.UI.Page
         else
         {           
             login.Contrasena = TB_Nuevacontrasena.Text;
-            new DAOLogin().actualizarcontrasena(login);
-            new Mail().mailactualizarcontrasena(login);
-            L_Error_noregistro.Text = "Contraseña actualizada";
+
+            if (login.Contrasena.Length < 5)
+            {
+                L_Error_noregistro.Text = "Su contraseña debe ser mayor a 5 caracteres.";
+                TB_Nuevacontrasena.Text = "";
+            }
+
+            else{
+
+                new DAOLogin().actualizarcontrasena(login);
+                new Mail().mailactualizarcontrasena(login);
+                this.RegisterStartupScript("mensaje", "<script type='text/javascript'>alert('Contraseña actualizada correctamente');window.location=\"Perfil.aspx\"</script>");
+                L_Error_noregistro.Text = "Contraseña actualizada";
+            }
         }
     }
 }

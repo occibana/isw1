@@ -16,7 +16,20 @@ public partial class Vew_Reserva : System.Web.UI.Page
             hotel.Idhotel = ((Hotel)Session["visitarhotel"]).Idhotel;
             hotel = new DAOhotel().infohotel(hotel);
             L_NombreHotel.Text = hotel.Nombre.ToUpper();
-            L_PrecioNoche.Text = hotel.Precionoche.ToString();
+
+            if (((Habitacion)Session["idhabitacion"]).Tipo.Equals("Básica"))
+            {
+                L_PrecioNoche.Text = hotel.Precionoche.ToString();
+            }
+            if (((Habitacion)Session["idhabitacion"]).Tipo.Equals("Doble"))
+            {
+                L_PrecioNoche.Text = hotel.PrecioNocheDoble.ToString();
+            }
+            if (((Habitacion)Session["idhabitacion"]).Tipo.Equals("Premium"))
+            {
+                L_PrecioNoche.Text = hotel.PrecioNochePremium.ToString();
+            }
+
             L_NumeroDePersonas.Text = (((Habitacion)Session["idhabitacion"]).Numpersonas).ToString();
             L_Habitaciondisponible.Text = "Seleccione una fecha";
             if (Session["usuario"] != null)
@@ -173,6 +186,7 @@ public partial class Vew_Reserva : System.Web.UI.Page
                         reserva.Idusuario = ((Registro)Session["usuario"]).Id;
                         new DAOReserva().insertReserva(reserva);
                         L_MensajeestadoSession.Text = "REESERVA EXITOSA";//, REVISE SU CORREO PARA MÁS DETALLES
+                        cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('La reserva ha sido exitosa');</script>");
                         new Mail().mailconfirmarreserva(reserva);
                     }
                     else
