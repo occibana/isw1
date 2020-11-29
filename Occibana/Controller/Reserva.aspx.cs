@@ -43,6 +43,9 @@ public partial class Vew_Reserva : System.Web.UI.Page
             }
             else
             {
+                //TB_Apellido.Text = "";
+                //TB_Nombre.Text = "";
+                //TB_Correo.Text = "";
                 L_Nombreusuario.Text = "Cliente";
                 L_MensajeestadoSession.Text = "Al parecer no te haz registrado o iniciado sesión, no hay problema igualmente puedes reservar, solo dejanos saber algunos datos.";
             }
@@ -162,6 +165,7 @@ public partial class Vew_Reserva : System.Web.UI.Page
         reserva.Mediopago = CHBL_Mediodepago.Text;
         reserva.Id_habitacion = ((Habitacion)Session["idhabitacion"]).Id;
         reserva.Limite_comentario = reserva.Fecha_salida.AddDays(3);
+        reserva.PrecioNoche = int.Parse(L_PrecioNoche.Text);
         var fechasreservadas = new DAOReserva().fechasdisponibles(reserva);
         int cantReservas = new DAOReserva().verificarreserva(reserva);
         string fechaLlegada = (reserva.Fecha_llegada).ToString();
@@ -192,9 +196,10 @@ public partial class Vew_Reserva : System.Web.UI.Page
                     else
                     {
                         new DAOReserva().insertReserva(reserva);
+                        new Mail().mailconfirmarreserva(reserva);
                         L_MensajeestadoSession.Text = "REESERVA EXITOSA";//, REVISE SU CORREO PARA MÁS DETALLES
                         cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('La reserva ha sido exitosa');</script>");
-                        new Mail().mailconfirmarreserva(reserva);
+                        
                     }
                 }
                 else

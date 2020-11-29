@@ -19,8 +19,8 @@ public partial class Vew_Login : System.Web.UI.Page
     {
         Registro login = new Registro();
 
-        login.Usuario = TB_user.Text.ToUpper();
-        login.Contrasena = TB_contrasena.Text.ToUpper();
+        login.Usuario = TB_user.Text;
+        login.Contrasena = TB_contrasena.Text;
 
         login = new DAOLogin().verificar(login);
         if (login == null)

@@ -71,7 +71,7 @@ public class DAOReserva
                         Correo = m.r.Correo,
                         Mediopago = m.r.Mediopago,
                         Calificacion = m.r.Calificacion,
-                        PrecioNoche = m.h.Precionoche,
+                        PrecioNoche = m.r.PrecioNoche,
                     }).ToList();
         }
         //return new Mapeo().reserva.Where(x => x.Idusuario == disponibilidadE.Id).ToList();

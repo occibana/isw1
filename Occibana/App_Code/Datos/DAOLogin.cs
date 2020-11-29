@@ -13,7 +13,7 @@ public class DAOLogin
     //verificacion login
     public Registro verificar(Registro loginE)
     {
-        return new Mapeo().usuario.Where(x => x.Usuario.ToUpper().Equals(loginE.Usuario.ToUpper()) && x.Contrasena.ToUpper().Equals(loginE.Contrasena.ToUpper())).FirstOrDefault();
+        return new Mapeo().usuario.Where(x => x.Usuario.Equals(loginE.Usuario) && x.Contrasena.Equals(loginE.Contrasena)).FirstOrDefault();
     }
 
     //insert registro

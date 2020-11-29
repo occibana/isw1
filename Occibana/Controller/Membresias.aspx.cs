@@ -52,6 +52,7 @@ public partial class Vew_Membresias : System.Web.UI.Page
 
     protected void B_comprar_Click(object sender, EventArgs e)
     {
+        ClientScriptManager cm = this.ClientScript;
         Membresia datoscompra = new Membresia();
         datoscompra.Cedulapropietario = encriptar(TB_cedulapropietario.Text);
         datoscompra.Codigoseguridad = encriptar(TB_Codigoseguridad.Text);
@@ -80,6 +81,7 @@ public partial class Vew_Membresias : System.Web.UI.Page
                     try
                     {
                         new DAOSeguridad().insertarCompra(datoscompra);
+                        cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Compra realizada con exito.');</script>");
                         L_error.Text = "Compra realizada con exito";
                         usuario.Idestado = 1;
                         new DAOSeguridad().actualizarmembresia(usuario);
