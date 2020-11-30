@@ -58,6 +58,9 @@
                                         <ControlStyle BackColor="#999999" BorderColor="#999999" />
                                         </asp:ButtonField>
                                         <asp:BoundField DataField="Idhotel" HeaderText="Idhotel" SortExpression="Idhotel" Visible="False" />
+                                        <asp:ButtonField CommandName="cancelarreserva" HeaderText="Cancelar reserva" Text="Cancelar">
+                                        <ControlStyle BackColor="#FF3300" />
+                                        </asp:ButtonField>
                                     </Columns>
                                 </asp:GridView>
                                 </div>

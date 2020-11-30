@@ -84,6 +84,17 @@ public class DAOReserva
         return new Mapeo().reserva.Where(x => (x.Id == reserva.Id)).FirstOrDefault();
     }
 
+    //eliminar reserva 
+    public void deleteReserva(Reserva inforeserva)
+    {
+        using (var db = new Mapeo())
+        {
+            Reserva mireserva = db.reserva.Where(x => x.Id == inforeserva.Id).First();
+            db.reserva.Remove(mireserva);
+            db.SaveChanges();
+        }
+    }
+
     //actualizar calificacion
     //actualiza foto perfil
     public void actualizarcalificacion(Reserva datosE)

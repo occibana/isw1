@@ -66,6 +66,13 @@ public class DAOComentarios
 
     }
 
+    //verificar si ya existe un comentario
+    /*public int verificarcomentario(Comentarios infocomentario)
+    {
+        int cantcomentarios;
+        return cantcomentarios = new Mapeo().comentario.Where(x => (x.Id_coment == infocomentario.Id_coment) && ()).Count();
+    }*/
+
     //public Boolean consult(Comentarios user)
     //{
     //    using (var db = new Mapeo())

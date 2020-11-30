@@ -104,7 +104,7 @@
                                         <tr>
                                             <td colspan="2">
                                                 <br />
-                                                Verifique su usuario y contraseña<br />
+                                                Verifique su usuario y contraseña <br />
                                             </td>
                                         </tr>
                                         <tr>

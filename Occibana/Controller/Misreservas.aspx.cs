@@ -34,7 +34,29 @@ public partial class Vew_Misreservas : System.Web.UI.Page
             Session["visitarhotel"] = hotelinfo;
             Session["calificarhotel"] = int.Parse(GV_Mishoteles.DataKeys[idreserva].Value.ToString());
             Response.Redirect("ComentariosHotel.aspx"); 
+        }else if (e.CommandName == "cancelarreserva")
+
+        {
+            Reserva inforeserva = new Reserva();
+            inforeserva.Id = int.Parse(GV_Mishoteles.DataKeys[idreserva].Value.ToString());
+            inforeserva = new DAOReserva().inforeserva(inforeserva);
+            if (inforeserva.Fecha_salida<=DateTime.Now)
+            {
+                this.RegisterStartupScript("mensaje", "<script type='text/javascript'>alert('No es posible eliminar una reserva ya realizada');</script>");
+            }
+            else if(inforeserva.Fecha_llegada>DateTime.Now)
+            {
+                new DAOReserva().deleteReserva(inforeserva);
+                this.RegisterStartupScript("mensaje", "<script type='text/javascript'>alert('Reserva eliminada con exito');</script>");
+            }
+            else if((inforeserva.Fecha_llegada<=DateTime.Now) && (inforeserva.Fecha_salida>=DateTime.Now))
+            {
+                this.RegisterStartupScript("mensaje", "<script type='text/javascript'>alert('No es posible realizar la eliminación');</script>");
+            }
+
         }
+
+
     }
 
     protected void B_ReporteReservas_Click(object sender, EventArgs e)
