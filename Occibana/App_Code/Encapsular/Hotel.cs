@@ -8,6 +8,7 @@ using System.Web;
 /// <summary>
 /// Descripción breve de Hotel
 /// </summary>
+/// 
 [Serializable]//permite que se tenga relacion en cadena (volver objeto)
 [Table("hotel", Schema = "hotel")]
 public class Hotel
@@ -83,7 +84,7 @@ public class Hotel
     [Column("promcalificacion")]
     public Nullable<int> Promediocalificacion { get => promediocalificacion; set => promediocalificacion = value; }
     [Column("direccion")]
-    public string Direccion { get => direccion; set => direccion = value; }
+    public string Direccion { get => direccion; set =>   direccion = value; }
     [NotMapped]
     public string Municipio { get => municipio; set => municipio = value; }
     [NotMapped]

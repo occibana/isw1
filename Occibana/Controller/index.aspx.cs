@@ -5,13 +5,18 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+using Utilitarios;
+using Logica;
+
 public partial class Vew_index : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        /*
         Filtro consulta = new Filtro();
         consulta.nombrehotel = null;
         new DAOhotel().hotelesregistrados(consulta);
+        */
     }
 
     protected void DL_Listaprincipalhoteles_ItemCommand(object source, DataListCommandEventArgs e)
@@ -25,21 +30,17 @@ public partial class Vew_index : System.Web.UI.Page
 
     protected void IB_Busquedageneral_Click(object sender, ImageClickEventArgs e)
     {
-        Filtro busqueda = new Filtro();
-        if (TB_Busquedageneral.Text == String.Empty)
-        {
-            busqueda.nombrehotel = null;
-        }
-        else
-        {
-            busqueda.nombrehotel = (TB_Busquedageneral.Text).ToUpper();
-        }
-        Session["hotelseleccionado"] = busqueda;
+        UFiltro filtro = new UFiltro();
+        filtro.nombrehotel = TB_Busquedageneral.Text;
+        string busquedaResult = new LFiltro().filtro_general(filtro);
+
+        Session["hotelseleccionado"] = busquedaResult;
         DL_Listaprincipalhoteles.DataBind();
     }
 
     protected void B_Filtrar_Click(object sender, EventArgs e)
     {
+        /*
         Filtro busqueda = new Filtro();
         if (TB_PrecioMin.Text == String.Empty)
         {
@@ -114,6 +115,7 @@ public partial class Vew_index : System.Web.UI.Page
         }
         Session["hotelseleccionado"] = busqueda;
         DL_Listaprincipalhoteles.DataBind();
+        */
     }
 
     protected void B_LimpiarFechas_Click(object sender, EventArgs e)
