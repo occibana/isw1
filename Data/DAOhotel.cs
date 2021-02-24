@@ -9,16 +9,16 @@ namespace Data
 {
     public class DAOhotel
     {
-        public List<HotelMunicipio> municipio()
+        public List<UHotelMunicipio> municipio()
         {
             return new Mapeo().hotelmunicipio.ToList();
         }
-        public List<HotelZona> zona()
+        public List<UHotelZona> zona()
         {
             return new Mapeo().hotelzona.ToList();
         }
         //insert registro
-        public void insertHotel(Hotel hotelE)
+        public void insertHotel(UHotel hotelE)
         {
             using (var db = new Mapeo())
             {
@@ -28,18 +28,18 @@ namespace Data
         }
 
         //lista de hoteles destacados
-        public List<Hotel> hotelesdestacados()
+        public List<UHotel> hotelesdestacados()
         {
             using (var db = new Mapeo())
             {
-                List<Hotel> hotelesdestacados = (from h in db.hotel
+                List<UHotel> hotelesdestacados = (from h in db.hotel
                                                  orderby (h.Promediocalificacion != null ? h.Promediocalificacion : -1) descending
 
                                                  //where h.Numhabitacion > 4
                                                  select new
                                                  {
                                                      h
-                                                 }).Take(6).ToList().Select(m => new Hotel
+                                                 }).Take(6).ToList().Select(m => new UHotel
                                                  {
                                                      Idhotel = m.h.Idhotel,
                                                      Nombre = m.h.Nombre,
@@ -52,7 +52,7 @@ namespace Data
 
         //lista de hoteles por usuario 
         //(hoteles que se muestran en index)
-        public List<Hotel> hotelesregistrados(Filtro consulta)
+        public List<UHotel> hotelesregistrados(UFiltro consulta)
         {
             int num = 0;
 
@@ -66,7 +66,7 @@ namespace Data
 
                 using (var db = new Mapeo())
                 {
-                    List<Hotel> elementos = (from h in db.hotel
+                    List<UHotel> elementos = (from h in db.hotel
                                              join hm in db.hotelmunicipio on h.Idmunicipio equals hm.Idmunicipio
                                              join hz in db.hotelzona on h.Idzona equals hz.Idzona
                                              //join rh in db.reserva on h.Idhotel equals rh.Idhotel
@@ -77,7 +77,7 @@ namespace Data
                                                  hm,
                                                  hz,
                                                  //rh,
-                                             }).OrderBy(h => h.h.Nombre).ToList().Select(m => new Hotel
+                                             }).OrderBy(h => h.h.Nombre).ToList().Select(m => new UHotel
                                              {
 
                                                  NumHabitDisponibles = ((db.habitacion.Where(x => x.Idhotel == m.h.Idhotel).Count()) - (db.reserva.Where(x => (x.Idhotel == m.h.Idhotel) &&
@@ -108,7 +108,7 @@ namespace Data
                 using (var db = new Mapeo())
                 {
 
-                    List<Hotel> elementos = (from h in db.hotel
+                    List<UHotel> elementos = (from h in db.hotel
                                              join hm in db.hotelmunicipio on h.Idmunicipio equals hm.Idmunicipio
                                              join hz in db.hotelzona on h.Idzona equals hz.Idzona
 
@@ -121,7 +121,7 @@ namespace Data
                                                  hm,
                                                  hz,
 
-                                             }).OrderBy(h => h.h.Nombre).ToList().Select(m => new Hotel
+                                             }).OrderBy(h => h.h.Nombre).ToList().Select(m => new UHotel
                                              {
 
                                                  NumHabitDisponibles = db.habitacion.Where(x => x.Idhotel == m.h.Idhotel).Count(),
@@ -215,35 +215,35 @@ namespace Data
             }
         }
         //select info hotel panel hotel
-        public Hotel infohotel(Hotel hotelE)
+        public UHotel infohotel(UHotel hotelE)
         {
             return new Mapeo().hotel.Where(x => x.Idhotel == hotelE.Idhotel).FirstOrDefault();
         }
         //select zona
-        public HotelZona zona(Hotel hotelE)
+        public UHotelZona zona(UHotel hotelE)
         {
             return new Mapeo().hotelzona.Where(x => x.Idzona.Equals(hotelE.Idzona)).FirstOrDefault();
         }
         //select municipio
-        public HotelMunicipio municipio(Hotel hotelE)
+        public UHotelMunicipio municipio(UHotel hotelE)
         {
             return new Mapeo().hotelmunicipio.Where(x => x.Idmunicipio.Equals(hotelE.Idmunicipio)).FirstOrDefault();
         }
 
         //obtener mis hoteles
         //Select 
-        public List<Hotel> obtenerhoteles(string usuario)
+        public List<UHotel> obtenerhoteles(string usuario)
         {
-            return new Mapeo().hotel.Where(x => x.Usuarioencargado.Equals(usuario)).OrderBy(x => x.Idhotel).ToList<Hotel>();
+            return new Mapeo().hotel.Where(x => x.Usuarioencargado.Equals(usuario)).OrderBy(x => x.Idhotel).ToList<UHotel>();
         }
 
         //eliminar hotel
-        public void deleteHotel(Hotel id)
+        public void deleteHotel(UHotel id)
         {
             using (var db = new Mapeo())
             {
-                Hotel mihotel = db.hotel.Where(x => x.Idhotel == id.Idhotel).First();
-                List<Habitacion> mihabitacion = db.habitacion.Where(x => x.Idhotel == id.Idhotel).ToList();
+                UHotel mihotel = db.hotel.Where(x => x.Idhotel == id.Idhotel).First();
+                List<UHabitacion> mihabitacion = db.habitacion.Where(x => x.Idhotel == id.Idhotel).ToList();
                 db.habitacion.RemoveRange(mihabitacion);
                 db.hotel.Remove(mihotel);
                 db.SaveChanges();
@@ -251,11 +251,11 @@ namespace Data
         }
 
         //Agregar habitación en el hotel
-        public void actualizarhabiatacion(Habitacion idE)
+        public void actualizarhabiatacion(UHabitacion idE)
         {
             using (var db = new Mapeo())
             {
-                Hotel datoanterior = db.hotel.Where(x => x.Idhotel == idE.Idhotel).First();
+                UHotel datoanterior = db.hotel.Where(x => x.Idhotel == idE.Idhotel).First();
                 var idanterior = datoanterior.Numhabitacion;
                 datoanterior.Numhabitacion = idanterior + 1;
                 var entry = db.Entry(datoanterior);
@@ -265,11 +265,11 @@ namespace Data
         }
 
         //actualizar calificacion
-        public void actualizarcalificacion(Hotel hotelE)
+        public void actualizarcalificacion(UHotel hotelE)
         {
             using (var db = new Mapeo())
             {
-                Hotel datoanterior = db.hotel.Where(x => x.Idhotel == hotelE.Idhotel).First();
+                UHotel datoanterior = db.hotel.Where(x => x.Idhotel == hotelE.Idhotel).First();
                 datoanterior.Promediocalificacion = hotelE.Promediocalificacion;
                 var entry = db.Entry(datoanterior);
                 entry.State = EntityState.Modified;

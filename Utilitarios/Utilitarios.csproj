@@ -42,10 +42,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="UHabitacion.cs" />
+    <Compile Include="UHotelMunicipio.cs" />
     <Compile Include="Mail.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UFiltro.cs" />
+    <Compile Include="UHotel.cs" />
+    <Compile Include="UHotelZona.cs" />
     <Compile Include="URegistro.cs" />
+    <Compile Include="UReserva.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
