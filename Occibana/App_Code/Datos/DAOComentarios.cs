@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
+
+
 /// <summary>
 /// Descripción breve de DAOComentarios
 /// </summary>
 public class DAOComentarios
 {
+    /*
     public List<Comentarios> obtenerComentarios(Hotel id)
     {
         using (var db = new Mapeo())
@@ -36,6 +39,7 @@ public class DAOComentarios
             return comentariosHotel;
         }
     }
+    */
 
     public void insertComentario(Comentarios coment)
     {

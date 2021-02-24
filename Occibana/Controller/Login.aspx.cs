@@ -17,6 +17,7 @@ public partial class Vew_Login : System.Web.UI.Page
 
     protected void B_Ingresar_Click(object sender, EventArgs e)
     {
+        /*
         Registro login = new Registro();
 
         login.Usuario = TB_user.Text;
@@ -41,7 +42,8 @@ public partial class Vew_Login : System.Web.UI.Page
             new DAOSeguridad().insertarAcceso(acceso);
 
             Response.Redirect("Perfil.aspx");
-        }        
+        }      
+        */
     }
 
     protected void LB_OlvidemicontrasenaLogin_Click(object sender, EventArgs e)

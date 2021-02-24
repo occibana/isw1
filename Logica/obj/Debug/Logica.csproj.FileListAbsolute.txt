@@ -1,0 +1,14 @@
+C:\Users\asant\source\repos\occibana\isw1\Logica\bin\Debug\Logica.dll.config
+C:\Users\asant\source\repos\occibana\isw1\Logica\bin\Debug\Logica.dll
+C:\Users\asant\source\repos\occibana\isw1\Logica\bin\Debug\Logica.pdb
+C:\Users\asant\source\repos\occibana\isw1\Logica\bin\Debug\Data.dll
+C:\Users\asant\source\repos\occibana\isw1\Logica\bin\Debug\Utilitarios.dll
+C:\Users\asant\source\repos\occibana\isw1\Logica\bin\Debug\EntityFramework.dll
+C:\Users\asant\source\repos\occibana\isw1\Logica\bin\Debug\Data.pdb
+C:\Users\asant\source\repos\occibana\isw1\Logica\bin\Debug\Utilitarios.pdb
+C:\Users\asant\source\repos\occibana\isw1\Logica\bin\Debug\EntityFramework.xml
+C:\Users\asant\source\repos\occibana\isw1\Logica\obj\Debug\Logica.csprojAssemblyReference.cache
+C:\Users\asant\source\repos\occibana\isw1\Logica\obj\Debug\Logica.csproj.CoreCompileInputs.cache
+C:\Users\asant\source\repos\occibana\isw1\Logica\obj\Debug\Logica.csproj.CopyComplete
+C:\Users\asant\source\repos\occibana\isw1\Logica\obj\Debug\Logica.dll
+C:\Users\asant\source\repos\occibana\isw1\Logica\obj\Debug\Logica.pdb

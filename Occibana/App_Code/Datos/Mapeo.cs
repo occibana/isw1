@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
@@ -19,7 +18,7 @@ public class Mapeo : DbContext//Hereda de DbContext (contiene referencias a enti
 
     }
 
-    public DbSet<Registro> usuario { get; set; }
+    //public DbSet<Registro> usuario { get; set; }
     public DbSet<Hotel> hotel { get; set; }
     public DbSet<HotelMunicipio> hotelmunicipio { get; set; }
     public DbSet<HotelZona> hotelzona { get; set; }

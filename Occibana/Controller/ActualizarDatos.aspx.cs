@@ -9,6 +9,7 @@ public partial class Vew_ActualizarDatos : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        /*
         if (Session["usuario"] == null)
         {
             Response.Redirect("Login.aspx");
@@ -30,7 +31,7 @@ public partial class Vew_ActualizarDatos : System.Web.UI.Page
                 Response.Redirect("Login.aspx");
 
             }
-        }
+        }*/
     }
 
     protected void B_Volver_Click(object sender, EventArgs e)
@@ -40,6 +41,7 @@ public partial class Vew_ActualizarDatos : System.Web.UI.Page
 
     protected void B_Actualizar_Click(object sender, EventArgs e)
     {
+        /*
         ClientScriptManager cm = this.ClientScript;
         Registro nuevodato = new Registro();
         nuevodato.Usuario = TB_Actusuario.Text.ToUpper();
@@ -141,5 +143,6 @@ public partial class Vew_ActualizarDatos : System.Web.UI.Page
 
             return;
         }
+        */
     }
 }

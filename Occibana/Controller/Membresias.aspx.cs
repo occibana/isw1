@@ -7,6 +7,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+using Utilitarios;
+
 public partial class Vew_Membresias : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
@@ -15,7 +17,7 @@ public partial class Vew_Membresias : System.Web.UI.Page
         try
         {
             
-            if (((Registro)Session["usuario"]).Idestado == 1) //1 Es con menbresia, 0 sin membresia
+            if (((URegistro)Session["usuario"]).Idestado == 1) //1 Es con menbresia, 0 sin membresia
             {
                 TB_Numerotarjeta.Enabled = false;
                 TB_Codigoseguridad.Enabled = false;
@@ -30,8 +32,8 @@ public partial class Vew_Membresias : System.Web.UI.Page
                 L_Actualizar_Comprar.Text = "Actualizar membresía";
                 L_Mensajecompra.Text = "El costo de actualización es de: ";
                 L_Costo.Text = "50.000 ";
-                Registro usuario = new Registro();
-                usuario.Id = ((Registro)Session["usuario"]).Id;
+                URegistro usuario = new URegistro();
+                usuario.Id = ((URegistro)Session["usuario"]).Id;
                 Membresia fechavencimiento = new DAOSeguridad().fechavencimiento(usuario);
                 L_vencimiento.Text = (fechavencimiento.Fecha_vencimiento).ToString();
             }
@@ -52,6 +54,7 @@ public partial class Vew_Membresias : System.Web.UI.Page
 
     protected void B_comprar_Click(object sender, EventArgs e)
     {
+        /*
         ClientScriptManager cm = this.ClientScript;
         Membresia datoscompra = new Membresia();
         datoscompra.Cedulapropietario = encriptar(TB_cedulapropietario.Text);
@@ -61,14 +64,14 @@ public partial class Vew_Membresias : System.Web.UI.Page
         datoscompra.Numerotarjeta = encriptar(TB_Numerotarjeta.Text);
         datoscompra.Fecha_compra = DateTime.Now;
         datoscompra.Fecha_vencimiento = DateTime.Now.AddYears(1);
-        Registro usuario = new Registro();
+        URegistro usuario = new URegistro();
         usuario.Usuario = TB_Usuario.Text;
         usuario.Contrasena = TB_Contrasena.Text;
-        usuario.Id = ((Registro)Session["usuario"]).Id;
-        usuario.Correo = ((Registro)Session["usuario"]).Correo;
+        usuario.Id = ((URegistro)Session["usuario"]).Id;
+        usuario.Correo = ((URegistro)Session["usuario"]).Correo;
         try
         {
-            if ((((Registro)Session["usuario"]).Usuario).Equals(usuario.Usuario))
+            if ((((URegistro)Session["usuario"]).Usuario).Equals(usuario.Usuario))
             {
                 var verificacion = new DAOLogin().verificar(usuario);
                 if (verificacion == null)
@@ -77,7 +80,7 @@ public partial class Vew_Membresias : System.Web.UI.Page
                 }
                 else
                 {
-                    datoscompra.Idusuario = ((Registro)Session["usuario"]).Id;
+                    datoscompra.Idusuario = ((URegistro)Session["usuario"]).Id;
                     try
                     {
                         new DAOSeguridad().insertarCompra(datoscompra);
@@ -104,6 +107,7 @@ public partial class Vew_Membresias : System.Web.UI.Page
             Session.Remove("usuario");
             Response.Redirect("index.aspx");
         }
+        */
         
     }
 

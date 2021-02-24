@@ -9,6 +9,7 @@ public partial class Vew_AgregarServicioHotel : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        /*
         try
         {
             L_SesionAnadirHotel.Text = ((Registro)Session["usuario"]).Nombre;
@@ -18,6 +19,7 @@ public partial class Vew_AgregarServicioHotel : System.Web.UI.Page
             Session.Remove("usuario");
             Response.Redirect("Login.aspx");
         }
+        */
     }
 
     protected void B_Volver_Click(object sender, EventArgs e)
@@ -28,6 +30,7 @@ public partial class Vew_AgregarServicioHotel : System.Web.UI.Page
 
     protected void B_CargarHotel_Click(object sender, EventArgs e)
     {
+        /*
         ClientScriptManager cm = this.ClientScript;
         Hotel serviciohotel = new Hotel();
 
@@ -137,7 +140,7 @@ public partial class Vew_AgregarServicioHotel : System.Web.UI.Page
         this.RegisterStartupScript("mensaje", "<script type='text/javascript'>alert('Hotel agregado correctamente');window.location=\"Perfil.aspx\"</script>");
      
         return;
-
+        */
     }
 
 }

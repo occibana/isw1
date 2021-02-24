@@ -9,6 +9,7 @@ public partial class Vew_Misreservas : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        /*
         try
         {
             L_Usuario.Text = ((Registro)Session["usuario"]).Nombre;
@@ -18,6 +19,7 @@ public partial class Vew_Misreservas : System.Web.UI.Page
             Response.Redirect("Login.aspx");
             Session.Remove("usuario");
         }
+        */
     }
 
     protected void GV_Mishoteles_RowCommand(object sender, GridViewCommandEventArgs e)

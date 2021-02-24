@@ -9,8 +9,7 @@ public partial class Vew_ComentariosHotel : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        //try
-        //{
+        /*
         if (Session["visitarhotel"] != null)
         {
             Hotel hotel = new Hotel();
@@ -33,18 +32,13 @@ public partial class Vew_ComentariosHotel : System.Web.UI.Page
                 B_Calificar.Enabled = true;
             }
         }
-        
-        /*}
-        catch
-        {
-            Response.Redirect("Login.aspx");
-        }*/
+       */
             
     }
 
     protected void B_Comentar_Click(object sender, EventArgs e)
     {
-        
+        /*
         ClientScriptManager cm = this.ClientScript;
         try
         {
@@ -83,11 +77,12 @@ public partial class Vew_ComentariosHotel : System.Web.UI.Page
             //Response.Redirect("ComentariosHotel.aspx"); 
         }
 
-
+        */
     }
 
     protected void B_Calificar_Click(object sender, EventArgs e)
     {
+        /*
         DateTime fechaparacalificar;
         Reserva inforeserva = new Reserva();
         if (Session["calificarhotel"]!=null)
@@ -167,5 +162,6 @@ public partial class Vew_ComentariosHotel : System.Web.UI.Page
         {
             L_Fallocalificacion.Text = "Todas sus reservas han sido calificadas";
         }
+        */
     }
 }

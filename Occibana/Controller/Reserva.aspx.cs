@@ -9,6 +9,7 @@ public partial class Vew_Reserva : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        /*
         deshabilitarbotones();
         try
         {        
@@ -54,6 +55,7 @@ public partial class Vew_Reserva : System.Web.UI.Page
         {
             Response.Redirect("index.aspx");
         }
+        */
 
     }
 
@@ -145,9 +147,10 @@ public partial class Vew_Reserva : System.Web.UI.Page
         TB_CCorreo.Enabled = true;
         B_ConfirmarReserva.Enabled = true;
     }
-
+    
     protected void B_ConfirmarReserva_Click(object sender, EventArgs e)
     {
+        /*
         ClientScriptManager cm = this.ClientScript;//script
         Hotel hotel = new Hotel();
         hotel.Idhotel = ((Hotel)Session["visitarhotel"]).Idhotel;
@@ -209,6 +212,6 @@ public partial class Vew_Reserva : System.Web.UI.Page
                 }
             }
         //}
-              
+           */   
     }
 }

@@ -41,11 +41,13 @@ public partial class Vew_Reactivarcuenta : System.Web.UI.Page
 
     protected void B_Enviar_Click(object sender, EventArgs e)
     {
+        /*
         Registro contrasenausuario = new Registro();
         contrasenausuario.Contrasena = TB_UsuarioRecuperarcontrasena.Text;
         contrasenausuario.Id = int.Parse(Session["user_id"].ToString());
         new DAOSeguridad().actualizarcontrasenarecuperacion(contrasenausuario);
 
         this.RegisterStartupScript("mensaje", "<script type='text/javascript'>alert('su contraseña ha sido actualizada con exito');window.location=\"Login.aspx\"</script>");
+        */
     }
 }

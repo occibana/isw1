@@ -9,6 +9,7 @@ public partial class Vew_Mishoteles : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        /*
         try
         {
             L_Usuario.Text = ((Registro)Session["usuario"]).Usuario;
@@ -18,6 +19,7 @@ public partial class Vew_Mishoteles : System.Web.UI.Page
             Session.Remove("usuario");
             Response.Redirect("Login.aspx");
         }
+        */
     }
 
     protected void GV_Mishoteles_SelectedIndexChanged(object sender, EventArgs e)

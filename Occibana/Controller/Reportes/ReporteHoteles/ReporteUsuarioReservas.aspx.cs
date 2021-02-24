@@ -10,6 +10,7 @@ public partial class Vew_Reportes_ReporteHoteles_ReporteUsuarioReservas : System
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        /*
         try
         {
             L_NombreUsuario.Text = ((Registro)Session["usuario"]).Usuario;
@@ -20,9 +21,9 @@ public partial class Vew_Reportes_ReporteHoteles_ReporteUsuarioReservas : System
             Session.Remove("usuario");
             Response.Redirect("~/vew/Login.aspx");
         }
-
+        */
     }
-
+    /*
     protected void pintarReporte(Registro usuario)
     {
         CRS_ReservasUsuario.ReportDocument.SetDataSource(llenarReserva(usuario));
@@ -50,5 +51,5 @@ public partial class Vew_Reportes_ReporteHoteles_ReporteUsuarioReservas : System
 
         }
         return informe;
-    }
+    }*/
 }

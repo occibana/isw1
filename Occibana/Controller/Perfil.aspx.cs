@@ -10,6 +10,7 @@ public partial class Vew_Perfil : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        /*
         try
         {
             L_Pnombre.Text = ((Registro)Session["usuario"]).Nombre;
@@ -56,21 +57,24 @@ public partial class Vew_Perfil : System.Web.UI.Page
             Session.Remove("visitarhotel"); 
             Response.Redirect("Login.aspx");
         }
+        */
     }
 
     protected void B_CerrarSession_Click(object sender, EventArgs e)
     {
+        /*
         new DAOSeguridad().cerrarAcceso(((Registro)Session["usuario"]).Id);
         Session.Remove("usuario");
         Session.Remove("visitarhotel");
         Response.Redirect("Login.aspx");
+        */
     }
 
 
 
     protected void B_SubirFoto_Click(object sender, EventArgs e)
     {
-        
+        /*
         //verifica si hay archivos seleccionados
         if (FU_FotoPerfil.HasFile)
         {
@@ -105,6 +109,7 @@ public partial class Vew_Perfil : System.Web.UI.Page
         {
             L_Pcargaimagen.Text = "*Selecciona una imagen";
         }
+        */
     }
 
     protected void B_ActualizarDatos_Click(object sender, EventArgs e)

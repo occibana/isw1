@@ -9,7 +9,7 @@ public partial class Vew_Actualizarcontrasena : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        
+        /*
         try
         {
             Registro login = new Registro();
@@ -30,6 +30,7 @@ public partial class Vew_Actualizarcontrasena : System.Web.UI.Page
             Session.Remove("usuario");
             Response.Redirect("Login.aspx");
         }
+        */
     }
 
     protected void B_Volver_Click(object sender, EventArgs e)
@@ -39,6 +40,7 @@ public partial class Vew_Actualizarcontrasena : System.Web.UI.Page
 
     protected void B_Enviar_Click(object sender, EventArgs e)
     {
+        /*
         ClientScriptManager cm = this.ClientScript;//script
         Registro login = new Registro();
 
@@ -69,6 +71,6 @@ public partial class Vew_Actualizarcontrasena : System.Web.UI.Page
                 this.RegisterStartupScript("mensaje", "<script type='text/javascript'>alert('Contraseña actualizada correctamente');window.location=\"Perfil.aspx\"</script>");
                 L_Error_noregistro.Text = "Contraseña actualizada";
             }
-        }
+        }*/
     }
 }

@@ -22,6 +22,7 @@ public partial class Vew_Recuperarcontrasena : System.Web.UI.Page
 
     protected void Button4_Click(object sender, EventArgs e)
     {
+        /*
         Registro recuperar = new Registro();
         recuperar.Correo = TB_CorreoRecuperarcontrasena.Text;
         recuperar.Usuario = TB_UsuarioRecuperarcontrasena.Text;
@@ -61,7 +62,7 @@ public partial class Vew_Recuperarcontrasena : System.Web.UI.Page
         }
         
         
-        
+        */
 
     }
 

@@ -4,6 +4,8 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
+using Utilitarios;
+
 /// <summary>
 /// Descripción breve de DAOReserva
 /// </summary>
@@ -49,7 +51,7 @@ public class DAOReserva
     }
 
     // select mis reservas
-    public List<Reserva> mostrarmisreservas(Registro disponibilidadE)
+    public List<Reserva> mostrarmisreservas(URegistro disponibilidadE)
     {
         using (var db = new Mapeo())
         {

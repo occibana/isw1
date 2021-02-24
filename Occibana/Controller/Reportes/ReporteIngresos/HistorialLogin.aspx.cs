@@ -10,6 +10,7 @@ public partial class Vew_Reportes_ReporteHoteles_HistorialLogin : System.Web.UI.
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        /*
         try
         {
             string idusuario = (((Registro)Session["usuario"]).Id).ToString();
@@ -20,7 +21,7 @@ public partial class Vew_Reportes_ReporteHoteles_HistorialLogin : System.Web.UI.
         {
             Session.Remove("usuario");
             Response.Redirect("~/vew/Login.aspx");
-        }
+        }*/
     }
 
     protected void pintarReporte(string idusuario)

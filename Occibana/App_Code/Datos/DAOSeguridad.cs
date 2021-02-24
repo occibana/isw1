@@ -4,6 +4,9 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
+using Utilitarios;
+
+
 /// <summary>
 /// Descripción breve de DAOSeguridad
 /// </summary>
@@ -28,12 +31,13 @@ public class DAOSeguridad
         return new Mapeo().token.Where(x => x.Tokengenerado == token).FirstOrDefault();
     }
 
+    /*
     //actualiza contraseña
-    public void actualizarcontrasenarecuperacion(Registro datoE)
+    public void actualizarcontrasenarecuperacion(URegistro datoE)
     {
         using (var db = new Mapeo())
         {
-            Registro datoanterior = db.usuario.Where(x => x.Id == datoE.Id).First();
+            URegistro datoanterior = db.usuario.Where(x => x.Id == datoE.Id).First();
             datoanterior.Contrasena = datoE.Contrasena;
 
             var entry = db.Entry(datoanterior);
@@ -41,6 +45,8 @@ public class DAOSeguridad
             db.SaveChanges();
         }
     }
+    */
+
     //Insertar registro de acceso
     public void insertarAcceso(Acceso acceso)
     {
@@ -74,12 +80,13 @@ public class DAOSeguridad
             db.SaveChanges();
         }
     }
+    /*
     //actualizar estado membresia
-    public void actualizarmembresia(Registro datoE)
+    public void actualizarmembresia(URegistro datoE)
     {
         using (var db = new Mapeo())
         {
-            Registro datoanterior = db.usuario.Where(x => x.Id == datoE.Id).First();
+            URegistro datoanterior = db.usuario.Where(x => x.Id == datoE.Id).First();
             datoanterior.Idestado = datoE.Idestado;
 
             var entry = db.Entry(datoanterior);
@@ -87,6 +94,7 @@ public class DAOSeguridad
             db.SaveChanges();
         }
     }
+    */
     //verifica vencimiento usuario con membresia
     public Membresia verificarvencimientomembresia(int userid)
     {
@@ -94,7 +102,7 @@ public class DAOSeguridad
     }
 
     //info compra
-    public Membresia fechavencimiento(Registro usuarioidE)
+    public Membresia fechavencimiento(URegistro usuarioidE)
     {
         return new Mapeo().membresia.Where(x=> x.Idusuario == usuarioidE.Id).FirstOrDefault();
     }

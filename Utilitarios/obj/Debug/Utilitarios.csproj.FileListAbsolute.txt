@@ -1,0 +1,6 @@
+C:\Users\asant\source\repos\occibana\isw1\Utilitarios\bin\Debug\Utilitarios.dll
+C:\Users\asant\source\repos\occibana\isw1\Utilitarios\bin\Debug\Utilitarios.pdb
+C:\Users\asant\source\repos\occibana\isw1\Utilitarios\obj\Debug\Utilitarios.csprojAssemblyReference.cache
+C:\Users\asant\source\repos\occibana\isw1\Utilitarios\obj\Debug\Utilitarios.csproj.CoreCompileInputs.cache
+C:\Users\asant\source\repos\occibana\isw1\Utilitarios\obj\Debug\Utilitarios.dll
+C:\Users\asant\source\repos\occibana\isw1\Utilitarios\obj\Debug\Utilitarios.pdb

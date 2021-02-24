@@ -10,6 +10,7 @@ public partial class Vew_Reportes_ReporteHoteles_ReporteHoteles : System.Web.UI.
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        /*
         try
         {
             L_NombreUsuario.Text = ((Registro)Session["usuario"]).Usuario;
@@ -20,7 +21,7 @@ public partial class Vew_Reportes_ReporteHoteles_ReporteHoteles : System.Web.UI.
             Session.Remove("usuario");
             Response.Redirect("~/vew/Login.aspx");
         }
-
+        */
     }
 
     protected void pintarReporte(string usuario)
