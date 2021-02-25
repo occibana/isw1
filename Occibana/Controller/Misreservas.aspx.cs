@@ -24,6 +24,7 @@ public partial class Vew_Misreservas : System.Web.UI.Page
 
     protected void GV_Mishoteles_RowCommand(object sender, GridViewCommandEventArgs e)
     {
+        /*
         int idreserva = int.Parse(e.CommandArgument.ToString());
 
         if (e.CommandName == "calificarreserva")
@@ -58,7 +59,7 @@ public partial class Vew_Misreservas : System.Web.UI.Page
 
         }
 
-
+        */
     }
 
     protected void B_ReporteReservas_Click(object sender, EventArgs e)

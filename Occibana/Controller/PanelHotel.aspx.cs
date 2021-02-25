@@ -9,6 +9,7 @@ public partial class Vew_PanelHotel : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        /*
         try
         {
             Hotel hotel = new Hotel();
@@ -38,7 +39,7 @@ public partial class Vew_PanelHotel : System.Web.UI.Page
             Session.Remove("visitarhotel");
             Response.Redirect("index.aspx");
         }
-
+        */
     }
 
     protected void B_Volver_Click(object sender, EventArgs e)
@@ -68,10 +69,12 @@ public partial class Vew_PanelHotel : System.Web.UI.Page
 
     protected void DL_Habitaciones_ItemCommand(object source, DataListCommandEventArgs e)
     {
+        /*
         Habitacion habitacioninfo = new Habitacion();
         habitacioninfo.Id = int.Parse(e.CommandArgument.ToString());
         habitacioninfo = new DAOHabitacion().infoHabitacion(habitacioninfo.Id);
         Session["idhabitacion"] = habitacioninfo;
         Response.Redirect("Reserva.aspx");
+        */
     }
 }

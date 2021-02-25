@@ -27,6 +27,7 @@ public partial class Vew_Habitacion : System.Web.UI.Page
 
     protected void B_AgregarHabitacion_Click(object sender, EventArgs e)
     {
+        /*
         int idtipo = 0;
         Habitacion habit = new Habitacion();
 
@@ -75,7 +76,7 @@ public partial class Vew_Habitacion : System.Web.UI.Page
         {
             L_Tipo.Text = "Seleccione una opción";
         }
-
+        */
  
     }
 }

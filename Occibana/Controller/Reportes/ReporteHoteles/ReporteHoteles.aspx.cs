@@ -26,12 +26,16 @@ public partial class Vew_Reportes_ReporteHoteles_ReporteHoteles : System.Web.UI.
 
     protected void pintarReporte(string usuario)
     {
+        /*
         CRS_ReporteHoteles.ReportDocument.SetDataSource(llenarReporte(usuario));
         CRV_ReporteHoteles.ReportSource = CRS_ReporteHoteles;
+        */
     }
 
+    /*
     public ReporteHoteles llenarReporte(string usuario)
     {
+  
         ReporteHoteles informe = new ReporteHoteles();
         List<Hotel> listaMisHoteles = new DAOhotel().obtenerhoteles(usuario);
 
@@ -51,5 +55,7 @@ public partial class Vew_Reportes_ReporteHoteles_ReporteHoteles : System.Web.UI.
 
         }
         return informe;
-    }
+        
+        
+    }*/
 }

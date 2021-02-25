@@ -9,6 +9,7 @@ public partial class Vew_Reservas : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        /*
         try
         {
             Hotel infohotel = new Hotel();
@@ -23,7 +24,7 @@ public partial class Vew_Reservas : System.Web.UI.Page
         {
            Response.Redirect("index.aspx");
         }
-        
+        */
     }
 
 

@@ -12,29 +12,29 @@ public partial class Vew_index : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        /*
-        Filtro consulta = new Filtro();
-        consulta.nombrehotel = null;
-        new DAOhotel().hotelesregistrados(consulta);
-        */
+        LFiltro filtro = new LFiltro();
+        filtro.filtro_general_inicial();
+        
     }
 
     protected void DL_Listaprincipalhoteles_ItemCommand(object source, DataListCommandEventArgs e)
     {
+        /*
         Hotel hotelinfo = new Hotel();
         hotelinfo.Idhotel = int.Parse(e.CommandArgument.ToString());
         Session["visitarhotel"] = hotelinfo;
         Session.Remove("calificarhotel");
         Response.Redirect("PanelHotel.aspx");
+        */
     }
 
     protected void IB_Busquedageneral_Click(object sender, ImageClickEventArgs e)
     {
-        UFiltro filtro = new UFiltro();
-        filtro.nombrehotel = TB_Busquedageneral.Text;
-        string busquedaResult = new LFiltro().filtro_general(filtro);
+        UFiltro busqueda = new UFiltro();
+        busqueda.nombrehotel = TB_Busquedageneral.Text;
+        busqueda.nombrehotel = new LFiltro().filtro_general(busqueda);
 
-        Session["hotelseleccionado"] = busquedaResult;
+        Session["hotelseleccionado"] = busqueda;
         DL_Listaprincipalhoteles.DataBind();
     }
 

@@ -9,6 +9,7 @@ public partial class Vew_Reactivarcuenta : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        /*
         try
         {
             if (Request.QueryString.Count > 0)
@@ -36,6 +37,7 @@ public partial class Vew_Reactivarcuenta : System.Web.UI.Page
         {
             Response.Redirect("Login.aspx");
         }
+        */
         
     }
 

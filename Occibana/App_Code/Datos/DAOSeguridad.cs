@@ -12,6 +12,7 @@ using Utilitarios;
 /// </summary>
 public class DAOSeguridad
 {
+    /*
     public void insertartoken(Token tokenE)
     {
         using (var db = new Mapeo())
@@ -30,6 +31,7 @@ public class DAOSeguridad
     {
         return new Mapeo().token.Where(x => x.Tokengenerado == token).FirstOrDefault();
     }
+    */
 
     /*
     //actualiza contraseña
@@ -48,6 +50,7 @@ public class DAOSeguridad
     */
 
     //Insertar registro de acceso
+    /*
     public void insertarAcceso(Acceso acceso)
     {
         using (var db = new Mapeo())
@@ -55,8 +58,9 @@ public class DAOSeguridad
             db.acceso.Add(acceso);
             db.SaveChanges();
         }
-    }
+    }*/
     //capturar momento de des-logeo
+    /*
     public void cerrarAcceso(int userid)
     {
         using (var db = new Mapeo())
@@ -71,7 +75,9 @@ public class DAOSeguridad
             db.SaveChanges();
         }
     }
+    */
     //guardar datos de compra
+    /*
     public void insertarCompra(Membresia datos)
     {
         using (var db = new Mapeo())
@@ -80,6 +86,7 @@ public class DAOSeguridad
             db.SaveChanges();
         }
     }
+    */
     /*
     //actualizar estado membresia
     public void actualizarmembresia(URegistro datoE)
@@ -95,21 +102,25 @@ public class DAOSeguridad
         }
     }
     */
+    /*
     //verifica vencimiento usuario con membresia
     public Membresia verificarvencimientomembresia(int userid)
     {
         return new Mapeo().membresia.Where(x => x.Idusuario == userid && x.Fecha_vencimiento < DateTime.Now).FirstOrDefault();
     }
-
+*/
     //info compra
+    /*
     public Membresia fechavencimiento(URegistro usuarioidE)
     {
         return new Mapeo().membresia.Where(x=> x.Idusuario == usuarioidE.Id).FirstOrDefault();
     }
-
+    */
     //registro de ingresos
+    /*
     public List<Acceso> RegistrosAcceso(int usuarioE)
     {
         return new Mapeo().acceso.Where(x => x.Userid == usuarioE).ToList();
     }
+    */
 }

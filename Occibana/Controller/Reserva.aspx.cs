@@ -66,6 +66,7 @@ public partial class Vew_Reserva : System.Web.UI.Page
 
     protected void B_BuscarDisponibilidad_Click(object sender, EventArgs e)
     {
+        /*
         ClientScriptManager cm = this.ClientScript;//script
         Reserva reserva = new Reserva();
         reserva.Idhotel = ((Hotel)Session["visitarhotel"]).Idhotel;
@@ -128,6 +129,7 @@ public partial class Vew_Reserva : System.Web.UI.Page
 
 
         }
+        */
     }
 
     protected void deshabilitarbotones()

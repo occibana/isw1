@@ -26,10 +26,13 @@ public partial class Vew_Reportes_ReporteHoteles_HistorialLogin : System.Web.UI.
 
     protected void pintarReporte(string idusuario)
     {
+        /*
         CRS_HistorialLogin.ReportDocument.SetDataSource(Reporte(idusuario));
         CRV_HistorialLogin.ReportSource = CRS_HistorialLogin;
+        */
     }
 
+    /*
     public HistorialLogin Reporte(string idusuario)
     {
         HistorialLogin informe = new HistorialLogin();
@@ -50,4 +53,5 @@ public partial class Vew_Reportes_ReporteHoteles_HistorialLogin : System.Web.UI.
         }
         return informe;
     }
+    */
 }

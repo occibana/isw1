@@ -41,6 +41,7 @@ public class DAOComentarios
     }
     */
 
+        /*
     public void insertComentario(Comentarios coment)
     {
         using (var db = new Mapeo())
@@ -48,8 +49,9 @@ public class DAOComentarios
             db.comentario.Add(coment);
             db.SaveChanges();
         }
-    }
+    }*/
 
+        /*
     public Boolean consulta(Comentarios user)
     {
         Double tdia = 3;
@@ -69,6 +71,7 @@ public class DAOComentarios
         }
 
     }
+    */
 
     //verificar si ya existe un comentario
     /*public int verificarcomentario(Comentarios infocomentario)

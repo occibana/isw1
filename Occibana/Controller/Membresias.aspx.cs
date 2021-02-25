@@ -13,7 +13,7 @@ public partial class Vew_Membresias : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        
+        /*
         try
         {
             
@@ -50,6 +50,7 @@ public partial class Vew_Membresias : System.Web.UI.Page
             Session.Remove("usuario");
             Response.Redirect("Login.aspx");
         }
+        */
     }
 
     protected void B_comprar_Click(object sender, EventArgs e)
