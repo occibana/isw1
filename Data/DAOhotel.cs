@@ -11,6 +11,7 @@ namespace Data
     {
         public List<UHotelMunicipio> municipio()
         {
+
             return new Mapeo().hotelmunicipio.ToList();
         }
         public List<UHotelZona> zona()
