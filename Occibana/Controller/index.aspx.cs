@@ -32,7 +32,7 @@ public partial class Vew_index : System.Web.UI.Page
     {
         UFiltro busqueda = new UFiltro();
         busqueda.nombrehotel = TB_Busquedageneral.Text;
-        busqueda.nombrehotel = new LFiltro().filtro_general(busqueda);
+        busqueda.nombrehotel = new LFiltro().filtro_general_nombre(busqueda);
 
         Session["hotelseleccionado"] = busqueda;
         DL_Listaprincipalhoteles.DataBind();
@@ -40,82 +40,32 @@ public partial class Vew_index : System.Web.UI.Page
 
     protected void B_Filtrar_Click(object sender, EventArgs e)
     {
-        /*
-        Filtro busqueda = new Filtro();
-        if (TB_PrecioMin.Text == String.Empty)
-        {
-            busqueda.preciomin = null;
-        }
-        if (TB_PrecioMax.Text == String.Empty)
-        {
-            busqueda.preciomax = null;
-        }
-        if(TB_PrecioMin.Text != String.Empty)
+        UFiltro busqueda = new UFiltro();
+
+        try
         {
             busqueda.preciomin = int.Parse(TB_PrecioMin.Text);
-        }
-        if (TB_PrecioMax.Text != String.Empty)
-        {
             busqueda.preciomax = int.Parse(TB_PrecioMax.Text);
+            busqueda.numpersonas = int.Parse(TB_Maxpersonas.Text);
+            busqueda.fecha_antesde = DateTime.Parse(TB_DateAntesDe.Text);
+            busqueda.fecha_despuesde = DateTime.Parse(TB_DateDespuesDe.Text);
         }
-        if (TB_Maxpersonas.Text == String.Empty)
+        catch
         {
+            busqueda.preciomin = null;
+            busqueda.preciomax = null;
             busqueda.numpersonas = null;
         }
-        if(TB_Maxpersonas.Text != String.Empty)
-        {
-            busqueda.numpersonas = int.Parse(TB_Maxpersonas.Text);
-        }
-        if (TB_DateAntesDe.Text != String.Empty)
-        {
 
-            if (DateTime.Parse(TB_DateAntesDe.Text) < DateTime.Parse(TB_DateDespuesDe.Text))
-            {
-                L_MensajeFalloFechas.Text = "La fecha Antes de, debe ser mayor de   " + DateTime.Parse(TB_DateDespuesDe.Text).ToString("dd-MM-yyyy");
-            }
-            else
-            {
-                L_MensajeFalloFechas.Text = " ";
-                busqueda.fecha_antesde = DateTime.Parse(TB_DateAntesDe.Text);
-            }
-
-        }
-        if (TB_DateDespuesDe.Text != String.Empty)
-        {
-            if (DateTime.Parse(TB_DateDespuesDe.Text) < DateTime.Now)
-            {
-                L_MensajeFalloFechas.Text = "La fecha especificada debe ser después de     " + DateTime.Now.ToString("dd-MM-yyyy");
-            }
-            else
-            {
-                L_MensajeFalloFechas.Text = " ";
-                busqueda.fecha_despuesde = DateTime.Parse(TB_DateDespuesDe.Text);
-            }
-        }
-        
+        busqueda.calificacion = DDL_Calificacion.Text;
         busqueda.zona = DDL_Zona.Text;
         busqueda.municipio = DDL_Municipio.Text;
-        busqueda.calificacion = DDL_Calificacion.Text;
-        busqueda.tipo = DDL_Tipo.Text;
-        if (busqueda.zona.Equals("--Seleccione--"))
-        {
-            busqueda.zona = null;
-        }
-        if (busqueda.municipio.Equals("--Seleccione--"))
-        {
-            busqueda.municipio = null;
-        }
-        if (busqueda.calificacion.Equals("--Seleccionar--"))
-        {
-            busqueda.calificacion = null;
-        }
-        if (busqueda.tipo.Equals("--Seleccionar--"))
-        {
-            busqueda.tipo = null;
-        }
+ 
+        busqueda = new LFiltro().filtro_general(busqueda);
+
         Session["hotelseleccionado"] = busqueda;
         DL_Listaprincipalhoteles.DataBind();
-        */
+        
     }
 
     protected void B_LimpiarFechas_Click(object sender, EventArgs e)
@@ -129,5 +79,4 @@ public partial class Vew_index : System.Web.UI.Page
 
 
     }
-
 }
