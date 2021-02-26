@@ -234,7 +234,7 @@
                                             </td>
                                             <td>
                                                 <br />
-                                                minimo<asp:TextBox ID="TB_PrecioMin" runat="server" Width="90%" MaxLength="10"></asp:TextBox>
+                                                minimo<asp:TextBox ID="TB_PrecioMin" runat="server" Width="90%" MaxLength="10" EnableTheming="True"></asp:TextBox>
                                                 <br />
                                                 <br />
                                                 <asp:RegularExpressionValidator ID="REV_TB_Preciomin" runat="server" ControlToValidate="TB_PrecioMin" ErrorMessage="No caracteres especiales" ValidationExpression="[0-9]+" ValidationGroup="filtrar"></asp:RegularExpressionValidator>
