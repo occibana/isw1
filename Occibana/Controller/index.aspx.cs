@@ -19,13 +19,11 @@ public partial class Vew_index : System.Web.UI.Page
 
     protected void DL_Listaprincipalhoteles_ItemCommand(object source, DataListCommandEventArgs e)
     {
-        /*
-        Hotel hotelinfo = new Hotel();
+        UHotel hotelinfo = new UHotel();
         hotelinfo.Idhotel = int.Parse(e.CommandArgument.ToString());
         Session["visitarhotel"] = hotelinfo;
         Session.Remove("calificarhotel");
         Response.Redirect("PanelHotel.aspx");
-        */
     }
 
     protected void IB_Busquedageneral_Click(object sender, ImageClickEventArgs e)

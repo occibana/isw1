@@ -203,10 +203,10 @@
                                             &nbsp;&nbsp;
                                         </div>
                                         <br />
-                                        <asp:ObjectDataSource ID="ODS_Habitaciones" runat="server" SelectMethod="habitacionesHotel" TypeName="DAOHabitacion">
+                                        <asp:ObjectDataSource ID="ODS_Habitaciones" runat="server" SelectMethod="habitacionesHotel" TypeName="Data.DAOHabitacion">
                                             <SelectParameters>
                                                 <asp:SessionParameter Name="idE" SessionField="visitarhotel" Type="Object" />
-                                                <asp:SessionParameter Name="consulta" SessionField="hotelseleccionado" Type="Object" />
+                                                <asp:Parameter Name="consulta" Type="Object" />
                                             </SelectParameters>
                                         </asp:ObjectDataSource>
                                         <br />
